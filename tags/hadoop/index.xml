@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hadoop on Coinidea的博客</title><link>https://blog.coinidea.com/tags/hadoop/</link><description>Recent content in Hadoop on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 28 Sep 2015 14:50:42 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/hadoop/index.xml" rel="self" type="application/rss+xml"/><item><title>[Hadoop]CDH的环境搭建</title><link>https://blog.coinidea.com/%E5%A4%A7%E6%95%B0%E6%8D%AE-1026.html</link><pubDate>Mon, 28 Sep 2015 14:50:42 +0000</pubDate><guid>https://blog.coinidea.com/%E5%A4%A7%E6%95%B0%E6%8D%AE-1026.html</guid><description>&lt;h1 id="1-connect-server"&gt;1. Connect server
+&lt;/h1&gt;&lt;p&gt;使用CRT或者Xshell远程连接即可。&lt;/p&gt;
+&lt;h1 id="2-network-config"&gt;2. Network config
+&lt;/h1&gt;&lt;h2 id="首先需要给服务器配置dns判断服务器是否能连接外网"&gt;首先需要给服务器配置DNS，判断服务器是否能连接外网。
+&lt;/h2&gt;&lt;p&gt;输入下列命令行即可：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ping &lt;span class="o"&gt;[&lt;/span&gt;www.baidu.com&lt;span class="o"&gt;][&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果能收到来自[www.baidu.com][1]应答报表示外网能连接上的，如果是unknown host表示DNS配置不正确需要配置DNS。&lt;/p&gt;
+&lt;p&gt;配置DNS有两种方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;临时方案，编辑resolv.conf文件，加入“nameserver 8.8.8.8”文件。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/resolv.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;nameserver 8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;长期有效，编辑ifcfg_eth0文件，加入“DNS1=8.8.8.8”文件。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;DNS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;配置好之后，执行命令“service network restart”&lt;/p&gt;
+&lt;p&gt;建议使用第二种方案，第一种方案当服务器重启的时候就会失效。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;关闭防火墙&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;输入命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;service iptables stop
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id="3-file-transfer"&gt;3. File transfer
+&lt;/h1&gt;&lt;p&gt;在安装的过程中，&lt;strong&gt;可能涉及到将本地的文件上传到服务器上&lt;/strong&gt;。此处提供一种方案。&lt;/p&gt;
+&lt;p&gt;输入命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo yum install lrzsz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装lrzsz包之后，输入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;选择需要上传的文件即可。&lt;/p&gt;
+&lt;p&gt;其中Yum (Yellow dog Updater Modified) 是基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。&lt;/p&gt;
+&lt;h1 id="4-install-cdh"&gt;4. Install CDH
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;HDFS&lt;/strong&gt;：分布式文件存储系统 GFS的Java开源实现。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image0011.jpg"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MapReduce&lt;/strong&gt;：大规模数据集的并行计算编程模型。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image0021.jpg"
+loading="lazy"
+alt="image002"
+&gt;&lt;/p&gt;
+&lt;p&gt;HBase：NoSQL列数据库&lt;/p&gt;
+&lt;p&gt;Hive：数据仓库&lt;/p&gt;
+&lt;p&gt;Zookeeper：分布式锁&lt;/p&gt;
+&lt;p&gt;Pig：大数据分析平台接口&lt;/p&gt;
+&lt;p&gt;Home link: &lt;a class="link" href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh.html" target="_blank" rel="noopener"
+&gt;http://www.cloudera.com/content/cloudera/en/products-and-services/cdh.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Setup:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. Java&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CentOS 6.7自带了1.7版本的JDK，所以此处省略。安装过程中，涉及到JDK的地方都可以忽略。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Cloudera Manager Server&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Cloudera Manager makes it easy to &lt;strong&gt;manage Hadoop deployments of any scale in production&lt;/strong&gt;. Quickly deploy, configure, and monitor your cluster through an intuitive UI – complete with rolling upgrades, backup and disaster recovery, and customizable alerting.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Download:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.cloudera.com/content/cloudera/en/downloads/cloudera_manager/cm-5-4-7.html" target="_blank" rel="noopener"
+&gt;http://www.cloudera.com/content/cloudera/en/downloads/cloudera_manager/cm-5-4-7.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载最新的5.4.7版本即可。&lt;/p&gt;
+&lt;p&gt;下载之后，是一个503kb左右的，名为cloudera-manager-installer.bin的文件，将改文件上传（“rz”）到服务器指定的文件夹上。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Close selinux:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/etc/selinux/config
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;selinux&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;disabled
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hostname&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;需要修改本机的hostname，查看hostname的方式，直接输入hostname即可。&lt;/p&gt;
+&lt;p&gt;输入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/hosts
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;即可编辑，加入行“192.168._._ master.com master”&lt;/p&gt;
+&lt;p&gt;备注，添加datanode节点的时候，请不要命名为master，可以命名为datanode1。&lt;/p&gt;
+&lt;p&gt;执行“reboot”命令，重启服务器。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;3. CDH&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Using cloudera manager&lt;/p&gt;
+&lt;p&gt;到该文件cloudera-manager-installer.bin所在目录下执行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chmod u+x cloudera-manager-installer.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./ cloudera-manager-installer.bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;一直next向下，其中选中项会加粗的。&lt;/p&gt;
+&lt;p&gt;速度可能较慢，请耐心等待…&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Choose express free version.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image0031.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;显示随后安装的软件包&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image004.png"
+loading="lazy"
+alt="image004"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;指定CDH集群主机&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image005.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image006.png"
+loading="lazy"
+alt="image006"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装CDH&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image007.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输入用户名密码&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image008.png"
+loading="lazy"
+alt="image008"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image009.png"
+loading="lazy"
+alt="image009"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image010.png"
+loading="lazy"
+alt="image010"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装指定Parcel&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image012.png"
+loading="lazy"
+alt="image012"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image013.png"
+loading="lazy"
+alt="image013"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image014.png"
+loading="lazy"
+alt="image014"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选择服务&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/image015.png"
+loading="lazy"
+alt="image015"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="4-storm"&gt;4. Storm
+&lt;/h1&gt;&lt;p&gt;用于处理高速、大型数据流的分布式实时计算系统。为Hadoop添加了可靠的实时数据处理功能。&lt;/p&gt;
+&lt;h1 id="5-spark"&gt;5. Spark
+&lt;/h1&gt;&lt;p&gt;Spark采用了内存计算。从多迭代批处理出发，允许将数据载入内存作反复查询，此外还融合数据仓库，流处理和图形计算等多种计算范式。Spark构建在HDFS上，能与Hadoop很好的结合。&lt;/p&gt;
+&lt;h1 id="6-problems"&gt;6. Problems
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;正在刷新元数据包&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Another app is currently holding the yum lock&lt;span class="p"&gt;;&lt;/span&gt; waiting &lt;span class="k"&gt;for&lt;/span&gt; it to exit...
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm -f /var/run/yum.pid
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卸载Cloudera Manager&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$ sudo /usr/share/cmf/uninstall-cloudera-manager.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装失败。 无法接收 Agent 发出的检测信号&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cat /etc/hosts
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ip 域名 主机名
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;192.168.*.1 master.com master
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cat /etc/sysconfig/network
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;HOSTNAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;master.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;卸载Cloudera Manager&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo rm -Rf /usr/share/cmf /var/lib/cloudera* /var/cache/yum/cloudera*
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo /usr/share/cmf/uninstall-cloudera-manager.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo service cloudera-scm-server stop
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo service cloudera-scm-server-db stop
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cloudera-manager-server-db
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo yum remove cloudera-manager-server
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo yum remove cloudera-manager-server-db-2
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo service cloudera-scm-agent hard_stop
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo yum remove &lt;span class="s1"&gt;&amp;#39;cloudera-manager-*&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo yum clean all
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo rm -Rf /usr/share/cmf /var/lib/cloudera* /var/cache/yum/cloudera* /var/log/cloudera* /var/run/cloudera*
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo rm -Rf /var/cache/apt/archives/cloudera*
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo rm /tmp/.scm_prepare_node.lock
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo rm -Rf /var/lib/flume-ng /var/lib/hadoop* /var/lib/hue /var/lib/navigator /var/lib/oozie /var/lib/solr /var/lib/sqoop* /var/lib/zookeeper
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo rm -Rf /dfs /mapred /yarn
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

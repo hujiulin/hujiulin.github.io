@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Reading Notes on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/reading-notes/</link><description>Recent content in Reading Notes on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 25 Jul 2015 07:04:11 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/reading-notes/index.xml" rel="self" type="application/rss+xml"/><item><title>[Reading Notes] Godel, Escher, Bach: An Eternal Golden Braid</title><link>https://blog.coinidea.com/en/p/reading-notes-godel-escher-bach-an-eternal-golden-braid/</link><pubDate>Sat, 25 Jul 2015 07:04:11 +0000</pubDate><guid>https://blog.coinidea.com/en/p/reading-notes-godel-escher-bach-an-eternal-golden-braid/</guid><description>&lt;p&gt;&lt;strong&gt;Wednesday, November 28, 2012 - Prelude to Purchase and Preface&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;On November 11th this year, my roommate Xingxing owed me 30 yuan. I told him to get me a Singles&amp;rsquo; Day gift instead of paying me back. He asked what I wanted. At the time, I was really into reading the Steve Jobs biography, so I figured a Peking University student would know some great books. I asked him to buy me a book and recommend something. He said GEB was good. I was taken aback - that&amp;rsquo;s supposed to be a book for mathematical logic. After thinking about it, I asked him to get me &amp;ldquo;On the Crest of the Wave&amp;rdquo; instead. But I still went and searched for GEB. The review on Dangdang said: &amp;ldquo;This is an unprecedented masterpiece and an outstanding popular science work. With carefully designed and ingenious writing, it provides accessible introductions to many profound theories in mathematical logic, computability theory, artificial intelligence, and other fields. The relaxed, humorous, and flowing prose conceals a wealth of subtext, with ideas cross-referencing and interconnecting, weaving into a complex, invisible network. Readers can&amp;rsquo;t see it, but they can sense its presence and realize the author has sprayed it deliberately.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;On November 22nd, I purchased the book from Dangdang.&lt;/p&gt;
+&lt;p&gt;On November 28th, I began reading. Author: [American] Hou Shida. Is the author Chinese? I started reading with this question in mind. Ever since the Jobs biography, I&amp;rsquo;ve made a point of reading prefaces first. GEB&amp;rsquo;s preface is 38 pages long.&lt;/p&gt;
+&lt;p&gt;From the preface, I learned that the Chinese edition of this book was made possible by Professors Wu Yunceng and Ma Xiwen of Peking University. I discovered that Hou Shida is not actually Chinese - he is Douglas Richard Hofstadter. He&amp;rsquo;s a remarkable person, not only for his achievements in mathematics and computer science, but I personally believe that through his efforts in facilitating GEB translations into multiple languages, he is truly a linguist. &amp;ldquo;Hou Shida&amp;rdquo; is the Chinese name he gave himself, and he even wrote a preface for the Chinese edition.&lt;/p&gt;
+&lt;p&gt;The Chinese edition is by no means a simple English-to-Chinese translation. I believe that given the author&amp;rsquo;s linguistic mastery, combined with the support of Peking University and the Commercial Press, this book is truly a masterpiece in Chinese, achieving Yan Fu&amp;rsquo;s three fundamental standards: faithfulness, expressiveness, and elegance. I also appreciate their views on translating scientific papers.&lt;/p&gt;
+&lt;p&gt;For example: &amp;ldquo;a man, a plan, a canal: Panama&amp;rdquo; - should it be translated as &amp;ldquo;an engineer designed the Panama Canal&amp;rdquo;? But as a computer science student, I was amazed to discover that this English sentence is a palindrome! So why not use the Chinese palindrome equivalent?&lt;/p&gt;
+&lt;p&gt;About GEB: Godel, Escher, Bach: an Eternal Golden Braid&lt;/p&gt;
+&lt;p&gt;The Chinese title: the initials of the Chinese transliteration correspond to the English acronym GEB.&lt;/p&gt;
+&lt;p&gt;Oh, and there&amp;rsquo;s another artistic touch:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image001.jpg"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;p&gt;The 3D projections of these two small blocks spell out GEB and EGB (the second half of the book).&lt;/p&gt;
+&lt;p&gt;The Peking University translation team went even further: the Chinese title embeds both the Chinese and English GEB.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image002.jpg"
+loading="lazy"
+alt="image002"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thursday, December 6, 2012 - Introduction: A Musico-Logical Offering&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been too busy lately. After finishing the Steve Jobs biography and &amp;ldquo;On the Crest of the Wave,&amp;rdquo; I wanted to focus on GEB. But on one hand I was too busy, and on the other, I realized that apart from having some foundation in computer science, I&amp;rsquo;m really clueless about other fields, especially music. Unlike the previous two books, GEB requires you to actively think and understand. It&amp;rsquo;s filled with logical proofs, paradoxes that appear at every turn, and casual references to palindromes in computer science, isomorphism in discrete mathematics, and rest vs. motion in physics.&lt;/p&gt;
+&lt;p&gt;Today I finally finished the introduction. The introduction revolves around Bach&amp;rsquo;s Musical Offering, cleverly titled &amp;ldquo;A Musico-Logical Offering,&amp;rdquo; and then discusses Bach, Escher, and Godel - three great masters.&lt;/p&gt;
+&lt;p&gt;Canon and Fugue:&lt;/p&gt;
+&lt;p&gt;As a music novice, I had only heard of canons before - I&amp;rsquo;d never even heard of fugues. But when you try to understand them, you realize Bach was truly a genius. From the perspective of symmetrical beauty, even without hearing his compositions, looking at their structure alone, you can tell they must be beautiful.&lt;/p&gt;
+&lt;p&gt;The fundamental concept of a canon is a single theme accompanied by itself. Different voices enter and each presents a &amp;ldquo;copy&amp;rdquo; of the theme. The simplest form is a round. More complex canons become increasingly intricate, interweaving not only in time but also in pitch. The first voice might present the theme in C, while the second voice enters with the same theme in G (a fifth above C), and the third in D (a fifth above G) - creating something like an arithmetic sequence. Just looking at this structure, I can tell it would sound wonderful. There&amp;rsquo;s an even more complex technique called inversion, which produces a melody that jumps down whenever the original theme jumps up, by the same number of semitones. Then comes the most magical part - retrograde. The theme is played backwards in time, creating what&amp;rsquo;s called a crab canon. Every type of copy preserves the information of the original theme, and the theme can be recovered from any copy. This information-preserving transformation is called isomorphism.&lt;/p&gt;
+&lt;p&gt;Just on Thursday, my professor asked me what graph isomorphism is. I said it can be &amp;ldquo;stamped over&amp;rdquo;! Then what about subgraph isomorphism?&lt;/p&gt;
+&lt;p&gt;Fugues are similar to canons but less strict.&lt;/p&gt;
+&lt;p&gt;To transition to the great artist Escher, I must mention the endlessly rising canon. This canon begins in C major, but by the time it nears the end, it&amp;rsquo;s in D minor - a fifth higher, a change so subtle that listeners barely notice. At the so-called &amp;ldquo;ending,&amp;rdquo; Bach cleverly loops it back to the beginning, creating an endless cycle.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Seek, and ye shall find.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;If Bach played this endlessly rising strange loop, then Escher painted it! The image below is &amp;ldquo;Waterfall,&amp;rdquo; where six distinct stages demonstrate the strange loop.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image003.jpg"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Ascending and Descending&amp;rdquo; demonstrates the strange loop in just four stages, though more loosely.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image004.jpg"
+loading="lazy"
+alt="image004"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thursday, December 7, 2012 - Introduction: A Musico-Logical Offering&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s talk about the greatest mathematician, Godel. The strange loops of Bach and Escher contain a conflict between the finite and the infinite, with a strong sense of paradox. Is there something wrong with mathematics?&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s a paradox called the Epimenides paradox: Epimenides was a Cretan who said, &amp;ldquo;All Cretans are liars.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This statement can be understood as: &amp;ldquo;This sentence is false.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;If you assume it&amp;rsquo;s true, it concludes that it&amp;rsquo;s false. If you assume it&amp;rsquo;s false, it concludes that it&amp;rsquo;s true.&lt;/p&gt;
+&lt;p&gt;In 1931, Godel published Godel&amp;rsquo;s theorem, which in essence states that no matter what axiomatic system you design, provability is always weaker than truth.&lt;/p&gt;
+&lt;p&gt;Everything can perhaps be understood as originating from the strange loop of &amp;ldquo;self-reference.&amp;rdquo; Or a loop, like the following example with two sentences:&lt;/p&gt;
+&lt;p&gt;The sentence below is false.&lt;/p&gt;
+&lt;p&gt;The sentence above is true.&lt;/p&gt;
+&lt;p&gt;Russell and Whitehead devoted themselves to eliminating such strange loops. &amp;ldquo;Principia Mathematica&amp;rdquo; is a rather peculiar bottom-up axiomatic system that appears to eliminate strange loops.&lt;/p&gt;
+&lt;p&gt;Hilbert&amp;rsquo;s Program:&lt;/p&gt;
+&lt;p&gt;Hilbert hoped someone could prove that Principia Mathematica was both consistent and complete - that is, internally contradiction-free while being able to prove all theorems within it. This has a flavor of circular reasoning, somewhat like forcing someone to lift themselves up by their own bootstraps.&lt;/p&gt;
+&lt;p&gt;Unfortunately, Godel proved that &amp;ldquo;no axiomatic system can produce all number-theoretic truths, unless it is an inconsistent system.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s discuss what intelligence is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Responding flexibly to situations.&lt;/li&gt;
+&lt;li&gt;Taking advantage of opportunities.&lt;/li&gt;
+&lt;li&gt;Making sense of ambiguous or contradictory information.&lt;/li&gt;
+&lt;li&gt;Recognizing what is important in a situation and what is secondary.&lt;/li&gt;
+&lt;li&gt;Finding similarities between situations despite differences.&lt;/li&gt;
+&lt;li&gt;Finding differences between things connected by similarities.&lt;/li&gt;
+&lt;li&gt;Synthesizing new concepts from old ones, combining them in new ways.&lt;/li&gt;
+&lt;li&gt;Coming up with entirely new ideas.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Friday, December 8, 2012 - Three-Part Invention: The MU Puzzle&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s discuss history&amp;rsquo;s most famous Zeno&amp;rsquo;s paradox: motion is impossible.&lt;/p&gt;
+&lt;p&gt;The swift-footed Achilles wants to chase a tortoise. He gives the tortoise a 10-meter head start. Every time Achilles covers half the remaining distance, the tortoise moves forward some distance. So Achilles keeps closing the gap but can never catch the tortoise.&lt;/p&gt;
+&lt;p&gt;A more general understanding of this paradox: a person walks from point A to point B, each time covering one-tenth of the remaining distance, so they can never reach point B.&lt;/p&gt;
+&lt;p&gt;The key issue in this paradox is time. Assume the distance is 10 meters and the speed is 10 meters per second. The reason they can&amp;rsquo;t arrive is that each step takes 0.1, 0.01, 0.001&amp;hellip; seconds. The total is only 0.11111&amp;hellip; seconds, not even 1 second, so of course they can&amp;rsquo;t make it.&lt;/p&gt;
+&lt;p&gt;Later I looked up more about Zeno&amp;rsquo;s paradoxes. Besides Achilles and the tortoise, there&amp;rsquo;s also the &amp;ldquo;flying arrow&amp;rdquo; example. I won&amp;rsquo;t describe it in detail here, but I think the physics principle that &amp;ldquo;rest is relative, motion is absolute&amp;rdquo; can explain this paradox.&lt;/p&gt;
+&lt;p&gt;A distinctive feature of this book is that at the beginning of each new chapter, the author uses Achilles and the Tortoise to have a conversation as a way to introduce the topic.&lt;/p&gt;
+&lt;p&gt;Chapter 1 covers the MU puzzle. With a foundation in discrete mathematics and mathematical logic, it&amp;rsquo;s not too difficult to understand. But there are indeed many clever and thought-provoking aspects.&lt;/p&gt;
+&lt;p&gt;Starting string: MI. Goal: construct the target string MU.&lt;/p&gt;
+&lt;p&gt;The rules:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If a string you own ends in I, you can add a U at the end.&lt;/li&gt;
+&lt;li&gt;If you have Mx, then Mxx is also yours.&lt;/li&gt;
+&lt;li&gt;If III appears in one of your strings, you can replace III with U to get a new string.&lt;/li&gt;
+&lt;li&gt;If UU appears in your string, you can drop it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The difference between humans and machines when constructing MU: machines don&amp;rsquo;t get tired but they can&amp;rsquo;t think, so they&amp;rsquo;ll keep searching according to the rules. Humans are different - they use &lt;strong&gt;insight&lt;/strong&gt; to search for the string, or complain that it can&amp;rsquo;t be found.&lt;/p&gt;
+&lt;p&gt;More directly, humans have the ability to jump out! To step outside the system and look at something else. Machines can&amp;rsquo;t do this.&lt;/p&gt;
+&lt;p&gt;Decision procedure: We define a decision procedure as one that determines, in finite time, whether a string is a theorem or not. Generally speaking, we can derive whether a string is a theorem, but it might take infinite time.&lt;/p&gt;
+&lt;p&gt;Suppose there&amp;rsquo;s a demon with unlimited time. If it were to solve the MU puzzle, it might:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Apply every applicable rule to the axiom MI, producing two new theorems: MIU, MIII.&lt;/li&gt;
+&lt;li&gt;Apply all applicable rules to the theorems from step 1, producing new theorems: MIIU, MIUIU, and MIIII.&lt;/li&gt;
+&lt;li&gt;Apply the same rules to the theorems from step 2, producing more new theorems.&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;What the Tortoise said to Achilles.&lt;/p&gt;
+&lt;p&gt;This conversation may seem absurd, but it gave me a kind of revelation - even a shock! What does it mean to prove! To reason! To infer! I also witnessed the power of hypothetical propositions.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a small fragment of an argument:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Things that are equal to the same thing are also equal to each other.&lt;/li&gt;
+&lt;li&gt;The two sides of this triangle are equal to the same thing.&lt;/li&gt;
+&lt;li&gt;The two sides of this triangle are equal to each other.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Readers of &lt;strong&gt;Euclid&lt;/strong&gt; would consider Z a logical conclusion, so anyone who accepts A and B as true must accept Z as true.&lt;/p&gt;
+&lt;p&gt;But consider two objections:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Someone who doesn&amp;rsquo;t accept A and B as true, but agrees that &amp;ldquo;if A and B are true, then Z is true.&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Someone who accepts A and B as true, but doesn&amp;rsquo;t accept that &amp;ldquo;if A and B are true, then Z is true.&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Case 1 is understandable; let&amp;rsquo;s set it aside for now.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s discuss case 2: how would you try to convince someone holding view 2 to accept the argument A-B-Z?&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s try this approach:&lt;/p&gt;
+&lt;p&gt;Define the hypothetical proposition &amp;ldquo;if A and B are true, then Z is true&amp;rdquo; as proposition C.&lt;/p&gt;
+&lt;p&gt;Does the following proof work?&lt;/p&gt;
+&lt;p&gt;A B C Z&lt;/p&gt;
+&lt;p&gt;OK! But what about someone who questions the hypothetical proposition &amp;ldquo;if A, B, and C are true, then Z is true&amp;rdquo;?&lt;/p&gt;
+&lt;p&gt;Do we need to define yet another hypothetical proposition D? An infinite loop? Doesn&amp;rsquo;t this remind you of Bach&amp;rsquo;s endlessly rising canon?&lt;/p&gt;
+&lt;p&gt;What a delightful introductory example!&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s define a simple system: the pq system:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Three symbols:&lt;/strong&gt; p q -&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition of axioms:&lt;/strong&gt; As long as x consists solely of a string of hyphens, then x-qxp- is an axiom.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rule:&lt;/strong&gt; Assuming x, y, and z each represent specific strings containing only hyphens, and assuming xqypz is a known axiom, then x-qypz- is a theorem.&lt;/p&gt;
+&lt;p&gt;Given a string, how do you determine whether it&amp;rsquo;s a theorem?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Bottom-up: this method is similar to the MU puzzle approach described earlier and won&amp;rsquo;t be elaborated here.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Top-down: repeatedly find its predecessor string according to the rules, and verify whether that string is an axiom. (Of course, we have an obvious way to determine whether a string is an axiom - otherwise, as Hofstadter says, all hope would be lost.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Upon careful study of the pq system, through &lt;strong&gt;insight&lt;/strong&gt; one can discover a pattern: if it&amp;rsquo;s a theorem, it must be of the form xqypz, where |x| = |y| + |z|.&lt;/p&gt;
+&lt;p&gt;In fact, this is something mentioned earlier in these notes called &lt;strong&gt;isomorphism&lt;/strong&gt;: two complex structures can be mapped to each other, with every part of each structure having a corresponding part in the other. We&amp;rsquo;ve assigned real-world meaning to a series of simple symbols: addition.&lt;/p&gt;
+&lt;p&gt;This is our own projection, of course. You could say q corresponds to &amp;ldquo;horse,&amp;rdquo; p to &amp;ldquo;happiness,&amp;rdquo; and - to &amp;ldquo;apple.&amp;rdquo; But the resulting theorems would be bizarre statements about horses, happiness, and apples with no real-world significance. Of course, our system is predefined - we can&amp;rsquo;t assume that just because it can represent addition, we can fantasize that x-q-x-p-x- is a theorem because 6 = 2+2+2. That&amp;rsquo;s correct in real life but clearly doesn&amp;rsquo;t hold in our pq system.&lt;/p&gt;
+&lt;p&gt;This isomorphism isn&amp;rsquo;t unique either - for instance, you could map q to subtraction and p to the equals sign, and it would also work. These simple but (in my view) fascinating examples show us the difference between formal systems and reality.&lt;/p&gt;
+&lt;p&gt;Finally, here&amp;rsquo;s the example that shocked me the most:&lt;/p&gt;
+&lt;p&gt;What is 12 times 12? 144? Correct! If we doubt it, we can count the cells in a 12-by-12 grid.&lt;/p&gt;
+&lt;p&gt;But what about 123456789 times 987654321? We can&amp;rsquo;t exactly count that. Who can say the value is truly what it is? How do you prove it?&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a theorem called &lt;strong&gt;Euclid&amp;rsquo;s theorem&lt;/strong&gt;: regarding the proposition that there are infinitely many prime numbers, no counting process can prove its truth or falsity. No matter how many primes we count, we can never determine whether the number of primes is finite or infinite.&lt;/p&gt;
+&lt;p&gt;Euclid gave a brilliant proof - at least I think everyone thought so at the time and for a long time after.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pick a number N&lt;/strong&gt;, compute N!, then form a new number N!+1. This number is not divisible by any number from 2, 3, 4, 5, 6, 7, 8, 9, &amp;hellip; N.&lt;/p&gt;
+&lt;p&gt;There are only two outcomes: N!+1 is either itself a prime, or its smallest prime factor is greater than N. In either case, we&amp;rsquo;ve found a prime larger than N.&lt;/p&gt;
+&lt;p&gt;So when we want to bypass the concept of infinity to prove something, we can use words like &amp;ldquo;all&amp;rdquo; - finite in themselves but embodying the concept of infinity.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at one of Escher&amp;rsquo;s tessellations.&lt;/p&gt;</description></item></channel></rss>

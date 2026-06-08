@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on Coinidea的博客</title><link>https://blog.coinidea.com/tags/windows/</link><description>Recent content in Windows on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 05 May 2016 03:08:32 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>[MySQL]MySQL-Front(Windows)定期备份</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1155.html</link><pubDate>Thu, 05 May 2016 03:08:32 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1155.html</guid><description>&lt;p&gt;数据库的服务中，定期备份是一项极其重要的工作。&lt;br&gt;
+对于大多数用GUI（大部分用户使用MySQL-Front、Navicat或者MySQL-WorkBench）简单管理数据库的用户来说，基于交互的备份方式简单易学。&lt;/p&gt;
+&lt;p&gt;下面简单介绍如何使用MySQL-Front(版本5.3)定期备份数据库：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;连接上数据库之后，“其他”-&amp;gt;“Jobs”-&amp;gt;“新建”-&amp;gt;“输出”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image001-289x300.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;选择test数据库，点击下一步。&lt;/li&gt;
+&lt;li&gt;指定输出地址“D:\test.sql”，注意字符集一般选择UTF-8&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image003-289x300.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;下一步，指定输出的内容，一定要勾选数据。&lt;/li&gt;
+&lt;li&gt;指定备份的时间，以及时间间隔。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image005-289x300.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;完成之后在定时任务的栏目中会有一个名为test的job&lt;/li&gt;
+&lt;li&gt;如果想立即执行，右击点击运行即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image007-300x213.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;</description></item></channel></rss>

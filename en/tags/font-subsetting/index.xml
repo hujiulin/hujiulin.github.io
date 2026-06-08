@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Font Subsetting on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/font-subsetting/</link><description>Recent content in Font Subsetting on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 22 Jul 2016 02:35:14 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/font-subsetting/index.xml" rel="self" type="application/rss+xml"/><item><title>Font Subsetting for Web and Mobile</title><link>https://blog.coinidea.com/en/p/font-subsetting-for-web-and-mobile/</link><pubDate>Fri, 22 Jul 2016 02:35:14 +0000</pubDate><guid>https://blog.coinidea.com/en/p/font-subsetting-for-web-and-mobile/</guid><description>&lt;p&gt;In web and mobile frontend development, developers often want to use non-system fonts, which are typically in TTF, OTF, and other formats.&lt;/p&gt;
+&lt;p&gt;English fonts are usually quite small, but Chinese fonts can range from 1-2 MB on the small end to over 10 MB for larger ones. This is unacceptable for web or mobile applications. This is where font subsetting comes in &amp;ndash; you only need the specific characters used in a particular frontend interface, so you export just those characters from the font into a new TTF file, leaving out the unnecessary ones.&lt;/p&gt;
+&lt;p&gt;I highly recommend a Chinese font subsetting tool: TTF Font Library Subsetting and Conversion Tool&lt;/p&gt;
+&lt;p&gt;Download link: &lt;a class="link" href="http://pan.baidu.com/s/1skI7FiP" target="_blank" rel="noopener"
+&gt;http://pan.baidu.com/s/1skI7FiP&lt;/a&gt; Password: qb27&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/07/image001-212x300.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;p&gt;Note that the target font to be subsetted must first be installed in the Windows system.&lt;/p&gt;</description></item></channel></rss>

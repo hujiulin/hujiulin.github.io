@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CentOS on Coinidea的博客</title><link>https://blog.coinidea.com/tags/centos/</link><description>Recent content in CentOS on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 23 Nov 2017 08:05:04 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/centos/index.xml" rel="self" type="application/rss+xml"/><item><title>[CentOS]Centos升级OpenSSH及vsftpd</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1265.html</link><pubDate>Thu, 23 Nov 2017 08:05:04 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1265.html</guid><description>&lt;h2 id="升级-openssh-到-74-版本以上"&gt;升级 OpenSSH 到 7.4 版本以上
+&lt;/h2&gt;&lt;h3 id="背景"&gt;背景
+&lt;/h3&gt;&lt;p&gt;目前来讲，Linux 下 OpenSSH 7.4 版本以下的，都有一些高危漏洞，需要将 OpenSSH 升级到 7.4 版本以上。在一台不能上外网的机器上（yum），是比较麻烦的事儿。网上大家都先建议备份好 ssh 和安装 telnet 防止，升级失败可以 telnet 进去。&lt;/p&gt;
+&lt;h3 id="常见问题及解决方案"&gt;常见问题及解决方案
+&lt;/h3&gt;&lt;h4 id="1-找不到-zlibh"&gt;1. 找不到 &lt;code&gt;zlib.h&lt;/code&gt;
+&lt;/h4&gt;&lt;p&gt;参考链接：&lt;a class="link" href="http://www.linuxidc.com/Linux/2012-10/72036.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2012-10/72036.htm&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="2-zlib-下载地址"&gt;2. zlib 下载地址
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.zlib.net/" target="_blank" rel="noopener"
+&gt;http://www.zlib.net/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="3-zlib-安装"&gt;3. zlib 安装
+&lt;/h4&gt;&lt;p&gt;参考链接：&lt;a class="link" href="http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml" target="_blank" rel="noopener"
+&gt;http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="4-手动编译生成安装-openssh-需要的依赖"&gt;4. 手动编译生成安装 OpenSSH 需要的依赖
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zlib&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam-devel&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果报错 &lt;code&gt;configure: error: PAM headers not found&lt;/code&gt;，可以下载 &lt;code&gt;pam-devel&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm" target="_blank" rel="noopener"
+&gt;http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="5-openssl-下载"&gt;5. OpenSSL 下载
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="ftp://ftp.openssl.org/source/" &gt;ftp://ftp.openssl.org/source/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="6-安装-openssl"&gt;6. 安装 OpenSSL
+&lt;/h4&gt;&lt;p&gt;参考链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/ikownyou/article/details/53021686" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/ikownyou/article/details/53021686&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.linuxidc.com/Linux/2011-10/45738.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2011-10/45738.htm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="注意事项"&gt;注意事项
+&lt;/h3&gt;&lt;p&gt;如果 OpenSSH 升级后 SecureCRT 不能登录，可能是因为 SecureCRT 版本太低不支持一些加密协议：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;a class="link" href="http://blog.csdn.net/yangg1991/article/details/51755562" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yangg1991/article/details/51755562&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="升级-openssh-的步骤"&gt;升级 OpenSSH 的步骤
+&lt;/h3&gt;&lt;p&gt;参考链接：&lt;a class="link" href="http://blog.csdn.net/u011080082/article/details/64503534" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u011080082/article/details/64503534&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="升级-vsftpd-从-222-到-234"&gt;升级 vsftpd 从 2.2.2 到 2.3.4
+&lt;/h2&gt;&lt;p&gt;下载 &lt;code&gt;vsftpd-2.3.4.tar.gz&lt;/code&gt; 包，64 位注意：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\/lib64\/g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\//lib64\//g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="配置-vsftpd"&gt;配置 vsftpd
+&lt;/h3&gt;&lt;p&gt;使用主动模式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vsftpd /etc/vsftpd/vsftpd.conf &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;standard_alone&lt;/code&gt; 启动下，需要将下列两行代码，加入配置文件头部：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;a class="link" href="http://wingjang.blog.163.com/blog/static/47913442200811113104509/" target="_blank" rel="noopener"
+&gt;http://wingjang.blog.163.com/blog/static/47913442200811113104509/&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;YES
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen_port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装之后默认只允许匿名用户登录，所以需要修改一下：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;a class="link" href="http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html" target="_blank" rel="noopener"
+&gt;http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="处理-tcp_wrapper-问题"&gt;处理 TCP_Wrapper 问题
+&lt;/h3&gt;&lt;p&gt;如果有问题，注意删除空格，也可以去掉：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/u010098331/article/details/50699914" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u010098331/article/details/50699914&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/yylklshmyt20090217/article/details/8500608" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yylklshmyt20090217/article/details/8500608&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="vsftpd-下载"&gt;vsftpd 下载
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/" target="_blank" rel="noopener"
+&gt;http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

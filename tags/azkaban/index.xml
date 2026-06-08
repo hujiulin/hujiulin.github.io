@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AZKABAN on Coinidea的博客</title><link>https://blog.coinidea.com/tags/azkaban/</link><description>Recent content in AZKABAN on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 15 Jun 2019 00:47:43 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/azkaban/index.xml" rel="self" type="application/rss+xml"/><item><title>AZKBAN——开源任务调度系统</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1505.html</link><pubDate>Sat, 15 Jun 2019 00:47:43 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1505.html</guid><description>&lt;p&gt;azkaban是一个开源的任务调度系统，用于负责任务的调度运行（如数据仓库调度），用以替代linux中的crontab。官网:https://azkaban.github.io/&lt;/p&gt;
+&lt;p&gt;azkaban主要有三部分构成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;MySQL：Azkaban使用MySQL来存储项目和执行。&lt;/li&gt;
+&lt;li&gt;Azkaban Web Server：Azkaban使用Jetty作为Web服务器，用作控制器以及提供Web界面&lt;/li&gt;
+&lt;li&gt;Azkaban Executor Server：Azkaban执行服务器执行提交工作流。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;本文主要使用的是azkaban3.43，如果您从github源代码生成编译tar包时候可以留言，我可以给您分享我已经测试通过的安装包文件。&lt;br&gt;
+安装包文件主要有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;azkaban-db-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-solo-server-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-exec-server-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-web-server-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-hadoop-security-plugin-3.43.0.tar.gz&lt;br&gt;
+其中solo是单机版本，我搭建的是多执行节点，单web server节点的版本。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意：本文默认azkaban的目录位于/azkaban&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据库&lt;/strong&gt;&lt;br&gt;
+首先需要安装MySQL数据库，然后创建一个叫azkaban的数据库。mysql中执行&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;source /azkaban/azkaban-db/create-all-sql-0.1.0-SNAPSHOT.sql
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;配置文件&lt;/strong&gt;&lt;br&gt;
+0. 配置keystore，keystore的位置位于/azkaban/azkaban-web/conf/（需要与配置文件中路径对应）&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;keytool -keystore keystore -alias jetty -genkey -keyalg RSA
+输入密钥库口令: azkaban
+再次输入新口令: azkaban
+您的名字与姓氏是什么? [Unknown]: 略过
+您的组织单位名称是什么? [Unknown]: 略过
+您的组织名称是什么? [Unknown]: 略过
+您所在的城市或区域名称是什么? [Unknown]: 略过
+您所在的省/市/自治区名称是什么? [Unknown]: 略过
+该单位的双字母国家/地区代码是什么? [Unknown]: CN
+CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=CN是否正确?
+[否]: Y
+输入 &amp;lt;jetty&amp;gt; 的密钥口令 (如果和密钥库口令相同, 按回车):
+&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;/azkaban/azkaban-web/conf/azkaban.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;# Azkaban Personalization Settings
+azkaban.name=Allin
+azkaban.label=My Local Azkaban
+azkaban.color=#FF3601
+azkaban.default.servlet.path=/index
+web.resource.dir=/azkaban/azkaban-web-server/web/
+default.timezone.id=Asia/Shanghai
+# Azkaban UserManager class
+user.manager.class=azkaban.user.XmlUserManager
+user.manager.xml.file=/azkaban/azkaban-web-server/conf/azkaban-users.xml
+# Loader for projects
+executor.global.properties=/azkaban/azkaban-web-server/conf/global.properties
+azkaban.project.dir=/azkaban/azkaban-web-server/projects
+# Velocity dev mode
+velocity.dev.mode=false
+# Azkaban Jetty server properties.
+jetty.use.ssl=false
+jetty.maxThreads=25
+jetty.port=8443
+jetty.keystore=//azkaban/azkaban-web-server/conf/keystore
+jetty.password=yourpassword
+jetty.keypassword=yourpassword
+jetty.truststore=//azkaban/azkaban-web-server/conf/keystore
+jetty.trustpassword=yourpassword
+# Azkaban Executor settings
+executor.port=12321
+# mail settings
+mail.sender=
+mail.host=
+# User facing web server configurations used to construct the user facing server URLs. They are useful when there is a reverse proxy between Azkaban web servers and users.
+# enduser -&amp;gt; myazkabanhost:443 -&amp;gt; proxy -&amp;gt; localhost:8081
+# when this parameters set then these parameters are used to generate email links.
+# if these parameters are not set then jetty.hostname, and jetty.port(if ssl configured jetty.ssl.port) are used.
+# azkaban.webserver.external_hostname=myazkabanhost.com
+# azkaban.webserver.external_ssl_port=443
+# azkaban.webserver.external_port=8081
+job.failure.email=
+job.success.email=
+lockdown.create.projects=false
+cache.directory=cache
+# JMX stats
+jetty.connector.stats=true
+executor.connector.stats=true
+# Azkaban plugin settings
+azkaban.jobtype.plugin.dir=/azkaban/azkaban-web-server/plugins/jobtypes
+database.type=mysql
+mysql.port=3306
+mysql.host=127.0.0.1
+mysql.database=azkaban
+mysql.user=root
+mysql.password=yourmysqlpassword
+mysql.numconnections=100
+&lt;/pre&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;/azkaban/azkaban-exec/conf/azkaban.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;# Azkaban Personalization Settings
+default.timezone.id=Asia/Shanghai
+# Loader for projects
+executor.global.properties=/azkaban/azkaban-exec-server/conf/global.properties
+azkaban.project.dir=/azkaban/azkaban-exec-server/projects
+azkaban.jobtype.plugin.dir=/azkaban/azkaban-exec-server/plugins/jobtypes
+database.type=mysql
+mysql.port=3306
+mysql.host=127.0.0.1
+mysql.database=azkaban
+mysql.user=root
+mysql.password=yourpassword
+mysql.numconnections=100
+# Azkaban Executor settings
+executor.maxThreads=50
+executor.port=12321
+executor.flow.threads=30
+&lt;/pre&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;/azkaban/azkaban-web/conf/log4j.properties /azkaban/azkaban-exec/conf/log4j.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;log4j.rootLogger=INFO,C
+log4j.appender.C=org.apache.log4j.ConsoleAppender
+log4j.appender.C.Target=System.err
+log4j.appender.C.layout=org.apache.log4j.PatternLayout
+log4j.appender.C.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+&lt;/pre&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;如果是多执行节点，需要在/azkaban/azkaban-web/conf/azkaban.properties中追加以下配置，并且在数据库中插入对应执行节点的ip和端口号&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban.use.multiple.executors=true
+azkaban.executorselector.filters=StaticRemainingFlowSize,MinimumFreeMemory,CpuStatus
+azkaban.executorselector.comparator.NumberOfAssignedFlowComparator=1
+azkaban.executorselector.comparator.Memory=1
+azkaban.executorselector.comparator.LastDispatched=1
+azkaban.executorselector.comparator.CpuUsage=1
+&lt;/pre&gt;
+&lt;p&gt;插入执行节点ip和端口号：&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;insert into executors(host,port) values("your ip1",12321);
+insert into executors(host,port) values("your ip2",12321);
+&lt;/pre&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;
+&lt;p&gt;配置用户名密码/azkaban/azkaban-web/conf/azkaban-users.xml&lt;br&gt;
+只要有一些计算机基础，打开这个配置文件，一目了然。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建日志文件夹&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;mkdir /azkaban/azkaban-web/logs
+mkdir /azkaban/azkaban-exec/logs
+&lt;/pre&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;启动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban/azkaban-exec/bin/start-exec.sh
+azkaban/azkaban-web/bin/start-web.sh
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;遇到的坑&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;keystore的位置需要与配置文件中keystore设置的文件路径对应。&lt;/li&gt;
+&lt;li&gt;azkaban3以上才支持多执行节点。&lt;/li&gt;
+&lt;li&gt;7中启动方式是静默方式，开始测试的时候建议使用：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban/azkaban-exec/bin/azkaban-web-start.sh
+azkaban/azkaban-exec/bin/azkaban-exec-start.sh
+&lt;/pre&gt;
+&lt;p&gt;这样能看到是否报错，什么原因报错。&lt;br&gt;
+4. 根据报错说明，有可能没有正确创建logs文件夹或者路径不对。&lt;br&gt;
+5. 因为web server会去检查exec server，所以建议先启动exec server。&lt;br&gt;
+6. 如果多节点任务不执行，有可能是执行节点的资源不够。注意查看配置，该配置指定服务器在什么内存、CPU等资源条件下才执行任务，以及如果不指定节点，如果分配执行节点。如果不限制资源，请修改或者注释相关配置。&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban.use.multiple.executors=true
+azkaban.executorselector.filters=StaticRemainingFlowSize,MinimumFreeMemory,CpuStatus
+azkaban.executorselector.comparator.NumberOfAssignedFlowComparator=1
+azkaban.executorselector.comparator.Memory=1
+azkaban.executorselector.comparator.LastDispatched=1
+azkaban.executorselector.comparator.CpuUsage=1
+&lt;/pre&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;如何指定节点执行job：&lt;br&gt;
+在 flow params中设置”useExecutor” = EXECUTOR_ID即可&lt;br&gt;
+详情请查看：&lt;br&gt;
+&lt;a class="link" href="https://www.jianshu.com/p/ffb7bbc1988f" target="_blank" rel="noopener"
+&gt;https://www.jianshu.com/p/ffb7bbc1988f&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

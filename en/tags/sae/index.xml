@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SAE on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/sae/</link><description>Recent content in SAE on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 09 Apr 2016 07:50:12 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/sae/index.xml" rel="self" type="application/rss+xml"/><item><title>[SAE] SAE MySQL Cross-Application Authorization</title><link>https://blog.coinidea.com/en/p/sae-sae-mysql-cross-application-authorization/</link><pubDate>Sat, 09 Apr 2016 07:50:12 +0000</pubDate><guid>https://blog.coinidea.com/en/p/sae-sae-mysql-cross-application-authorization/</guid><description>&lt;p&gt;As SAE (Sina App Engine) pricing continues to rise, cost savings become increasingly important. Starting March 2016, shared MySQL also began incurring charges, making it important for multiple applications to share a single MySQL instance.&lt;/p&gt;
+&lt;h3 id="steps-to-share-a-single-mysql-across-multiple-applications"&gt;Steps to Share a Single MySQL Across Multiple Applications
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Assume you have multiple applications (APP1, APP2, APP3)&lt;/strong&gt;: Only APP1 retains the shared MySQL, while APP2 and APP3 will use APP1&amp;rsquo;s MySQL.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Export APP2 and APP3&amp;rsquo;s MySQL databases as backups&lt;/strong&gt;, then delete APP2 and APP3&amp;rsquo;s MySQL instances. This way, APP2 and APP3&amp;rsquo;s MySQL will be uninitialized and no longer incur charges.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Import APP2 and APP3&amp;rsquo;s database files (*.sql) into APP1&amp;rsquo;s MySQL&lt;/strong&gt;. Before importing, make sure table names don&amp;rsquo;t conflict.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;In APP1&amp;rsquo;s MySQL settings, click Cross-Application Authorization to select applications under your account or other accounts&lt;/strong&gt;. Authorize APP2 and APP3 here.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Write a script to display APP1&amp;rsquo;s MySQL connection information for the authorized applications APP2 and APP3 to use&lt;/strong&gt; (this will expose database credentials, so proceed with caution and delete the script promptly).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Related code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;span class="lnt"&gt;6
+&lt;/span&gt;&lt;span class="lnt"&gt;7
+&lt;/span&gt;&lt;span class="lnt"&gt;8
+&lt;/span&gt;&lt;span class="lnt"&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;header&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Content-type:text/html;charset=utf-8&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Username :&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_USER&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Password :&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_PASS&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Master Host:&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_HOST_M&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Slave Host :&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_HOST_S&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Port :&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_PORT&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Database :&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_DB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start="6"&gt;
+&lt;li&gt;&lt;strong&gt;Run the script&lt;/strong&gt;: The page will display APP1&amp;rsquo;s MySQL information. Use this information in your other applications (such as APP2 and APP3) to connect to the database.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="notes"&gt;Notes
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Security&lt;/strong&gt;: Since the script exposes sensitive information such as database username and password, make sure to delete the script promptly after use to prevent information leakage.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Table name conflicts&lt;/strong&gt;: When importing APP2 and APP3&amp;rsquo;s database files into APP1&amp;rsquo;s MySQL, ensure there are no table name conflicts. If conflicts exist, consider renaming tables before importing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Authorization management&lt;/strong&gt;: When performing cross-application authorization on the SAE management platform, only authorize necessary applications to avoid unnecessary permission exposure.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Through these steps, you can effectively reduce SAE MySQL costs while ensuring multiple applications can access the shared database normally.&lt;/p&gt;</description></item><item><title>WordPress Domain Configuration on SAE</title><link>https://blog.coinidea.com/en/p/wordpress-domain-configuration-on-sae/</link><pubDate>Wed, 11 Feb 2015 09:12:06 +0000</pubDate><guid>https://blog.coinidea.com/en/p/wordpress-domain-configuration-on-sae/</guid><description>&lt;p&gt;I set up WordPress on SAE and bound a custom domain to the application: &lt;a class="link" href="http://blog.coinidea.com" target="_blank" rel="noopener"
+&gt;blog.coinidea.com&lt;/a&gt;. The link does redirect to the blog page, but all internal links still point to app-name.sinaapp.com. This means the custom domain doesn&amp;rsquo;t apply to WordPress&amp;rsquo;s internal articles and pages.&lt;/p&gt;
+&lt;h2 id="solutions"&gt;Solutions:
+&lt;/h2&gt;&lt;h3 id="option-1-dashboard-settings"&gt;Option 1: Dashboard Settings
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Go to the WordPress dashboard.&lt;/li&gt;
+&lt;li&gt;Click &amp;ldquo;Settings&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Modify:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/02/QQ%e6%88%aa%e5%9b%be20150211170850-300x45.png"
+loading="lazy"
+alt="QQ截图20150211170850"
+&gt;&lt;/p&gt;
+&lt;h3 id="option-2-direct-database-modification-more-aggressive"&gt;Option 2: Direct Database Modification [More aggressive]
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Find the wp-options table.&lt;/li&gt;
+&lt;li&gt;Modify entries #1 and #37.&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

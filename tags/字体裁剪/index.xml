@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>字体裁剪 on Coinidea的博客</title><link>https://blog.coinidea.com/tags/%E5%AD%97%E4%BD%93%E8%A3%81%E5%89%AA/</link><description>Recent content in 字体裁剪 on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 22 Jul 2016 02:35:14 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/%E5%AD%97%E4%BD%93%E8%A3%81%E5%89%AA/index.xml" rel="self" type="application/rss+xml"/><item><title>Web端/移动端字体集精简</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1173.html</link><pubDate>Fri, 22 Jul 2016 02:35:14 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1173.html</guid><description>&lt;p&gt;在网页端、移动端的前端开发中，开发人员经常想使用一下非系统自带的字体（Fonts），这些字体常常是TTF、OTF等格式的。&lt;/p&gt;
+&lt;p&gt;英文的字体（Fonts）往往比较小，但是中文的字体（Fonts）小则1、2MB，大一点的甚至十几兆。这在网页或者移动端是非常难已接受的。这个时候涉及到了字体集的精简（subset），即是某个前端的界面使用了哪些汉字或者字符，从特点的字符集导出成新的ttf即可，其他多余的字没必要留在字符集中。&lt;/p&gt;
+&lt;p&gt;这里极力推荐国产的一个字体裁剪工具：TTF字体库裁剪转换工具&lt;/p&gt;
+&lt;p&gt;下载地址：&lt;a class="link" href="http://pan.baidu.com/s/1skI7FiP" target="_blank" rel="noopener"
+&gt;http://pan.baidu.com/s/1skI7FiP&lt;/a&gt; 密码：qb27&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/07/image001-212x300.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;p&gt;值得注意的是，需要裁剪的目标字体需要先安装在Windows系统中。&lt;/p&gt;</description></item></channel></rss>

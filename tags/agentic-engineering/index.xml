@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Agentic Engineering on Coinidea的博客</title><link>https://blog.coinidea.com/tags/agentic-engineering/</link><description>Recent content in Agentic Engineering on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 08 Jun 2026 12:00:00 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/agentic-engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>两天，我用 Agentic Engineering 写完了一个 AI 英语口语 App</title><link>https://blog.coinidea.com/p/echowise-2-days-agentic-engineering/</link><pubDate>Mon, 08 Jun 2026 12:00:00 +0000</pubDate><guid>https://blog.coinidea.com/p/echowise-2-days-agentic-engineering/</guid><description>&lt;h2 id="tldr"&gt;TL;DR
+&lt;/h2&gt;&lt;p&gt;我花了&lt;strong&gt;两天&lt;/strong&gt;，做了一个开源、跨平台的桌面 AI 英语口语陪练 App ——
+&lt;strong&gt;&lt;a class="link" href="https://github.com/hujiulin/EchoWise" target="_blank" rel="noopener"
+&gt;EchoWise&lt;/a&gt;&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;全程用 &lt;strong&gt;Vibe Coding / Agentic Engineering&lt;/strong&gt; 的方式和 AI 协作完成。&lt;/p&gt;
+&lt;p align="center"&gt;
+&lt;img src="https://blog.coinidea.com/img/echowise/demo.gif" alt="EchoWise — 完整演示" width="720" /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="为什么做-echowise"&gt;为什么做 EchoWise
+&lt;/h2&gt;&lt;p&gt;市面上的英语 App 几乎都在教你&lt;strong&gt;学&lt;/strong&gt;英语：背单词、做题、打分、排名。
+但我自己学英语的体会是——&lt;strong&gt;你需要的不是&amp;quot;学会&amp;quot;，而是&amp;quot;用上&amp;quot;&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Stop studying English. Start using English.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以 EchoWise 的设计哲学和别的 App 反过来：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;沟通先于正确&lt;/strong&gt; — 能交流的不完美英语，比沉默的完美语法更重要&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关系先于知识&lt;/strong&gt; — Day 1 客气陌生人，Day 30 老朋友的随意。AI 伴侣的语气会随相识天数自然变化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;轻量提示，不打断&lt;/strong&gt; — AI 回复中绝不夹带语法说教；评分静静坐在你气泡的角落，需要时一眼瞄一下&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;本地优先&lt;/strong&gt; — 所有对话、录音、AI 语音回放都存在你机器上，不上传任何地方&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="echowise-都能干什么"&gt;EchoWise 都能干什么
+&lt;/h2&gt;&lt;p&gt;整个产品围绕 &lt;strong&gt;&amp;ldquo;一个会和你一起成长的 AI 伴侣&amp;rdquo;&lt;/strong&gt; 这一个核心展开。&lt;/p&gt;
+&lt;h3 id="-一个会成长的伴侣"&gt;🗣️ 一个会成长的伴侣
+&lt;/h3&gt;&lt;p&gt;你给 TA 起名字、选头像、挑声线、写性格。
+EchoWise 会记录你们相识的 Day 计数，并把关系分成 5 段：
+&lt;strong&gt;陌生 → 客气 → 熟络 → 朋友 → 老朋友&lt;/strong&gt;。
+AI 的语气会随着 Day 数自然变化——Day 1 是礼貌的陌生人，
+Day 30 已经是会调侃你、记得你说过什么的老熟人。&lt;/p&gt;
+&lt;h3 id="-语音优先的对话体验"&gt;🎙️ 语音优先的对话体验
+&lt;/h3&gt;&lt;p&gt;麦克风按住即录、松开转写；不方便说话时打字也行。
+AI 的回复是&lt;strong&gt;语音消息式气泡&lt;/strong&gt;——点波纹就播放，
+不想听就点&amp;quot;Show transcript&amp;quot;看文字。完全模仿真实通讯软件的体验，
+没有任何&amp;quot;在做题&amp;quot;的感觉。&lt;/p&gt;
+&lt;h3 id="-不打断式的语言反馈"&gt;💡 不打断式的语言反馈
+&lt;/h3&gt;&lt;p&gt;最反人性的就是 AI 边聊天边纠正你&amp;quot;你这句用 present perfect 更好&amp;quot;。
+EchoWise 完全不这么干。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AI 回复里&lt;strong&gt;永远不夹带&lt;/strong&gt;语法说教&lt;/li&gt;
+&lt;li&gt;你说完一句后，气泡角落会出现一个 &lt;strong&gt;1–100 分 chip&lt;/strong&gt;，按 5 档颜色：
+&lt;ul&gt;
+&lt;li&gt;🔴 &lt;strong&gt;Try again&lt;/strong&gt; (&amp;lt; 50)&lt;/li&gt;
+&lt;li&gt;🟠 &lt;strong&gt;Getting there&lt;/strong&gt; (50–59)&lt;/li&gt;
+&lt;li&gt;🟡 &lt;strong&gt;Clear&lt;/strong&gt; (60–69)&lt;/li&gt;
+&lt;li&gt;🟢 &lt;strong&gt;Natural&lt;/strong&gt; (70–89)&lt;/li&gt;
+&lt;li&gt;⭐ &lt;strong&gt;Native-like&lt;/strong&gt; (90+)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;想看详情就点 chip，会展开&lt;strong&gt;原句 / 更好的说法 / native 的说法 + 简短解释&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;不想看？继续聊，它不会再打扰你&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="-真正有意义的成长曲线"&gt;📈 真正有意义的成长曲线
+&lt;/h3&gt;&lt;p&gt;不是简单的&amp;quot;今天背了多少单词&amp;quot;，而是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;信心趋势&lt;/strong&gt;：最近 5 句的滚动平均分，每说一句就更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;5 档分布饼图&lt;/strong&gt;：你的句子在哪个段位占比最高&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动挑出&amp;quot;最棒一句&amp;quot;和&amp;quot;值得再说一次的一句&amp;quot;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;打开 Growth 视图一眼看见自己在变好——这种正反馈比刷题打卡有用得多。&lt;/p&gt;
+&lt;h3 id="-完整的外观定制"&gt;🎨 完整的外观定制
+&lt;/h3&gt;&lt;p&gt;主题（自动 / 浅色 / 深色）、4 种字体、4 档字号、
+6 套预设背景渐变，也可以上传自己的图。
+每个伴侣还可以单独配头像和背景。&lt;/p&gt;
+&lt;h3 id="-provider-自由"&gt;🔌 Provider 自由
+&lt;/h3&gt;&lt;p&gt;OpenAI / Azure OpenAI 一键切换。
+默认用 &lt;code&gt;gpt-5&lt;/code&gt; + &lt;code&gt;gpt-4o-transcribe&lt;/code&gt; + &lt;code&gt;gpt-4o-mini-tts&lt;/code&gt;，
+TTS 的 voice instructions 会根据伴侣人设动态调整
+（活泼的伴侣声线就更活泼，安静的就更安静）。&lt;/p&gt;
+&lt;h3 id="-完全本地"&gt;💾 完全本地
+&lt;/h3&gt;&lt;p&gt;SQLite 数据库 + 文件系统。
+所有对话历史、你的录音、AI 的语音回放——&lt;strong&gt;永远留在你的机器上&lt;/strong&gt;，
+不会上传到任何服务器。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="关于两天"&gt;关于&amp;quot;两天&amp;quot;
+&lt;/h2&gt;&lt;p&gt;整个开发过程用 &lt;strong&gt;Vibe Coding / Agentic Engineering&lt;/strong&gt; 的工作方式：
+&lt;strong&gt;我专注于产品决策和架构判断，AI 处理实现和重复劳动&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;我做的事：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;决定要哪些功能、UI 怎么走、关系演变分几段&lt;/li&gt;
+&lt;li&gt;判断架构是否合理、要不要某个抽象、bug 出在哪&lt;/li&gt;
+&lt;li&gt;写 PRD、改 UX、看 PR&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;AI 做的事：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;写 React 组件、调 Tauri API、写单元测试&lt;/li&gt;
+&lt;li&gt;调 Vite / Cargo / Tailwind 配置&lt;/li&gt;
+&lt;li&gt;改 GitHub Actions workflow、修 CI 报错&lt;/li&gt;
+&lt;li&gt;给我提优化方案、catch 我的失误&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;两天结束时，这个产品的样子：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;指标&lt;/th&gt;
+&lt;th&gt;数字&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;应用代码（TS + TSX + Rust）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;约 4,571 行&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;单元测试代码&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;约 3,405 行&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;单元测试数量&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;281 个&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;行覆盖率&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;94.5%&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;跨平台 CI/CD&lt;/td&gt;
+&lt;td&gt;macOS + Windows，tag 触发自动发版&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;自动更新&lt;/td&gt;
+&lt;td&gt;tauri-plugin-updater，签名验证&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="试一下-echowise"&gt;试一下 EchoWise
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt;：https://github.com/hujiulin/EchoWise&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;下载&lt;/strong&gt;：&lt;a class="link" href="https://github.com/hujiulin/EchoWise/releases" target="_blank" rel="noopener"
+&gt;Releases 页面&lt;/a&gt; 有 macOS &lt;code&gt;.dmg&lt;/code&gt; 和 Windows &lt;code&gt;.msi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置&lt;/strong&gt;：自带 OpenAI / Azure OpenAI 两套 preset，填上你自己的 API Key 就能聊&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;macOS 用户提示&lt;/strong&gt;：第一次打开会有 &amp;ldquo;Apple could not verify&amp;hellip;&amp;rdquo; 的安全提示——这是因为我没买 Apple Developer 证书（$99/年）做 notarization。
+进系统设置 → 隐私与安全性 → 滚到底 → 仍要打开，之后就能正常双击。完整步骤在 README 里有。&lt;/p&gt;
+&lt;p&gt;如果用得开心，欢迎给 EchoWise 仓库一个 ⭐ —— 让更多人看到。
+有任何反馈、bug、想法，欢迎在 GitHub 提 Issue 或者 PR。&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Proxy on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/proxy/</link><description>Recent content in Proxy on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 09 Apr 2016 08:02:47 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/proxy/index.xml" rel="self" type="application/rss+xml"/><item><title>[Git] Configuring and Removing Git Proxy</title><link>https://blog.coinidea.com/en/p/git-configuring-and-removing-git-proxy/</link><pubDate>Sat, 09 Apr 2016 08:02:47 +0000</pubDate><guid>https://blog.coinidea.com/en/p/git-configuring-and-removing-git-proxy/</guid><description>&lt;p&gt;When configuring Git to use a proxy, you can use the following commands to set and remove the proxy:&lt;/p&gt;
+&lt;h3 id="configuring-git-proxy"&gt;Configuring Git Proxy
+&lt;/h3&gt;&lt;p&gt;To configure HTTP and HTTPS proxies for Git, use the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Configure HTTP proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global http.proxy http://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Configure HTTPS proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global https.proxy https://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="removing-git-proxy-configuration"&gt;Removing Git Proxy Configuration
+&lt;/h3&gt;&lt;p&gt;To remove the proxy settings, use the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Remove HTTP proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset http.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Remove HTTPS proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset https.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="explanation"&gt;Explanation
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git config --global http.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;: Configure the global HTTP proxy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global https.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;: Configure the global HTTPS proxy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset http.proxy&lt;/code&gt;: Remove the global HTTP proxy configuration.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset https.proxy&lt;/code&gt;: Remove the global HTTPS proxy configuration.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With these commands, you can easily enable or disable Git proxy settings as needed.&lt;/p&gt;</description></item></channel></rss>

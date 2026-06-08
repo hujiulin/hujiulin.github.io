@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MySQL Backup on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/mysql-backup/</link><description>Recent content in MySQL Backup on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 05 May 2016 03:08:32 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/mysql-backup/index.xml" rel="self" type="application/rss+xml"/><item><title>[MySQL] Scheduled Backup with MySQL-Front on Windows</title><link>https://blog.coinidea.com/en/p/mysql-scheduled-backup-with-mysql-front-on-windows/</link><pubDate>Thu, 05 May 2016 03:08:32 +0000</pubDate><guid>https://blog.coinidea.com/en/p/mysql-scheduled-backup-with-mysql-front-on-windows/</guid><description>&lt;p&gt;Scheduled backup is an extremely important task in database services.&lt;br&gt;
+For most users who manage databases with a GUI (commonly MySQL-Front, Navicat, or MySQL Workbench), interactive backup methods are simple and easy to learn.&lt;/p&gt;
+&lt;p&gt;Here is a brief guide on how to set up scheduled backups using MySQL-Front (version 5.3):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;After connecting to the database, go to &amp;ldquo;Extras&amp;rdquo; -&amp;gt; &amp;ldquo;Jobs&amp;rdquo; -&amp;gt; &amp;ldquo;New&amp;rdquo; -&amp;gt; &amp;ldquo;Export&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image001-289x300.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Select the test database and click Next.&lt;/li&gt;
+&lt;li&gt;Specify the export path &amp;ldquo;D:\test.sql&amp;rdquo;. Note that the character set should generally be set to UTF-8.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image003-289x300.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Next, specify the export content &amp;ndash; make sure to check the data option.&lt;/li&gt;
+&lt;li&gt;Set the backup time and interval.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image005-289x300.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;After completion, a job named &amp;ldquo;test&amp;rdquo; will appear in the scheduled tasks section.&lt;/li&gt;
+&lt;li&gt;If you want to run it immediately, right-click and select Run.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image007-300x213.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;</description></item></channel></rss>

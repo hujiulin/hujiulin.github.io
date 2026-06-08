@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>移动开发 on Coinidea的博客</title><link>https://blog.coinidea.com/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/</link><description>Recent content in 移动开发 on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 05 Nov 2015 05:14:08 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml"/><item><title>[Android]学习周报6：数据存储全方案，详解 持久化技术</title><link>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1071.html</link><pubDate>Thu, 05 Nov 2015 05:14:08 +0000</pubDate><guid>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1071.html</guid><description>&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/11/%e6%95%b0%e6%8d%ae%e5%ad%98%e5%82%a8%e5%85%a8%e6%96%b9%e6%a1%88%ef%bc%8c%e8%af%a6%e8%a7%a3%e6%8c%81%e4%b9%85%e5%8c%96%e6%8a%80%e6%9c%af.png"
+loading="lazy"
+alt="数据存储全方案，详解持久化技术"
+&gt;&lt;/p&gt;</description></item><item><title>[Android]学习周报5：全局大喇叭，详解广播机制</title><link>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1021.html</link><pubDate>Fri, 18 Sep 2015 16:11:12 +0000</pubDate><guid>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1021.html</guid><description>&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/09/%e5%85%a8%e5%b1%80%e5%a4%a7%e5%96%87%e5%8f%ad%ef%bc%8c%e8%af%a6%e8%a7%a3%e5%b9%bf%e6%92%ad%e6%9c%ba%e5%88%b6.png"
+loading="lazy"
+alt="全局大喇叭，详解广播机制"
+&gt;&lt;/p&gt;</description></item><item><title>[Android]学习周报4：手机平板要兼顾，探究碎片</title><link>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1017.html</link><pubDate>Wed, 16 Sep 2015 14:29:56 +0000</pubDate><guid>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1017.html</guid><description>&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/%e6%89%8b%e6%9c%ba%e5%b9%b3%e6%9d%bf%e8%a6%81%e5%85%bc%e9%a1%be%ef%bc%8c%e6%8e%a2%e7%a9%b6%e7%a2%8e%e7%89%87.png"
+loading="lazy"
+alt="手机平板要兼顾，探究碎片"
+&gt;&lt;/p&gt;</description></item><item><title>[Android]学习周报3：软件也要拼脸蛋，UI开发的点点滴滴</title><link>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1015.html</link><pubDate>Mon, 14 Sep 2015 12:30:45 +0000</pubDate><guid>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1015.html</guid><description>&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/09/%e8%bd%af%e4%bb%b6%e4%b9%9f%e8%a6%81%e6%8b%bc%e8%84%b8%e8%9b%8b%ef%bc%8cUI-%e5%bc%80-%e5%8f%91%e7%9a%84%e7%82%b9%e7%82%b9%e6%bb%b4%e6%bb%b4.png"
+loading="lazy"
+alt="软件也要拼脸蛋，UI开发的点点滴滴"
+&gt;&lt;/p&gt;</description></item><item><title>[Android]学习周报2：先从看得到的入手，探究活动</title><link>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1010.html</link><pubDate>Sun, 13 Sep 2015 08:33:48 +0000</pubDate><guid>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1010.html</guid><description>&lt;p&gt;继续承接&lt;a class="link" href="http://blog.coinidea.com/andriod-1005.html" target="_blank" rel="noopener"
+&gt;【Android】学习周报1：开始启程，你的Android第一行代码&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其实活动是四大组件里面最直观最先接触到的。今天跑了5km mini马拉松，歇一歇，回头好好扩充一下Android。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/%e5%85%88%e4%bb%8e%e7%9c%8b%e5%be%97%e5%88%b0%e7%9a%84%e5%85%a5%e6%89%8b%ef%bc%8c%e6%8e%a2%e7%a9%b6%e6%b4%bb%e5%8a%a8-1024x978.png"
+loading="lazy"
+alt="先从看得到的入手，探究活动"
+&gt;&lt;/p&gt;</description></item><item><title>[Android]学习周报1：开始启程，你的Android第一行代码</title><link>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1005.html</link><pubDate>Thu, 10 Sep 2015 15:11:55 +0000</pubDate><guid>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-1005.html</guid><description>&lt;p&gt;学习Android差不多一个月了，目前想系统的总结自己每阶段的学习成果，目前使用的是《Android第一行代码》这本书入门，本周对第一章的内容进行了一个简单的回顾，下图是我做的一个简单的思维导图，如果有兴趣，可以双击查看大图，并另存为。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/09/%e5%bc%80%e5%a7%8b%e5%90%af%e7%a8%8b%ef%bc%8c%e4%bd%a0%e7%9a%84Android%e7%ac%ac%e4%b8%80%e8%a1%8c%e4%bb%a3%e7%a0%81.png"
+loading="lazy"
+alt="开始启程，你的Android第一行代码"
+&gt;&lt;/p&gt;</description></item><item><title>Android通用控件及响应</title><link>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-991.html</link><pubDate>Mon, 31 Aug 2015 14:09:07 +0000</pubDate><guid>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-991.html</guid><description>&lt;p&gt;在Android的开发中，可能需要有一些自定义的Layout，比如APP中常常需要一个通用的title。但是Android自带的可能并不能满足要求，需要自己实现，但是因为一个APP中常常含有多个Activity，这个时候为了提高复用性，常常自己定义一个CommonTitle。本文自己实现了一个CommonTitle。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;新建一个布局&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;lt;!--?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;&amp;lt;button&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建一个CommonTitle类，继承LinearLayout&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;span class="lnt"&gt;27
+&lt;/span&gt;&lt;span class="lnt"&gt;28
+&lt;/span&gt;&lt;span class="lnt"&gt;29
+&lt;/span&gt;&lt;span class="lnt"&gt;30
+&lt;/span&gt;&lt;span class="lnt"&gt;31
+&lt;/span&gt;&lt;span class="lnt"&gt;32
+&lt;/span&gt;&lt;span class="lnt"&gt;33
+&lt;/span&gt;&lt;span class="lnt"&gt;34
+&lt;/span&gt;&lt;span class="lnt"&gt;35
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;package&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;com.example.uicustomviews&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;android.app.Activity&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;android.content.Context&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;android.util.AttributeSet&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;android.view.LayoutInflater&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;android.view.View&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;android.widget.Button&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;android.widget.LinearLayout&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;android.widget.Toast&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;public&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;CommonTitle&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;extends&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LinearLayout&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;public&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;CommonTitle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Context&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;AttributeSet&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;attrs&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;LayoutInflater&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;from&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="na"&gt;inflate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;layout&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;commontitle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Button&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;backButton&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Button&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;findViewById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;backButton&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;backButton&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setOnClickListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;OnClickListener&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;public&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;onClick&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;View&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;Activity&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;getContext&lt;/span&gt;&lt;span class="p"&gt;()).&lt;/span&gt;&lt;span class="na"&gt;finish&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Button&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;editButton&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Button&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;findViewById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;editButton&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;editButton&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setOnClickListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;OnClickListener&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;public&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;onClick&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;View&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// TODO Auto-generated method stub&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Toast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;makeText&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;getContext&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#34;Please edit the context&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Toast&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="na"&gt;LENGTH_SHORT&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="na"&gt;show&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在需要的Activity中引入自己定义的CommonTitle即可&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c"&gt;&amp;lt;!-- Your Activity layout XML --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;运行效果如下：&lt;br&gt;
+&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/08/QQ%e6%88%aa%e5%9b%be20150831220854.jpg"
+loading="lazy"
+alt="QQ截图20150831220854"
+&gt;&lt;/p&gt;</description></item><item><title>CoinLife——生活管家</title><link>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-976.html</link><pubDate>Sun, 23 Aug 2015 16:02:33 +0000</pubDate><guid>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-976.html</guid><description>&lt;p&gt;CoinLife于由我独立编写完成的移动端的WebApp，是一个生活小助手。&lt;a class="link" href="http://www.coinidea.com/Index/queryColumn/columnId/42/parentId/2.html" target="_blank" rel="noopener"
+&gt;WebAPP-详细介绍&lt;/a&gt; | &lt;a class="link" href="http://www.coinidea.com/Index/queryColumn/columnId/55/parentId/2.html" target="_blank" rel="noopener"
+&gt;Android-详细介绍&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;具有以下功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;项目管理&lt;/li&gt;
+&lt;li&gt;账单管理&lt;/li&gt;
+&lt;li&gt;菜单管理&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>搭建Andriod开发环境</title><link>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-924.html</link><pubDate>Mon, 17 Aug 2015 04:45:38 +0000</pubDate><guid>https://blog.coinidea.com/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91-924.html</guid><description>&lt;p style="text-align: left;" align="center"&gt;
+Andriod开发环境比较主流的有两种：
+&lt;/p&gt;
+&lt;h2 id="1-google出的andriod-studio"&gt;1. Google出的Andriod Studio
+&lt;/h2&gt;&lt;p&gt;第一种听名字就感觉很专业，而且又是Google出的，现在也比较稳定了。但是因为咱们国家的一些实际情况，*.google.com是很难访问的，而且近期是越来越难了。但是Andriod Studio是严重依赖于网络的。我下载使用之后比较不方便，对于上网比较方便的用户，推荐可以考虑使用。国内可访问下载地址：&lt;a class="link" href="http://www.android-studio.org/" target="_blank" rel="noopener"
+&gt;http://www.android-studio.org/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="2-eclipse"&gt;2. Eclipse
+&lt;/h2&gt;&lt;p&gt;Eclipse是目前非常流行的一种开发Andriod的IDE。&lt;/p&gt;
+&lt;p&gt;推荐一个国内非常专业的网站：&lt;a class="link" href="http://www.androiddevtools.cn/" target="_blank" rel="noopener"
+&gt;http://www.androiddevtools.cn/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这个网站里面涵盖了所有需要的Andriod相关的资源。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image001-300x137.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;p&gt;需要准备的环境如下：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Java&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;官方地址：&lt;a class="link" href="http://www.java.com/zh_CN/" target="_blank" rel="noopener"
+&gt;http://www.java.com/zh_CN/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Andrioddevtools地址：&lt;a class="link" href="http://www.androiddevtools.cn/" target="_blank" rel="noopener"
+&gt;http://www.androiddevtools.cn/&lt;/a&gt; 选择Andriod SDK Tools -&amp;gt; JDK&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Eclipse&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;官方地址：&lt;a class="link" href="http://www.eclipse.org/downloads/" target="_blank" rel="noopener"
+&gt;http://www.eclipse.org/downloads/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;推荐使用 IDE For Java EE，Eclipse区分版本，我下载的是目前最新的Mars。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ADT(Andriod Develop Tool): Eclipse插件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Eclipse是开源的强大的可扩展的IDE，它有非常多的插件。ADT就是其中的一个。&lt;/p&gt;
+&lt;p&gt;Andrioddevtools地址：&lt;a class="link" href="http://www.androiddevtools.cn/" target="_blank" rel="noopener"
+&gt;http://www.androiddevtools.cn/&lt;/a&gt; 选择Andriod SDK Tools -&amp;gt; ADT Plugin&lt;/p&gt;
+&lt;p&gt;ADT的安装方法是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载最新的一个rar压缩包到本地。&lt;/li&gt;
+&lt;li&gt;打开Eclipse，Help-&amp;gt;Install New Software&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image003-300x241.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;点击Archive，选择本地的压缩包，Name设置为ADT即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image005-300x42.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;p&gt;安装ADT之后，如果在Eclipse的工具栏上，没有出现这两个图标，请在Eclipse-&amp;gt;Window-Perspective-Customize Perspective中勾选即可。这两个图标一个管理SDK另一个管理AVD。&lt;strong&gt;AVD&lt;/strong&gt;是模拟的Andriod设备。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image009-300x217.png"
+loading="lazy"
+alt="image009"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Select All, 点击Finish。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Android SDK-Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Andrioddevtools地址：&lt;a class="link" href="http://www.androiddevtools.cn/" target="_blank" rel="noopener"
+&gt;http://www.androiddevtools.cn/&lt;/a&gt; 选择Andriod SDK Tools -&amp;gt;SDK Tools&lt;/p&gt;
+&lt;p&gt;下载安装到自己指定的目录中，因为最终的目录的大小会比较大，请预留好足够的空间。&lt;/p&gt;
+&lt;p&gt;在Eclipse-&amp;gt;Preferences中指定SDK Location&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image011-300x116.png"
+loading="lazy"
+alt="image011"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Android SDK&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以看到我的Location下面有Andriod 4.3.1而你的可能是没有的。因为需要安装具体的SDK包。&lt;/p&gt;
+&lt;p&gt;Andrioddevtools地址：&lt;a class="link" href="http://www.androiddevtools.cn/" target="_blank" rel="noopener"
+&gt;http://www.androiddevtools.cn/&lt;/a&gt; 选择Andriod SDK Tools -&amp;gt;SDK&lt;/p&gt;
+&lt;p&gt;下载即可，推荐下载4.0.0之后的版本。&lt;/p&gt;
+&lt;p&gt;将解压的文件夹拷贝进入：Android SDK-Tools文件夹中的Platforms中，如果没有请新建该文件夹。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Andriod Build-Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这是Android开发所需的Build-Tools，下载并解压后，将解压出的整个文件夹复制或者移动到 your sdk 路径/build-tools 文件夹即可。&lt;/p&gt;
+&lt;p&gt;Andrioddevtools地址：&lt;a class="link" href="http://www.androiddevtools.cn/" target="_blank" rel="noopener"
+&gt;http://www.androiddevtools.cn/&lt;/a&gt; 选择Andriod SDK Tools -&amp;gt;Build-Tools&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Andriod Platform-Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这是 adb, fastboot 等工具包。把解压出来的 platform-tools 文件夹放在 android sdk 根目录下，并把 adb所在的目录添加到系统 PATH 路径里，即可在命令行里直接访问了 adb, fastboot 等工具。&lt;/p&gt;
+&lt;p&gt;Andrioddevtools地址：&lt;a class="link" href="http://www.androiddevtools.cn/" target="_blank" rel="noopener"
+&gt;http://www.androiddevtools.cn/&lt;/a&gt; 选择Andriod SDK Tools -&amp;gt;Platform-Tools&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Andriod SDK System-Images&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这是在创建模拟器时需要的system image，也就是在创建模拟器时 CPU/ABI项需要选择的，下载并解压后，将解压出的整个文件夹复制或者移动到your sdk 路径/system-images文件夹下即可， 如果没有 system-images目录就先创建此文件夹，然后打开SDK Manager，打开 Tools(工具)菜单选择Options(选项)菜单项打开Android SDK Manager Setting对话框，点击 Clear Cache(清除缓存)按钮，然后重启Eclipse(或Android Studio)和SDK Manager。&lt;/p&gt;
+&lt;p&gt;Andrioddevtools地址：&lt;a class="link" href="http://www.androiddevtools.cn/" target="_blank" rel="noopener"
+&gt;http://www.androiddevtools.cn/&lt;/a&gt; 选择Andriod SDK Tools -&amp;gt; System-Images&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AVD&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;创建一个AVD用于调试。&lt;/p&gt;
+&lt;p&gt;点击AVD图标，点击Create。根据自己的需要创建即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image013-300x186.png"
+loading="lazy"
+alt="image013"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;新建一个HelloWorld项目&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Eclipse：File-&amp;gt;New-&amp;gt;Other-&amp;gt;Andriod Application Project即可，后面一直Next和Finish。&lt;/p&gt;
+&lt;p&gt;运行效果如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image015-300x211.png"
+loading="lazy"
+alt="image015"
+&gt;&lt;/p&gt;</description></item></channel></rss>

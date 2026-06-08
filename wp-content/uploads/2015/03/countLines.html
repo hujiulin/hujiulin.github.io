@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>统计有效行数</title>
+    <script type="text/javascript">  
+        var maxTagCount = 100;
+        function checkLine(textArea) {
+            var str = textArea.value;
+            var lines = str.split('\n');
+            var countLine = 0;
+            for (var i = 0; i < lines.length; i++)
+           	{
+            	if (lines[i].length > 0)
+            	{
+					countLine++;            		
+            	}
+           	}
+            var tagElement = document.getElementById("tagTextarea");
+   			
+            if (countLine > maxTagCount) 
+            {  
+            	varNewValue = "";
+            	var index = 0;
+                for (var i = 0; i < lines.length; i++)
+               	{
+                	if (index >= maxTagCount)
+                	{
+                		break;
+                	}
+                	if (lines[i].length > 0)
+                	{
+                		index++;            		
+                	}
+                	varNewValue += lines[i];
+                	varNewValue += "\n";
+               	}
+                textArea.value = varNewValue;
+                stat_left.innerHTML = 0;
+            }  
+            else 
+            {  
+            	stat_left.innerHTML = maxTagCount - countLine;  
+            }  
+
+        }  
+       </script>      
+</head>
+<body>
+<textarea id="textarea1" onkeyup="checkLine(this);" onmousedown="checkLine(this);" style="width:200px;height:200px"></textarea>
+<div class="hint">
+	最多可输入<span id="stat_max">100</span>行，
+	还可输入<span id="stat_left">100</span>行
+</div>
+</body>
+</html>

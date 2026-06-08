@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Personal Essays on Coinidea's Blog</title><link>https://blog.coinidea.com/en/categories/personal-essays/</link><description>Recent content in Personal Essays on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 04 Jan 2018 07:25:24 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/categories/personal-essays/index.xml" rel="self" type="application/rss+xml"/><item><title>[Year-End Review]My 2017</title><link>https://blog.coinidea.com/en/p/year-end-reviewmy-2017/</link><pubDate>Thu, 04 Jan 2018 07:25:24 +0000</pubDate><guid>https://blog.coinidea.com/en/p/year-end-reviewmy-2017/</guid><description>&lt;p&gt;Time flies, and 2017 has finally come to an end. To be honest, I have some mixed feelings about writing summaries.&lt;/p&gt;
+&lt;h2 id="1-technology"&gt;1. Technology:
+&lt;/h2&gt;&lt;h3 id="1-frontend-tech-stack"&gt;1. Frontend Tech Stack:
+&lt;/h3&gt;&lt;p&gt;1.1 Went through VUE once and basically got started with it;&lt;br&gt;
+1.2 Had some exposure to Fis3;&lt;/p&gt;
+&lt;h3 id="2-php-related"&gt;2. PHP Related:
+&lt;/h3&gt;&lt;p&gt;2.1 Learned Yii 2.0 and implemented some simple projects;&lt;br&gt;
+2.2 Upgraded from ThinkPHP 3.x to ThinkPHP 5;&lt;/p&gt;
+&lt;h3 id="3-algorithm-related"&gt;3. Algorithm Related:
+&lt;/h3&gt;&lt;p&gt;3.1 During the middle of the year, I solved several dozen LeetCode problems, but didn&amp;rsquo;t keep it up. Back in 2015 I should have finished them all, but now there are many new problems. I also picked up STL, Vector, etc. again.&lt;br&gt;
+3.2 The proudest achievement this year was working with OpenCV, implementing a BOW image classification algorithm, and also using OpenCV-based decision trees, SVM, etc.&lt;/p&gt;
+&lt;h3 id="4-system-related"&gt;4. System Related:
+&lt;/h3&gt;&lt;p&gt;4.1 I had already gone through CDH back in 2015. The most rewarding thing this year was getting ElasticSearch up and running with approximately 150 million records, including tokenization, mapping, indexing, and aggregation. Going through this whole process was very fulfilling.&lt;/p&gt;
+&lt;h2 id="2-travel"&gt;2. Travel:
+&lt;/h2&gt;&lt;p&gt;I&amp;rsquo;m a bit embarrassed to say — including business trips, I only went to Shanghai, Nanjing, and Qingdao. Just these three cities. But I finally made it to Shanghai Disneyland, which was nice, just way too crowded.&lt;br&gt;
+&lt;a href="http://blog.coinidea.com/wp-content/uploads/2018/01/devhu2017年脚印地图.png" class="magnific" rel="magnific" &gt;&lt;img class="alignnone size-medium wp-image-1273" title="devhu2017年脚印地图" data-original="/wp-content/uploads/2018/01/devhu2017%E5%B9%B4%E8%84%9A%E5%8D%B0%E5%9C%B0%E5%9B%BE.png" src="http://blog.coinidea.com/wp-content/uploads/2018/01/devhu2017年脚印地图.png" alt="" width="600" height="382" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="3-coinidea"&gt;3. Coinidea:
+&lt;/h2&gt;&lt;p&gt;Did it take off? I don&amp;rsquo;t think so. It didn&amp;rsquo;t go particularly well. I&amp;rsquo;ve built dozens of websites, WebApps, and APIs of various sizes, but I feel very lost and don&amp;rsquo;t know which direction to take next. I&amp;rsquo;ve been making some attempts recently and hope that new doors will open for me.&lt;/p&gt;
+&lt;h2 id="hopes-for-next-year"&gt;Hopes for Next Year
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Android — I studied it before but never followed through.&lt;/li&gt;
+&lt;li&gt;Develop and publish a WeChat Mini Program.&lt;/li&gt;
+&lt;li&gt;Study and learn PostgreSQL.&lt;/li&gt;
+&lt;li&gt;Further study data mining and deep learning algorithms.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That&amp;rsquo;s it, no grand wishes. Setting low goals is good for everyone :)&lt;/p&gt;</description></item><item><title>[Year-End Review] My 2016 -- One Year After Graduation</title><link>https://blog.coinidea.com/en/p/year-end-review-my-2016--one-year-after-graduation/</link><pubDate>Fri, 01 Jul 2016 16:32:42 +0000</pubDate><guid>https://blog.coinidea.com/en/p/year-end-review-my-2016--one-year-after-graduation/</guid><description>&lt;h2 id="written-at-graduation"&gt;Written at Graduation
+&lt;/h2&gt;&lt;p&gt;One year ago, I officially graduated and entered the workforce. &amp;ndash; &lt;a href="http://blog.coinidea.com/%E6%80%BB%E7%BB%93%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-881.html" target="_blank"&gt;Written at Graduation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m grateful for the words my past self left me: &amp;ldquo;As long as your spirit never dies, life keeps running on the road.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;If I were to leave a message for next year&amp;rsquo;s me, it would be: &amp;ldquo;Persist, be strong, be resilient.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This year, I got some of the things I wanted, but I also paid a heavy price. While chasing those things, I suddenly realized that the health of my family is what matters most.&lt;/p&gt;
+&lt;p&gt;Indeed, when the sunlight shines down, what could be happier than simply being alive?&lt;/p&gt;
+&lt;p&gt;&amp;ndash; DevHu, recorded on July 2, 2016, still in a rented apartment&lt;/p&gt;
+&lt;p&gt;January 4, 2018 update: Due to reasons I&amp;rsquo;d rather not explain, I&amp;rsquo;ll use this post as my 2016 year-end review.&lt;/p&gt;</description></item><item><title>[Year-End Review] My 2015</title><link>https://blog.coinidea.com/en/p/year-end-review-my-2015/</link><pubDate>Fri, 01 Jan 2016 13:56:14 +0000</pubDate><guid>https://blog.coinidea.com/en/p/year-end-review-my-2015/</guid><description>&lt;p&gt;Just like that, 2015 is gone, and today is the first day of 2016. The most fulfilling thing I did today was donating a big bag of clothes I had accumulated over my college years to the school. I&amp;rsquo;m a strange person &amp;ndash; I often don&amp;rsquo;t throw away old things, which makes moving extremely troublesome. I once heard about a concept called organizing through &amp;ldquo;cut, let go, and separate.&amp;rdquo; So I tried discarding my old junk and clutter to reorganize my life.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s been about half a year since I started working and entered the workforce. I thought I was well-prepared, but I still struggled. It&amp;rsquo;s like estimating project scope &amp;ndash; there&amp;rsquo;s a law that says no matter how you estimate the workload, you&amp;rsquo;ll always underestimate by one-third of the time, even if you account for this very law.&lt;/p&gt;
+&lt;p&gt;In my &lt;a class="link" href="http://blog.coinidea.com/%E6%80%BB%E7%BB%93%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-617.html" target="_blank" rel="noopener"
+&gt;2014 year-end review&lt;/a&gt;, I mentioned:&lt;/p&gt;
+&lt;p&gt;I hope to accomplish the following items in 2015:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Travel&lt;/p&gt;
+&lt;p&gt;1.1 Go to Harbin [Done]&lt;br&gt;
+1.2 Go to Tibet&lt;br&gt;
+1.3 Go to Yunnan [Done]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Continue learning and sharing technical knowledge on my personal blog, and write high-quality posts [Done, should be able to keep it up, though quality will improve gradually].&lt;/p&gt;
+&lt;p&gt;Fortunately, the blog&amp;rsquo;s daily UV has grown from 1-2 visitors to over ten. A couple of posts have pretty high traffic, and one of them currently appears on the first page of Baidu search results for the keyword &amp;ldquo;Yii Redis,&amp;rdquo; which makes me very happy &amp;ndash; even though it&amp;rsquo;s the last result on the first page.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Continue writing higher quality code and contribute on GitHub, hoping one of my projects can reach 100 Stars.&lt;/p&gt;
+&lt;p&gt;This one failed. My highest cumulative Stars on GitHub is only around 20. I hope to work harder.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open-source a portal system based on ThinkPHP [Done, but not open-sourced].&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Think about my future and focus deeply on a specific technology.&lt;/p&gt;
+&lt;p&gt;The road ahead is long; I shall search high and low.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Read some quality books:&lt;/p&gt;
+&lt;p&gt;6.1 Wu Jun&amp;rsquo;s &amp;ldquo;Civilization and Enlightenment&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Purchased but didn't read much.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.2 Malcolm Gladwell&amp;rsquo;s &amp;ldquo;David and Goliath&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Not completed.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.3 Finish &amp;ldquo;High Output Management&amp;rdquo; by Andrew Grove&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Not completed.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.4 Finish &amp;ldquo;Effective C++&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Not completed.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.5 &amp;ldquo;Predictably Irrational&amp;rdquo; [Done]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Study English properly and aim for independent travel abroad.&lt;/p&gt;
+&lt;p&gt;Not completed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Redo all LeetCode problems from scratch.&lt;/p&gt;
+&lt;p&gt;Partially completed, solved some problems using PHP.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Beyond that, the things that made me happiest:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Read some books: &amp;ldquo;Zero to One,&amp;rdquo; &amp;ldquo;Don&amp;rsquo;t Make Me Think,&amp;rdquo; &amp;ldquo;The First Line of Code: Android&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;CoinIdea got a nice redesign [designed independently, using AI for graphics] &amp;ndash; feeling better and better about it.&lt;/li&gt;
+&lt;li&gt;While my patience, temper, and temperament still have room for improvement, there has been some progress.&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;m on the path to learning Android.&lt;/li&gt;
+&lt;li&gt;Gained new insights into PHP and MySQL.&lt;/li&gt;
+&lt;li&gt;I typed so many words:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/01/A4EJSOU3TQA6_IZJ-300x226.png"
+loading="lazy"
+alt="Word count statistics"
+&gt;&lt;/p&gt;
+&lt;p&gt;OK, now let me look ahead to 2016. This is bound to be a critical year. It seems like something big happens in my life every 4-5 years. Just Face It.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Practice English and pass the TOEIC exam.&lt;/li&gt;
+&lt;li&gt;Get started with iOS, deepen Android learning and application; advance in PHP and MySQL, and develop an OA system using Yii.&lt;/li&gt;
+&lt;li&gt;I hope the people around me pass their English exams smoothly.&lt;/li&gt;
+&lt;li&gt;May my parents stay healthy.&lt;/li&gt;
+&lt;li&gt;Read &amp;ldquo;Civilization and Enlightenment.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Finish reading &amp;ldquo;PHP, MySQL, and Web Development&amp;rdquo; and &amp;ldquo;PHP Advanced and Object-Oriented Programming.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Hope to pick up C# and WorldWind again.&lt;/li&gt;
+&lt;li&gt;Make some breakthroughs in data visualization.&lt;/li&gt;
+&lt;li&gt;Hope that CoinIdea, which I maintain in my spare time, keeps getting better.&lt;/li&gt;
+&lt;li&gt;I hope to achieve the unfulfilled wishes from last year.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Not being greedy &amp;ndash; just these. Number four is a blessing.&lt;/p&gt;</description></item><item><title>[Book Notes] Don't Make Me Think</title><link>https://blog.coinidea.com/en/p/book-notes-dont-make-me-think/</link><pubDate>Mon, 09 Nov 2015 04:48:46 +0000</pubDate><guid>https://blog.coinidea.com/en/p/book-notes-dont-make-me-think/</guid><description>&lt;p&gt;Some people say this book is quite outdated, but I still made a point to read through it recently.&lt;/p&gt;
+&lt;p&gt;Here is a summary, as shown in the diagram below:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/11/Dont-make-me-think-1024x314.png"
+loading="lazy"
+alt="Don’t make me think"
+&gt;&lt;/p&gt;
+&lt;p&gt;Since I have also been working in web development for a long time, there were actually many tips worth noting throughout the book. We may understand the big principles, but when it comes to actually implementing them, they are easy to overlook.&lt;/p&gt;
+&lt;p&gt;After finishing this book, I felt like I had given my own website a round of optimization. Perhaps the one word I took away from it is &amp;ldquo;usability.&amp;rdquo; I believe that in a few years, I will have an even deeper appreciation for it.&lt;/p&gt;</description></item><item><title>[Book Notes] Zero to One</title><link>https://blog.coinidea.com/en/p/book-notes-zero-to-one/</link><pubDate>Sun, 20 Sep 2015 08:22:12 +0000</pubDate><guid>https://blog.coinidea.com/en/p/book-notes-zero-to-one/</guid><description>&lt;p&gt;I recently rushed through reading &amp;ldquo;Zero to One.&amp;rdquo; After finishing a book, I always want to write something, but when I actually sit down at the keyboard, I never quite know where to begin. In the past, when writing summaries or book notes, I would pull out the original book and type up the passages I found interesting, but I feel that approach lacks real substance when you chew on it.&lt;/p&gt;
+&lt;p&gt;This book has a rating of 8.0 on Douban and is quite a slim volume. Given my limited life experience, I wouldn&amp;rsquo;t dare to rate this book myself, but I feel that reading it once is certainly not enough.&lt;/p&gt;
+&lt;p&gt;At first glance, this book seems a bit like motivational writing, yet also a bit like anti-motivational writing. It talks about big principles, but big principles are not necessarily the ones people remember to apply in practice.&lt;/p&gt;
+&lt;p&gt;The most important impressions this book left on me can be summed up in a few words.&lt;/p&gt;
+&lt;h3 id="the-first-qualitative-change"&gt;The First: Qualitative Change
+&lt;/h3&gt;&lt;p&gt;In common terms, quantitative changes lead to qualitative changes, but this book approaches it from the perspective of innovation: taking that first step is what is truly great &amp;ndash; like the first person to eat a crab. Everything that follows is just replication, a less meaningful accumulation.&lt;/p&gt;
+&lt;h3 id="the-second-monopoly"&gt;The Second: Monopoly
+&lt;/h3&gt;&lt;p&gt;Whether in personal life, career, or running a company, the most important thing is to have a unique skill. I remember my advisor once said, &amp;ldquo;One signature skill can feed you anywhere.&amp;rdquo; That is essentially the idea. For those in technology, technical ability is king. In recent years (2015), with the wave of mass entrepreneurship, people pitch to investors telling stories like &amp;ldquo;I have a great idea,&amp;rdquo; and so on. But the ones that truly survive &amp;ndash; whether companies or employees within companies &amp;ndash; are those with a distinctive skill. I wouldn&amp;rsquo;t say they are completely irreplaceable; I have always believed nothing is truly irreplaceable. But when someone creates great value on one hand, and the cost of replacing them is very high on the other, nobody is willing to replace them. That is when a kind of monopoly forms, and this is also the significance of patents. Take WeChat, for example. Current chat apps like Laiwang, Momo, and even a swarm of startups using similar concepts &amp;ndash; campus-based, dating-based, entrepreneurship-based, family-based, and so on &amp;ndash; are their technical capabilities not strong enough? Are their resources not abundant enough? Are their ideas not fresh enough? Yet WeChat remains irreplaceable, at least for now. This is a form of &amp;ldquo;monopoly.&amp;rdquo;&lt;/p&gt;
+&lt;h3 id="the-third-secrets"&gt;The Third: Secrets
+&lt;/h3&gt;&lt;p&gt;When a person or a company can uncover a secret that triggers qualitative change and creates monopoly, that company has succeeded. This sounds quite mystical, but it makes a lot of sense. As for how exactly to put it into practice? My experience is still limited, and I hope that the next time I read this book, I will have a deeper understanding.&lt;/p&gt;
+&lt;p&gt;The above are my thoughts after reading this book.&lt;/p&gt;</description></item><item><title>[Reading Notes] Godel, Escher, Bach: An Eternal Golden Braid</title><link>https://blog.coinidea.com/en/p/reading-notes-godel-escher-bach-an-eternal-golden-braid/</link><pubDate>Sat, 25 Jul 2015 07:04:11 +0000</pubDate><guid>https://blog.coinidea.com/en/p/reading-notes-godel-escher-bach-an-eternal-golden-braid/</guid><description>&lt;p&gt;&lt;strong&gt;Wednesday, November 28, 2012 - Prelude to Purchase and Preface&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;On November 11th this year, my roommate Xingxing owed me 30 yuan. I told him to get me a Singles&amp;rsquo; Day gift instead of paying me back. He asked what I wanted. At the time, I was really into reading the Steve Jobs biography, so I figured a Peking University student would know some great books. I asked him to buy me a book and recommend something. He said GEB was good. I was taken aback - that&amp;rsquo;s supposed to be a book for mathematical logic. After thinking about it, I asked him to get me &amp;ldquo;On the Crest of the Wave&amp;rdquo; instead. But I still went and searched for GEB. The review on Dangdang said: &amp;ldquo;This is an unprecedented masterpiece and an outstanding popular science work. With carefully designed and ingenious writing, it provides accessible introductions to many profound theories in mathematical logic, computability theory, artificial intelligence, and other fields. The relaxed, humorous, and flowing prose conceals a wealth of subtext, with ideas cross-referencing and interconnecting, weaving into a complex, invisible network. Readers can&amp;rsquo;t see it, but they can sense its presence and realize the author has sprayed it deliberately.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;On November 22nd, I purchased the book from Dangdang.&lt;/p&gt;
+&lt;p&gt;On November 28th, I began reading. Author: [American] Hou Shida. Is the author Chinese? I started reading with this question in mind. Ever since the Jobs biography, I&amp;rsquo;ve made a point of reading prefaces first. GEB&amp;rsquo;s preface is 38 pages long.&lt;/p&gt;
+&lt;p&gt;From the preface, I learned that the Chinese edition of this book was made possible by Professors Wu Yunceng and Ma Xiwen of Peking University. I discovered that Hou Shida is not actually Chinese - he is Douglas Richard Hofstadter. He&amp;rsquo;s a remarkable person, not only for his achievements in mathematics and computer science, but I personally believe that through his efforts in facilitating GEB translations into multiple languages, he is truly a linguist. &amp;ldquo;Hou Shida&amp;rdquo; is the Chinese name he gave himself, and he even wrote a preface for the Chinese edition.&lt;/p&gt;
+&lt;p&gt;The Chinese edition is by no means a simple English-to-Chinese translation. I believe that given the author&amp;rsquo;s linguistic mastery, combined with the support of Peking University and the Commercial Press, this book is truly a masterpiece in Chinese, achieving Yan Fu&amp;rsquo;s three fundamental standards: faithfulness, expressiveness, and elegance. I also appreciate their views on translating scientific papers.&lt;/p&gt;
+&lt;p&gt;For example: &amp;ldquo;a man, a plan, a canal: Panama&amp;rdquo; - should it be translated as &amp;ldquo;an engineer designed the Panama Canal&amp;rdquo;? But as a computer science student, I was amazed to discover that this English sentence is a palindrome! So why not use the Chinese palindrome equivalent?&lt;/p&gt;
+&lt;p&gt;About GEB: Godel, Escher, Bach: an Eternal Golden Braid&lt;/p&gt;
+&lt;p&gt;The Chinese title: the initials of the Chinese transliteration correspond to the English acronym GEB.&lt;/p&gt;
+&lt;p&gt;Oh, and there&amp;rsquo;s another artistic touch:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image001.jpg"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;p&gt;The 3D projections of these two small blocks spell out GEB and EGB (the second half of the book).&lt;/p&gt;
+&lt;p&gt;The Peking University translation team went even further: the Chinese title embeds both the Chinese and English GEB.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image002.jpg"
+loading="lazy"
+alt="image002"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thursday, December 6, 2012 - Introduction: A Musico-Logical Offering&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been too busy lately. After finishing the Steve Jobs biography and &amp;ldquo;On the Crest of the Wave,&amp;rdquo; I wanted to focus on GEB. But on one hand I was too busy, and on the other, I realized that apart from having some foundation in computer science, I&amp;rsquo;m really clueless about other fields, especially music. Unlike the previous two books, GEB requires you to actively think and understand. It&amp;rsquo;s filled with logical proofs, paradoxes that appear at every turn, and casual references to palindromes in computer science, isomorphism in discrete mathematics, and rest vs. motion in physics.&lt;/p&gt;
+&lt;p&gt;Today I finally finished the introduction. The introduction revolves around Bach&amp;rsquo;s Musical Offering, cleverly titled &amp;ldquo;A Musico-Logical Offering,&amp;rdquo; and then discusses Bach, Escher, and Godel - three great masters.&lt;/p&gt;
+&lt;p&gt;Canon and Fugue:&lt;/p&gt;
+&lt;p&gt;As a music novice, I had only heard of canons before - I&amp;rsquo;d never even heard of fugues. But when you try to understand them, you realize Bach was truly a genius. From the perspective of symmetrical beauty, even without hearing his compositions, looking at their structure alone, you can tell they must be beautiful.&lt;/p&gt;
+&lt;p&gt;The fundamental concept of a canon is a single theme accompanied by itself. Different voices enter and each presents a &amp;ldquo;copy&amp;rdquo; of the theme. The simplest form is a round. More complex canons become increasingly intricate, interweaving not only in time but also in pitch. The first voice might present the theme in C, while the second voice enters with the same theme in G (a fifth above C), and the third in D (a fifth above G) - creating something like an arithmetic sequence. Just looking at this structure, I can tell it would sound wonderful. There&amp;rsquo;s an even more complex technique called inversion, which produces a melody that jumps down whenever the original theme jumps up, by the same number of semitones. Then comes the most magical part - retrograde. The theme is played backwards in time, creating what&amp;rsquo;s called a crab canon. Every type of copy preserves the information of the original theme, and the theme can be recovered from any copy. This information-preserving transformation is called isomorphism.&lt;/p&gt;
+&lt;p&gt;Just on Thursday, my professor asked me what graph isomorphism is. I said it can be &amp;ldquo;stamped over&amp;rdquo;! Then what about subgraph isomorphism?&lt;/p&gt;
+&lt;p&gt;Fugues are similar to canons but less strict.&lt;/p&gt;
+&lt;p&gt;To transition to the great artist Escher, I must mention the endlessly rising canon. This canon begins in C major, but by the time it nears the end, it&amp;rsquo;s in D minor - a fifth higher, a change so subtle that listeners barely notice. At the so-called &amp;ldquo;ending,&amp;rdquo; Bach cleverly loops it back to the beginning, creating an endless cycle.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Seek, and ye shall find.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;If Bach played this endlessly rising strange loop, then Escher painted it! The image below is &amp;ldquo;Waterfall,&amp;rdquo; where six distinct stages demonstrate the strange loop.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image003.jpg"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Ascending and Descending&amp;rdquo; demonstrates the strange loop in just four stages, though more loosely.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image004.jpg"
+loading="lazy"
+alt="image004"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Thursday, December 7, 2012 - Introduction: A Musico-Logical Offering&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s talk about the greatest mathematician, Godel. The strange loops of Bach and Escher contain a conflict between the finite and the infinite, with a strong sense of paradox. Is there something wrong with mathematics?&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s a paradox called the Epimenides paradox: Epimenides was a Cretan who said, &amp;ldquo;All Cretans are liars.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This statement can be understood as: &amp;ldquo;This sentence is false.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;If you assume it&amp;rsquo;s true, it concludes that it&amp;rsquo;s false. If you assume it&amp;rsquo;s false, it concludes that it&amp;rsquo;s true.&lt;/p&gt;
+&lt;p&gt;In 1931, Godel published Godel&amp;rsquo;s theorem, which in essence states that no matter what axiomatic system you design, provability is always weaker than truth.&lt;/p&gt;
+&lt;p&gt;Everything can perhaps be understood as originating from the strange loop of &amp;ldquo;self-reference.&amp;rdquo; Or a loop, like the following example with two sentences:&lt;/p&gt;
+&lt;p&gt;The sentence below is false.&lt;/p&gt;
+&lt;p&gt;The sentence above is true.&lt;/p&gt;
+&lt;p&gt;Russell and Whitehead devoted themselves to eliminating such strange loops. &amp;ldquo;Principia Mathematica&amp;rdquo; is a rather peculiar bottom-up axiomatic system that appears to eliminate strange loops.&lt;/p&gt;
+&lt;p&gt;Hilbert&amp;rsquo;s Program:&lt;/p&gt;
+&lt;p&gt;Hilbert hoped someone could prove that Principia Mathematica was both consistent and complete - that is, internally contradiction-free while being able to prove all theorems within it. This has a flavor of circular reasoning, somewhat like forcing someone to lift themselves up by their own bootstraps.&lt;/p&gt;
+&lt;p&gt;Unfortunately, Godel proved that &amp;ldquo;no axiomatic system can produce all number-theoretic truths, unless it is an inconsistent system.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s discuss what intelligence is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Responding flexibly to situations.&lt;/li&gt;
+&lt;li&gt;Taking advantage of opportunities.&lt;/li&gt;
+&lt;li&gt;Making sense of ambiguous or contradictory information.&lt;/li&gt;
+&lt;li&gt;Recognizing what is important in a situation and what is secondary.&lt;/li&gt;
+&lt;li&gt;Finding similarities between situations despite differences.&lt;/li&gt;
+&lt;li&gt;Finding differences between things connected by similarities.&lt;/li&gt;
+&lt;li&gt;Synthesizing new concepts from old ones, combining them in new ways.&lt;/li&gt;
+&lt;li&gt;Coming up with entirely new ideas.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Friday, December 8, 2012 - Three-Part Invention: The MU Puzzle&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s discuss history&amp;rsquo;s most famous Zeno&amp;rsquo;s paradox: motion is impossible.&lt;/p&gt;
+&lt;p&gt;The swift-footed Achilles wants to chase a tortoise. He gives the tortoise a 10-meter head start. Every time Achilles covers half the remaining distance, the tortoise moves forward some distance. So Achilles keeps closing the gap but can never catch the tortoise.&lt;/p&gt;
+&lt;p&gt;A more general understanding of this paradox: a person walks from point A to point B, each time covering one-tenth of the remaining distance, so they can never reach point B.&lt;/p&gt;
+&lt;p&gt;The key issue in this paradox is time. Assume the distance is 10 meters and the speed is 10 meters per second. The reason they can&amp;rsquo;t arrive is that each step takes 0.1, 0.01, 0.001&amp;hellip; seconds. The total is only 0.11111&amp;hellip; seconds, not even 1 second, so of course they can&amp;rsquo;t make it.&lt;/p&gt;
+&lt;p&gt;Later I looked up more about Zeno&amp;rsquo;s paradoxes. Besides Achilles and the tortoise, there&amp;rsquo;s also the &amp;ldquo;flying arrow&amp;rdquo; example. I won&amp;rsquo;t describe it in detail here, but I think the physics principle that &amp;ldquo;rest is relative, motion is absolute&amp;rdquo; can explain this paradox.&lt;/p&gt;
+&lt;p&gt;A distinctive feature of this book is that at the beginning of each new chapter, the author uses Achilles and the Tortoise to have a conversation as a way to introduce the topic.&lt;/p&gt;
+&lt;p&gt;Chapter 1 covers the MU puzzle. With a foundation in discrete mathematics and mathematical logic, it&amp;rsquo;s not too difficult to understand. But there are indeed many clever and thought-provoking aspects.&lt;/p&gt;
+&lt;p&gt;Starting string: MI. Goal: construct the target string MU.&lt;/p&gt;
+&lt;p&gt;The rules:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If a string you own ends in I, you can add a U at the end.&lt;/li&gt;
+&lt;li&gt;If you have Mx, then Mxx is also yours.&lt;/li&gt;
+&lt;li&gt;If III appears in one of your strings, you can replace III with U to get a new string.&lt;/li&gt;
+&lt;li&gt;If UU appears in your string, you can drop it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The difference between humans and machines when constructing MU: machines don&amp;rsquo;t get tired but they can&amp;rsquo;t think, so they&amp;rsquo;ll keep searching according to the rules. Humans are different - they use &lt;strong&gt;insight&lt;/strong&gt; to search for the string, or complain that it can&amp;rsquo;t be found.&lt;/p&gt;
+&lt;p&gt;More directly, humans have the ability to jump out! To step outside the system and look at something else. Machines can&amp;rsquo;t do this.&lt;/p&gt;
+&lt;p&gt;Decision procedure: We define a decision procedure as one that determines, in finite time, whether a string is a theorem or not. Generally speaking, we can derive whether a string is a theorem, but it might take infinite time.&lt;/p&gt;
+&lt;p&gt;Suppose there&amp;rsquo;s a demon with unlimited time. If it were to solve the MU puzzle, it might:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Apply every applicable rule to the axiom MI, producing two new theorems: MIU, MIII.&lt;/li&gt;
+&lt;li&gt;Apply all applicable rules to the theorems from step 1, producing new theorems: MIIU, MIUIU, and MIIII.&lt;/li&gt;
+&lt;li&gt;Apply the same rules to the theorems from step 2, producing more new theorems.&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;What the Tortoise said to Achilles.&lt;/p&gt;
+&lt;p&gt;This conversation may seem absurd, but it gave me a kind of revelation - even a shock! What does it mean to prove! To reason! To infer! I also witnessed the power of hypothetical propositions.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a small fragment of an argument:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Things that are equal to the same thing are also equal to each other.&lt;/li&gt;
+&lt;li&gt;The two sides of this triangle are equal to the same thing.&lt;/li&gt;
+&lt;li&gt;The two sides of this triangle are equal to each other.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Readers of &lt;strong&gt;Euclid&lt;/strong&gt; would consider Z a logical conclusion, so anyone who accepts A and B as true must accept Z as true.&lt;/p&gt;
+&lt;p&gt;But consider two objections:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Someone who doesn&amp;rsquo;t accept A and B as true, but agrees that &amp;ldquo;if A and B are true, then Z is true.&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Someone who accepts A and B as true, but doesn&amp;rsquo;t accept that &amp;ldquo;if A and B are true, then Z is true.&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Case 1 is understandable; let&amp;rsquo;s set it aside for now.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s discuss case 2: how would you try to convince someone holding view 2 to accept the argument A-B-Z?&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s try this approach:&lt;/p&gt;
+&lt;p&gt;Define the hypothetical proposition &amp;ldquo;if A and B are true, then Z is true&amp;rdquo; as proposition C.&lt;/p&gt;
+&lt;p&gt;Does the following proof work?&lt;/p&gt;
+&lt;p&gt;A B C Z&lt;/p&gt;
+&lt;p&gt;OK! But what about someone who questions the hypothetical proposition &amp;ldquo;if A, B, and C are true, then Z is true&amp;rdquo;?&lt;/p&gt;
+&lt;p&gt;Do we need to define yet another hypothetical proposition D? An infinite loop? Doesn&amp;rsquo;t this remind you of Bach&amp;rsquo;s endlessly rising canon?&lt;/p&gt;
+&lt;p&gt;What a delightful introductory example!&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s define a simple system: the pq system:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Three symbols:&lt;/strong&gt; p q -&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition of axioms:&lt;/strong&gt; As long as x consists solely of a string of hyphens, then x-qxp- is an axiom.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rule:&lt;/strong&gt; Assuming x, y, and z each represent specific strings containing only hyphens, and assuming xqypz is a known axiom, then x-qypz- is a theorem.&lt;/p&gt;
+&lt;p&gt;Given a string, how do you determine whether it&amp;rsquo;s a theorem?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Bottom-up: this method is similar to the MU puzzle approach described earlier and won&amp;rsquo;t be elaborated here.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Top-down: repeatedly find its predecessor string according to the rules, and verify whether that string is an axiom. (Of course, we have an obvious way to determine whether a string is an axiom - otherwise, as Hofstadter says, all hope would be lost.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Upon careful study of the pq system, through &lt;strong&gt;insight&lt;/strong&gt; one can discover a pattern: if it&amp;rsquo;s a theorem, it must be of the form xqypz, where |x| = |y| + |z|.&lt;/p&gt;
+&lt;p&gt;In fact, this is something mentioned earlier in these notes called &lt;strong&gt;isomorphism&lt;/strong&gt;: two complex structures can be mapped to each other, with every part of each structure having a corresponding part in the other. We&amp;rsquo;ve assigned real-world meaning to a series of simple symbols: addition.&lt;/p&gt;
+&lt;p&gt;This is our own projection, of course. You could say q corresponds to &amp;ldquo;horse,&amp;rdquo; p to &amp;ldquo;happiness,&amp;rdquo; and - to &amp;ldquo;apple.&amp;rdquo; But the resulting theorems would be bizarre statements about horses, happiness, and apples with no real-world significance. Of course, our system is predefined - we can&amp;rsquo;t assume that just because it can represent addition, we can fantasize that x-q-x-p-x- is a theorem because 6 = 2+2+2. That&amp;rsquo;s correct in real life but clearly doesn&amp;rsquo;t hold in our pq system.&lt;/p&gt;
+&lt;p&gt;This isomorphism isn&amp;rsquo;t unique either - for instance, you could map q to subtraction and p to the equals sign, and it would also work. These simple but (in my view) fascinating examples show us the difference between formal systems and reality.&lt;/p&gt;
+&lt;p&gt;Finally, here&amp;rsquo;s the example that shocked me the most:&lt;/p&gt;
+&lt;p&gt;What is 12 times 12? 144? Correct! If we doubt it, we can count the cells in a 12-by-12 grid.&lt;/p&gt;
+&lt;p&gt;But what about 123456789 times 987654321? We can&amp;rsquo;t exactly count that. Who can say the value is truly what it is? How do you prove it?&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a theorem called &lt;strong&gt;Euclid&amp;rsquo;s theorem&lt;/strong&gt;: regarding the proposition that there are infinitely many prime numbers, no counting process can prove its truth or falsity. No matter how many primes we count, we can never determine whether the number of primes is finite or infinite.&lt;/p&gt;
+&lt;p&gt;Euclid gave a brilliant proof - at least I think everyone thought so at the time and for a long time after.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pick a number N&lt;/strong&gt;, compute N!, then form a new number N!+1. This number is not divisible by any number from 2, 3, 4, 5, 6, 7, 8, 9, &amp;hellip; N.&lt;/p&gt;
+&lt;p&gt;There are only two outcomes: N!+1 is either itself a prime, or its smallest prime factor is greater than N. In either case, we&amp;rsquo;ve found a prime larger than N.&lt;/p&gt;
+&lt;p&gt;So when we want to bypass the concept of infinity to prove something, we can use words like &amp;ldquo;all&amp;rdquo; - finite in themselves but embodying the concept of infinity.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at one of Escher&amp;rsquo;s tessellations.&lt;/p&gt;</description></item><item><title>Reflections on My First Interview (as Interviewer)</title><link>https://blog.coinidea.com/en/p/reflections-on-my-first-interview-as-interviewer/</link><pubDate>Tue, 21 Jul 2015 16:08:32 +0000</pubDate><guid>https://blog.coinidea.com/en/p/reflections-on-my-first-interview-as-interviewer/</guid><description>&lt;p&gt;After being on the other side of the table many times, I finally got to conduct an interview myself. Although I&amp;rsquo;m still a junior developer, I still want to document this experience.&lt;/p&gt;
+&lt;p&gt;Overall, I didn&amp;rsquo;t speak at first, but when I noticed the candidate&amp;rsquo;s resume mentioned the TP framework and Yii framework, I couldn&amp;rsquo;t help asking a few questions about how these frameworks handle XSS and CSRF prevention.&lt;/p&gt;
+&lt;p&gt;When the conversation turned to how to determine whether two numbers in an array sum up to a target value, I asked a few more questions.&lt;/p&gt;
+&lt;p&gt;All in all, I&amp;rsquo;m fairly satisfied with my first interview. However, I might have been a bit too aggressive in my questioning. I should take note and work on improving that :).&lt;/p&gt;</description></item><item><title>Written on the Zeroth Anniversary of Graduation</title><link>https://blog.coinidea.com/en/p/written-on-the-zeroth-anniversary-of-graduation/</link><pubDate>Fri, 03 Jul 2015 16:55:39 +0000</pubDate><guid>https://blog.coinidea.com/en/p/written-on-the-zeroth-anniversary-of-graduation/</guid><description>&lt;p&gt;I&amp;rsquo;ve been so busy lately with graduation, moving, and starting a new job that I haven&amp;rsquo;t had a chance to sit down and write properly. I feel like I&amp;rsquo;ve become a full-fledged househusband - buying appliances, grocery shopping, cooking, getting takeout, doing housework, the whole nine yards.&lt;/p&gt;
+&lt;p&gt;I recently posted something on social media: &amp;ldquo;Once this door closes today, it&amp;rsquo;ll be two different worlds from now on.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;The zeroth anniversary of graduation marks the end of my 23-year student career (my mom says I started kindergarten at two and a half) and the beginning of year zero of my working life. Over the past year-plus of job hunting, I&amp;rsquo;ve been through the wringer - weathered all kinds of storms - but gradually got used to it.&lt;/p&gt;
+&lt;p&gt;What is growing up?&lt;/p&gt;
+&lt;p&gt;Growing up means:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;When you walk into a supermarket, you discover that even the cheapest bottle of cooking oil costs 30-40+ yuan; a single bowl costs 10 yuan. You learn to budget carefully.&lt;/li&gt;
+&lt;li&gt;You boil an egg first thing in the morning.&lt;/li&gt;
+&lt;li&gt;When cycling, don&amp;rsquo;t wear a backpack - it makes your back sweat like crazy. Just put it in the basket.&lt;/li&gt;
+&lt;li&gt;You can tell the difference between electric bikes with removable lithium batteries and those with non-removable lead-acid batteries. The lithium battery ones don&amp;rsquo;t look as nice.&lt;/li&gt;
+&lt;li&gt;You carefully observe Beijing&amp;rsquo;s elaborate transportation system and discover there are bike lanes with well-designed merging and diverging. Follow the bike lanes and you can ride smoothly to your destination, even through overpasses. This is probably a lot like life itself.&lt;/li&gt;
+&lt;li&gt;You can soak the shower head in diluted disinfectant for effective sterilization.&lt;/li&gt;
+&lt;li&gt;Yeah, I&amp;rsquo;m just broke.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I don&amp;rsquo;t know what the future holds. I&amp;rsquo;ve been wanting to learn Android development lately and check out the book &amp;ldquo;First Line of Code.&amp;rdquo; But whatever path lies ahead, I chose it, and I&amp;rsquo;ll see it through even if I have to crawl.&lt;/p&gt;
+&lt;p&gt;Finally, a note to myself: as long as your spirit never dies, life will keep running forward.&lt;/p&gt;
+&lt;p&gt;&amp;ndash; DevHu, recorded on July 4, 2015, at a rented apartment.&lt;/p&gt;</description></item><item><title>Travel Guide - Yunnan</title><link>https://blog.coinidea.com/en/p/travel-guide-yunnan/</link><pubDate>Sat, 20 Jun 2015 10:41:51 +0000</pubDate><guid>https://blog.coinidea.com/en/p/travel-guide-yunnan/</guid><description>&lt;p&gt;This trip was our graduation trip. After some bumpy arguments and planning (I was worried about MERS; and since my second year of grad school I haven&amp;rsquo;t been a fan of flying, with the flight distance being over ten thousand kilometers), we finally decided on Yunnan.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Transportation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We chose the route Beijing - Kunming - Dali - Kunming - Beijing. Since I basically only fly with Air China, and Air China doesn&amp;rsquo;t have direct flights to Dali&amp;rsquo;s Huangcao Airport, we had to make a transfer, which was quite inconvenient. My suggestion: try to book direct round-trip flights whenever possible.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re traveling from Kunming, there are two options: bus or train. We took the bus both ways. The fare was around 136 yuan, about 5 hours (Dali Xingsheng Bus Station to Kunming West Bus Station). Unfortunately, we hit a 2-hour traffic jam on the way there. The train takes 7-8 hours. Some people recommend taking the overnight train. Once you arrive in Dali, you can take public buses, which are very cheap at around 1.5 or 2 yuan, from Xiaguan to the Old Town. If it&amp;rsquo;s too late, you can ask the inn to pick you up.&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Accommodation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you have the budget, you could stay in Shuanglang, but we checked and it wasn&amp;rsquo;t very convenient. My suggestion is to stay in the Old Town, which is quite affordable, generally 80-130 yuan per night. We stayed at Mengxingu Inn. It was quite nice - they had a dog, really cute. I was scared at first, but later found it to be very gentle.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2488-300x225.jpg"
+loading="lazy"
+alt="IMG_2488"
+&gt;&lt;/p&gt;
+&lt;p&gt;On the last night, we stayed at 1969 Seaside Inn. It was quite expensive, had no TV, and the water pressure was low. But the environment was absolutely stunning.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2535-300x225.jpg"
+loading="lazy"
+alt="IMG_2535"
+&gt;&lt;br&gt;
+&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2544-300x225.jpg"
+loading="lazy"
+alt="IMG_2544"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Sightseeing&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can stroll around the Old Town - it&amp;rsquo;s very relaxing.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2494-300x225.jpg"
+loading="lazy"
+alt="IMG_2494"
+&gt;&lt;/p&gt;
+&lt;p&gt;You can ride bikes along Erhai West Road.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2552-300x225.jpg"
+loading="lazy"
+alt="IMG_2552"
+&gt;&lt;/p&gt;
+&lt;p&gt;Finally, a few words of reflection: happy graduation. The road ahead is long - take it one step at a time.&lt;/p&gt;</description></item><item><title>Travel Guide - Hong Kong</title><link>https://blog.coinidea.com/en/p/travel-guide-hong-kong/</link><pubDate>Wed, 11 Feb 2015 09:28:52 +0000</pubDate><guid>https://blog.coinidea.com/en/p/travel-guide-hong-kong/</guid><description>&lt;p&gt;I went to fulfill my last wish of 2014, and it was absolutely worth it &amp;ndash; left me wanting more.&lt;/p&gt;
+&lt;h1 id="1-transportation"&gt;1. Transportation
+&lt;/h1&gt;&lt;p&gt;I departed from Beijing, so the plan was: fly from Beijing to Shenzhen, then take the subway from Shenzhen across the border to Hong Kong.&lt;/p&gt;
+&lt;p&gt;The dates were January 2-5, 2015. Surprisingly, the flights were very cheap &amp;ndash; a round trip between Beijing and Shenzhen was only about 1340 RMB. I recommend Air China; it&amp;rsquo;s usually the only airline I fly.&lt;/p&gt;
+&lt;h2 id="11-accommodation"&gt;1.1 Accommodation
+&lt;/h2&gt;&lt;p&gt;Cheap flights usually depart at night, so I stayed one night in Shenzhen &amp;ndash; again at a Home Inn, which was about 130 RMB per night. From the Home Inn near Bao&amp;rsquo;an Airport to Luohu Port in Shenzhen is quite a distance, requiring a bus transfer to the subway. After that, things went smoothly. I suggest getting an individual travel permit rather than a group one &amp;ndash; it gives you more freedom. First-timers must register at the counter, but after that you can use the self-service lanes, which is very convenient.&lt;/p&gt;
+&lt;p&gt;In Hong Kong, I originally wanted to stay near Jordan, but hotel prices were really high since it was New Year&amp;rsquo;s. A slightly decent 3-star hotel was over 1000 RMB per night, so I chose an ibis near North Point, which was 400+ RMB cheaper than the ibis hotels closer to central Hong Kong.&lt;/p&gt;
+&lt;p&gt;On the last night, I stayed at the Prudential Hotel in Jordan.&lt;/p&gt;
+&lt;p&gt;Overall, the ibis at North Point was decent &amp;ndash; it&amp;rsquo;s near the subway and very convenient. However, rooms in Hong Kong are generally small and the soundproofing isn&amp;rsquo;t great.&lt;/p&gt;
+&lt;h2 id="12-sightseeing"&gt;1.2 Sightseeing
+&lt;/h2&gt;&lt;p&gt;If you want to buy Apple products, head to the big shopping mall near Hong Kong Station. There&amp;rsquo;s a 3-story Apple flagship store, and it&amp;rsquo;s always packed with buyers.&lt;/p&gt;
+&lt;p&gt;Shopping tip for Hong Kong: many salespeople will keep trying to upsell you &amp;ndash; &amp;ldquo;spend over 1000 and get X free, then add 200 more and get Y free.&amp;rdquo;&lt;/p&gt;
+&lt;h3 id="31-disneyland"&gt;3.1 Disneyland
+&lt;/h3&gt;&lt;p&gt;We bought tickets on Taobao beforehand. The seller was nice and the tickets worked. Disneyland is super fun and amazing. Unfortunately, we only spent one day there. I recommend spending two days, and definitely stay overnight at Disneyland &amp;ndash; don&amp;rsquo;t try to save money on this. There&amp;rsquo;s a direct subway line, very convenient.&lt;/p&gt;
+&lt;h3 id="32-victoria-peak-and-madame-tussauds"&gt;3.2 Victoria Peak and Madame Tussauds
+&lt;/h3&gt;&lt;p&gt;I think the cable car is worth riding &amp;ndash; it&amp;rsquo;s fairly cheap. I recommend buying the combo ticket to save money. The wax museum is small, but for a first-time visitor, I&amp;rsquo;d recommend going at least once.&lt;/p&gt;
+&lt;h3 id="33-lan-kwai-fong"&gt;3.3 Lan Kwai Fong
+&lt;/h3&gt;&lt;p&gt;It&amp;rsquo;s a bar street, quite lively. But I don&amp;rsquo;t really drink, so I went there and bought my wife some Haagen-Dazs. Haha.&lt;/p&gt;
+&lt;h3 id="34-the-university-of-hong-kong"&gt;3.4 The University of Hong Kong
+&lt;/h3&gt;&lt;p&gt;I almost ended up studying here. The campus is really impressive, though it gave me a lot to think about. The cafeteria is great &amp;ndash; delicious and cheap.&lt;/p&gt;
+&lt;h1 id="4-tips"&gt;4. Tips
+&lt;/h1&gt;&lt;h2 id="41-make-sure-to-bring-your-id-card-and-travel-permit-apply-for-the-travel-permit-in-advance"&gt;4.1 Make sure to bring your ID card and travel permit. Apply for the travel permit in advance.
+&lt;/h2&gt;&lt;h2 id="42-consider-exchanging-some-hong-kong-dollars-beforehand-just-in-case-unionpay-cards-are-accepted-almost-everywhere"&gt;4.2 Consider exchanging some Hong Kong dollars beforehand, just in case. UnionPay cards are accepted almost everywhere.
+&lt;/h2&gt;&lt;h2 id="43-remember-to-bring-a-plug-adapter-otherwise-you-wont-be-able-to-charge-your-phone-you-can-buy-adapters-on-taobao-cheaply"&gt;4.3 Remember to bring a plug adapter, otherwise you won&amp;rsquo;t be able to charge your phone. You can buy adapters on Taobao cheaply.
+&lt;/h2&gt;&lt;p&gt;Here&amp;rsquo;s a photo:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/02/IMG_1952.jpg"
+loading="lazy"
+alt="IMG_1952"
+&gt;&lt;/p&gt;
+&lt;p&gt;And a final thought:&lt;/p&gt;
+&lt;p&gt;I work this hard just to live the life I see on TV. Keep going :)&lt;/p&gt;</description></item><item><title>Travel Guide - Harbin</title><link>https://blog.coinidea.com/en/p/travel-guide-harbin/</link><pubDate>Wed, 28 Jan 2015 03:17:57 +0000</pubDate><guid>https://blog.coinidea.com/en/p/travel-guide-harbin/</guid><description>&lt;p&gt;I went with the excitement of fulfilling the first wish of the new year.&lt;/p&gt;
+&lt;h2 id="transportation"&gt;Transportation:
+&lt;/h2&gt;&lt;p&gt;I took the bullet train from Beijing to Harbin both ways. It&amp;rsquo;s quite convenient, taking about 8 hours and 10 minutes. But make sure to choose your travel time wisely. Actually, there&amp;rsquo;s one approach I&amp;rsquo;d recommend: take an overnight sleeper train departing in the evening and arriving the next day. This way you can save a night&amp;rsquo;s accommodation cost.&lt;/p&gt;
+&lt;p&gt;The arrival station is Harbin West Railway Station, which is quite far from the city center. However, you can take a taxi from the taxi stand at Harbin West station. I assumed taxis at the train station would be reliable, but it turned out to be slightly disappointing. I had called the hotel staff in Harbin beforehand asking how much a taxi from the station to the hotel would cost. They said about 25 RMB, or 30 at night.&lt;/p&gt;
+&lt;p&gt;After I got in the taxi, I opened Baidu Maps, which also estimated about 26 RMB. I felt at ease &amp;ndash; until I noticed the driver was taking a longer route. The driver enthusiastically explained that this road had fewer traffic lights and less congestion. But it was already 11 PM. I said nothing. The fare was 38 RMB. When I pointed out the issue, the driver calmly offered a bunch of excuses that I didn&amp;rsquo;t consider valid [&amp;ldquo;I don&amp;rsquo;t care about your 1-2 extra RMB; sitting in traffic costs money too&amp;rdquo;]. I said nothing. OK, paid and got out.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Travel tip: Book an overnight hard sleeper arriving the next day; keep your eyes open after getting in a taxi, agree on the route in advance. Xizhi Street in the city center does indeed have many traffic lights.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="accommodation"&gt;Accommodation:
+&lt;/h2&gt;&lt;p&gt;I booked a Home Inn. I personally quite like staying at Home Inn &amp;ndash; good value for money. This time, however, there were a few issues:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The Gold Card comes with free breakfast, but the voucher says it must be used within 5 days. On the last day, I brought the vouchers I had saved up, only to find none of them could be used. The staff gave me no reasonable explanation &amp;ndash; just &amp;ldquo;you can&amp;rsquo;t use them, deal with it.&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you can book online, pay online. I ran into an awkward issue: my room rates should have been 184, 166, 166, 166. But the staff charged me 184 every day. Fortunately, I caught the problem and got it resolved.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bring some cash. You must pay a deposit at check-in, or they absolutely won&amp;rsquo;t let you stay &amp;ndash; even bank cards weren&amp;rsquo;t accepted. And it was almost midnight.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;Travel tip: I later complained to headquarters, and the operations manager apologized, which I was satisfied with &amp;ndash; after all, I wasn&amp;rsquo;t trying to cause trouble, just felt wronged. So I still recommend Home Inn, with these suggestions: book and pay online in advance; bring some cash just in case; check the charges carefully; confirm any promotional offers.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="food"&gt;Food:
+&lt;/h2&gt;&lt;p&gt;Dining in Harbin has two somewhat unpleasant aspects: 1. Napkins aren&amp;rsquo;t free &amp;ndash; you need to buy them yourself; 2. You may need to share a table with strangers.&lt;/p&gt;
+&lt;p&gt;I had spring pancakes:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2197-300x224.jpg"
+loading="lazy"
+alt="IMG_2197"
+&gt;&lt;/p&gt;
+&lt;p&gt;For spring pancakes you need to share a table and buy your own napkins. But the taste was decent. I recommend Maomao Spring Pancakes and Laochang Spring Pancakes.&lt;/p&gt;
+&lt;p&gt;Had hot cola:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2173-224x300.jpg"
+loading="lazy"
+alt="IMG_2173"
+&gt;&lt;/p&gt;
+&lt;p&gt;Ginger cola &amp;ndash; available everywhere on Central Street. Be careful though, it spills easily. I saw 2-3 people spill theirs.&lt;/p&gt;
+&lt;p&gt;Had rice cake hotpot:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2195-300x224.jpg"
+loading="lazy"
+alt="IMG_2195"
+&gt;&lt;/p&gt;
+&lt;p&gt;The restaurant is in Ha Yi Bai (Harbin No.1 Department Store). This pot costs 59 RMB and comes with two drinks and kimchi. The staff is friendly, there&amp;rsquo;s wifi, and I highly recommend this place. It&amp;rsquo;s called Congee Story.&lt;/p&gt;
+&lt;p&gt;Had desserts:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2200-300x224.jpg"
+loading="lazy"
+alt="IMG_2200"
+&gt;&lt;/p&gt;
+&lt;p&gt;This dessert shop is quite famous &amp;ndash; it&amp;rsquo;s called &amp;ldquo;Pack Happiness&amp;rdquo; and is on Central Street. A bit pricey though. The taste is decent, suitable for artsy types. I did get a stomachache that evening &amp;ndash; not sure if it was related to their yogurt. I still recommend this place overall.&lt;/p&gt;
+&lt;p&gt;Had Thai food:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2201-300x224.jpg"
+loading="lazy"
+alt="IMG_2201"
+&gt;&lt;/p&gt;
+&lt;p&gt;Thai cuisine. I couldn&amp;rsquo;t quite get used to the taste. It&amp;rsquo;s in an alley off Central Street. Overall it&amp;rsquo;s OK, but if you&amp;rsquo;re not a big fan of Thai food, proceed with caution.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Travel tip: Bring your own napkins, try to use group-buy deals, and avoid peak dining hours.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Search on Dianping: Maomao Spring Pancakes | Laochang Spring Pancakes | Pack Happiness | Impression Thai Southeast Asian Restaurant&lt;/p&gt;
+&lt;h2 id="attractions"&gt;Attractions:
+&lt;/h2&gt;&lt;p&gt;Ice and Snow World: Just take the bus there &amp;ndash; don&amp;rsquo;t listen to tour salespeople. Bring your student ID.&lt;/p&gt;
+&lt;p&gt;Saint Sophia Cathedral: Don&amp;rsquo;t go inside. Just enjoy the pigeons from outside.&lt;/p&gt;</description></item><item><title>[Year-End Review] My 2014</title><link>https://blog.coinidea.com/en/p/year-end-review-my-2014/</link><pubDate>Sun, 11 Jan 2015 05:49:26 +0000</pubDate><guid>https://blog.coinidea.com/en/p/year-end-review-my-2014/</guid><description>&lt;p&gt;2014 felt both slow and fast for me. This year, one foot had already stepped into the working world, waiting for the other to follow. Here is a recap of the major events of my 2014 &amp;ndash; archiving the past and embracing a new future.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Read some books.&lt;/p&gt;
+&lt;p&gt;1.1 Wu Xiaobo&amp;rsquo;s &amp;ldquo;Great Defeats&amp;rdquo; complete collection&lt;/p&gt;
+&lt;p&gt;1.2 Nanpai Sanshu&amp;rsquo;s &amp;ldquo;TheErta Tomb Notes&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;1.3 Went through &amp;ldquo;The Beauty of Programming&amp;rdquo; once&lt;/p&gt;
+&lt;p&gt;1.4 Went through &amp;ldquo;Erta Programmer Interview Bible&amp;rdquo; once [for job hunting]&lt;/p&gt;
+&lt;p&gt;1.5 Read parts of &amp;ldquo;Effective C++&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;1.6 Accepted all &lt;a class="link" href="https://oj.leetcode.com/problemset/algorithms/" target="_blank" rel="noopener"
+&gt;LeetCode problems&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On April 17th, I excitedly joined Microsoft Research Asia&amp;rsquo;s Innovation Engineering Group as an intern.&lt;/p&gt;
+&lt;p&gt;This was a rare opportunity in my life. I stumbled into a top-tier technology and research company (research institute), where I wrote code for half a year. The growth, both internal and external, had a profound impact on me. Before this, I thought I was a decent coder, but the two words I encountered most frequently there were: standards, and why.&lt;/p&gt;
+&lt;p&gt;Looking back, the MSRA experience will influence my entire life. I sincerely thank my mentors: Genduan and Chaowa for their help.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;As a Dev, I found my girlfriend in May 2014 &amp;ndash; what a joyful thing! I could finally do object-oriented programming.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Job hunting phase&lt;/p&gt;
+&lt;p&gt;I tossed and turned during that period. It reminded me of a blog post by Liang Bin, the operator of PennyJob: &lt;a class="link" href="http://blog.sina.com.cn/s/blog_593af2a701017185.html" target="_blank" rel="noopener"
+&gt;Rejected by a Hundred Companies&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Although there were some offers here and there, the pressure was immense &amp;ndash; something only I could truly understand.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;October 8th, internship at Yuanfudao (Ape Question Bank).&lt;/p&gt;
+&lt;p&gt;This is a startup company &amp;ndash; a group of ambitious and talented people working together to do something cool and disruptive. My mentor was DevTang, a well-known iOS expert. What this company brought me was a refreshing experience. As a newcomer, being in a startup exposed me to so many things beyond technology yet closely related to it &amp;ndash; knowledge that will benefit me for life.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Travel&lt;/p&gt;
+&lt;p&gt;&lt;span style="text-align: center;"&gt;Visited Shidu. | Visited Beidaihe. | Visited Tianjin. | Visited Qingdao. | Visited Hong Kong.&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;
+&lt;a href="https://blog.coinidea.com/wp-content/uploads/2015/01/DevHu2014年足迹地图1.png" class="magnific" rel="magnific"&gt;&lt;img class="aligncenter wp-image-619" title="DevHu2014年足迹地图" data-original="/wp-content/uploads/2015/01/DevHu2014年足迹地图1.png" src="http://blog.coinidea.com/wp-content/themes/9IPHP/images/lazy_loading.gif" alt="" width="589" height="360" srcset="http://blog.coinidea.com/wp-content/uploads/2015/01/DevHu2014年足迹地图1.png 982w, http://blog.coinidea.com/wp-content/uploads/2015/01/DevHu2014年足迹地图1-300x183.png 300w" sizes="(max-width: 589px) 100vw, 589px" /&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;What&amp;rsquo;s next? When I resigned, my senior colleague asked me, what are you going to do next? Indeed, what am I going to do next? I couldn&amp;rsquo;t answer, but I hope my 2015 can include the following items:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Travel&lt;/p&gt;
+&lt;p&gt;1.1 Visit Harbin &lt;strong&gt;[Done]&lt;/strong&gt; | 1.2 Visit Tibet | 1.3 Visit Yunnan &lt;strong&gt;[Done]&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Consistently maintain my personal blog for technical learning and sharing, and write high-quality posts &lt;strong&gt;[Done &amp;ndash; should be able to keep it up, though quality will improve gradually]&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Write higher-quality code and contribute on GitHub. Hopefully one of my projects can get 100 stars.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open-source a portal system based on ThinkPHP &lt;strong&gt;[Done, though not yet open-sourced]&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Think about my future and focus on mastering a specific technology.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Read some proper books:&lt;/p&gt;
+&lt;p&gt;6.1 Wu Jun&amp;rsquo;s &amp;ldquo;Civilization and Light&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;6.2 &lt;a class="link" href="http://book.douban.com/search/%20%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A7%86%E2%80%A2%E6%A0%BC%E6%8B%89%E5%BE%B7%E5%A8%81%E5%B0%94" target="_blank" rel="noopener"
+&gt;[Canadian] Malcolm Gladwell&lt;/a&gt;&amp;rsquo;s &amp;ldquo;David and Goliath&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;6.3 Finish &amp;ldquo;High Output Management&amp;rdquo; by Andy Grove&lt;/p&gt;
+&lt;p&gt;6.4 Finish &amp;ldquo;Effective C++&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;6.5 &amp;ldquo;Predictably Irrational&amp;rdquo; &lt;strong&gt;[Done]&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Study English properly and aim for independent international travel.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Redo all LeetCode problems from scratch.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

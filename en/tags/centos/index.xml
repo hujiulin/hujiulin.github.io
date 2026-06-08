@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CentOS on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/centos/</link><description>Recent content in CentOS on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 23 Nov 2017 08:05:04 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/centos/index.xml" rel="self" type="application/rss+xml"/><item><title>[CentOS]Upgrading OpenSSH and vsftpd on CentOS</title><link>https://blog.coinidea.com/en/p/centosupgrading-openssh-and-vsftpd-on-centos/</link><pubDate>Thu, 23 Nov 2017 08:05:04 +0000</pubDate><guid>https://blog.coinidea.com/en/p/centosupgrading-openssh-and-vsftpd-on-centos/</guid><description>&lt;h2 id="upgrading-openssh-to-version-74-or-above"&gt;Upgrading OpenSSH to Version 7.4 or Above
+&lt;/h2&gt;&lt;h3 id="background"&gt;Background
+&lt;/h3&gt;&lt;p&gt;Currently, OpenSSH versions below 7.4 on Linux have some critical vulnerabilities, and OpenSSH needs to be upgraded to version 7.4 or above. On a machine without external network access (no yum), this is quite troublesome. Online resources generally recommend backing up SSH and installing Telnet first, so you can still access the machine via Telnet if the upgrade fails.&lt;/p&gt;
+&lt;h3 id="common-issues-and-solutions"&gt;Common Issues and Solutions
+&lt;/h3&gt;&lt;h4 id="1-cannot-find-zlibh"&gt;1. Cannot find &lt;code&gt;zlib.h&lt;/code&gt;
+&lt;/h4&gt;&lt;p&gt;Reference: &lt;a class="link" href="http://www.linuxidc.com/Linux/2012-10/72036.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2012-10/72036.htm&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="2-zlib-download-link"&gt;2. zlib download link
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.zlib.net/" target="_blank" rel="noopener"
+&gt;http://www.zlib.net/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="3-installing-zlib"&gt;3. Installing zlib
+&lt;/h4&gt;&lt;p&gt;Reference: &lt;a class="link" href="http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml" target="_blank" rel="noopener"
+&gt;http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="4-dependencies-required-for-manually-compiling-openssh"&gt;4. Dependencies required for manually compiling OpenSSH
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zlib&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam-devel&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you get the error &lt;code&gt;configure: error: PAM headers not found&lt;/code&gt;, you can download &lt;code&gt;pam-devel&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm" target="_blank" rel="noopener"
+&gt;http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="5-openssl-download"&gt;5. OpenSSL download
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="ftp://ftp.openssl.org/source/" &gt;ftp://ftp.openssl.org/source/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="6-installing-openssl"&gt;6. Installing OpenSSL
+&lt;/h4&gt;&lt;p&gt;References:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/ikownyou/article/details/53021686" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/ikownyou/article/details/53021686&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.linuxidc.com/Linux/2011-10/45738.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2011-10/45738.htm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="notes"&gt;Notes
+&lt;/h3&gt;&lt;p&gt;If SecureCRT cannot log in after upgrading OpenSSH, it may be because the SecureCRT version is too old to support certain encryption protocols:&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a class="link" href="http://blog.csdn.net/yangg1991/article/details/51755562" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yangg1991/article/details/51755562&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="steps-to-upgrade-openssh"&gt;Steps to Upgrade OpenSSH
+&lt;/h3&gt;&lt;p&gt;Reference: &lt;a class="link" href="http://blog.csdn.net/u011080082/article/details/64503534" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u011080082/article/details/64503534&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="upgrading-vsftpd-from-222-to-234"&gt;Upgrading vsftpd from 2.2.2 to 2.3.4
+&lt;/h2&gt;&lt;p&gt;Download the &lt;code&gt;vsftpd-2.3.4.tar.gz&lt;/code&gt; package. For 64-bit systems, note:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\/lib64\/g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\//lib64\//g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="configuring-vsftpd"&gt;Configuring vsftpd
+&lt;/h3&gt;&lt;p&gt;Using active mode:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vsftpd /etc/vsftpd/vsftpd.conf &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;When starting in &lt;code&gt;standard_alone&lt;/code&gt; mode, you need to add the following two lines to the top of the configuration file:&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a class="link" href="http://wingjang.blog.163.com/blog/static/47913442200811113104509/" target="_blank" rel="noopener"
+&gt;http://wingjang.blog.163.com/blog/static/47913442200811113104509/&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;YES
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen_port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;After installation, only anonymous users are allowed to log in by default, so you need to modify the configuration:&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a class="link" href="http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html" target="_blank" rel="noopener"
+&gt;http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="handling-tcp_wrapper-issues"&gt;Handling TCP_Wrapper Issues
+&lt;/h3&gt;&lt;p&gt;If there are issues, pay attention to removing spaces, or you can remove it entirely:&lt;/p&gt;
+&lt;p&gt;References:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/u010098331/article/details/50699914" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u010098331/article/details/50699914&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/yylklshmyt20090217/article/details/8500608" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yylklshmyt20090217/article/details/8500608&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="vsftpd-download"&gt;vsftpd Download
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/" target="_blank" rel="noopener"
+&gt;http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cesium Chinese Documentation on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/cesium-chinese-documentation/</link><description>Recent content in Cesium Chinese Documentation on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 10 Aug 2018 09:13:46 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/cesium-chinese-documentation/index.xml" rel="self" type="application/rss+xml"/><item><title>[CesiumJS]Sharing a Chinese Community for Learning CesiumJS</title><link>https://blog.coinidea.com/en/p/cesiumjssharing-a-chinese-community-for-learning-cesiumjs/</link><pubDate>Thu, 28 Jun 2018 07:23:08 +0000</pubDate><guid>https://blog.coinidea.com/en/p/cesiumjssharing-a-chinese-community-for-learning-cesiumjs/</guid><description>&lt;p&gt;In the &lt;a href="http://cesiumcn.org/site/timeline.html" target="_blank" rel="noopener"&gt;timeline&lt;/a&gt; of the CesiumJS Chinese community, I wrote:&lt;/p&gt;
+&lt;p&gt;**June 9, 2021 * &lt;strong&gt;QQ Group 807482793, group members reached 3000, daily UV 600+, Cesium Chinese Website Group 2:&lt;/strong&gt; &lt;strong&gt;811457177&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;**November 5, 2020 * **QQ Group 807482793, group members exceeded 2000, WeChat group reached 500 members, created WeChat Group 2.&lt;/p&gt;
+&lt;p&gt;**November 26, 2019 * ** Registered users exceeded 400, QQ Group 807482793, group members exceeded 1000, daily UV 300+&lt;/p&gt;
+&lt;p&gt;**May 13, 2019 * **WeChat group reached 100 members within 2 hours. To join the group, please add the Cesium Chinese Website personal account:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blog.coinidea.com/wp-content/uploads/2018/06/cesiumcn.jpg" class="magnific" rel="magnific" &gt;&lt;img class="alignnone wp-image-1434 size-medium" data-original="http://blog.coinidea.com/wp-content/uploads/2018/06/cesiumcn-232x300.jpg" src="http://blog.coinidea.com/wp-content/uploads/2018/06/cesiumcn.jpg" alt="" width="232" height="300" srcset="http://blog.coinidea.com/wp-content/uploads/2018/06/cesiumcn-232x300.jpg 232w, http://blog.coinidea.com/wp-content/uploads/2018/06/cesiumcn.jpg 752w" sizes="(max-width: 232px) 100vw, 232px" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;May 9, 2019&lt;/strong&gt; * Registered users exceeded 200, QQ Group 807482793, group members exceeded 450&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;December 20, 2018&lt;/strong&gt; * Registered users exceeded 100, QQ Group 807482793, group members exceeded 170&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;November 6, 2018&lt;/strong&gt; * 65 registered users, QQ Group 807482793, group members exceeded 100&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;October 10, 2018&lt;/strong&gt; * 51 registered users, daily UV exceeded 100 &lt;a href="http://blog.coinidea.com/cesiumjs-1332.html" target="_blank" rel="noopener"&gt;&lt;a class="link" href="http://blog.coinidea.com/cesiumjs-1332.html" target="_blank" rel="noopener"
+&gt;http://blog.coinidea.com/cesiumjs-1332.html&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;June 22, 2018&lt;/strong&gt; * Launched for testing&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;June 19, 2018&lt;/strong&gt; * Acquired the &lt;a class="link" href="http://cesiumcn.org/" target="_blank" rel="noopener"
+&gt;cesiumcn.org&lt;/a&gt; domain, also accessible at &lt;a class="link" href="http://cesium.coinidea.com/" target="_blank" rel="noopener"
+&gt;cesium.coinidea.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;May 6, 2018&lt;/strong&gt; * Started secondary development of CesiumJS&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;April 21, 2015&lt;/strong&gt; * Reviewed the C# version of &lt;a class="link" href="https://github.com/hujiulin/WorldWind" target="_blank" rel="noopener"
+&gt;WorldWind&lt;/a&gt; code * Implemented a simple &lt;a class="link" href="https://github.com/hujiulin/WorldWind_DataVisualization" target="_blank" rel="noopener"
+&gt;data visualization plugin&lt;/a&gt; based on the C# WorldWind version&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;September 1, 2012&lt;/strong&gt; * Started working with the C++-based &lt;a class="link" href="http://trac.osgeo.org/ossim/" target="_blank" rel="noopener"
+&gt;OSSIM&lt;/a&gt; source code&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;April 1, 2009&lt;/strong&gt; * Started getting involved in various aspects of web development, from HTML, CSS, JavaScript to JSP, ASP.NET, PHP, jQuery, LAMP, then SSH, ThinkPHP, Yii, LNMP, then SSM, Node.js, VUE&amp;hellip; As you can see, I have some experience in web development and have been intermittently exposed to many GIS-related open-source systems. With the frontend, especially Node.js, becoming increasingly mature, and browsers offering better support for HTML5 features, I believe CesiumJS will find broad application in industrial-grade scenarios and most B/S architectures. I have also started using, familiarizing myself with, and learning its related APIs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;As a developer, I&amp;rsquo;ve always had a certain passion — something beyond profit that is more technology-oriented. So I registered an org domain, &lt;a href="http://cesiumcn.org" target="_blank" rel="noopener"&gt;&lt;a class="link" href="http://cesiumcn.org" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org&lt;/a&gt;&lt;/a&gt;, and created an open-source Web GIS community called &lt;a href="http://cesiumcn.org" target="_blank" rel="noopener"&gt;Cesium Chinese Website&lt;/a&gt;. I hope everyone will support it. You can ask questions in the community or browse this blog.&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>[CesiumJS]Cesium Getting Started 3 – Cesium Directory and Framework Structure</title><link>https://blog.coinidea.com/en/p/cesiumjscesium-getting-started-3-cesium-directory-and-framework-structure/</link><pubDate>Fri, 10 Aug 2018 09:13:46 +0000</pubDate><guid>https://blog.coinidea.com/en/p/cesiumjscesium-getting-started-3-cesium-directory-and-framework-structure/</guid><description>&lt;h2 id="app-directory"&gt;App Directory
+&lt;/h2&gt;&lt;p&gt;After downloading the files from the official website, we can see the following CesiumJS library structure:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Source/: Cesium application code and data&lt;/li&gt;
+&lt;li&gt;ThirdParty/: External dependency libraries, third-party libraries separate from Cesium&lt;/li&gt;
+&lt;li&gt;LICENSE.md: Cesium license information&lt;/li&gt;
+&lt;li&gt;index.html: Web homepage, which needs to be defined according to Cesium requirements and include Cesium dependency libraries&lt;/li&gt;
+&lt;li&gt;server.js: Node.js-based web server application&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CesiumJS is adapted to work with third-party JavaScript libraries and frameworks:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cesium.com/blog/2018/03/05/integrating-cesium-and-react/" target="_blank"&gt;React: Integrating Cesium with React&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cesium.com/blog/2017/10/23/integrating-cesium-with-threejs/" target="_blank"&gt;ThreeJS: Integrating Cesium with ThreeJS&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="page-structure"&gt;Page Structure
+&lt;/h2&gt;&lt;h3 id="including-cesiumjs"&gt;Including CesiumJS
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt; &lt;span class="nx"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ThirdParty/Cesium/Cesium.js&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Developers can also pick and choose their dependency libraries from ThirdParty/Cesium/source/ according to their needs, trimming the JS file size.&lt;/p&gt;
+&lt;h3 id="html-structure"&gt;HTML Structure
+&lt;/h3&gt;&lt;p&gt;A div is needed as the container for the Cesium Viewer widget:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;cesiumContainer&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;An app.js file is needed to activate the Cesium Viewer. It&amp;rsquo;s best to include app.js at the end of the HTML:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt; &lt;span class="nx"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Source/App.js&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="adding-css-styles"&gt;Adding CSS Styles
+&lt;/h3&gt;&lt;p&gt;The styles for various widgets in the Cesium viewer need to be imported.
+Create a new index.css and include it in index.html:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;index.css&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;media&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;screen&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Add the following default Cesium CSS to index.css:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;@import url(ThirdParty/Cesium/Widgets/widgets.css);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id="steps"&gt;Steps
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;Open Source/App.js and delete its contents&lt;/li&gt;
+&lt;li&gt;Copy Source/AppSkeleton.js to Source/App.js&lt;/li&gt;
+&lt;li&gt;Make sure server.js is in the Cesium root directory and run server.js (npm server.js)&lt;/li&gt;
+&lt;li&gt;Enter localhost:8080 in a modern browser (with WebGL support)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you have any issues:&lt;/p&gt;
+&lt;p&gt;Full code: &lt;a class="link" href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Hello%20World.html&amp;amp;label=Showcases&amp;amp;gist=8d9d3daadd197cffd501d7210bcca3b6" target="_blank" rel="noopener"
+&gt;https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Hello%20World.html&amp;label=Showcases&amp;gist=8d9d3daadd197cffd501d7210bcca3b6&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Recommended code: &lt;a class="link" href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Hello%20World.html&amp;amp;label=Showcases&amp;amp;gist=113c3467755fc38d9f9bce16a94475fc" target="_blank" rel="noopener"
+&gt;https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Hello%20World.html&amp;label=Showcases&amp;gist=113c3467755fc38d9f9bce16a94475fc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cesium Chinese Website QQ Group: 807482793&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Original link: &lt;a href="http://cesiumcn.org/topic/144.html" target="_blank"&gt;&lt;a class="link" href="http://cesiumcn.org/topic/144.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/topic/144.html&lt;/a&gt;&lt;/a&gt; | Quick access: &lt;a href="http://cesium.coinidea.com/topic/144.html" target="_blank"&gt;&lt;a class="link" href="http://cesium.coinidea.com/topic/144.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/topic/144.html&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[CesiumJS]Cesium Getting Started 2 – Environment Setup and First Example Program</title><link>https://blog.coinidea.com/en/p/cesiumjscesium-getting-started-2-environment-setup-and-first-example-program/</link><pubDate>Fri, 10 Aug 2018 03:11:34 +0000</pubDate><guid>https://blog.coinidea.com/en/p/cesiumjscesium-getting-started-2-environment-setup-and-first-example-program/</guid><description>&lt;h2 id="verify-browser-support"&gt;Verify Browser Support
+&lt;/h2&gt;&lt;p&gt;Cesium requires browser support for WebGL. You can test whether your browser supports Cesium using a HelloWorld example provided on the CesiumJS official website. (Chrome is recommended)
+Test URL:
+&lt;a class="link" href="https://cesiumjs.org/Cesium/Apps/HelloWorld.html" target="_blank" rel="noopener"
+&gt;https://cesiumjs.org/Cesium/Apps/HelloWorld.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="choose-an-ide"&gt;Choose an IDE
+&lt;/h2&gt;&lt;p&gt;The official website states:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;If&lt;/span&gt; &lt;span class="nx"&gt;you&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;re already a seasoned developer, you most likely have a favorite editor or development environment; for example, most of the Cesium team uses Eclipse. If you&amp;#39;&lt;/span&gt;&lt;span class="nx"&gt;re&lt;/span&gt; &lt;span class="nx"&gt;just&lt;/span&gt; &lt;span class="nx"&gt;starting&lt;/span&gt; &lt;span class="nx"&gt;out&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="nx"&gt;great&lt;/span&gt; &lt;span class="nx"&gt;free&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;open&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;source&lt;/span&gt; &lt;span class="nx"&gt;editor&lt;/span&gt; &lt;span class="nx"&gt;is&lt;/span&gt; &lt;span class="nx"&gt;Notepad&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;which&lt;/span&gt; &lt;span class="nx"&gt;you&lt;/span&gt; &lt;span class="nx"&gt;can&lt;/span&gt; &lt;span class="nx"&gt;download&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="nx"&gt;their&lt;/span&gt; &lt;span class="nx"&gt;website&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nx"&gt;Ultimately&lt;/span&gt; &lt;span class="nx"&gt;any&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt; &lt;span class="nx"&gt;editor&lt;/span&gt; &lt;span class="nx"&gt;will&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;so&lt;/span&gt; &lt;span class="nx"&gt;go&lt;/span&gt; &lt;span class="kd"&gt;with&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;one&lt;/span&gt; &lt;span class="nx"&gt;that&lt;/span&gt; &lt;span class="nx"&gt;you&lt;/span&gt; &lt;span class="nx"&gt;are&lt;/span&gt; &lt;span class="nx"&gt;most&lt;/span&gt; &lt;span class="nx"&gt;comfortable&lt;/span&gt; &lt;span class="kd"&gt;with&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;If you&amp;rsquo;re already an experienced developer, you likely have a preferred editor or development environment; for example, most of the Cesium team uses Eclipse. If you&amp;rsquo;re just starting out, Notepad++ is a great free and open-source editor that you can download from their website. Ultimately, any text editor will work, so use whatever you&amp;rsquo;re most comfortable with.&lt;/p&gt;
+&lt;p&gt;Personally, since I mostly developed in PHP before, I use PHPStorm. I actually don&amp;rsquo;t recommend Eclipse — I prefer WebStorm, which shares the same parent as IntelliJ IDEA. Considering project and folder management, I also don&amp;rsquo;t recommend Notepad++. For a lightweight IDE, I recommend Sublime Text.&lt;/p&gt;
+&lt;h2 id="download-cesium-source-code"&gt;Download Cesium Source Code
+&lt;/h2&gt;&lt;p&gt;Download the latest release version at:
+&lt;a class="link" href="https://cesiumjs.org/tutorials/cesium-up-and-running/" target="_blank" rel="noopener"
+&gt;https://cesiumjs.org/tutorials/cesium-up-and-running/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;After downloading, extract the zip file into a new directory of your choice. I&amp;rsquo;ll refer to this as the Cesium root directory throughout this tutorial. The contents should look like the following:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://cesium.coinidea.com/uploads/2018/08/09/5b6ba8d604af3.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;Simply opening index.html directly won&amp;rsquo;t work — it needs to be placed in a web server container to run.&lt;/p&gt;
+&lt;h2 id="server-side"&gt;Server Side
+&lt;/h2&gt;&lt;p&gt;Cesium is pure frontend code. The official source code comes with a Node.js server, and you can install and deploy via Node.js. In practice, Cesium can be deployed in Tomcat (GeoServer), Apache, Nginx, and other servers.&lt;/p&gt;
+&lt;p&gt;The official recommendation is Node.js:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Download Node.js from the official website (&lt;a class="link" href="https://nodejs.org/en/%29" target="_blank" rel="noopener"
+&gt;https://nodejs.org/en/)&lt;/a&gt;. Node.js has some configurable parameters, but the defaults are fine.&lt;/li&gt;
+&lt;li&gt;In the Cesium directory, open cmd or bash and run:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This downloads the required npm modules such as express. If successful, a &amp;rsquo;node_modules&amp;rsquo; folder will be created in the Cesium directory.
+3. Finally, run in cmd or bash:
+&lt;code&gt;shell node server.js &lt;/code&gt;
+or
+&lt;code&gt;shell npm start &lt;/code&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;After success, you should see the following screenshot:
+&lt;img src="http://cesium.coinidea.com/uploads/2018/08/09/5b6ba8e97eb7a.png"
+loading="lazy"
+&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The console will display:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Cesium development server running locally. Connect to http://localhost:8080
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Do not close the console — keep it running. Open your browser and navigate to http://localhost:8080 to access Cesium.&lt;/p&gt;
+&lt;h2 id="if-you-dont-want-to-use-nodejs"&gt;If You Don&amp;rsquo;t Want to Use Node.js
+&lt;/h2&gt;&lt;p&gt;Cesium is an open-source project. The GitHub download URL is: &lt;a class="link" href="https://github.com/AnalyticalGraphicsInc/cesium" target="_blank" rel="noopener"
+&gt;https://github.com/AnalyticalGraphicsInc/cesium&lt;/a&gt;
+The simplest installation method is regular JS file loading — just download the JS code from GitHub, place it in your project, and reference it in your HTML page. Like this:
+&lt;img src="http://cesium.coinidea.com/uploads/2018/08/09/5b6bab21eccce.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;Create a new &lt;strong&gt;helloworld.html&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;!&lt;/span&gt;&lt;span class="nx"&gt;DOCTYPE&lt;/span&gt; &lt;span class="nx"&gt;html&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;html&lt;/span&gt; &lt;span class="nx"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;head&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;meta&lt;/span&gt; &lt;span class="nx"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;UTF-8&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;Hello&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="nx"&gt;D&lt;/span&gt; &lt;span class="nx"&gt;Earth&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/title&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt; &lt;span class="nx"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;CesiumUnminified/Cesium.js&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;CesiumUnminified&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;Widgets&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;widgets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;css&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;cesiumContainer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;overflow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/style&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/head&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;div&lt;/span&gt; &lt;span class="nx"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;cesiumContainer&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/div&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt; &lt;span class="nx"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;app.js&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/body&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/html&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Create a new &lt;strong&gt;app.js&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;viewer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Cesium&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Viewer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cesiumContainer&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Here, cesiumContainer is the id of the HTML div that displays the map. It&amp;rsquo;s that simple — open the HTML page in a browser and you&amp;rsquo;ll see a 3D globe. The base map is Microsoft imagery loaded onto the 3D globe, with basic online map features including zoom in, zoom out, and pan. It also includes a timeline and other time-related widgets, which is a distinctive feature of Cesium — its maps, objects, and scenes can all be associated with time.&lt;/p&gt;
+&lt;h2 id="local-hello-world-program"&gt;Local Hello World Program
+&lt;/h2&gt;&lt;p&gt;Now that the local Node server is running, open your browser and navigate to: http://localhost:8080/Apps/HelloWorld.html.
+You should see a Hello World 3D digital globe identical to the official one.
+&lt;img src="http://cesium.coinidea.com/uploads/2018/08/09/5b6ba8f93f61e.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="hello-world-code-analysis"&gt;Hello World Code Analysis
+&lt;/h2&gt;&lt;p&gt;The official Hello World code is as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;!&lt;/span&gt;&lt;span class="nx"&gt;DOCTYPE&lt;/span&gt; &lt;span class="nx"&gt;html&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;html&lt;/span&gt; &lt;span class="nx"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;head&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;&amp;lt;!--&lt;/span&gt; &lt;span class="nx"&gt;Use&lt;/span&gt; &lt;span class="nx"&gt;correct&lt;/span&gt; &lt;span class="nx"&gt;character&lt;/span&gt; &lt;span class="nx"&gt;set&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="o"&gt;--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;meta&lt;/span&gt; &lt;span class="nx"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;&amp;lt;!--&lt;/span&gt; &lt;span class="nx"&gt;Tell&lt;/span&gt; &lt;span class="nx"&gt;IE&lt;/span&gt; &lt;span class="nx"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;latest&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;best&lt;/span&gt; &lt;span class="nx"&gt;version&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="o"&gt;--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;meta&lt;/span&gt; &lt;span class="nx"&gt;http&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;equiv&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;X-UA-Compatible&amp;#34;&lt;/span&gt; &lt;span class="nx"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;IE=edge&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;&amp;lt;!--&lt;/span&gt; &lt;span class="nx"&gt;Make&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;application&lt;/span&gt; &lt;span class="nx"&gt;on&lt;/span&gt; &lt;span class="nx"&gt;mobile&lt;/span&gt; &lt;span class="nx"&gt;take&lt;/span&gt; &lt;span class="nx"&gt;up&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;full&lt;/span&gt; &lt;span class="nx"&gt;browser&lt;/span&gt; &lt;span class="nx"&gt;screen&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;disable&lt;/span&gt; &lt;span class="nx"&gt;user&lt;/span&gt; &lt;span class="nx"&gt;scaling&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="o"&gt;--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;meta&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;viewport&amp;#34;&lt;/span&gt; &lt;span class="nx"&gt;content&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;Hello&lt;/span&gt; &lt;span class="nx"&gt;World&lt;/span&gt;&lt;span class="o"&gt;!&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/title&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt; &lt;span class="nx"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;../Build/Cesium/Cesium.js&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;Build&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;Cesium&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;Widgets&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;widgets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;css&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;cesiumContainer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;overflow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;hidden&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/style&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/head&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;div&lt;/span&gt; &lt;span class="nx"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;cesiumContainer&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/div&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;viewer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Cesium&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Viewer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cesiumContainer&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/body&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/html&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The following four steps add Cesium to the HTML:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Include Cesium.js, which defines the Cesium object:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt; &lt;span class="nx"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;../Build/Cesium/Cesium.js&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;Import the Cesium Viewer widget styles:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;Build&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;Cesium&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;Widgets&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;widgets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;css&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;The Cesium view resides in this div:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;div&lt;/span&gt; &lt;span class="nx"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;cesiumContainer&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/div&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start="4"&gt;
+&lt;li&gt;Finally, create the Cesium viewer:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;viewer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Cesium&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Viewer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cesiumContainer&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Cesium Chinese Website QQ Group: 807482793&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Original link: &lt;a href="http://cesiumcn.org/topic/138.html" target="_blank"&gt;&lt;a class="link" href="http://cesiumcn.org/topic/138.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/topic/138.html&lt;/a&gt;&lt;/a&gt; | Quick access: &lt;a href="http://cesium.coinidea.com/topic/138.html" target="_blank"&gt;&lt;a class="link" href="http://cesium.coinidea.com/topic/137.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/topic/137.html&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[CesiumJS]Cesium Getting Started 1 – Introduction to Cesium</title><link>https://blog.coinidea.com/en/p/cesiumjscesium-getting-started-1-introduction-to-cesium/</link><pubDate>Thu, 09 Aug 2018 03:28:08 +0000</pubDate><guid>https://blog.coinidea.com/en/p/cesiumjscesium-getting-started-1-introduction-to-cesium/</guid><description>&lt;h2 id="introduction-to-cesium"&gt;Introduction to Cesium
+&lt;/h2&gt;&lt;p&gt;Cesium official website: &lt;a class="link" href="https://cesiumjs.org" target="_blank" rel="noopener"
+&gt;https://cesiumjs.org&lt;/a&gt;
+&lt;img src="http://cesium.coinidea.com/uploads/2018/08/09/5b6ba4812ea21.png"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;p&gt;The website title states:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;An&lt;/span&gt; &lt;span class="nx"&gt;open&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;source&lt;/span&gt; &lt;span class="nx"&gt;JavaScript&lt;/span&gt; &lt;span class="nx"&gt;library&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;world&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="nx"&gt;D&lt;/span&gt; &lt;span class="nx"&gt;globes&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;maps&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Cesium is an open-source JavaScript-based 3D mapping framework. Essentially, it is a map visualization framework.&lt;/p&gt;
+&lt;p&gt;The website description states:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;CesiumJS&lt;/span&gt; &lt;span class="nx"&gt;is&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="nx"&gt;geospatial&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="nx"&gt;D&lt;/span&gt; &lt;span class="nx"&gt;mapping&lt;/span&gt; &lt;span class="nx"&gt;platform&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;creating&lt;/span&gt; &lt;span class="nx"&gt;virtual&lt;/span&gt; &lt;span class="nx"&gt;globes&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nx"&gt;Our&lt;/span&gt; &lt;span class="nx"&gt;mission&lt;/span&gt; &lt;span class="nx"&gt;is&lt;/span&gt; &lt;span class="nx"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;create&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;leading&lt;/span&gt; &lt;span class="nx"&gt;web&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;based&lt;/span&gt; &lt;span class="nx"&gt;globe&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;map&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;visualizing&lt;/span&gt; &lt;span class="nx"&gt;dynamic&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nx"&gt;We&lt;/span&gt; &lt;span class="nx"&gt;strive&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;best&lt;/span&gt; &lt;span class="nx"&gt;possible&lt;/span&gt; &lt;span class="nx"&gt;performance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;precision&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;visual&lt;/span&gt; &lt;span class="nx"&gt;quality&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;ease&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;use&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;platform&lt;/span&gt; &lt;span class="nx"&gt;support&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;content&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;CesiumJS is a 3D geospatial platform for creating virtual scenes. Its goal is to create web-based dynamic data visualization using maps. It strives to provide the best performance, accuracy, visualization capabilities, ease of use, and platform support.&lt;/p&gt;
+&lt;h1 id="data-formats-and-features"&gt;Data Formats and Features
+&lt;/h1&gt;&lt;p&gt;Cesium supports 3D Tiles, Terrain and Imagery Layers, 3D Models (glTF), Vectors and Geometry (Load KML, GeoJSON, TopoJSON, and CZML), Time-Dynamic Visualization, 3D, 2D, and 2.5D Columbus View.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Supports 2D, 2.5D, and 3D geographic (map) data display&lt;/li&gt;
+&lt;li&gt;Can draw various geometric shapes, highlight regions, supports importing images and even 3D models for diverse data visualization&lt;/li&gt;
+&lt;li&gt;Can be used for dynamic data visualization with good touch support, compatible with most desktop and mobile browsers&lt;/li&gt;
+&lt;li&gt;Supports time-axis-based dynamic streaming data display&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="http://cesium.coinidea.com/uploads/2018/08/10/5b6d4bd5bc7c9.jpg"
+loading="lazy"
+&gt;&lt;/p&gt;
+&lt;h2 id="thoughts"&gt;Thoughts
+&lt;/h2&gt;&lt;p&gt;Thanks to the development of frontend technologies, the standardization of HTML5 and CSS3, increasingly better WebGL support from major browser vendors, growing personal computer memory, and advances in graphics cards, I can see the browser-based 3D digital globe that I&amp;rsquo;ve always wanted to build becoming a reality. I&amp;rsquo;m very excited.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Cesium is a cross-platform, cross-browser JavaScript library for displaying 3D globes and maps.&lt;/li&gt;
+&lt;li&gt;Cesium uses WebGL for hardware-accelerated graphics. No plugins are required, but the browser must support WebGL.&lt;/li&gt;
+&lt;li&gt;Cesium is an open-source project licensed under Apache 2.0. It can be used freely for both commercial and non-commercial purposes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cesium Chinese Website QQ Group: 807482793&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Original link: &lt;a href="http://cesiumcn.org/topic/137.html" target="_blank"&gt;&lt;a class="link" href="http://cesiumcn.org/topic/137.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/topic/137.html&lt;/a&gt;&lt;/a&gt; | Quick access: &lt;a href="http://cesium.coinidea.com/topic/137.html" target="_blank"&gt;&lt;a class="link" href="http://cesium.coinidea.com/topic/137.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/topic/137.html&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[CesiumJS]Sample Code for Cesium Globe Rotation</title><link>https://blog.coinidea.com/en/p/cesiumjssample-code-for-cesium-globe-rotation/</link><pubDate>Thu, 26 Jul 2018 07:48:41 +0000</pubDate><guid>https://blog.coinidea.com/en/p/cesiumjssample-code-for-cesium-globe-rotation/</guid><description>&lt;p&gt;Sharing some code to make the Cesium globe rotate automatically.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;now&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;rotate&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;t&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;now&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;t&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;1e3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;t&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;viewer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;scene&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;camera&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;rotate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Cesium&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Cartesian3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;UNIT_Z&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;n&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;viewer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;onTick&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;addEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rotate&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;setTimeout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;viewer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;clock&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;onTick&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;removeEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;rotate&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="mi"&gt;5000&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>[CesiumJS]OSGB to Cesium 3D Tiles Conversion Tool</title><link>https://blog.coinidea.com/en/p/cesiumjsosgb-to-cesium-3d-tiles-conversion-tool/</link><pubDate>Thu, 26 Jul 2018 07:44:58 +0000</pubDate><guid>https://blog.coinidea.com/en/p/cesiumjsosgb-to-cesium-3d-tiles-conversion-tool/</guid><description>&lt;p&gt;Cesium does not support loading oblique photography OSGB data directly:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.oschina.net/question/104733_2198017" target="_blank" rel="noopener"
+&gt;https://www.oschina.net/question/104733_2198017&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;However, OSGB data can be converted into a format that Cesium can load.&lt;/p&gt;
+&lt;p&gt;Currently, the best-supported format defined by Cesium is 3D Tiles. This format is still evolving and not yet fully mature, but based on official demos, the results are quite impressive.&lt;/p&gt;
+&lt;p&gt;3D Tiles adds FeatureTable and BatchTable at the logical (JSON) layer, as well as the LOD (tileset) concept, with corresponding binary storage headers. From a data specification perspective, it inherits the excellent parts of glTF while also considering oblique photography and point clouds. Support for OSM is planned for the future, providing good coverage of data types.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3D Tiles = glTF + LOD&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.cnblogs.com/fuckgiser/p/6565957.html" target="_blank" rel="noopener"
+&gt;https://www.cnblogs.com/fuckgiser/p/6565957.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;During development, I found some conversion tools shared by developers online:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.v2ex.com/t/402321" target="_blank" rel="noopener"
+&gt;https://www.v2ex.com/t/402321&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/qq_37796475/article/details/79221939" target="_blank" rel="noopener"
+&gt;https://blog.csdn.net/qq_37796475/article/details/79221939&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;After testing, I found that:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://download.csdn.net/download/qq_37796475/10274378" target="_blank" rel="noopener"
+&gt;https://download.csdn.net/download/qq_37796475/10274378&lt;/a&gt; this tool works quite well.&lt;/p&gt;
+&lt;p&gt;After downloading the conversion tool, there is an operation example image included in the directory. Feel free to leave a comment if you have any questions.&lt;/p&gt;
+&lt;a href="https://blog.coinidea.com/wp-content/uploads/2018/07/5b2dd5f216e731.jpg" class="magnific" rel="magnific" &gt;
+&lt;img class="alignnone size-large wp-image-1304" title="5b2dd5f216e73" data-original="/wp-content/uploads/2018/07/5b2dd5f216e731-1024x527.jpg" src="" alt="" width="1024" height="527" srcset="http://blog.coinidea.com/wp-content/uploads/2018/07/5b2dd5f216e731-1024x527.jpg 1024w, http://blog.coinidea.com/wp-content/uploads/2018/07/5b2dd5f216e731-300x154.jpg 300w, http://blog.coinidea.com/wp-content/uploads/2018/07/5b2dd5f216e731.jpg 1227w" sizes="(max-width: 1024px) 100vw, 1024px" /&gt;
+&lt;/a&gt;
+&lt;p&gt;Original link: &lt;a href="http://cesiumcn.org/topic/3.html" target="_blank"&gt;&lt;a class="link" href="http://cesiumcn.org/topic/3.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/topic/3.html&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,363 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="Cesium中文网：http://cesiumcn.org/ | 国内快速访问：http://cesium.coinidea.com/\nViewer中的Entity功能 让我们看看_Viewer_为操作entities提供出来的功能函数。\n选中和描述 点击Viewer中的entity将在entity的位置上呈现SelectionIndicator控件，提供一个InfoBox用于呈现更多的信息。我们可以设置_name_，来定义_InfoBox_的标题。我们也以HTML样式来提供_Entity.description_的属性。\n"><title>[CesiumJS]Cesium中级教程4 – 空间数据可视化（二）</title><link rel=canonical href=https://blog.coinidea.com/cesiumjs-1441.html><link rel=stylesheet href=/scss/style.min.86591c898bd806857815fbb8c47e8d3fed97c133b78e83d9bfc27b164dd0aa2b.css><meta property='og:title' content="[CesiumJS]Cesium中级教程4 – 空间数据可视化（二）"><meta property='og:description' content="Cesium中文网：http://cesiumcn.org/ | 国内快速访问：http://cesium.coinidea.com/\nViewer中的Entity功能 让我们看看_Viewer_为操作entities提供出来的功能函数。\n选中和描述 点击Viewer中的entity将在entity的位置上呈现SelectionIndicator控件，提供一个InfoBox用于呈现更多的信息。我们可以设置_name_，来定义_InfoBox_的标题。我们也以HTML样式来提供_Entity.description_的属性。\n"><meta property='og:url' content='https://blog.coinidea.com/cesiumjs-1441.html'><meta property='og:site_name' content='Coinidea的博客'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='cesiumjs'><meta property='article:tag' content='cesium中文教程'><meta property='article:tag' content='cesium中文文档'><meta property='article:tag' content='GIS'><meta property='article:tag' content='三维GIS'><meta property='article:published_time' content='2019-05-22T02:15:02+00:00'><meta property='article:modified_time' content='2019-05-22T02:15:02+00:00'><meta name=twitter:title content="[CesiumJS]Cesium中级教程4 – 空间数据可视化（二）"><meta name=twitter:description content="Cesium中文网：http://cesiumcn.org/ | 国内快速访问：http://cesium.coinidea.com/\nViewer中的Entity功能 让我们看看_Viewer_为操作entities提供出来的功能函数。\n选中和描述 点击Viewer中的entity将在entity的位置上呈现SelectionIndicator控件，提供一个InfoBox用于呈现更多的信息。我们可以设置_name_，来定义_InfoBox_的标题。我们也以HTML样式来提供_Entity.description_的属性。\n"><link rel="shortcut icon" href=/favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_6d706b210ec7fde4.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Coinidea的博客</a></h1><h2 class=site-description>Life is random</h2></div></header><ol class=menu-social><li><a href=mailto:admin@coinidea.com target=_blank title=Email rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M3 7l9 6 9-6"/></svg></a></li><li><a href=https://github.com/hujiulin target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/hujiulin/ target=_blank title=LinkedIn rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 00-4 0"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/resume/><!doctype html><svg t="1720263044212" class="icon" viewBox="0 0 1024 1024" p-id="4271" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M809.286 82.487H218.177c-39.747.0-72.363 32.614-72.363 72.363v729.712c0 39.747 32.614 72.363 72.363 72.363h496.329l167.138-172.238V154.849c0-39.747-32.614-72.363-72.363-72.363zM711.446 889.657v-67.874c0-16.103 13.249-29.148 29.148-29.148h62.372l-91.521 97.025zM834.561 739.842h-88.666c-44.844.0-81.532 36.689-81.532 81.532v85.61H221.847c-16.103.0-29.148-13.249-29.148-29.148V164.43c0-16.103 13.249-29.148 29.148-29.148h583.568c16.103.0 29.148 13.249 29.148 29.148v575.414zM266.484 312.818H648.87c13.654.0 24.868-11.211 24.868-25.07.0-13.654-11.414-24.868-25.07-24.868H266.485c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07zM266.691 383.344c-13.654.0-24.868 11.414-24.868 25.07s11.211 24.868 24.868 24.868h326.128c13.654.0 24.868-11.211 25.07-24.868.0-13.859-11.414-25.07-25.07-25.07H266.691zM714.507 503.807H266.489c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07h448.018c13.654.0 24.868-11.211 25.07-25.07.0-13.654-11.414-24.868-25.07-24.868z" fill="#272636" p-id="4272"/></svg>
+<span>简历</span></a></li><li><a href=/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>友情链接</span></a></li><li class=menu-bottom-section><ol class=menu><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language title=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://blog.coinidea.com/cesiumjs-1441.html selected>中文</option><option value=https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-4-spatial-data-visualization-part-2/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#viewer中的entity功能>Viewer中的Entity功能</a><ol><li><a href=#选中和描述>选中和描述</a></li></ol></li><li><a href=#camera控制>Camera控制</a></li><li><a href=#管理entities>管理Entities</a></li><li><a href=#picking-拾取>Picking 拾取</a></li><li><a href=#points-billboards-and-labels点广告牌和标签>Points, billboards, and labels（点、广告牌和标签）</a></li><li><a href=#3d-models-三维模型>3D models （三维模型）</a></li><li><a href=#the-property-system属性系统>The property system（属性系统）</a></li><li><a href=#资源>资源</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/cesiumjs/ style=background-color:#2a9d8f;color:#fff>cesiumjs</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/cesiumjs-1441.html>[CesiumJS]Cesium中级教程4 – 空间数据可视化（二）</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2019-05-22T02:15:02Z>May 22, 2019</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 8 分钟</time></div></footer><footer class=article-translations><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><div><a href=https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-4-spatial-data-visualization-part-2/ class=link>English</a></div></footer></div></header><section class=article-content><p>Cesium中文网：<a class=link href=http://cesiumcn.org/ target=_blank rel=noopener>http://cesiumcn.org/</a> | 国内快速访问：<a class=link href=http://cesium.coinidea.com/ target=_blank rel=noopener>http://cesium.coinidea.com/</a></p><h2 id=viewer中的entity功能>Viewer中的Entity功能</h2><p>让我们看看_Viewer_为操作entities提供出来的功能函数。</p><h3 id=选中和描述>选中和描述</h3><p>点击Viewer中的entity将在entity的位置上呈现<strong>SelectionIndicator</strong>控件，提供一个<strong>InfoBox</strong>用于呈现更多的信息。我们可以设置_name_，来定义_InfoBox_的标题。我们也以HTML样式来提供_Entity.description_的属性。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>name</span> <span class=o>=</span> <span class=s1>&#39;wyoming&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>description</span> <span class=o>=</span> <span class=s1>&#39;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;img\
+</span></span></span><span class=line><span class=cl><span class=s1>  width=&#34;50%&#34;\
+</span></span></span><span class=line><span class=cl><span class=s1>  style=&#34;float:left; margin: 0 1em 1em 0;&#34;\
+</span></span></span><span class=line><span class=cl><span class=s1>  src=&#34;//cesium.com/docs/tutorials/creating-entities/Flag_of_Wyoming.svg&#34;/&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>  Wyoming is a state in the mountain region of the Western \
+</span></span></span><span class=line><span class=cl><span class=s1>  United States.\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;/p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>  Wyoming is the 10th most extensive, but the least populous \
+</span></span></span><span class=line><span class=cl><span class=s1>  and the second least densely populated of the 50 United \
+</span></span></span><span class=line><span class=cl><span class=s1>  States. The western two thirds of the state is covered mostly \
+</span></span></span><span class=line><span class=cl><span class=s1>  with the mountain ranges and rangelands in the foothills of \
+</span></span></span><span class=line><span class=cl><span class=s1>  the eastern Rocky Mountains, while the eastern third of the \
+</span></span></span><span class=line><span class=cl><span class=s1>  state is high elevation prairie known as the High Plains. \
+</span></span></span><span class=line><span class=cl><span class=s1>  Cheyenne is the capital and the most populous city in Wyoming, \
+</span></span></span><span class=line><span class=cl><span class=s1>  with a population estimate of 63,624 in 2017.\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;/p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>  Source: \
+</span></span></span><span class=line><span class=cl><span class=s1>  &lt;a style=&#34;color: WHITE&#34;\
+</span></span></span><span class=line><span class=cl><span class=s1>    target=&#34;_blank&#34;\
+</span></span></span><span class=line><span class=cl><span class=s1>    href=&#34;http://en.wikipedia.org/wiki/Wyoming&#34;&gt;Wikipedia&lt;/a&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;/p&gt;&#39;</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab397a79173169.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab397a79173169.jpg alt><p>_InfoBox_中展示的所有HTML是沙盒式的。这组织了外部数据源带有恶意的注入到Cesium的应用程序中。为了在描述中运行JavaScript或浏览器插件，访问沙盒中的iframe通过_viewer.infoBox.frame_属性。参考<a class=link href=http://www.html5rocks.com/en/tutorials/security/sandboxed-iframes/ target=_blank rel=noopener>该文</a>可以获得更多的信息用于控制iframe中的沙盒。</p><h2 id=camera控制>Camera控制</h2><p>使用_iewer.zoomto_命令查看特定Entity。还有一个<strong>viewer.flyto</strong>方法，用于对Entity执行动画Camera飞行。这两种方法都可以传递给_Entity_、<em>EntityCollection</em>、<strong>DataSource</strong>或实体数组。</p><p>任何一种方法都会计算所有提供的实体的视图。默认情况下，Camera朝向北方，并从45度角向下看。通过传入_HeadingPitchrange_自定义此项。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>heading</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=mi>90</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>pitch</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=o>-</span><span class=mi>30</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>zoomTo</span><span class=p>(</span><span class=nx>wyoming</span><span class=p>,</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>HeadingPitchRange</span><span class=p>(</span><span class=nx>heading</span><span class=p>,</span> <span class=nx>pitch</span><span class=p>));</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab509dfa357270.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab509dfa357270.jpg alt><p><em>zoomTo_和_flyTo_都是异步函数；也就是说，它们不能保证在返回之前完成。例如，飞行到Entity会在许多动画帧后发生。这两个功能都返回<a class=link href=http://www.html5rocks.com/en/tutorials/es6/promises/ target=_blank rel=noopener>Promises</a>，可用于计划飞行或缩放完成后要执行的功能。用下面的代码片段替换示例中的_zoomTo</em>。这架飞机飞往怀俄明州，并在飞行结束后选中它。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>flyTo</span><span class=p>(</span><span class=nx>wyoming</span><span class=p>).</span><span class=nx>then</span><span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>result</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>result</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>viewer</span><span class=p>.</span><span class=nx>selectedEntity</span> <span class=o>=</span> <span class=nx>wyoming</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><p>如果航班飞行成功完成，则传递给回调函数的结果参数将为_true_；如果航班被取消，则结果参数将为_false_，即，在此航班完成之前，用户启动了另一个航班或缩放；或者，由于目标没有相应的可视化效果，即没有可缩放的对象。</p><p>有时，特别是在处理时间动态数据时，我们希望Camera聚焦跟随一个entity而不是地球的中心。可以通过设置<strong>viewer.trackedEntity</strong>完成。跟踪实体需要设置<strong>position</strong>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>position</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>107.724</span><span class=p>,</span> <span class=mf>42.68</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>trackedEntity</span> <span class=o>=</span> <span class=nx>wyoming</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>停止跟踪需要设置<strong>viewer.trackedEntity</strong>为<strong>undefined</strong>或远离entity双击屏幕即可。调用<strong>zoomTo</strong>或<strong>flyTo</strong>也可以取消跟踪。</p><h2 id=管理entities>管理Entities</h2><p><strong>EntityCollection</strong>是用于管理和监视一组实体的关联数组。<em>viewer.entities_是_EntityCollection</em>。_EntityCollection_包括用于管理实体的方法，如<strong>add</strong>、<strong>remove</strong>和<strong>removeAll</strong>。</p><p>有时我们需要更新我们以前创建的实体。所有实体实例都有一个唯一的<strong>id</strong>，可用于从集合中检索实体。我们可以为实体指定一个ID，否则将自动生成一个ID。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>id</span> <span class=o>:</span> <span class=s1>&#39;uniqueId&#39;</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><p>使用<strong>getByiId</strong>检索实体。如果不存在具有提供的ID的实体，则返回_undefined_。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>getById</span><span class=p>(</span><span class=s1>&#39;uniqueId&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>要获取实体或创建新实体（如果不存在），请使用<strong>getOrCreateEntity</strong>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>getOrCreateEntity</span><span class=p>(</span><span class=s1>&#39;uniqueId&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>手动创建新实体，然后使用_add_将其添加到集合中。如果集合中已存在具有相_id_的实体，则此方法将抛出异常。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Entity</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>id</span><span class=o>:</span> <span class=s1>&#39;uniqueId&#39;</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=nx>entity</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>_EntityCollection_的功能使用<strong>CollectionChanged</strong>事件发光。当在集合中添加、删除或更新实体时，会通知监听器。</p><p>使用Sandcastle中的[Geometry Showcase] (<a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Geometry%20and%20Appearances.html&amp;label=Showcases" target=_blank rel=noopener>https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Geometry and Appearances.html&amp;label=Showcases</a>) 示例。在创建viewer的行后粘贴以下代码。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>onChanged</span><span class=p>(</span><span class=nx>collection</span><span class=p>,</span> <span class=nx>added</span><span class=p>,</span> <span class=nx>removed</span><span class=p>,</span> <span class=nx>changed</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>msg</span> <span class=o>=</span> <span class=s1>&#39;Added ids&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=nx>added</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>msg</span> <span class=o>+=</span> <span class=s1>&#39;\n&#39;</span> <span class=o>+</span> <span class=nx>added</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>id</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>msg</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>collectionChanged</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=nx>onChanged</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>运行该示例时，您应该在控制台中看到大约65条消息，每次调用_viewer.entities.add_时都会看到一条消息。</p><p>当一次更新大量的实体时，将队列更新结束后并在最后发送一个整体事件，这样更具性能。这样Cesium可以在一次通过中处理所需的变化。在示例末尾，在_viewer.entities.add_之前调用<strong>viewer.entities.suspendEvents</strong>，并调用<strong>viewer.entities.resumeEvents</strong>。当再次运行演示时，我们现在得到包含所有65个实体的单一事件。这些调用是引用计数的，因此可以嵌套多个挂起和恢复调用。</p><h2 id=picking-拾取>Picking 拾取</h2><p>选择（单击选择一个对象）是我们需要与基本API进行短暂交互的领域之一。使用<strong>scene.pick</strong>和<strong>scene.drillpick</strong>检索实体。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=cm>/**
+</span></span></span><span class=line><span class=cl><span class=cm> * Returns the top-most entity at the provided window coordinates
+</span></span></span><span class=line><span class=cl><span class=cm> * or undefined if no entity is at that location.
+</span></span></span><span class=line><span class=cl><span class=cm> *
+</span></span></span><span class=line><span class=cl><span class=cm> * @param {Cartesian2} windowPosition The window coordinates.
+</span></span></span><span class=line><span class=cl><span class=cm> * @returns {Entity} The picked entity or undefined.
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>pickEntity</span><span class=p>(</span><span class=nx>viewer</span><span class=p>,</span> <span class=nx>windowPosition</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>picked</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>scene</span><span class=p>.</span><span class=nx>pick</span><span class=p>(</span><span class=nx>windowPosition</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>if</span> <span class=p>(</span><span class=nx>defined</span><span class=p>(</span><span class=nx>picked</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>id</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>defaultValue</span><span class=p>(</span><span class=nx>picked</span><span class=p>.</span><span class=nx>id</span><span class=p>,</span> <span class=nx>picked</span><span class=p>.</span><span class=nx>primitive</span><span class=p>.</span><span class=nx>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>id</span> <span class=k>instanceof</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Entity</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>return</span> <span class=nx>id</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=kc>undefined</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/**
+</span></span></span><span class=line><span class=cl><span class=cm> * Returns the list of entities at the provided window coordinates.
+</span></span></span><span class=line><span class=cl><span class=cm> * The entities are sorted front to back by their visual order.
+</span></span></span><span class=line><span class=cl><span class=cm> *
+</span></span></span><span class=line><span class=cl><span class=cm> * @param {Cartesian2} windowPosition The window coordinates.
+</span></span></span><span class=line><span class=cl><span class=cm> * @returns {Entity[]} The picked entities or undefined.
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>drillPickEntities</span><span class=p>(</span><span class=nx>viewer</span><span class=p>,</span> <span class=nx>windowPosition</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>i</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>entity</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>picked</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>pickedPrimitives</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>scene</span><span class=p>.</span><span class=nx>drillPick</span><span class=p>(</span><span class=nx>windowPosition</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>length</span> <span class=o>=</span> <span class=nx>pickedPrimitives</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>result</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>hash</span> <span class=o>=</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=p>(</span><span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=nx>length</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>picked</span> <span class=o>=</span> <span class=nx>pickedPrimitives</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=nx>entity</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>defaultValue</span><span class=p>(</span><span class=nx>picked</span><span class=p>.</span><span class=nx>id</span><span class=p>,</span> <span class=nx>picked</span><span class=p>.</span><span class=nx>primitive</span><span class=p>.</span><span class=nx>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>entity</span> <span class=k>instanceof</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Entity</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=nx>Cesium</span><span class=p>.</span><span class=nx>defined</span><span class=p>(</span><span class=nx>hash</span><span class=p>[</span><span class=nx>entity</span><span class=p>.</span><span class=nx>id</span><span class=p>]))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nx>result</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nx>entity</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=nx>hash</span><span class=p>[</span><span class=nx>entity</span><span class=p>.</span><span class=nx>id</span><span class=p>]</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=points-billboards-and-labels点广告牌和标签>Points, billboards, and labels（点、广告牌和标签）</h2><p>通过设置_position_、<strong>point</strong>和<strong>label</strong>来创建图形点或标签。例如，在我们最喜欢的运动队的主体育场放置一个点。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>viewer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Viewer</span><span class=p>(</span><span class=s1>&#39;cesiumContainer&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>citizensBankPark</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>name</span> <span class=o>:</span> <span class=s1>&#39;Citizens Bank Park&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>position</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>75.166493</span><span class=p>,</span> <span class=mf>39.9060534</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>point</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>pixelSize</span> <span class=o>:</span> <span class=mi>5</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>color</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>RED</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>outlineColor</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>WHITE</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>outlineWidth</span> <span class=o>:</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>label</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>text</span> <span class=o>:</span> <span class=s1>&#39;Citizens Bank Park&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>font</span> <span class=o>:</span> <span class=s1>&#39;14pt monospace&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>style</span><span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>LabelStyle</span><span class=p>.</span><span class=nx>FILL_AND_OUTLINE</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>outlineWidth</span> <span class=o>:</span> <span class=mi>2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>verticalOrigin</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>VerticalOrigin</span><span class=p>.</span><span class=nx>BOTTOM</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>pixelOffset</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian2</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=o>-</span><span class=mi>9</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>zoomTo</span><span class=p>(</span><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab8e0a06870941.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab8e0a06870941.jpg alt><p>默认情况下，标签水平和垂直居中。由于标签和点共享相同的位置，它们在屏幕上重叠。为避免这种情况，请指定标签源_Verticalorigin.BOTTOM_并将像素偏移量设置为（0，-9）。 将该点替换为一个<strong>billboard</strong>，它是一个始终面向用户的标记。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>citizensBankPark</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>  <span class=nx>position</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>75.166493</span><span class=p>,</span> <span class=mf>39.9060534</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>  <span class=nx>billboard</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>image</span> <span class=o>:</span> <span class=s1>&#39;//cesiumjs.org/tutorials/Visualizing-Spatial-Data/images/Philadelphia_Phillies.png&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>width</span> <span class=o>:</span> <span class=mi>64</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>height</span> <span class=o>:</span> <span class=mi>64</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nx>label</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>text</span> <span class=o>:</span> <span class=s1>&#39;Citizens Bank Park&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>font</span> <span class=o>:</span> <span class=s1>&#39;14pt monospace&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>style</span><span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>LabelStyle</span><span class=p>.</span><span class=nx>FILL_AND_OUTLINE</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>outlineWidth</span> <span class=o>:</span> <span class=mi>2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>verticalOrigin</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>VerticalOrigin</span><span class=p>.</span><span class=nx>TOP</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>pixelOffset</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian2</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>32</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4aba37ceae81956.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4aba37ceae81956.jpg alt><p>有关更多自定义选项，请参见Sandcastle<strong>标签</strong>和<strong>广告牌</strong>示例。</p><h2 id=3d-models-三维模型>3D models （三维模型）</h2><p>CesiumJS支持通过glTF（运行时asset format）创建3D模型。您可以在<a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=3D%20Models.html&amp;label=Showcases" target=_blank rel=noopener>3D models</a>Sandcastle中找到示例模型。</p><p>将位置和URI设置为glTF 模型以创建模型实体。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>viewer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Viewer</span><span class=p>(</span><span class=s1>&#39;cesiumContainer&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>position</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>123.0744619</span><span class=p>,</span> <span class=mf>44.0503706</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>model</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>uri</span> <span class=o>:</span> <span class=s1>&#39;../../../../Apps/SampleData/models/GroundVehicle/GroundVehicle.glb&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>trackedEntity</span> <span class=o>=</span> <span class=nx>entity</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4abc76626d77156.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4abc76626d77156.jpg alt><p>默认情况下，模型是垂直的，面向东。通过为<strong>Entity.Orientation</strong>属性指定<strong>Quaternion</strong>来控制模型的方向。这将控制模型的heading、pitch和roll。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>viewer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Viewer</span><span class=p>(</span><span class=s1>&#39;cesiumContainer&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>position</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>123.0744619</span><span class=p>,</span> <span class=mf>44.0503706</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>heading</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=mf>45.0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>pitch</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=mf>15.0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>roll</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=mf>0.0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>orientation</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Transforms</span><span class=p>.</span><span class=nx>headingPitchRollQuaternion</span><span class=p>(</span><span class=nx>position</span><span class=p>,</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>HeadingPitchRoll</span><span class=p>(</span><span class=nx>heading</span><span class=p>,</span> <span class=nx>pitch</span><span class=p>,</span> <span class=nx>roll</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>position</span> <span class=o>:</span> <span class=nx>position</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>orientation</span> <span class=o>:</span> <span class=nx>orientation</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>model</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>uri</span> <span class=o>:</span> <span class=s1>&#39;../../../../Apps/SampleData/models/GroundVehicle/GroundVehicle.glb&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>trackedEntity</span> <span class=o>=</span> <span class=nx>entity</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>有关更高级的模型功能，请参见<a class=link href=https://cesium.com/docs/tutorials/3d-models target=_blank rel=noopener>3D模型教程</a>。如果你创建自己的模型，一定要看到我们关于<a class=link href=https://cesium.com/blog/2014/12/15/gltf-tips-for-artists/ target=_blank rel=noopener>glTF Tips for Artists</a>提示的帖子。</p><h2 id=the-property-system属性系统>The property system（属性系统）</h2><p>我们为实体定义的所有值都存储为_property_对象。例如，请参见怀俄明州大纲的值：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=k>typeof</span> <span class=nx>wyoming</span><span class=p>.</span><span class=nx>polygon</span><span class=p>.</span><span class=nx>outline</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p><em>outline_是<strong>ConstantProperty</strong>的一个实例。本教程使用一种称为隐式属性转换（implicit property conversion）的速记形式，它自动获取原始值并在引擎盖下创建相应的_Property</em>。如果没有这个速记，我们将不得不编写一个更长版本的初始示例：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>wyoming</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Entity</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>name</span> <span class=o>=</span> <span class=s1>&#39;Wyoming&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>polygon</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>PolygonGraphics</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>polygon</span><span class=p>.</span><span class=nx>material</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>ColorMaterialProperty</span><span class=p>(</span><span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>RED</span><span class=p>.</span><span class=nx>withAlpha</span><span class=p>(</span><span class=mf>0.5</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=nx>polygon</span><span class=p>.</span><span class=nx>outline</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>ConstantProperty</span><span class=p>(</span><span class=kc>true</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>polygon</span><span class=p>.</span><span class=nx>outlineColor</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>ConstantProperty</span><span class=p>(</span><span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>BLACK</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>polygon</span> <span class=o>=</span> <span class=nx>polygon</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=nx>wyoming</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>之所以使用属性，是因为实体API不仅能够表示常量值，而且能够表示随时间变化的值。请参阅<a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/?src=Callback%20Property.html" target=_blank rel=noopener>Callback Property</a>和<a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/?src=Interpolation.html" target=_blank rel=noopener>Interpolation</a>Sandcastle示例，了解一些时间动态属性。</p><h2 id=资源>资源</h2><p>有关如何使用_GeoJSON_和_CZML_设置样式和创建实体的示例，请参阅<a class=link href=https://cesium.com/docs/tutorials/cesium-workshop target=_blank rel=noopener>Cesium Workshop Tutorial</a>。</p><p><strong>Cesium中文网交流QQ群：807482793</strong></p><p>Cesium中文网：<a class=link href=http://cesiumcn.org/ target=_blank rel=noopener>http://cesiumcn.org/</a> | 国内快速访问：<a class=link href=http://cesium.coinidea.com/ target=_blank rel=noopener>http://cesium.coinidea.com/</a></p></section><footer class=article-footer><section class=article-tags><a href=/tags/cesiumjs/>Cesiumjs</a>
+<a href=/tags/cesium%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B/>Cesium中文教程</a>
+<a href=/tags/cesium%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/>Cesium中文文档</a>
+<a href=/tags/gis/>GIS</a>
+<a href=/tags/%E4%B8%89%E7%BB%B4gis/>三维GIS</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/cesiumjs-1848.html><div class=article-details><h2 class=article-title>使用Cesium将CDB转换为3D Tiles</h2></div></a></article><article><a href=/cesiumjs-1845.html><div class=article-details><h2 class=article-title>用Cesium ion和Bentley的iModel.js创建数字孪生</h2></div></a></article><article><a href=/cesiumjs-1840.html><div class=article-details><h2 class=article-title>Cesium与Intel Geospatial合作，为企业提供地理空间解决方案</h2></div></a></article><article><a href=/cesiumjs-1837.html><div class=article-details><h2 class=article-title>可供政府用户使用的喀布尔(Kabul )数据</h2></div></a></article><article><a href=/cesiumjs-1833.html><div class=article-details><h2 class=article-title>Reality Capture新增内置Cesium ion共享3D模型的支持</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2026 Coinidea的博客</section><section class=powerby><a href=http://beian.miit.gov.cn/ target=_blank>京ICP备15014655号</a><br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Coinidea的博客</title><link>https://blog.coinidea.com/tags/linux/</link><description>Recent content in Linux on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 19 Dec 2018 03:01:19 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>[LNMP]内存优化</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1385.html</link><pubDate>Wed, 19 Dec 2018 03:01:19 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1385.html</guid><description>&lt;h2 id="问题描述"&gt;问题描述
+&lt;/h2&gt;&lt;p&gt;最近我的服务器出现了一个问题，内存不够的时候，常常 kill 掉我的 Tomcat。因为访问量整体不算大，目前 LNMP、Tomcat 都在一台机器上，但是这就导致了 Tomcat 相关的 Java 应用无法使用。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;free -m
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;查看内存情况发现，操作系统的内存只剩下 60MB 左右，几乎用尽。这种状况持续了 1 个月，当时一直如鲠在喉。中间想过增加内存，又嫌贵。当资源不够的时候一般有两种思路，第一种是增加资源，第二种是优化现有资源。对于我这种穷人来说，第二种常常是我首选的方法。&lt;/p&gt;
+&lt;p&gt;开始我以为是 Tomcat 自身或者别的进程太吃内存，用&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;top
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;命令查看后发现，php-fpm 进程常常是占用内存最多的进程。&lt;/p&gt;
+&lt;p&gt;查看消耗内存最多的前 40 个进程：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ps auxw &lt;span class="p"&gt;|&lt;/span&gt; head -1&lt;span class="p"&gt;;&lt;/span&gt; ps auxw &lt;span class="p"&gt;|&lt;/span&gt; sort -rn -k4 &lt;span class="p"&gt;|&lt;/span&gt; head -40
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;发现前 40 的进程中，php-fpm 占了绝大部分，而且占用率从 2% 到 7% 不等，问题已经很明显了。罪魁祸首就是 php-fpm。&lt;/p&gt;
+&lt;h2 id="解决问题"&gt;解决问题
+&lt;/h2&gt;&lt;p&gt;可以通过配置 &lt;strong&gt;pm.max_children&lt;/strong&gt; 属性，控制 php-fpm 子进程数量，首先，打开 php-fpm 配置文件，执行指令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vim /etc/php-fpm.d/www.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;pm.max_children&lt;/strong&gt; 默认值为 50，每一个进程占用 1%-2.5% 的内存，加起来就耗费大半内存了，尝试将其值调小，博主这里将其设置为 25（也是参考了其他博客），同时，检查以下两个属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;pm.max_spare_servers&lt;/strong&gt; : 该值表示保证空闲进程数最大值，如果空闲进程大于此值，此进行清理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;pm.min_spare_servers&lt;/strong&gt; : 保证空闲进程数最小值，如果空闲进程小于此值，则创建新的子进程;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这两个值均不能大于 &lt;strong&gt;pm.max_children&lt;/strong&gt; 值，通常设置 &lt;strong&gt;pm.max_spare_servers&lt;/strong&gt; 值为 &lt;strong&gt;pm.max_children&lt;/strong&gt; 值的 60%-80%。&lt;/p&gt;
+&lt;p&gt;最后，重启 php-fpm&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;service php-fpm restart
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;再次查看内存&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;free -m
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;发现有 600MB 内存的剩余，就算启动 Tomcat 之后，也能剩余 300MB。&lt;/p&gt;
+&lt;p&gt;参考链接： &lt;a class="link" href="https://www.jb51.net/article/129528.htm" target="_blank" rel="noopener"
+&gt;https://www.jb51.net/article/129528.htm&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;希望这对你有帮助！如果还有其他需要，请随时告诉我。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>分享一个下载RPM包的好地方</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1377.html</link><pubDate>Thu, 22 Nov 2018 07:17:03 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1377.html</guid><description>&lt;p&gt;在离线环境中（特指那些不能 wget、yum 的环境中），我们常常需要涉及到自己编译、安装 Linux 系列的操作系统。&lt;/p&gt;
+&lt;p&gt;这个时候版本的依赖是一件非常让人头痛的事，当然我们可以用 Docker 进行解决。&lt;/p&gt;
+&lt;p&gt;如果您的离线环境对您的上传下载也进行了限制，而且环境内部的版本不可控，那该是意见多么头痛的事啊。所以我找到了一个下载 Linux 系列 RPM 包的好地方：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://pkgs.org/" target="_blank" rel="noopener"
+&gt;https://pkgs.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;解决了操作系统、系统版本、软件依赖等问题。&lt;/p&gt;</description></item><item><title>[CentOS]Centos升级OpenSSH及vsftpd</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1265.html</link><pubDate>Thu, 23 Nov 2017 08:05:04 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1265.html</guid><description>&lt;h2 id="升级-openssh-到-74-版本以上"&gt;升级 OpenSSH 到 7.4 版本以上
+&lt;/h2&gt;&lt;h3 id="背景"&gt;背景
+&lt;/h3&gt;&lt;p&gt;目前来讲，Linux 下 OpenSSH 7.4 版本以下的，都有一些高危漏洞，需要将 OpenSSH 升级到 7.4 版本以上。在一台不能上外网的机器上（yum），是比较麻烦的事儿。网上大家都先建议备份好 ssh 和安装 telnet 防止，升级失败可以 telnet 进去。&lt;/p&gt;
+&lt;h3 id="常见问题及解决方案"&gt;常见问题及解决方案
+&lt;/h3&gt;&lt;h4 id="1-找不到-zlibh"&gt;1. 找不到 &lt;code&gt;zlib.h&lt;/code&gt;
+&lt;/h4&gt;&lt;p&gt;参考链接：&lt;a class="link" href="http://www.linuxidc.com/Linux/2012-10/72036.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2012-10/72036.htm&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="2-zlib-下载地址"&gt;2. zlib 下载地址
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.zlib.net/" target="_blank" rel="noopener"
+&gt;http://www.zlib.net/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="3-zlib-安装"&gt;3. zlib 安装
+&lt;/h4&gt;&lt;p&gt;参考链接：&lt;a class="link" href="http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml" target="_blank" rel="noopener"
+&gt;http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="4-手动编译生成安装-openssh-需要的依赖"&gt;4. 手动编译生成安装 OpenSSH 需要的依赖
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zlib&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam-devel&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果报错 &lt;code&gt;configure: error: PAM headers not found&lt;/code&gt;，可以下载 &lt;code&gt;pam-devel&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm" target="_blank" rel="noopener"
+&gt;http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="5-openssl-下载"&gt;5. OpenSSL 下载
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="ftp://ftp.openssl.org/source/" &gt;ftp://ftp.openssl.org/source/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="6-安装-openssl"&gt;6. 安装 OpenSSL
+&lt;/h4&gt;&lt;p&gt;参考链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/ikownyou/article/details/53021686" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/ikownyou/article/details/53021686&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.linuxidc.com/Linux/2011-10/45738.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2011-10/45738.htm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="注意事项"&gt;注意事项
+&lt;/h3&gt;&lt;p&gt;如果 OpenSSH 升级后 SecureCRT 不能登录，可能是因为 SecureCRT 版本太低不支持一些加密协议：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;a class="link" href="http://blog.csdn.net/yangg1991/article/details/51755562" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yangg1991/article/details/51755562&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="升级-openssh-的步骤"&gt;升级 OpenSSH 的步骤
+&lt;/h3&gt;&lt;p&gt;参考链接：&lt;a class="link" href="http://blog.csdn.net/u011080082/article/details/64503534" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u011080082/article/details/64503534&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="升级-vsftpd-从-222-到-234"&gt;升级 vsftpd 从 2.2.2 到 2.3.4
+&lt;/h2&gt;&lt;p&gt;下载 &lt;code&gt;vsftpd-2.3.4.tar.gz&lt;/code&gt; 包，64 位注意：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\/lib64\/g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\//lib64\//g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="配置-vsftpd"&gt;配置 vsftpd
+&lt;/h3&gt;&lt;p&gt;使用主动模式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vsftpd /etc/vsftpd/vsftpd.conf &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;standard_alone&lt;/code&gt; 启动下，需要将下列两行代码，加入配置文件头部：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;a class="link" href="http://wingjang.blog.163.com/blog/static/47913442200811113104509/" target="_blank" rel="noopener"
+&gt;http://wingjang.blog.163.com/blog/static/47913442200811113104509/&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;YES
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen_port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装之后默认只允许匿名用户登录，所以需要修改一下：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;a class="link" href="http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html" target="_blank" rel="noopener"
+&gt;http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="处理-tcp_wrapper-问题"&gt;处理 TCP_Wrapper 问题
+&lt;/h3&gt;&lt;p&gt;如果有问题，注意删除空格，也可以去掉：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/u010098331/article/details/50699914" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u010098331/article/details/50699914&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/yylklshmyt20090217/article/details/8500608" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yylklshmyt20090217/article/details/8500608&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="vsftpd-下载"&gt;vsftpd 下载
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/" target="_blank" rel="noopener"
+&gt;http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>[Linux]linux相关命令总结</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1066.html</link><pubDate>Sat, 17 Oct 2015 08:24:07 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1066.html</guid><description>&lt;h3 id="用户管理"&gt;用户管理
+&lt;/h3&gt;&lt;p&gt;近期一直在搭建10台左右的CDH集群，集群使用的10台CentOS6.7的服务器，所以需要常常用到Linux的一些用户管理的命令。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;修改密码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;passwd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;输入新的密码和确认密码即可，不过密码中最好包含：大小写字母，数字和字符确保安全性，Linux也会提醒密码规则。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;切换用户&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;su hdfs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;即可切换到hdfs用户。&lt;br&gt;
+或者不切换用户，以某个用户的权限来执行或者访问某个文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;su hdfs hadoop fs -mkdir /user/hdfs/test
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;以hdfs用户的权限使用hadoop在集群上的 &lt;code&gt;/user/hdfs/&lt;/code&gt; 建立test目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="文件管理"&gt;文件管理
+&lt;/h3&gt;&lt;p&gt;创建文件夹&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir &lt;span class="o"&gt;[&lt;/span&gt;folder&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;创建文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;touch/vi &lt;span class="o"&gt;[&lt;/span&gt;filename&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="时区选择"&gt;时区选择
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;根据提示选择时区，然后输入提示命令。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tzselect
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改clock文件中的时区。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/sysconfig/clock
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;ZONE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Asia/Shanghai&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除原有的localtime，新建localtime&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm /etc/localtime
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="开机执行命令"&gt;开机执行命令
+&lt;/h3&gt;&lt;p&gt;编辑rc.local文件即可&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/rc.local
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="启动时钟服务同步局域网下具有时钟服务的服务器的时钟"&gt;启动时钟服务，同步局域网下具有时钟服务的服务器的时钟
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;service ntpd start
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/usr/sbin/ntpdate 192.168.34.115
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;[To be continued…]&lt;/p&gt;</description></item><item><title>[Linux]Linux配置DNS地址</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1062.html</link><pubDate>Wed, 14 Oct 2015 13:28:18 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1062.html</guid><description>&lt;p&gt;DNS关系到服务器能否通过域名的方式联系到互联网。Linux下有两种方式配置DNS服务器的IP地址。&lt;/p&gt;
+&lt;p&gt;验证方式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ping www.baidu.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;临时性的方式&lt;br&gt;
+a) 编辑resolv.conf&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi ./etc/resolv.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;b) 输入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;nameserver 8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;保存即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;永久的配置方式&lt;br&gt;
+a) 编辑ifcfg-eth0&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;b) 输入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;DNS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;保存即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以通过&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ifconfig
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;查看本地的网卡，其中就能看到eth0的配置信息。&lt;/p&gt;</description></item><item><title>[Linux]CentOS挂载NTFS移动硬盘</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1059.html</link><pubDate>Thu, 01 Oct 2015 06:26:08 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1059.html</guid><description>&lt;p&gt;服务器是CentOS的操作系统，需要挂载两个2T的移动硬盘。&lt;/p&gt;
+&lt;p&gt;命令如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mount -t ntfs /dev/sdn1 /test1
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mount： unknown filesystem type ‘ntfs’
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;出错了，错误的意思是说，不认识“NTFS”，解决方式如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;span class="lnt"&gt;6
+&lt;/span&gt;&lt;span class="lnt"&gt;7
+&lt;/span&gt;&lt;span class="lnt"&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;wget http://tuxera.com/opensource/ntfs-3g_ntfsprogs-2013.1.13.tgz
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zxvf ntfs-3g_ntfsprogs-2013.1.13.tgz
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cd ntfs-3g_ntfsprogs-2013.1.13
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./configure
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;make install
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir /mnt/window
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mount -t ntfs-3g /dev/sdn1 /mnt/window
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;取消挂载：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;umount /dev/sdn1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

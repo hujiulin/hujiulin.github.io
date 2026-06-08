@@ -1,0 +1,363 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="Cesium Chinese Website: http://cesiumcn.org/ | China Fast Access: http://cesium.coinidea.com/\nEntity Features in Viewer Let&rsquo;s look at the functions that Viewer provides for manipulating entities.\nSelection and Description Clicking an entity in the Viewer will display a SelectionIndicator widget at the entity&rsquo;s location, providing an InfoBox for presenting more information. We can set name to define the title of the InfoBox. We can also provide the Entity.description property in HTML format.\n"><title>[CesiumJS] Cesium Intermediate Tutorial 4 - Spatial Data Visualization (Part 2)</title><link rel=canonical href=https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-4-spatial-data-visualization-part-2/><link rel=stylesheet href=/scss/style.min.86591c898bd806857815fbb8c47e8d3fed97c133b78e83d9bfc27b164dd0aa2b.css><meta property='og:title' content="[CesiumJS] Cesium Intermediate Tutorial 4 - Spatial Data Visualization (Part 2)"><meta property='og:description' content="Cesium Chinese Website: http://cesiumcn.org/ | China Fast Access: http://cesium.coinidea.com/\nEntity Features in Viewer Let&rsquo;s look at the functions that Viewer provides for manipulating entities.\nSelection and Description Clicking an entity in the Viewer will display a SelectionIndicator widget at the entity&rsquo;s location, providing an InfoBox for presenting more information. We can set name to define the title of the InfoBox. We can also provide the Entity.description property in HTML format.\n"><meta property='og:url' content='https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-4-spatial-data-visualization-part-2/'><meta property='og:site_name' content="Coinidea's Blog"><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='cesiumjs'><meta property='article:tag' content='Cesium Tutorial'><meta property='article:tag' content='Cesium Documentation'><meta property='article:tag' content='GIS'><meta property='article:tag' content='3D GIS'><meta property='article:published_time' content='2019-05-22T02:15:02+00:00'><meta property='article:modified_time' content='2019-05-22T02:15:02+00:00'><meta name=twitter:title content="[CesiumJS] Cesium Intermediate Tutorial 4 - Spatial Data Visualization (Part 2)"><meta name=twitter:description content="Cesium Chinese Website: http://cesiumcn.org/ | China Fast Access: http://cesium.coinidea.com/\nEntity Features in Viewer Let&rsquo;s look at the functions that Viewer provides for manipulating entities.\nSelection and Description Clicking an entity in the Viewer will display a SelectionIndicator widget at the entity&rsquo;s location, providing an InfoBox for presenting more information. We can set name to define the title of the InfoBox. We can also provide the Entity.description property in HTML format.\n"><link rel="shortcut icon" href=/favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/en/><img src=/img/avatar_hu_6d706b210ec7fde4.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/en>Coinidea's Blog</a></h1><h2 class=site-description>Life is random</h2></div></header><ol class=menu-social><li><a href=mailto:admin@coinidea.com target=_blank title=Email rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M3 7l9 6 9-6"/></svg></a></li><li><a href=https://github.com/hujiulin target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/hujiulin/ target=_blank title=LinkedIn rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 00-4 0"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/en/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/en/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/en/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/en/resume/><!doctype html><svg t="1720263044212" class="icon" viewBox="0 0 1024 1024" p-id="4271" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M809.286 82.487H218.177c-39.747.0-72.363 32.614-72.363 72.363v729.712c0 39.747 32.614 72.363 72.363 72.363h496.329l167.138-172.238V154.849c0-39.747-32.614-72.363-72.363-72.363zM711.446 889.657v-67.874c0-16.103 13.249-29.148 29.148-29.148h62.372l-91.521 97.025zM834.561 739.842h-88.666c-44.844.0-81.532 36.689-81.532 81.532v85.61H221.847c-16.103.0-29.148-13.249-29.148-29.148V164.43c0-16.103 13.249-29.148 29.148-29.148h583.568c16.103.0 29.148 13.249 29.148 29.148v575.414zM266.484 312.818H648.87c13.654.0 24.868-11.211 24.868-25.07.0-13.654-11.414-24.868-25.07-24.868H266.485c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07zM266.691 383.344c-13.654.0-24.868 11.414-24.868 25.07s11.211 24.868 24.868 24.868h326.128c13.654.0 24.868-11.211 25.07-24.868.0-13.859-11.414-25.07-25.07-25.07H266.691zM714.507 503.807H266.489c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07h448.018c13.654.0 24.868-11.211 25.07-25.07.0-13.654-11.414-24.868-25.07-24.868z" fill="#272636" p-id="4272"/></svg>
+<span>Resume</span></a></li><li><a href=/en/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language title=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://blog.coinidea.com/cesiumjs-1441.html>中文</option><option value=https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-4-spatial-data-visualization-part-2/ selected>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>Dark Mode</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#entity-features-in-viewer>Entity Features in Viewer</a><ol><li><a href=#selection-and-description>Selection and Description</a></li></ol></li><li><a href=#camera-controls>Camera Controls</a></li><li><a href=#managing-entities>Managing Entities</a></li><li><a href=#picking>Picking</a></li><li><a href=#points-billboards-and-labels>Points, Billboards, and Labels</a></li><li><a href=#3d-models>3D Models</a></li><li><a href=#the-property-system>The Property System</a></li><li><a href=#resources>Resources</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/en/categories/cesiumjs/ style=background-color:#2a9d8f;color:#fff>CesiumJS</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/en/p/cesiumjs-cesium-intermediate-tutorial-4-spatial-data-visualization-part-2/>[CesiumJS] Cesium Intermediate Tutorial 4 - Spatial Data Visualization (Part 2)</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2019-05-22T02:15:02Z>May 22, 2019</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>9 minute read</time></div></footer><footer class=article-translations><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><div><a href=https://blog.coinidea.com/cesiumjs-1441.html class=link>中文</a></div></footer></div></header><section class=article-content><p>Cesium Chinese Website: <a class=link href=http://cesiumcn.org/ target=_blank rel=noopener>http://cesiumcn.org/</a> | China Fast Access: <a class=link href=http://cesium.coinidea.com/ target=_blank rel=noopener>http://cesium.coinidea.com/</a></p><h2 id=entity-features-in-viewer>Entity Features in Viewer</h2><p>Let&rsquo;s look at the functions that <em>Viewer</em> provides for manipulating entities.</p><h3 id=selection-and-description>Selection and Description</h3><p>Clicking an entity in the Viewer will display a <strong>SelectionIndicator</strong> widget at the entity&rsquo;s location, providing an <strong>InfoBox</strong> for presenting more information. We can set <em>name</em> to define the title of the <em>InfoBox</em>. We can also provide the <em>Entity.description</em> property in HTML format.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>name</span> <span class=o>=</span> <span class=s1>&#39;wyoming&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>description</span> <span class=o>=</span> <span class=s1>&#39;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;img\
+</span></span></span><span class=line><span class=cl><span class=s1>  width=&#34;50%&#34;\
+</span></span></span><span class=line><span class=cl><span class=s1>  style=&#34;float:left; margin: 0 1em 1em 0;&#34;\
+</span></span></span><span class=line><span class=cl><span class=s1>  src=&#34;//cesium.com/docs/tutorials/creating-entities/Flag_of_Wyoming.svg&#34;/&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>  Wyoming is a state in the mountain region of the Western \
+</span></span></span><span class=line><span class=cl><span class=s1>  United States.\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;/p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>  Wyoming is the 10th most extensive, but the least populous \
+</span></span></span><span class=line><span class=cl><span class=s1>  and the second least densely populated of the 50 United \
+</span></span></span><span class=line><span class=cl><span class=s1>  States. The western two thirds of the state is covered mostly \
+</span></span></span><span class=line><span class=cl><span class=s1>  with the mountain ranges and rangelands in the foothills of \
+</span></span></span><span class=line><span class=cl><span class=s1>  the eastern Rocky Mountains, while the eastern third of the \
+</span></span></span><span class=line><span class=cl><span class=s1>  state is high elevation prairie known as the High Plains. \
+</span></span></span><span class=line><span class=cl><span class=s1>  Cheyenne is the capital and the most populous city in Wyoming, \
+</span></span></span><span class=line><span class=cl><span class=s1>  with a population estimate of 63,624 in 2017.\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;/p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;p&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>  Source: \
+</span></span></span><span class=line><span class=cl><span class=s1>  &lt;a style=&#34;color: WHITE&#34;\
+</span></span></span><span class=line><span class=cl><span class=s1>    target=&#34;_blank&#34;\
+</span></span></span><span class=line><span class=cl><span class=s1>    href=&#34;http://en.wikipedia.org/wiki/Wyoming&#34;&gt;Wikipedia&lt;/a&gt;\
+</span></span></span><span class=line><span class=cl><span class=s1>&lt;/p&gt;&#39;</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab397a79173169.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab397a79173169.jpg alt><p>All HTML displayed in the <em>InfoBox</em> is sandboxed. This prevents external data sources from injecting malicious content into the Cesium application. To run JavaScript or browser plugins within the description, access the sandboxed iframe via the <em>viewer.infoBox.frame</em> property. Refer to <a class=link href=http://www.html5rocks.com/en/tutorials/security/sandboxed-iframes/ target=_blank rel=noopener>this article</a> for more information on controlling iframe sandboxing.</p><h2 id=camera-controls>Camera Controls</h2><p>Use the <em>viewer.zoomTo</em> command to view a specific Entity. There is also a <strong>viewer.flyTo</strong> method for performing animated Camera flights to an Entity. Both methods can be passed an <em>Entity</em>, <em>EntityCollection</em>, <strong>DataSource</strong>, or an array of entities.</p><p>Either method will calculate the view for all provided entities. By default, the Camera faces north and looks down at a 45-degree angle. Customize this by passing in a <em>HeadingPitchRange</em>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>heading</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=mi>90</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>pitch</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=o>-</span><span class=mi>30</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>zoomTo</span><span class=p>(</span><span class=nx>wyoming</span><span class=p>,</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>HeadingPitchRange</span><span class=p>(</span><span class=nx>heading</span><span class=p>,</span> <span class=nx>pitch</span><span class=p>));</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab509dfa357270.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab509dfa357270.jpg alt><p><em>zoomTo</em> and <em>flyTo</em> are both asynchronous functions; that is, they are not guaranteed to complete before returning. For example, flying to an Entity happens over many animation frames. Both functions return <a class=link href=http://www.html5rocks.com/en/tutorials/es6/promises/ target=_blank rel=noopener>Promises</a> that can be used to schedule actions to perform after the flight or zoom completes. Replace <em>zoomTo</em> in the example with the following code snippet. This flies to Wyoming and selects it after the flight ends.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>flyTo</span><span class=p>(</span><span class=nx>wyoming</span><span class=p>).</span><span class=nx>then</span><span class=p>(</span><span class=kd>function</span><span class=p>(</span><span class=nx>result</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>result</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>viewer</span><span class=p>.</span><span class=nx>selectedEntity</span> <span class=o>=</span> <span class=nx>wyoming</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><p>The result parameter passed to the callback function will be <em>true</em> if the flight completed successfully; <em>false</em> if the flight was cancelled &ndash; that is, the user initiated another flight or zoom before this one completed; or if the target had no corresponding visualization, i.e., nothing to zoom to.</p><p>Sometimes, especially when working with time-dynamic data, we want the Camera to focus on and follow an entity rather than the center of the Earth. This can be accomplished by setting <strong>viewer.trackedEntity</strong>. Tracking an entity requires setting a <strong>position</strong>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>position</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>107.724</span><span class=p>,</span> <span class=mf>42.68</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>trackedEntity</span> <span class=o>=</span> <span class=nx>wyoming</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>To stop tracking, set <strong>viewer.trackedEntity</strong> to <strong>undefined</strong> or double-click away from the entity. Calling <strong>zoomTo</strong> or <strong>flyTo</strong> will also cancel tracking.</p><h2 id=managing-entities>Managing Entities</h2><p><strong>EntityCollection</strong> is an associative array for managing and monitoring a group of entities. <em>viewer.entities</em> is an <em>EntityCollection</em>. <em>EntityCollection</em> includes methods for managing entities such as <strong>add</strong>, <strong>remove</strong>, and <strong>removeAll</strong>.</p><p>Sometimes we need to update entities we previously created. All entity instances have a unique <strong>id</strong> that can be used to retrieve entities from the collection. We can assign an ID to an entity, otherwise one will be automatically generated.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>id</span> <span class=o>:</span> <span class=s1>&#39;uniqueId&#39;</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><p>Use <strong>getById</strong> to retrieve an entity. If no entity with the provided ID exists, <em>undefined</em> is returned.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>getById</span><span class=p>(</span><span class=s1>&#39;uniqueId&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>To get an entity or create a new one if it doesn&rsquo;t exist, use <strong>getOrCreateEntity</strong>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>getOrCreateEntity</span><span class=p>(</span><span class=s1>&#39;uniqueId&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>Manually create a new entity and use <em>add</em> to add it to the collection. This method will throw an exception if an entity with the same <em>id</em> already exists in the collection.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Entity</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>id</span><span class=o>:</span> <span class=s1>&#39;uniqueId&#39;</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=nx>entity</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p><em>EntityCollection</em> emits events using the <strong>CollectionChanged</strong> event. Listeners are notified when entities are added, removed, or updated in the collection.</p><p>Use the [Geometry Showcase] (<a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Geometry%20and%20Appearances.html&amp;label=Showcases" target=_blank rel=noopener>https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Geometry and Appearances.html&amp;label=Showcases</a>) example in Sandcastle. Paste the following code after the line that creates the viewer.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>onChanged</span><span class=p>(</span><span class=nx>collection</span><span class=p>,</span> <span class=nx>added</span><span class=p>,</span> <span class=nx>removed</span><span class=p>,</span> <span class=nx>changed</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>msg</span> <span class=o>=</span> <span class=s1>&#39;Added ids&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>for</span><span class=p>(</span><span class=kd>var</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=nx>added</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>msg</span> <span class=o>+=</span> <span class=s1>&#39;\n&#39;</span> <span class=o>+</span> <span class=nx>added</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>id</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>msg</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>collectionChanged</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=nx>onChanged</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>When running the example, you should see about 65 messages in the console, one for each call to <em>viewer.entities.add</em>.</p><p>When updating a large number of entities at once, it is more performant to queue the updates and send a single event at the end. This allows Cesium to process the required changes in a single pass. At the end of the example, call <strong>viewer.entities.suspendEvents</strong> before <em>viewer.entities.add</em>, and call <strong>viewer.entities.resumeEvents</strong> after. When running the demo again, we now get a single event containing all 65 entities. These calls are reference-counted, so multiple suspend and resume calls can be nested.</p><h2 id=picking>Picking</h2><p>Picking (clicking to select an object) is an area where we need brief interaction with the base API. Use <strong>scene.pick</strong> and <strong>scene.drillPick</strong> to retrieve entities.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=cm>/**
+</span></span></span><span class=line><span class=cl><span class=cm> * Returns the top-most entity at the provided window coordinates
+</span></span></span><span class=line><span class=cl><span class=cm> * or undefined if no entity is at that location.
+</span></span></span><span class=line><span class=cl><span class=cm> *
+</span></span></span><span class=line><span class=cl><span class=cm> * @param {Cartesian2} windowPosition The window coordinates.
+</span></span></span><span class=line><span class=cl><span class=cm> * @returns {Entity} The picked entity or undefined.
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>pickEntity</span><span class=p>(</span><span class=nx>viewer</span><span class=p>,</span> <span class=nx>windowPosition</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>picked</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>scene</span><span class=p>.</span><span class=nx>pick</span><span class=p>(</span><span class=nx>windowPosition</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>if</span> <span class=p>(</span><span class=nx>defined</span><span class=p>(</span><span class=nx>picked</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>id</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>defaultValue</span><span class=p>(</span><span class=nx>picked</span><span class=p>.</span><span class=nx>id</span><span class=p>,</span> <span class=nx>picked</span><span class=p>.</span><span class=nx>primitive</span><span class=p>.</span><span class=nx>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>id</span> <span class=k>instanceof</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Entity</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>return</span> <span class=nx>id</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=kc>undefined</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/**
+</span></span></span><span class=line><span class=cl><span class=cm> * Returns the list of entities at the provided window coordinates.
+</span></span></span><span class=line><span class=cl><span class=cm> * The entities are sorted front to back by their visual order.
+</span></span></span><span class=line><span class=cl><span class=cm> *
+</span></span></span><span class=line><span class=cl><span class=cm> * @param {Cartesian2} windowPosition The window coordinates.
+</span></span></span><span class=line><span class=cl><span class=cm> * @returns {Entity[]} The picked entities or undefined.
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>drillPickEntities</span><span class=p>(</span><span class=nx>viewer</span><span class=p>,</span> <span class=nx>windowPosition</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>i</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>entity</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>picked</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>pickedPrimitives</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>scene</span><span class=p>.</span><span class=nx>drillPick</span><span class=p>(</span><span class=nx>windowPosition</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>length</span> <span class=o>=</span> <span class=nx>pickedPrimitives</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>result</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>hash</span> <span class=o>=</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=p>(</span><span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=nx>length</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>picked</span> <span class=o>=</span> <span class=nx>pickedPrimitives</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=nx>entity</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>defaultValue</span><span class=p>(</span><span class=nx>picked</span><span class=p>.</span><span class=nx>id</span><span class=p>,</span> <span class=nx>picked</span><span class=p>.</span><span class=nx>primitive</span><span class=p>.</span><span class=nx>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>entity</span> <span class=k>instanceof</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Entity</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=nx>Cesium</span><span class=p>.</span><span class=nx>defined</span><span class=p>(</span><span class=nx>hash</span><span class=p>[</span><span class=nx>entity</span><span class=p>.</span><span class=nx>id</span><span class=p>]))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nx>result</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nx>entity</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=nx>hash</span><span class=p>[</span><span class=nx>entity</span><span class=p>.</span><span class=nx>id</span><span class=p>]</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=points-billboards-and-labels>Points, Billboards, and Labels</h2><p>Create graphical points or labels by setting <em>position</em>, <strong>point</strong>, and <strong>label</strong>. For example, place a point at our favorite sports team&rsquo;s home stadium.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>viewer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Viewer</span><span class=p>(</span><span class=s1>&#39;cesiumContainer&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>citizensBankPark</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>name</span> <span class=o>:</span> <span class=s1>&#39;Citizens Bank Park&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>position</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>75.166493</span><span class=p>,</span> <span class=mf>39.9060534</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>point</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>pixelSize</span> <span class=o>:</span> <span class=mi>5</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>color</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>RED</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>outlineColor</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>WHITE</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>outlineWidth</span> <span class=o>:</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>label</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>text</span> <span class=o>:</span> <span class=s1>&#39;Citizens Bank Park&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>font</span> <span class=o>:</span> <span class=s1>&#39;14pt monospace&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>style</span><span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>LabelStyle</span><span class=p>.</span><span class=nx>FILL_AND_OUTLINE</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>outlineWidth</span> <span class=o>:</span> <span class=mi>2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>verticalOrigin</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>VerticalOrigin</span><span class=p>.</span><span class=nx>BOTTOM</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>pixelOffset</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian2</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=o>-</span><span class=mi>9</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>zoomTo</span><span class=p>(</span><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab8e0a06870941.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4ab8e0a06870941.jpg alt><p>By default, labels are horizontally and vertically centered. Since the label and point share the same position, they overlap on screen. To avoid this, specify the label origin as <em>VerticalOrigin.BOTTOM</em> and set the pixel offset to (0, -9). Replace the point with a <strong>billboard</strong>, which is a marker that always faces the user.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>citizensBankPark</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>  <span class=nx>position</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>75.166493</span><span class=p>,</span> <span class=mf>39.9060534</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>  <span class=nx>billboard</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>image</span> <span class=o>:</span> <span class=s1>&#39;//cesiumjs.org/tutorials/Visualizing-Spatial-Data/images/Philadelphia_Phillies.png&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>width</span> <span class=o>:</span> <span class=mi>64</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>height</span> <span class=o>:</span> <span class=mi>64</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nx>label</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>text</span> <span class=o>:</span> <span class=s1>&#39;Citizens Bank Park&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>font</span> <span class=o>:</span> <span class=s1>&#39;14pt monospace&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>style</span><span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>LabelStyle</span><span class=p>.</span><span class=nx>FILL_AND_OUTLINE</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>outlineWidth</span> <span class=o>:</span> <span class=mi>2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>verticalOrigin</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>VerticalOrigin</span><span class=p>.</span><span class=nx>TOP</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>pixelOffset</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian2</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>32</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4aba37ceae81956.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4aba37ceae81956.jpg alt><p>For more customization options, see the Sandcastle <strong>Labels</strong> and <strong>Billboards</strong> examples.</p><h2 id=3d-models>3D Models</h2><p>CesiumJS supports creating 3D models via glTF (runtime asset format). You can find example models in the <a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=3D%20Models.html&amp;label=Showcases" target=_blank rel=noopener>3D models</a> Sandcastle.</p><p>Set a position and URI to a glTF model to create a model entity.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>viewer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Viewer</span><span class=p>(</span><span class=s1>&#39;cesiumContainer&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>position</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>123.0744619</span><span class=p>,</span> <span class=mf>44.0503706</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>model</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>uri</span> <span class=o>:</span> <span class=s1>&#39;../../../../Apps/SampleData/models/GroundVehicle/GroundVehicle.glb&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>trackedEntity</span> <span class=o>=</span> <span class=nx>entity</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><img data-original=http://cesium.coinidea.com/uploads/2019/05/22/5ce4abc76626d77156.jpg src=http://cesium.coinidea.com/uploads/2019/05/22/5ce4abc76626d77156.jpg alt><p>By default, the model is upright and faces east. Control the model&rsquo;s orientation by specifying a <strong>Quaternion</strong> for the <strong>Entity.orientation</strong> property. This controls the model&rsquo;s heading, pitch, and roll.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>viewer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Viewer</span><span class=p>(</span><span class=s1>&#39;cesiumContainer&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>position</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>123.0744619</span><span class=p>,</span> <span class=mf>44.0503706</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>heading</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=mf>45.0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>pitch</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=mf>15.0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>roll</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>toRadians</span><span class=p>(</span><span class=mf>0.0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>orientation</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Transforms</span><span class=p>.</span><span class=nx>headingPitchRollQuaternion</span><span class=p>(</span><span class=nx>position</span><span class=p>,</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>HeadingPitchRoll</span><span class=p>(</span><span class=nx>heading</span><span class=p>,</span> <span class=nx>pitch</span><span class=p>,</span> <span class=nx>roll</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>entity</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>position</span> <span class=o>:</span> <span class=nx>position</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>orientation</span> <span class=o>:</span> <span class=nx>orientation</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>model</span> <span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>uri</span> <span class=o>:</span> <span class=s1>&#39;../../../../Apps/SampleData/models/GroundVehicle/GroundVehicle.glb&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>trackedEntity</span> <span class=o>=</span> <span class=nx>entity</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>For more advanced model features, see the <a class=link href=https://cesium.com/docs/tutorials/3d-models target=_blank rel=noopener>3D Models tutorial</a>. If you create your own models, be sure to check our post on <a class=link href=https://cesium.com/blog/2014/12/15/gltf-tips-for-artists/ target=_blank rel=noopener>glTF Tips for Artists</a>.</p><h2 id=the-property-system>The Property System</h2><p>All values we define for entities are stored as <em>property</em> objects. For example, see the value of Wyoming&rsquo;s outline:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=k>typeof</span> <span class=nx>wyoming</span><span class=p>.</span><span class=nx>polygon</span><span class=p>.</span><span class=nx>outline</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p><em>outline</em> is an instance of <strong>ConstantProperty</strong>. This tutorial uses a shorthand called implicit property conversion, which automatically takes raw values and creates the corresponding <em>Property</em> under the hood. Without this shorthand, we would have to write a longer version of the initial example:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>wyoming</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Entity</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>name</span> <span class=o>=</span> <span class=s1>&#39;Wyoming&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>polygon</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>PolygonGraphics</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>polygon</span><span class=p>.</span><span class=nx>material</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>ColorMaterialProperty</span><span class=p>(</span><span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>RED</span><span class=p>.</span><span class=nx>withAlpha</span><span class=p>(</span><span class=mf>0.5</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=nx>polygon</span><span class=p>.</span><span class=nx>outline</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>ConstantProperty</span><span class=p>(</span><span class=kc>true</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>polygon</span><span class=p>.</span><span class=nx>outlineColor</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>ConstantProperty</span><span class=p>(</span><span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>BLACK</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>wyoming</span><span class=p>.</span><span class=nx>polygon</span> <span class=o>=</span> <span class=nx>polygon</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>viewer</span><span class=p>.</span><span class=nx>entities</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=nx>wyoming</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>Properties are used because the Entity API can represent not only constant values but also values that change over time. See the <a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/?src=Callback%20Property.html" target=_blank rel=noopener>Callback Property</a> and <a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/?src=Interpolation.html" target=_blank rel=noopener>Interpolation</a> Sandcastle examples for some time-dynamic properties.</p><h2 id=resources>Resources</h2><p>For examples on how to style and create entities using <em>GeoJSON</em> and <em>CZML</em>, see the <a class=link href=https://cesium.com/docs/tutorials/cesium-workshop target=_blank rel=noopener>Cesium Workshop Tutorial</a>.</p><p><strong>Cesium Chinese Website QQ Group: 807482793</strong></p><p>Cesium Chinese Website: <a class=link href=http://cesiumcn.org/ target=_blank rel=noopener>http://cesiumcn.org/</a> | China Fast Access: <a class=link href=http://cesium.coinidea.com/ target=_blank rel=noopener>http://cesium.coinidea.com/</a></p></section><footer class=article-footer><section class=article-tags><a href=/en/tags/cesiumjs/>Cesiumjs</a>
+<a href=/en/tags/cesium-tutorial/>Cesium Tutorial</a>
+<a href=/en/tags/cesium-documentation/>Cesium Documentation</a>
+<a href=/en/tags/gis/>GIS</a>
+<a href=/en/tags/3d-gis/>3D GIS</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/en/p/converting-cdb-to-3d-tiles-with-cesium/><div class=article-details><h2 class=article-title>Converting CDB to 3D Tiles with Cesium</h2></div></a></article><article><a href=/en/p/creating-digital-twins-with-cesium-ion-and-bentleys-imodel.js/><div class=article-details><h2 class=article-title>Creating Digital Twins with Cesium ion and Bentley's iModel.js</h2></div></a></article><article><a href=/en/p/cesium-partners-with-intel-geospatial-to-provide-enterprise-geospatial-solutions/><div class=article-details><h2 class=article-title>Cesium Partners with Intel Geospatial to Provide Enterprise Geospatial Solutions</h2></div></a></article><article><a href=/en/p/kabul-data-available-for-government-users/><div class=article-details><h2 class=article-title>Kabul Data Available for Government Users</h2></div></a></article><article><a href=/en/p/reality-capture-adds-built-in-support-for-sharing-3d-models-via-cesium-ion/><div class=article-details><h2 class=article-title>Reality Capture Adds Built-in Support for Sharing 3D Models via Cesium ion</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2026 Coinidea's Blog</section><section class=powerby><a href=http://beian.miit.gov.cn/ target=_blank>京ICP备15014655号</a><br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

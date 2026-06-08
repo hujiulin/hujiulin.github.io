@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>WordPress on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/wordpress/</link><description>Recent content in WordPress on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 11 Feb 2015 09:12:06 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/wordpress/index.xml" rel="self" type="application/rss+xml"/><item><title>WordPress Domain Configuration on SAE</title><link>https://blog.coinidea.com/en/p/wordpress-domain-configuration-on-sae/</link><pubDate>Wed, 11 Feb 2015 09:12:06 +0000</pubDate><guid>https://blog.coinidea.com/en/p/wordpress-domain-configuration-on-sae/</guid><description>&lt;p&gt;I set up WordPress on SAE and bound a custom domain to the application: &lt;a class="link" href="http://blog.coinidea.com" target="_blank" rel="noopener"
+&gt;blog.coinidea.com&lt;/a&gt;. The link does redirect to the blog page, but all internal links still point to app-name.sinaapp.com. This means the custom domain doesn&amp;rsquo;t apply to WordPress&amp;rsquo;s internal articles and pages.&lt;/p&gt;
+&lt;h2 id="solutions"&gt;Solutions:
+&lt;/h2&gt;&lt;h3 id="option-1-dashboard-settings"&gt;Option 1: Dashboard Settings
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Go to the WordPress dashboard.&lt;/li&gt;
+&lt;li&gt;Click &amp;ldquo;Settings&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Modify:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/02/QQ%e6%88%aa%e5%9b%be20150211170850-300x45.png"
+loading="lazy"
+alt="QQ截图20150211170850"
+&gt;&lt;/p&gt;
+&lt;h3 id="option-2-direct-database-modification-more-aggressive"&gt;Option 2: Direct Database Modification [More aggressive]
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Find the wp-options table.&lt;/li&gt;
+&lt;li&gt;Modify entries #1 and #37.&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

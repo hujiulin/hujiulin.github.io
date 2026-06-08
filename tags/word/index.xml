@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Word on Coinidea的博客</title><link>https://blog.coinidea.com/tags/word/</link><description>Recent content in Word on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 11 Jan 2015 10:34:33 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/word/index.xml" rel="self" type="application/rss+xml"/><item><title>批量Word转HTML – ConvertWordToHTML[Update: Word转换工具]</title><link>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-620.html</link><pubDate>Sun, 11 Jan 2015 10:34:33 +0000</pubDate><guid>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-620.html</guid><description>&lt;p&gt;最近遇到一个需求是需要将Word批量的转换为HTML。&lt;/p&gt;
+&lt;p&gt;如果是比较少量的Word文件，可以用Word自带的“另存为”即可。但是如果Word文件的量比较大的话，这是一件比较复杂的事。&lt;/p&gt;
+&lt;p&gt;上网查了很多资料，有PHP，Python，Ruby和C#等解决方法。其中找到一个“&lt;a class="link" href="http://jingyan.baidu.com/article/425e69e6ba12c4be15fc160c.html" target="_blank" rel="noopener"
+&gt;迅捷转换器&lt;/a&gt;”，不过和我的需求不是很符合，所以决定自己写一个。因为Word来自Microsoft，所以我觉得C#来解决这个问题或许会好一些。&lt;/p&gt;
+&lt;p&gt;我在GitHub上开源了一份自己写的带GUI的代码：&lt;a class="link" href="https://github.com/hujiulin/ConvertWordToHTML" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/ConvertWordToHTML&lt;/a&gt; [目前是单线程的，之后会改成多线程的]。&lt;/p&gt;
+&lt;p&gt;运行界面如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;程序初始界面：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be201501111826521.jpg"
+loading="lazy"
+alt="QQ截图20150111182652"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;“Open”选择一个含有Word文档的输入文件：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182756.jpg"
+loading="lazy"
+alt="QQ截图20150111182756"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;“SaveAs”选择一个输出文件夹：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182813.jpg"
+loading="lazy"
+alt="QQ截图20150111182813"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;程序运行结束：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182832.jpg"
+loading="lazy"
+alt="QQ截图20150111182832"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输入及输出结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182849-300x104.jpg"
+loading="lazy"
+alt="QQ截图20150111182849"
+&gt;
+&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182858-300x180.jpg"
+loading="lazy"
+alt="QQ截图20150111182858"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;程序说明：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;依赖：Windows操作系统，.Net FrameWork 3.5，Office Word&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Word另存为HTML有几种格式可以选：单个网页mht，网页htm以及筛选过的网页htm。我选择的是筛选过的html，所有公式全部转成gif或者jpg图片，稍微规范一点的htm不会含有微软中的一些恶心的格式信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;GitHub地址：&lt;a class="link" href="https://github.com/hujiulin/ConvertWordToHTML" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/ConvertWordToHTML&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;程序下载：&lt;a class="link" href="http://devhu-github.stor.sinaapp.com/ConvertWordToHTML.rar" target="_blank" rel="noopener"
+&gt;http://devhu-github.stor.sinaapp.com/ConvertWordToHTML.rar&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;2015-1-24 Update:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Rename solution and project to WordConverter; Add feature: convert word to PDF; ADD feature switch specified ext;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Word转换工具现在已经支持HTML和PDF格式。&lt;/p&gt;
+&lt;p&gt;GitHub地址更新为：&lt;a class="link" href="https://github.com/hujiulin/WordConverter" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/WordConverter&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;程序下载地址：&lt;a class="link" href="http://devhu-github.stor.sinaapp.com/WordConverter.rar" target="_blank" rel="noopener"
+&gt;http://devhu-github.stor.sinaapp.com/WordConverter.rar&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

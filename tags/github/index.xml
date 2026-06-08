@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitHub on Coinidea的博客</title><link>https://blog.coinidea.com/tags/github/</link><description>Recent content in GitHub on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 03 Sep 2015 15:18:16 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/github/index.xml" rel="self" type="application/rss+xml"/><item><title>WordGame打字游戏的MFC实现</title><link>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-996.html</link><pubDate>Thu, 03 Sep 2015 15:18:16 +0000</pubDate><guid>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-996.html</guid><description>&lt;p&gt;GitHub下载地址：&lt;a class="link" href="https://github.com/hujiulin/TypingGame" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/TypingGame&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;双击 &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164094620328.png"
+loading="lazy"
+alt="image001"
+&gt; 运行程序，弹出主界面：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164104550196.png"
+loading="lazy"
+alt="1441164104550196"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击菜单项“用户”，即可进行&lt;strong&gt;登录&lt;/strong&gt;和&lt;strong&gt;注册&lt;/strong&gt;操作。若您未注册过用户，可进行注册之后登录。现已注册&lt;strong&gt;UserName&lt;/strong&gt;用户为例，进行演示。&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;登录&lt;/strong&gt;即弹出登录窗口如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164148657136.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;注册&lt;/strong&gt;即弹出注册窗口如下：（或者直接点击&lt;strong&gt;注册&lt;/strong&gt;按钮）&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164153855855.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;
+&lt;p&gt;输入用户姓名：UserName；用户昵称：UserName；用户密码：UserName；如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164162259080.png"
+loading="lazy"
+alt="image009"
+&gt;&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;确定&lt;/strong&gt;即可完成注册。&lt;/p&gt;
+&lt;p&gt;以UserName用户登录，即可在主界面右上角看见如下信息：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164171230127.png"
+loading="lazy"
+alt="image011"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对游戏进行设置：&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164182712906.png"
+loading="lazy"
+alt="image013"
+&gt;，在游戏选项中可以对“游戏难度”，“图片类别”，“背景音乐”进行设置。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;游戏难度：&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;游戏难度&lt;/strong&gt;按钮，弹出一下对话框：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164193864492.png"
+loading="lazy"
+alt="image015"
+&gt;&lt;/p&gt;
+&lt;p&gt;可在下拉列表框中对相应的“单词量”，“拼写难度”，“出词频率”，“移动速率”进行设置。 单词量分为50,100,150三项。拼写难度目前是四级的随机单词。出词频率分为单倍和双倍。移动速度分为快，中，慢速。 点击&lt;strong&gt;设置即可&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;图片类别：&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;图片类别&lt;/strong&gt;按钮，弹出一下对话框：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164205372618.png"
+loading="lazy"
+alt="image017"
+&gt;&lt;/p&gt;
+&lt;p&gt;供选择的图片目前有气球和小鱼两种，点击单选按钮选择即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;背景音乐：&lt;/p&gt;
+&lt;p&gt;点击&lt;strong&gt;背景音乐&lt;/strong&gt;按钮，弹出以下对话框：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164230117070.png"
+loading="lazy"
+alt="image019"
+&gt;&lt;/p&gt;
+&lt;p&gt;在组框里选择相应的音乐，点击“选择音乐”按钮即可。&lt;/p&gt;
+&lt;p&gt;设置好的游戏选项将显示在： &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164244373483.png"
+loading="lazy"
+alt="image021"
+&gt; 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;点击 &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164255924062.png"
+loading="lazy"
+alt="image023"
+&gt;，弹出以下窗口：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164282923212.png"
+loading="lazy"
+alt="image025"
+&gt;&lt;/p&gt;
+&lt;p&gt;显示当前系统中，得分最高的前五名用户。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164327545002.png"
+loading="lazy"
+alt="image027"
+&gt;，&lt;strong&gt;帮助&lt;/strong&gt;菜单项分为两部分，一个是游戏规则，一个是关于游戏。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;游戏规则：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164311366091.png"
+loading="lazy"
+alt="image029"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关于游戏：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164353406206.png"
+loading="lazy"
+alt="image031"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164362486180.png"
+loading="lazy"
+alt="image033"
+&gt; 此处显示了当前的游戏状态，是&lt;strong&gt;开始&lt;/strong&gt;还是&lt;strong&gt;停止&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164370196881.png"
+loading="lazy"
+alt="image035"
+&gt; 点击这两个按钮，开始游戏或者退出游戏。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;以下是游戏过程中的某幅截图:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164377433708.png"
+loading="lazy"
+alt="1441164377433708"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>WIN32和jQuery贪吃蛇的开源实现</title><link>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-995.html</link><pubDate>Thu, 03 Sep 2015 15:13:45 +0000</pubDate><guid>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-995.html</guid><description>&lt;p&gt;本程序是一款简易的贪吃蛇程序具有WIN32和JavaScript两个版本，其中WIN32程序写于2010年，麻雀虽小五脏俱全，回头突然发现还是非常佩服五年多之前的自己的。jQuery程序写于2015年。&lt;/p&gt;
+&lt;p&gt;GitHub下载地址：&lt;a class="link" href="https://github.com/hujiulin/snake" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/snake&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;jQuery演示地址：&lt;a class="link" href="http://www.coinidea.com/game/snake/" target="_blank" rel="noopener"
+&gt;http://www.coinidea.com/game/snake/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;程序整体界面如下：&lt;/p&gt;
+&lt;h3 id="win32版本"&gt;WIN32版本：
+&lt;/h3&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150919/1442639966167035.gif"
+loading="lazy"
+alt="1442639966167035.gif"
+&gt;&lt;/p&gt;
+&lt;h3 id="jquery版本"&gt;jQuery版本：
+&lt;/h3&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20151115/1447556255354195.gif"
+loading="lazy"
+alt="jQuery贪吃蛇"
+&gt;&lt;/p&gt;
+&lt;h3 id="win32框架代码"&gt;WIN32框架代码：
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;span class="lnt"&gt;27
+&lt;/span&gt;&lt;span class="lnt"&gt;28
+&lt;/span&gt;&lt;span class="lnt"&gt;29
+&lt;/span&gt;&lt;span class="lnt"&gt;30
+&lt;/span&gt;&lt;span class="lnt"&gt;31
+&lt;/span&gt;&lt;span class="lnt"&gt;32
+&lt;/span&gt;&lt;span class="lnt"&gt;33
+&lt;/span&gt;&lt;span class="lnt"&gt;34
+&lt;/span&gt;&lt;span class="lnt"&gt;35
+&lt;/span&gt;&lt;span class="lnt"&gt;36
+&lt;/span&gt;&lt;span class="lnt"&gt;37
+&lt;/span&gt;&lt;span class="lnt"&gt;38
+&lt;/span&gt;&lt;span class="lnt"&gt;39
+&lt;/span&gt;&lt;span class="lnt"&gt;40
+&lt;/span&gt;&lt;span class="lnt"&gt;41
+&lt;/span&gt;&lt;span class="lnt"&gt;42
+&lt;/span&gt;&lt;span class="lnt"&gt;43
+&lt;/span&gt;&lt;span class="lnt"&gt;44
+&lt;/span&gt;&lt;span class="lnt"&gt;45
+&lt;/span&gt;&lt;span class="lnt"&gt;46
+&lt;/span&gt;&lt;span class="lnt"&gt;47
+&lt;/span&gt;&lt;span class="lnt"&gt;48
+&lt;/span&gt;&lt;span class="lnt"&gt;49
+&lt;/span&gt;&lt;span class="lnt"&gt;50
+&lt;/span&gt;&lt;span class="lnt"&gt;51
+&lt;/span&gt;&lt;span class="lnt"&gt;52
+&lt;/span&gt;&lt;span class="lnt"&gt;53
+&lt;/span&gt;&lt;span class="lnt"&gt;54
+&lt;/span&gt;&lt;span class="lnt"&gt;55
+&lt;/span&gt;&lt;span class="lnt"&gt;56
+&lt;/span&gt;&lt;span class="lnt"&gt;57
+&lt;/span&gt;&lt;span class="lnt"&gt;58
+&lt;/span&gt;&lt;span class="lnt"&gt;59
+&lt;/span&gt;&lt;span class="lnt"&gt;60
+&lt;/span&gt;&lt;span class="lnt"&gt;61
+&lt;/span&gt;&lt;span class="lnt"&gt;62
+&lt;/span&gt;&lt;span class="lnt"&gt;63
+&lt;/span&gt;&lt;span class="lnt"&gt;64
+&lt;/span&gt;&lt;span class="lnt"&gt;65
+&lt;/span&gt;&lt;span class="lnt"&gt;66
+&lt;/span&gt;&lt;span class="lnt"&gt;67
+&lt;/span&gt;&lt;span class="lnt"&gt;68
+&lt;/span&gt;&lt;span class="lnt"&gt;69
+&lt;/span&gt;&lt;span class="lnt"&gt;70
+&lt;/span&gt;&lt;span class="lnt"&gt;71
+&lt;/span&gt;&lt;span class="lnt"&gt;72
+&lt;/span&gt;&lt;span class="lnt"&gt;73
+&lt;/span&gt;&lt;span class="lnt"&gt;74
+&lt;/span&gt;&lt;span class="lnt"&gt;75
+&lt;/span&gt;&lt;span class="lnt"&gt;76
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;windows.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;math.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;time.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;string.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;LRESULT&lt;/span&gt; &lt;span class="n"&gt;CALLBACK&lt;/span&gt; &lt;span class="nf"&gt;WndProc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HWND&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;UINT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;WPARAM&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LPARAM&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;WINAPI&lt;/span&gt; &lt;span class="nf"&gt;WinMain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HINSTANCE&lt;/span&gt; &lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;HINSTANCE&lt;/span&gt; &lt;span class="n"&gt;hPrevInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LPSTR&lt;/span&gt; &lt;span class="n"&gt;lpCmdLine&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;nCmdShow&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;WNDCLASS&lt;/span&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;strClassName&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;hungry snake&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;strWindowName&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;贪吃蛇&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;HWND&lt;/span&gt; &lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;MSG&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cbClsExtra&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cbWndExtra&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hbrBackground&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HBRUSH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;GetStockObject&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;WHITE_BRUSH&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hCursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LoadCursor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;IDC_ARROW&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hIcon&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LoadIcon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;IDI_APPLICATION&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hInstance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lpfnWndProc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;WndProc&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lpszClassName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strClassName&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lpszMenuName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;RegisterClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;MessageBeep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;hwnd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CreateWindow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;strClassName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;strWindowName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;WS_OVERLAPPEDWINDOW&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;CW_USEDEFAULT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;CW_USEDEFAULT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;CW_USEDEFAULT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;CW_USEDEFAULT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;ShowWindow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;nCmdShow&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;UpdateWindow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GetMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;TranslateMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;DispatchMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wParam&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;LRESULT&lt;/span&gt; &lt;span class="n"&gt;CALLBACK&lt;/span&gt; &lt;span class="nf"&gt;WndProc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HWND&lt;/span&gt; &lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;UINT&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;WPARAM&lt;/span&gt; &lt;span class="n"&gt;wParam&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LPARAM&lt;/span&gt; &lt;span class="n"&gt;lParam&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;HDC&lt;/span&gt; &lt;span class="n"&gt;hdc&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;PAINTSTRUCT&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;HBRUSH&lt;/span&gt; &lt;span class="n"&gt;hBrush&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;HPEN&lt;/span&gt; &lt;span class="n"&gt;hPen&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;switch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_LBUTTONDOWN&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_RBUTTONDOWN&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_CHAR&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_PAINT&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;InvalidateRect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_DESTROY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;PostQuitMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;DefWindowProc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;wParam&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;lParam&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="贪吃蛇定义"&gt;贪吃蛇定义
+&lt;/h3&gt;&lt;p&gt;整个蛇为一个List，然后头部&lt;code&gt;squarehead&lt;/code&gt;、定义&lt;code&gt;direction&lt;/code&gt;具有四个方向、&lt;code&gt;speed&lt;/code&gt;速度、当前蛇的长度&lt;code&gt;List.size()&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id="碰撞检测"&gt;碰撞检测
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;当贪吃蛇的头部在&lt;code&gt;direction&lt;/code&gt;方向上碰到随机生成的一个&lt;code&gt;square&lt;/code&gt;时，即表示吃到食物；&lt;/li&gt;
+&lt;li&gt;当贪吃蛇回头碰到自己身体，或者碰到边界时，游戏结束。&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Bookworm辅助提示工具</title><link>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-644.html</link><pubDate>Thu, 12 Feb 2015 15:54:15 +0000</pubDate><guid>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-644.html</guid><description>&lt;p&gt;最近整理就资料的时候，偶然间发现自己在2011年左右写的一个小程序。&lt;/p&gt;
+&lt;p&gt;不知道大家有没有玩过一个游戏叫Bookworm，是PopCap公司出品的。游戏讲述的是一只书虫打败恶魔的故事，不过通关打怪，需要拼写单词。我记得是给一个3_3还是4_4的矩阵，里面有a-z或者*（代表任意字母），请拼出最长的单词，单词越长对恶魔的伤害越高。于是，我写了个一小程序，来让我学渣的我能拼出尽可能长的单词。前提条件需要一个单词表，工程的doc文件夹中有一个dictionary.txt，大约有7000多单词，需要提前导入。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;程序主界面：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Mainform-300x228.png"
+loading="lazy"
+alt="Mainform"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;加载词典：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/LoadDictionary-300x228.png"
+loading="lazy"
+alt="LoadDictionary"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;输入字符串：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Input-300x228.png"
+loading="lazy"
+alt="Input"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;得到结果列表：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Result-300x228.png"
+loading="lazy"
+alt="Result"
+&gt;&lt;/p&gt;
+&lt;p&gt;GitHub地址：&lt;a class="link" href="https://github.com/hujiulin/Bookworm" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/Bookworm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;项目说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用C++编写于2011年[编码比较乱]，能够用VC 6.0或者Visual Studio打开。&lt;/li&gt;
+&lt;li&gt;使用这个程序可以得到最长的单词。&lt;/li&gt;
+&lt;li&gt;输出字母[a-z 或者 *]， 能够得到答案列表。[\*代表任意字母]&lt;/li&gt;
+&lt;li&gt;是第一个人生小程序，最近在一堆旧资料中找到，所以上传分享:)。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>GitHub中Read.md添加图片</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-643.html</link><pubDate>Thu, 12 Feb 2015 12:42:27 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-643.html</guid><description>&lt;p&gt;因为之前一直用SVN，几个月之前才刚真正意义上接触Git，GitHub之前在参加KDD2013的时候使用过一段时间。&lt;/p&gt;
+&lt;p&gt;最近想好好地打磨自己的程序，注释和描述是必不可少，而且应该用心写的。&lt;/p&gt;
+&lt;p&gt;遇到一个问题，就是如何在Read.md文件中加入图片。&lt;/p&gt;
+&lt;p&gt;我使用的解决方案如下：&lt;/p&gt;
+&lt;p&gt;在Folder中创建一个Image Folder，然后放入相应需要显示在Read.md的图片，将该Folder提交到GitHub上。通过预览可以得到该图片在GitHub上面的url。&lt;/p&gt;
+&lt;p&gt;Read.md支持图片的标记语言：&lt;code&gt;&amp;lt;img data-original=&amp;quot;image-url&amp;quot; src=&amp;quot;http://blog.coinidea.com/wp-content/themes/9IPHP/images/lazy_loading.gif&amp;quot; alt=&amp;quot;image&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;解决实例：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/hujiulin/WordConverter" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/WordConverter&lt;/a&gt;&lt;/p&gt;</description></item><item><title>批量Word转HTML – ConvertWordToHTML[Update: Word转换工具]</title><link>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-620.html</link><pubDate>Sun, 11 Jan 2015 10:34:33 +0000</pubDate><guid>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-620.html</guid><description>&lt;p&gt;最近遇到一个需求是需要将Word批量的转换为HTML。&lt;/p&gt;
+&lt;p&gt;如果是比较少量的Word文件，可以用Word自带的“另存为”即可。但是如果Word文件的量比较大的话，这是一件比较复杂的事。&lt;/p&gt;
+&lt;p&gt;上网查了很多资料，有PHP，Python，Ruby和C#等解决方法。其中找到一个“&lt;a class="link" href="http://jingyan.baidu.com/article/425e69e6ba12c4be15fc160c.html" target="_blank" rel="noopener"
+&gt;迅捷转换器&lt;/a&gt;”，不过和我的需求不是很符合，所以决定自己写一个。因为Word来自Microsoft，所以我觉得C#来解决这个问题或许会好一些。&lt;/p&gt;
+&lt;p&gt;我在GitHub上开源了一份自己写的带GUI的代码：&lt;a class="link" href="https://github.com/hujiulin/ConvertWordToHTML" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/ConvertWordToHTML&lt;/a&gt; [目前是单线程的，之后会改成多线程的]。&lt;/p&gt;
+&lt;p&gt;运行界面如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;程序初始界面：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be201501111826521.jpg"
+loading="lazy"
+alt="QQ截图20150111182652"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;“Open”选择一个含有Word文档的输入文件：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182756.jpg"
+loading="lazy"
+alt="QQ截图20150111182756"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;“SaveAs”选择一个输出文件夹：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182813.jpg"
+loading="lazy"
+alt="QQ截图20150111182813"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;程序运行结束：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182832.jpg"
+loading="lazy"
+alt="QQ截图20150111182832"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输入及输出结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182849-300x104.jpg"
+loading="lazy"
+alt="QQ截图20150111182849"
+&gt;
+&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182858-300x180.jpg"
+loading="lazy"
+alt="QQ截图20150111182858"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;程序说明：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;依赖：Windows操作系统，.Net FrameWork 3.5，Office Word&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Word另存为HTML有几种格式可以选：单个网页mht，网页htm以及筛选过的网页htm。我选择的是筛选过的html，所有公式全部转成gif或者jpg图片，稍微规范一点的htm不会含有微软中的一些恶心的格式信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;GitHub地址：&lt;a class="link" href="https://github.com/hujiulin/ConvertWordToHTML" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/ConvertWordToHTML&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;程序下载：&lt;a class="link" href="http://devhu-github.stor.sinaapp.com/ConvertWordToHTML.rar" target="_blank" rel="noopener"
+&gt;http://devhu-github.stor.sinaapp.com/ConvertWordToHTML.rar&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;2015-1-24 Update:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Rename solution and project to WordConverter; Add feature: convert word to PDF; ADD feature switch specified ext;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Word转换工具现在已经支持HTML和PDF格式。&lt;/p&gt;
+&lt;p&gt;GitHub地址更新为：&lt;a class="link" href="https://github.com/hujiulin/WordConverter" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/WordConverter&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;程序下载地址：&lt;a class="link" href="http://devhu-github.stor.sinaapp.com/WordConverter.rar" target="_blank" rel="noopener"
+&gt;http://devhu-github.stor.sinaapp.com/WordConverter.rar&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

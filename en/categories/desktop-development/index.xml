@@ -1,0 +1,1201 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Desktop Development on Coinidea's Blog</title><link>https://blog.coinidea.com/en/categories/desktop-development/</link><description>Recent content in Desktop Development on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 08 Jun 2026 12:00:00 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/categories/desktop-development/index.xml" rel="self" type="application/rss+xml"/><item><title>EchoWise: I shipped an AI English-speaking app in 2 days with Agentic Engineering</title><link>https://blog.coinidea.com/en/p/echowise-2-days-agentic-engineering/</link><pubDate>Mon, 08 Jun 2026 12:00:00 +0000</pubDate><guid>https://blog.coinidea.com/en/p/echowise-2-days-agentic-engineering/</guid><description>&lt;h2 id="tldr"&gt;TL;DR
+&lt;/h2&gt;&lt;p&gt;In &lt;strong&gt;two days&lt;/strong&gt;, I shipped an open-source, cross-platform desktop AI English-speaking
+tutor: &lt;strong&gt;&lt;a class="link" href="https://github.com/hujiulin/EchoWise" target="_blank" rel="noopener"
+&gt;EchoWise&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Built end-to-end with &lt;strong&gt;Vibe Coding / Agentic Engineering&lt;/strong&gt;.&lt;/p&gt;
+&lt;p align="center"&gt;
+&lt;img src="https://blog.coinidea.com/img/echowise/demo.gif" alt="EchoWise — full walk-through" width="720" /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="why-echowise"&gt;Why EchoWise
+&lt;/h2&gt;&lt;p&gt;Almost every English-learning app on the market teaches you to &lt;strong&gt;study&lt;/strong&gt; English:
+flashcards, drills, scores, leaderboards. But what I actually needed when I was learning
+English wasn&amp;rsquo;t more learning — it was more &lt;strong&gt;using&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Stop studying English. Start using English.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;EchoWise is built on the opposite philosophy:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Communication before perfection&lt;/strong&gt; — Imperfect English that connects beats perfect grammar that stays silent&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Relationship before knowledge&lt;/strong&gt; — Polite stranger on Day 1, easy old friend by Day 30. Your AI companion&amp;rsquo;s tone evolves naturally with the day count&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gentle nudges, never interruptions&lt;/strong&gt; — The AI never lectures mid-reply. Scores sit quietly in the corner of your bubble — one glance when you want them&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Local-first&lt;/strong&gt; — Every conversation, recording, and AI voice playback stays on your machine. Nothing is uploaded&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="what-echowise-actually-does"&gt;What EchoWise actually does
+&lt;/h2&gt;&lt;p&gt;The whole product revolves around one core idea: &lt;strong&gt;a companion that grows with you.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="-a-companion-that-grows"&gt;🗣️ A companion that grows
+&lt;/h3&gt;&lt;p&gt;You give them a name, pick an avatar, choose a voice, write a persona.
+EchoWise tracks the Day count and maps the relationship into 5 tiers:
+&lt;strong&gt;Stranger → Acquaintance → Familiar → Friend → Old friend&lt;/strong&gt;.
+The AI&amp;rsquo;s tone follows naturally — polite stranger on Day 1, the kind of old friend
+who teases you and remembers what you said by Day 30.&lt;/p&gt;
+&lt;h3 id="-voice-first-conversation"&gt;🎙️ Voice-first conversation
+&lt;/h3&gt;&lt;p&gt;Hold the mic to record, release to transcribe; type when you can&amp;rsquo;t talk.
+The AI&amp;rsquo;s reply comes back as a &lt;strong&gt;voice-message-style bubble&lt;/strong&gt; — tap the waveform to play.
+Don&amp;rsquo;t want to listen? Click &amp;ldquo;Show transcript&amp;rdquo; for the text.
+The whole flow feels like a normal messaging app, not a drill exercise.&lt;/p&gt;
+&lt;h3 id="-coaching-that-never-interrupts"&gt;💡 Coaching that never interrupts
+&lt;/h3&gt;&lt;p&gt;The most annoying anti-pattern is an AI that breaks mid-conversation
+to lecture you about &amp;ldquo;you should have used the present perfect here.&amp;rdquo;
+EchoWise refuses to do that.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The AI &lt;strong&gt;never&lt;/strong&gt; mixes grammar lectures into its replies&lt;/li&gt;
+&lt;li&gt;After every sentence you say, a &lt;strong&gt;1–100 score chip&lt;/strong&gt; appears in the corner of your bubble, in 5 color bands:
+&lt;ul&gt;
+&lt;li&gt;🔴 &lt;strong&gt;Try again&lt;/strong&gt; (&amp;lt; 50)&lt;/li&gt;
+&lt;li&gt;🟠 &lt;strong&gt;Getting there&lt;/strong&gt; (50–59)&lt;/li&gt;
+&lt;li&gt;🟡 &lt;strong&gt;Clear&lt;/strong&gt; (60–69)&lt;/li&gt;
+&lt;li&gt;🟢 &lt;strong&gt;Natural&lt;/strong&gt; (70–89)&lt;/li&gt;
+&lt;li&gt;⭐ &lt;strong&gt;Native-like&lt;/strong&gt; (90+)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tap the chip to see &lt;strong&gt;original / better / native-like + a short note&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t tap? Keep talking. It never interrupts you&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="-growth-that-actually-means-something"&gt;📈 Growth that actually means something
+&lt;/h3&gt;&lt;p&gt;Not &amp;ldquo;how many words you reviewed today,&amp;rdquo; but:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Confidence trend&lt;/strong&gt; — rolling average of your last 5 sentences, updates as you talk&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;5-band distribution&lt;/strong&gt; — where do your sentences cluster&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Auto-picked &amp;ldquo;best so far&amp;rdquo;&lt;/strong&gt; and &lt;strong&gt;&amp;ldquo;worth revisiting&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Open the Growth view and see at a glance that you&amp;rsquo;re getting better.
+That positive feedback loop beats streak-counting any day.&lt;/p&gt;
+&lt;h3 id="-full-appearance-customization"&gt;🎨 Full appearance customization
+&lt;/h3&gt;&lt;p&gt;Theme (system / light / dark), 4 fonts, 4 sizes,
+6 preset gradient backgrounds — or upload your own image.
+Each companion can have their own avatar and background, too.&lt;/p&gt;
+&lt;h3 id="-multi-provider"&gt;🔌 Multi-provider
+&lt;/h3&gt;&lt;p&gt;OpenAI / Azure OpenAI in one click.
+Defaults to &lt;code&gt;gpt-5&lt;/code&gt; + &lt;code&gt;gpt-4o-transcribe&lt;/code&gt; + &lt;code&gt;gpt-4o-mini-tts&lt;/code&gt;.
+TTS voice instructions adapt dynamically to the companion&amp;rsquo;s persona —
+a lively companion gets a more energetic voice, a calm one gets a quieter delivery.&lt;/p&gt;
+&lt;h3 id="-fully-local"&gt;💾 Fully local
+&lt;/h3&gt;&lt;p&gt;SQLite database + filesystem.
+Every conversation, every recording you made, every AI voice clip —
+&lt;strong&gt;lives on your machine forever&lt;/strong&gt;, never uploaded to any server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="about-the-two-days"&gt;About the &amp;ldquo;two days&amp;rdquo;
+&lt;/h2&gt;&lt;p&gt;The entire build was a &lt;strong&gt;Vibe Coding / Agentic Engineering&lt;/strong&gt; workflow:
+&lt;strong&gt;I focused on product decisions and architectural judgment, the AI handled implementation and grind work.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;My job:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Decide what features ship, how the UX should flow, how many tiers in the relationship arc&lt;/li&gt;
+&lt;li&gt;Judge whether the architecture holds, whether an abstraction is worth it, where bugs actually live&lt;/li&gt;
+&lt;li&gt;Write the PRD, iterate on UX, review PRs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The AI&amp;rsquo;s job:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Write React components, call Tauri APIs, write unit tests&lt;/li&gt;
+&lt;li&gt;Tune Vite / Cargo / Tailwind config&lt;/li&gt;
+&lt;li&gt;Edit GitHub Actions workflows, fix CI failures&lt;/li&gt;
+&lt;li&gt;Propose improvements, catch my mistakes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After two days, this is what the product looked like:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Metric&lt;/th&gt;
+&lt;th&gt;Number&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Application code (TS + TSX + Rust)&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;~4,571 lines&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Unit test code&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;~3,405 lines&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Unit tests&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;281&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Line coverage&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;94.5%&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Cross-platform CI/CD&lt;/td&gt;
+&lt;td&gt;macOS + Windows, tag-triggered releases&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Auto-update&lt;/td&gt;
+&lt;td&gt;tauri-plugin-updater with signature verification&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="try-echowise"&gt;Try EchoWise
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: &lt;a class="link" href="https://github.com/hujiulin/EchoWise" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/EchoWise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a class="link" href="https://github.com/hujiulin/EchoWise/releases" target="_blank" rel="noopener"
+&gt;Releases page&lt;/a&gt; has macOS &lt;code&gt;.dmg&lt;/code&gt; and Windows &lt;code&gt;.msi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Setup&lt;/strong&gt;: Built-in OpenAI and Azure OpenAI presets — drop in your own API key and you&amp;rsquo;re talking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;macOS note&lt;/strong&gt;: the first time you open it you&amp;rsquo;ll see &lt;em&gt;&amp;ldquo;Apple could not verify&amp;hellip;&amp;rdquo;&lt;/em&gt;. That&amp;rsquo;s because I haven&amp;rsquo;t paid for an Apple Developer ID ($99/year) for notarization.
+Open System Settings → Privacy &amp;amp; Security → scroll to the bottom → click &lt;strong&gt;Open Anyway&lt;/strong&gt; once, and you&amp;rsquo;re done forever. Full steps are in the README.&lt;/p&gt;
+&lt;p&gt;If you enjoy it, a ⭐ on the EchoWise repo is very welcome — it helps more people find it.
+Feedback, bugs, ideas — open an Issue or PR on GitHub.&lt;/p&gt;</description></item><item><title>[C#]Serial Port Send and Receive Data</title><link>https://blog.coinidea.com/en/p/c%23serial-port-send-and-receive-data/</link><pubDate>Mon, 17 Jul 2017 14:12:53 +0000</pubDate><guid>https://blog.coinidea.com/en/p/c%23serial-port-send-and-receive-data/</guid><description>&lt;p&gt;&lt;strong&gt;Client Class&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;span class="lnt"&gt;27
+&lt;/span&gt;&lt;span class="lnt"&gt;28
+&lt;/span&gt;&lt;span class="lnt"&gt;29
+&lt;/span&gt;&lt;span class="lnt"&gt;30
+&lt;/span&gt;&lt;span class="lnt"&gt;31
+&lt;/span&gt;&lt;span class="lnt"&gt;32
+&lt;/span&gt;&lt;span class="lnt"&gt;33
+&lt;/span&gt;&lt;span class="lnt"&gt;34
+&lt;/span&gt;&lt;span class="lnt"&gt;35
+&lt;/span&gt;&lt;span class="lnt"&gt;36
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-csharp" data-lang="csharp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System.Collections.Generic&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System.Linq&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System.Text&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System.IO.Ports&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="nn"&gt;COMClient&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;COMClient&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="n"&gt;SerialPort&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;COMClient&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;COM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SerialPort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;COM&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Open a new serial port connection&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Open&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Discard data from the serial driver&amp;#39;s receive buffer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DiscardInBuffer&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Discard data from the serial driver&amp;#39;s transmit buffer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DiscardOutBuffer&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;~&lt;/span&gt;&lt;span class="n"&gt;COMClient&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Close the port connection&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Close&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="n"&gt;sendMsg&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Write the specified number of bytes to the serial port using buffer data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WriteLine&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Client call:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-csharp" data-lang="csharp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;COMClient&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;COMClient&lt;/span&gt; &lt;span class="n"&gt;com_client&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;COMClient&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;COMClient&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;COM4&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;com_client&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sendMsg&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;Hello World!&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Server:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;span class="lnt"&gt;27
+&lt;/span&gt;&lt;span class="lnt"&gt;28
+&lt;/span&gt;&lt;span class="lnt"&gt;29
+&lt;/span&gt;&lt;span class="lnt"&gt;30
+&lt;/span&gt;&lt;span class="lnt"&gt;31
+&lt;/span&gt;&lt;span class="lnt"&gt;32
+&lt;/span&gt;&lt;span class="lnt"&gt;33
+&lt;/span&gt;&lt;span class="lnt"&gt;34
+&lt;/span&gt;&lt;span class="lnt"&gt;35
+&lt;/span&gt;&lt;span class="lnt"&gt;36
+&lt;/span&gt;&lt;span class="lnt"&gt;37
+&lt;/span&gt;&lt;span class="lnt"&gt;38
+&lt;/span&gt;&lt;span class="lnt"&gt;39
+&lt;/span&gt;&lt;span class="lnt"&gt;40
+&lt;/span&gt;&lt;span class="lnt"&gt;41
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-csharp" data-lang="csharp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System.Collections.Generic&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System.Linq&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System.Text&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="nn"&gt;System.IO.Ports&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="nn"&gt;COM_Server&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Program&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;static&lt;/span&gt; &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="n"&gt;Main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Iterate through the serial port name array&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;foreach&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IO&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ports&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SerialPort&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GetPortNames&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;Console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WriteLine&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kt"&gt;byte&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="kt"&gt;byte&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;32&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;SerialPort&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SerialPort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;COM3&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Open a new serial port connection&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Open&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Discard data from the serial driver&amp;#39;s receive buffer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DiscardInBuffer&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Discard data from the serial driver&amp;#39;s transmit buffer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DiscardOutBuffer&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Read bytes from the serial input buffer and write them at the specified offset in a byte array&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ReadLine&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;StringBuilder&lt;/span&gt; &lt;span class="n"&gt;sb&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;StringBuilder&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;Console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Close the port connection&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Close&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// Suspend the current thread for 500 milliseconds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Threading&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;A virtual serial port is needed here — just install VSPD. Here we configure virtual serial ports COM3 and COM4:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2017/07/QQ%e6%88%aa%e5%9b%be20170717221737-300x205.png"
+loading="lazy"
+alt="QQ截图20170717221737"
+&gt;&lt;/p&gt;
+&lt;p&gt;Server startup screenshot:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2017/07/QQ%e6%88%aa%e5%9b%be20170717222051-300x181.png"
+loading="lazy"
+alt="QQ截图20170717222051"
+&gt;&lt;/p&gt;
+&lt;p&gt;Client sending screenshot:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2017/07/QQ%e6%88%aa%e5%9b%be20170717222105-300x174.png"
+loading="lazy"
+alt="QQ截图20170717222105"
+&gt;&lt;/p&gt;
+&lt;p&gt;Server receiving screenshot:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2017/07/QQ%e6%88%aa%e5%9b%be20170717222203-300x174.png"
+loading="lazy"
+alt="QQ截图20170717222203"
+&gt;&lt;/p&gt;</description></item><item><title>[Java] Creating a Maven Project in IntelliJ IDEA</title><link>https://blog.coinidea.com/en/p/java-creating-a-maven-project-in-intellij-idea/</link><pubDate>Thu, 28 Apr 2016 07:04:11 +0000</pubDate><guid>https://blog.coinidea.com/en/p/java-creating-a-maven-project-in-intellij-idea/</guid><description>&lt;h3 id="intellij-idea-version-150"&gt;IntelliJ IDEA Version: 15.0
+&lt;/h3&gt;&lt;p&gt;I had been using Eclipse/MyEclipse for Java and Android development, and heard that IntelliJ IDEA is also an excellent IDE. It is a product from the company behind PHPStorm.&lt;/p&gt;
+&lt;h3 id="what-is-maven"&gt;What is Maven?
+&lt;/h3&gt;&lt;p&gt;I only recently started using it. I hadn&amp;rsquo;t written much Java before &amp;ndash; I did some JSP during my undergraduate years and wrote some Android code recently. But Java has a rather serious issue with library dependency management, and there are so many library versions. I remember frequently downloading libraries from various places online, then using build path to add external libraries. This approach leads to messy library management, poor version control, and makes it difficult to share code. Maven is a project management tool that handles library versions and dependencies very well.&lt;/p&gt;
+&lt;h3 id="creating-a-maven-project"&gt;Creating a Maven Project
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;File -&amp;gt; New -&amp;gt; Project, select Maven.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/04/image001-300x262.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;p&gt;If you need to specify the project type such as app or webapp, check &amp;ldquo;Create from archetype&amp;rdquo; and select the corresponding type.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Enter GroupId and ArtifactId.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;My understanding is that GroupId is the name of the overall parent project or organization the project belongs to, and ArtifactId is the name and purpose of the current project.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/04/image003-300x262.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Enter the project folder name and path&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/04/image005-300x262.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;After creating the Maven project, click &amp;ldquo;Enable Auto-Import&amp;rdquo; on the main screen. Otherwise, Maven-managed libraries won&amp;rsquo;t be automatically imported into the project and will need to be imported manually, which is inconvenient.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/04/image007-300x127.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;View -&amp;gt; Tool Window -&amp;gt; Maven Projects will open a tool window. The main functions you&amp;rsquo;ll use are clean and compile.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/04/image009-193x300.png"
+loading="lazy"
+alt="image009"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;You can use the built-in Maven or your own downloaded Maven. If you want to use your own, go to File -&amp;gt; Settings.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/04/image011-300x202.png"
+loading="lazy"
+alt="image011"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Configure the project pom file&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;span class="lnt"&gt;27
+&lt;/span&gt;&lt;span class="lnt"&gt;28
+&lt;/span&gt;&lt;span class="lnt"&gt;29
+&lt;/span&gt;&lt;span class="lnt"&gt;30
+&lt;/span&gt;&lt;span class="lnt"&gt;31
+&lt;/span&gt;&lt;span class="lnt"&gt;32
+&lt;/span&gt;&lt;span class="lnt"&gt;33
+&lt;/span&gt;&lt;span class="lnt"&gt;34
+&lt;/span&gt;&lt;span class="lnt"&gt;35
+&lt;/span&gt;&lt;span class="lnt"&gt;36
+&lt;/span&gt;&lt;span class="lnt"&gt;37
+&lt;/span&gt;&lt;span class="lnt"&gt;38
+&lt;/span&gt;&lt;span class="lnt"&gt;39
+&lt;/span&gt;&lt;span class="lnt"&gt;40
+&lt;/span&gt;&lt;span class="lnt"&gt;41
+&lt;/span&gt;&lt;span class="lnt"&gt;42
+&lt;/span&gt;&lt;span class="lnt"&gt;43
+&lt;/span&gt;&lt;span class="lnt"&gt;44
+&lt;/span&gt;&lt;span class="lnt"&gt;45
+&lt;/span&gt;&lt;span class="lnt"&gt;46
+&lt;/span&gt;&lt;span class="lnt"&gt;47
+&lt;/span&gt;&lt;span class="lnt"&gt;48
+&lt;/span&gt;&lt;span class="lnt"&gt;49
+&lt;/span&gt;&lt;span class="lnt"&gt;50
+&lt;/span&gt;&lt;span class="lnt"&gt;51
+&lt;/span&gt;&lt;span class="lnt"&gt;52
+&lt;/span&gt;&lt;span class="lnt"&gt;53
+&lt;/span&gt;&lt;span class="lnt"&gt;54
+&lt;/span&gt;&lt;span class="lnt"&gt;55
+&lt;/span&gt;&lt;span class="lnt"&gt;56
+&lt;/span&gt;&lt;span class="lnt"&gt;57
+&lt;/span&gt;&lt;span class="lnt"&gt;58
+&lt;/span&gt;&lt;span class="lnt"&gt;59
+&lt;/span&gt;&lt;span class="lnt"&gt;60
+&lt;/span&gt;&lt;span class="lnt"&gt;61
+&lt;/span&gt;&lt;span class="lnt"&gt;62
+&lt;/span&gt;&lt;span class="lnt"&gt;63
+&lt;/span&gt;&lt;span class="lnt"&gt;64
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;&amp;lt;project&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;xmlns:xsi=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;modelVersion&amp;gt;&lt;/span&gt;4.0.0&lt;span class="nt"&gt;&amp;lt;/modelVersion&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.coinidea&lt;span class="nt"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven.text&lt;span class="nt"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0-SNAPSHOT&lt;span class="nt"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;&amp;lt;!-- properties version --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;spring.version&amp;gt;&lt;/span&gt;4.2.5.RELEASE&lt;span class="nt"&gt;&amp;lt;/spring.version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;hadoop.version&amp;gt;&lt;/span&gt;2.5.0-cdh5.3.2&lt;span class="nt"&gt;&amp;lt;/hadoop.version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;hive.version&amp;gt;&lt;/span&gt;0.13.1-cdh5.3.2&lt;span class="nt"&gt;&amp;lt;/hive.version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;&amp;lt;!-- junit --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;junit&lt;span class="nt"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;junit&lt;span class="nt"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;3.8.1&lt;span class="nt"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;test&lt;span class="nt"&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;&amp;lt;!--spring--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class="nt"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-context&lt;span class="nt"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${spring.version}&lt;span class="nt"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class="nt"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-core&lt;span class="nt"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${spring.version}&lt;span class="nt"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class="nt"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-web&lt;span class="nt"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${spring.version}&lt;span class="nt"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class="nt"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-webmvc&lt;span class="nt"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${spring.version}&lt;span class="nt"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class="nt"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-test&lt;span class="nt"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${spring.version}&lt;span class="nt"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c"&gt;&amp;lt;!-- Specify maven repository --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;repositories&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;repository&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;id&amp;gt;&lt;/span&gt;people.apache.snapshots&lt;span class="nt"&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;url&amp;gt;&lt;/span&gt;http://repository.apache.org/content/groups/snapshots-group/&lt;span class="nt"&gt;&amp;lt;/url&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;releases&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;enabled&amp;gt;&lt;/span&gt;false&lt;span class="nt"&gt;&amp;lt;/enabled&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/releases&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;snapshots&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;enabled&amp;gt;&lt;/span&gt;true&lt;span class="nt"&gt;&amp;lt;/enabled&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/snapshots&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/repository&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;lt;/repositories&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Click clean and compile, and the libraries will be downloaded to your local Maven repository and automatically imported into the current project.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/04/image013-231x300.png"
+loading="lazy"
+alt="image013"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>MFC Implementation of the WordGame Typing Game</title><link>https://blog.coinidea.com/en/p/mfc-implementation-of-the-wordgame-typing-game/</link><pubDate>Thu, 03 Sep 2015 15:18:16 +0000</pubDate><guid>https://blog.coinidea.com/en/p/mfc-implementation-of-the-wordgame-typing-game/</guid><description>&lt;p&gt;GitHub download link: &lt;a class="link" href="https://github.com/hujiulin/TypingGame" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/TypingGame&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Double-click &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164094620328.png"
+loading="lazy"
+alt="image001"
+&gt; to run the program. The main interface will appear:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164104550196.png"
+loading="lazy"
+alt="1441164104550196"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click the &amp;ldquo;User&amp;rdquo; menu to perform &lt;strong&gt;Login&lt;/strong&gt; and &lt;strong&gt;Register&lt;/strong&gt; operations. If you have not registered, you can register first and then log in. Here we use &lt;strong&gt;UserName&lt;/strong&gt; as an example.&lt;/p&gt;
+&lt;p&gt;Click &lt;strong&gt;Login&lt;/strong&gt; to open the login window:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164148657136.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;p&gt;Click &lt;strong&gt;Register&lt;/strong&gt; to open the registration window (or click the &lt;strong&gt;Register&lt;/strong&gt; button directly):&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164153855855.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;
+&lt;p&gt;Enter Username: UserName; Nickname: UserName; Password: UserName; as shown below:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164162259080.png"
+loading="lazy"
+alt="image009"
+&gt;&lt;/p&gt;
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to complete registration.&lt;/p&gt;
+&lt;p&gt;Log in with the UserName account, and you will see the following information in the upper-right corner of the main interface:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164171230127.png"
+loading="lazy"
+alt="image011"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure game settings: &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164182712906.png"
+loading="lazy"
+alt="image013"
+&gt;. In the game options, you can set &amp;ldquo;Game Difficulty&amp;rdquo;, &amp;ldquo;Image Category&amp;rdquo;, and &amp;ldquo;Background Music&amp;rdquo;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Game Difficulty:&lt;/p&gt;
+&lt;p&gt;Click the &lt;strong&gt;Game Difficulty&lt;/strong&gt; button to open the following dialog:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164193864492.png"
+loading="lazy"
+alt="image015"
+&gt;&lt;/p&gt;
+&lt;p&gt;You can use the dropdown lists to configure &amp;ldquo;Vocabulary Size&amp;rdquo;, &amp;ldquo;Spelling Difficulty&amp;rdquo;, &amp;ldquo;Word Frequency&amp;rdquo;, and &amp;ldquo;Movement Speed&amp;rdquo;. Vocabulary size options are 50, 100, and 150. Spelling difficulty currently uses random CET-4 words. Word frequency can be single or double. Movement speed can be fast, medium, or slow. Click &lt;strong&gt;Set&lt;/strong&gt; to apply.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Image Category:&lt;/p&gt;
+&lt;p&gt;Click the &lt;strong&gt;Image Category&lt;/strong&gt; button to open the following dialog:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164205372618.png"
+loading="lazy"
+alt="image017"
+&gt;&lt;/p&gt;
+&lt;p&gt;Currently available images include balloons and fish. Select a radio button to choose.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Background Music:&lt;/p&gt;
+&lt;p&gt;Click the &lt;strong&gt;Background Music&lt;/strong&gt; button to open the following dialog:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164230117070.png"
+loading="lazy"
+alt="image019"
+&gt;&lt;/p&gt;
+&lt;p&gt;Select the desired music in the group box and click &amp;ldquo;Select Music&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;The configured game options will be displayed at: &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164244373483.png"
+loading="lazy"
+alt="image021"
+&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164255924062.png"
+loading="lazy"
+alt="image023"
+&gt; to open the following window:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164282923212.png"
+loading="lazy"
+alt="image025"
+&gt;&lt;/p&gt;
+&lt;p&gt;This shows the top five highest-scoring users in the system.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164327545002.png"
+loading="lazy"
+alt="image027"
+&gt;, the &lt;strong&gt;Help&lt;/strong&gt; menu has two sections: Game Rules and About.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Game Rules:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164311366091.png"
+loading="lazy"
+alt="image029"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;About:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164353406206.png"
+loading="lazy"
+alt="image031"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164362486180.png"
+loading="lazy"
+alt="image033"
+&gt; This area shows the current game state: &lt;strong&gt;Started&lt;/strong&gt; or &lt;strong&gt;Stopped&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164370196881.png"
+loading="lazy"
+alt="image035"
+&gt; Click these two buttons to start or exit the game.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Below is a screenshot taken during gameplay:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164377433708.png"
+loading="lazy"
+alt="1441164377433708"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Open-Source Snake Game in WIN32 and jQuery</title><link>https://blog.coinidea.com/en/p/open-source-snake-game-in-win32-and-jquery/</link><pubDate>Thu, 03 Sep 2015 15:13:45 +0000</pubDate><guid>https://blog.coinidea.com/en/p/open-source-snake-game-in-win32-and-jquery/</guid><description>&lt;p&gt;This is a simple snake game available in both WIN32 and JavaScript versions. The WIN32 version was written in 2010 &amp;ndash; small but complete. Looking back, I&amp;rsquo;m quite impressed with myself from over five years ago. The jQuery version was written in 2015.&lt;/p&gt;
+&lt;p&gt;GitHub download link: &lt;a class="link" href="https://github.com/hujiulin/snake" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/snake&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;jQuery demo: &lt;a class="link" href="http://www.coinidea.com/game/snake/" target="_blank" rel="noopener"
+&gt;http://www.coinidea.com/game/snake/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The overall interface looks like this:&lt;/p&gt;
+&lt;h3 id="win32-version"&gt;WIN32 Version:
+&lt;/h3&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150919/1442639966167035.gif"
+loading="lazy"
+alt="1442639966167035.gif"
+&gt;&lt;/p&gt;
+&lt;h3 id="jquery-version"&gt;jQuery Version:
+&lt;/h3&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20151115/1447556255354195.gif"
+loading="lazy"
+alt="jQuery贪吃蛇"
+&gt;&lt;/p&gt;
+&lt;h3 id="win32-framework-code"&gt;WIN32 Framework Code:
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;span class="lnt"&gt;16
+&lt;/span&gt;&lt;span class="lnt"&gt;17
+&lt;/span&gt;&lt;span class="lnt"&gt;18
+&lt;/span&gt;&lt;span class="lnt"&gt;19
+&lt;/span&gt;&lt;span class="lnt"&gt;20
+&lt;/span&gt;&lt;span class="lnt"&gt;21
+&lt;/span&gt;&lt;span class="lnt"&gt;22
+&lt;/span&gt;&lt;span class="lnt"&gt;23
+&lt;/span&gt;&lt;span class="lnt"&gt;24
+&lt;/span&gt;&lt;span class="lnt"&gt;25
+&lt;/span&gt;&lt;span class="lnt"&gt;26
+&lt;/span&gt;&lt;span class="lnt"&gt;27
+&lt;/span&gt;&lt;span class="lnt"&gt;28
+&lt;/span&gt;&lt;span class="lnt"&gt;29
+&lt;/span&gt;&lt;span class="lnt"&gt;30
+&lt;/span&gt;&lt;span class="lnt"&gt;31
+&lt;/span&gt;&lt;span class="lnt"&gt;32
+&lt;/span&gt;&lt;span class="lnt"&gt;33
+&lt;/span&gt;&lt;span class="lnt"&gt;34
+&lt;/span&gt;&lt;span class="lnt"&gt;35
+&lt;/span&gt;&lt;span class="lnt"&gt;36
+&lt;/span&gt;&lt;span class="lnt"&gt;37
+&lt;/span&gt;&lt;span class="lnt"&gt;38
+&lt;/span&gt;&lt;span class="lnt"&gt;39
+&lt;/span&gt;&lt;span class="lnt"&gt;40
+&lt;/span&gt;&lt;span class="lnt"&gt;41
+&lt;/span&gt;&lt;span class="lnt"&gt;42
+&lt;/span&gt;&lt;span class="lnt"&gt;43
+&lt;/span&gt;&lt;span class="lnt"&gt;44
+&lt;/span&gt;&lt;span class="lnt"&gt;45
+&lt;/span&gt;&lt;span class="lnt"&gt;46
+&lt;/span&gt;&lt;span class="lnt"&gt;47
+&lt;/span&gt;&lt;span class="lnt"&gt;48
+&lt;/span&gt;&lt;span class="lnt"&gt;49
+&lt;/span&gt;&lt;span class="lnt"&gt;50
+&lt;/span&gt;&lt;span class="lnt"&gt;51
+&lt;/span&gt;&lt;span class="lnt"&gt;52
+&lt;/span&gt;&lt;span class="lnt"&gt;53
+&lt;/span&gt;&lt;span class="lnt"&gt;54
+&lt;/span&gt;&lt;span class="lnt"&gt;55
+&lt;/span&gt;&lt;span class="lnt"&gt;56
+&lt;/span&gt;&lt;span class="lnt"&gt;57
+&lt;/span&gt;&lt;span class="lnt"&gt;58
+&lt;/span&gt;&lt;span class="lnt"&gt;59
+&lt;/span&gt;&lt;span class="lnt"&gt;60
+&lt;/span&gt;&lt;span class="lnt"&gt;61
+&lt;/span&gt;&lt;span class="lnt"&gt;62
+&lt;/span&gt;&lt;span class="lnt"&gt;63
+&lt;/span&gt;&lt;span class="lnt"&gt;64
+&lt;/span&gt;&lt;span class="lnt"&gt;65
+&lt;/span&gt;&lt;span class="lnt"&gt;66
+&lt;/span&gt;&lt;span class="lnt"&gt;67
+&lt;/span&gt;&lt;span class="lnt"&gt;68
+&lt;/span&gt;&lt;span class="lnt"&gt;69
+&lt;/span&gt;&lt;span class="lnt"&gt;70
+&lt;/span&gt;&lt;span class="lnt"&gt;71
+&lt;/span&gt;&lt;span class="lnt"&gt;72
+&lt;/span&gt;&lt;span class="lnt"&gt;73
+&lt;/span&gt;&lt;span class="lnt"&gt;74
+&lt;/span&gt;&lt;span class="lnt"&gt;75
+&lt;/span&gt;&lt;span class="lnt"&gt;76
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;windows.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;math.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;time.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;string.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;LRESULT&lt;/span&gt; &lt;span class="n"&gt;CALLBACK&lt;/span&gt; &lt;span class="nf"&gt;WndProc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HWND&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;UINT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;WPARAM&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LPARAM&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;WINAPI&lt;/span&gt; &lt;span class="nf"&gt;WinMain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HINSTANCE&lt;/span&gt; &lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;HINSTANCE&lt;/span&gt; &lt;span class="n"&gt;hPrevInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LPSTR&lt;/span&gt; &lt;span class="n"&gt;lpCmdLine&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;nCmdShow&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;WNDCLASS&lt;/span&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;strClassName&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;hungry snake&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;strWindowName&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;贪吃蛇&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;HWND&lt;/span&gt; &lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;MSG&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cbClsExtra&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cbWndExtra&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hbrBackground&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HBRUSH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;GetStockObject&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;WHITE_BRUSH&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hCursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LoadCursor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;IDC_ARROW&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hIcon&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LoadIcon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;IDI_APPLICATION&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hInstance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lpfnWndProc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;WndProc&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lpszClassName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;strClassName&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lpszMenuName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;RegisterClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;wndclass&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;MessageBeep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;hwnd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CreateWindow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;strClassName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;strWindowName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;WS_OVERLAPPEDWINDOW&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;CW_USEDEFAULT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;CW_USEDEFAULT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;CW_USEDEFAULT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;CW_USEDEFAULT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;hInstance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;NULL&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;ShowWindow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;nCmdShow&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;UpdateWindow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GetMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;TranslateMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;DispatchMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wParam&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;LRESULT&lt;/span&gt; &lt;span class="n"&gt;CALLBACK&lt;/span&gt; &lt;span class="nf"&gt;WndProc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HWND&lt;/span&gt; &lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;UINT&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;WPARAM&lt;/span&gt; &lt;span class="n"&gt;wParam&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LPARAM&lt;/span&gt; &lt;span class="n"&gt;lParam&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;HDC&lt;/span&gt; &lt;span class="n"&gt;hdc&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;PAINTSTRUCT&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;HBRUSH&lt;/span&gt; &lt;span class="n"&gt;hBrush&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;HPEN&lt;/span&gt; &lt;span class="n"&gt;hPen&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;switch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_LBUTTONDOWN&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_RBUTTONDOWN&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_CHAR&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_PAINT&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;InvalidateRect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="nl"&gt;WM_DESTROY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;PostQuitMessage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;DefWindowProc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hwnd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;wParam&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;lParam&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="snake-definition"&gt;Snake Definition
+&lt;/h3&gt;&lt;p&gt;The entire snake is a List, with a head &lt;code&gt;squarehead&lt;/code&gt;, a &lt;code&gt;direction&lt;/code&gt; with four possible values, a &lt;code&gt;speed&lt;/code&gt;, and the current snake length &lt;code&gt;List.size()&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="collision-detection"&gt;Collision Detection
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;When the snake&amp;rsquo;s head encounters a randomly generated &lt;code&gt;square&lt;/code&gt; in the current &lt;code&gt;direction&lt;/code&gt;, it means food has been eaten.&lt;/li&gt;
+&lt;li&gt;When the snake turns back and hits its own body, or hits the boundary, the game is over.&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Data Visualization Plugin Based on World Wind</title><link>https://blog.coinidea.com/en/p/data-visualization-plugin-based-on-world-wind/</link><pubDate>Thu, 03 Sep 2015 15:11:46 +0000</pubDate><guid>https://blog.coinidea.com/en/p/data-visualization-plugin-based-on-world-wind/</guid><description>&lt;p&gt;Sample components built on open-source data visualization libraries (MSChart, VTK, D3), with a World Wind plugin that invokes these components.&lt;/p&gt;
+&lt;p&gt;GitHub download link: &lt;a class="link" href="https://github.com/hujiulin/WorldWind_DataVisualization" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/WorldWind_DataVisualization&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="1-load-plugin"&gt;1. Load Plugin
+&lt;/h1&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441162903862794.png"
+loading="lazy"
+alt="1441162903862794.png"
+&gt;&lt;/p&gt;
+&lt;h1 id="2-datavisualization2d-component"&gt;2. DataVisualization2D Component
+&lt;/h1&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441162901169521.png"
+loading="lazy"
+alt="1441162901169521.png"
+&gt;
+&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441162901768763.png"
+loading="lazy"
+alt="1441162901768763.png"
+&gt;&lt;/p&gt;
+&lt;h1 id="3-datavisualization3d-component"&gt;3. DataVisualization3D Component
+&lt;/h1&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441162901109005.png"
+loading="lazy"
+alt="1441162901109005.png"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441162902857136.png"
+loading="lazy"
+alt="1441162902857136.png"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441162902986308.png"
+loading="lazy"
+alt="1441162902986308.png"
+&gt;&lt;/p&gt;
+&lt;h1 id="4-datavisualizationweb-component"&gt;4. DataVisualizationWEB Component
+&lt;/h1&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441162902834814.png"
+loading="lazy"
+alt="1441162902834814.png"
+&gt;&lt;/p&gt;
+&lt;p&gt;Original link: &lt;a class="link" href="http://cesiumcn.org/topic/207.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/topic/207.html&lt;/a&gt; | China mirror: &lt;a class="link" href="http://cesium.coinidea.com/topic/207.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/topic/207.html&lt;/a&gt;&lt;/p&gt;</description></item><item><title>[WorldWind]1. Getting Started with WorldWind -- Compiling WorldWind and Fixing Encoding Issues</title><link>https://blog.coinidea.com/en/p/worldwind1.-getting-started-with-worldwind--compiling-worldwind-and-fixing-encoding-issues/</link><pubDate>Sun, 23 Aug 2015 03:01:39 +0000</pubDate><guid>https://blog.coinidea.com/en/p/worldwind1.-getting-started-with-worldwind--compiling-worldwind-and-fixing-encoding-issues/</guid><description>&lt;p&gt;The World Wind GitHub source code used in this article can be downloaded at: &lt;a class="link" href="https://github.com/hujiulin/WorldWind" target="_blank" rel="noopener"
+&gt;&lt;strong&gt;https://github.com/hujiulin/WorldWind&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;World Wind, led by the National Aeronautics and Space Administration (NASA), is an open-source geographic information system project developed collaboratively by developers worldwide. Developed by NASA Research and promoted by NASA Learning Technologies, it displays satellite imagery, electronic maps, terrain maps, and other geographic data on a 3D digital globe. It is designed for data integration across industries, supports WMS, WFS, WMTS, and other services, and is an excellent 3D client framework rendering engine. It uses XML for data description and configuration, offering good versatility and extensibility. World Wind currently has two versions: one based on .NET and one based on Java. Beyond its basic 3D globe functionality, World Wind is highly extensible with various plugins, supporting map data (satellite, electronic, terrain) published by Google, Microsoft, and others.&lt;/p&gt;
+&lt;p&gt;This article primarily addresses issues related to compiling, running, and fixing Chinese character encoding problems in World Wind.&lt;/p&gt;
+&lt;h3 id="downloading-the-source-code-configuring-the-environment-and-compiling-use-an-international-network-connection-in-case-the-servers-are-inaccessible"&gt;Downloading the Source Code, Configuring the Environment, and Compiling [Use an international network connection in case the servers are inaccessible]
+&lt;/h3&gt;&lt;h4 id="downloading-the-source-code"&gt;Downloading the Source Code
+&lt;/h4&gt;&lt;p&gt;WorldWind has both .Net and Java versions. NASA&amp;rsquo;s official website is: &lt;a class="link" href="http://worldwind.arc.nasa.gov/java/" target="_blank" rel="noopener"
+&gt;http://worldwind.arc.nasa.gov/java/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It provides Java version source code downloads.&lt;/p&gt;
+&lt;p&gt;.Net version source code download:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://worldwind31.arc.nasa.gov/svn/trunk/WorldWind/" target="_blank" rel="noopener"
+&gt;http://worldwind31.arc.nasa.gov/svn/trunk/WorldWind/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This provides an SVN repository. It is recommended to use SVN for downloading.&lt;/p&gt;
+&lt;p&gt;Note: The above SVN was found through the wiki at &lt;a class="link" href="http://www.worldwindcentral.com/wiki/Source_code" target="_blank" rel="noopener"
+&gt;http://www.worldwindcentral.com/wiki/Source_code&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id="environment-configuration"&gt;Environment Configuration
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;DirectX9&lt;/strong&gt; must be installed beforehand.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="compiling-the-source-code"&gt;Compiling the Source Code
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Encoding issues&lt;/strong&gt;: You will encounter many syntax errors related to strings, caused by file encoding problems.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Right-click the file in VS Solution Explorer&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &amp;ldquo;Open With&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Choose &amp;ldquo;CSharp Editor with Encoding&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &amp;ldquo;Western European (Windows) - Code Page 1252&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open the file &amp;ndash; no more garbled characters&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change the file save encoding to UTF-8 via the File menu, then save the source file&lt;/p&gt;
+&lt;p&gt;Note: About 6 files are affected.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;LoaderLock issue&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Menu (Debug -&amp;gt; Exceptions) -&amp;gt; Exceptions window -&amp;gt; ManagedDebuggingAssistants -&amp;gt; Uncheck the LoaderLock option&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Registry permission issue&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open the HtmlEditor project properties, and uncheck &amp;ldquo;Register for COM interop&amp;rdquo; in the &amp;ldquo;Build&amp;rdquo; tab&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start running the program. Everything works fine, but transitioning from the initialization screen to the main program takes a long time. This is because the WorldWind server is not accessible from China. WorldWind provides an offline mode, and you can also modify the WMS server URL in the XML. The temporary solution used here is to comment out the following two lines of code:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In Worldwind -&amp;gt; PluginSDK -&amp;gt; ConfigurationLoader.cs, line 262:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image001.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Line 321:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image003.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When running the program, the Initializing splash screen is misaligned:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Debugging reveals the issue is in worldwind.cs, in &lt;code&gt;public MainApplication()&lt;/code&gt; [line 563]:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image005.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Using the splash form.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Splash form:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Splash constructor:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image007.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You can see the PictureBox code is commented out, and there is no PictureBox control on the form.&lt;/p&gt;
+&lt;p&gt;It uses: &lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image0091.png"
+loading="lazy"
+alt="image0091"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image011.png"
+loading="lazy"
+alt="image011"
+&gt;&lt;/p&gt;
+&lt;p&gt;Adjust the image as shown above, and the program starts normally.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Decided to back up the source code to Baidu Cloud and my own SVN server. [The upload to Baidu&amp;rsquo;s server did not succeed.]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After migrating the WorldWind source code, an issue occurred:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Rebuilding and cleaning the project did not help.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image013.png"
+loading="lazy"
+alt="image013"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Delete this file:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image015.png"
+loading="lazy"
+alt="image015"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After deletion, reconfigure:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image017.png"
+loading="lazy"
+alt="image017"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Issue resolved.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Note: The first time you run the program, you may need to wait a moment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If references such as AVIFile.dll or FlickrNel.dll are missing, switch from Release mode to Debug mode to compile and run successfully. [The actual reason is that the corresponding DLLs need to be copied to the Release directory.]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When fixing encoding issues, some people encounter a situation where the degree symbol in the main interface displays as garbled characters. This is because the encoding issue has not been fully resolved. Please save with &amp;ldquo;UTF-8 with BOM&amp;rdquo; in the &amp;ldquo;Advanced Save Options&amp;rdquo; to fix this.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="files-with-encoding-issues"&gt;Files with Encoding Issues:
+&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Project&lt;/th&gt;
+&lt;th&gt;File&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;WorldWind&lt;/td&gt;
+&lt;td&gt;Compass3D.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WorldWind&lt;/td&gt;
+&lt;td&gt;GPSTrackerPlugin.WorldWind.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WorldWindow&lt;/td&gt;
+&lt;td&gt;WorldWindow.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PluginSDK&lt;/td&gt;
+&lt;td&gt;ConfigurationLoader.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PluginSDK&lt;/td&gt;
+&lt;td&gt;Angle.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;All encoding issues resolved:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image019.png"
+loading="lazy"
+alt="image019"
+&gt;&lt;/p&gt;
+&lt;p&gt;Today I compiled the code from SVN on an x64 machine, and the program would not run. The debugger showed the error:&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Unhandled exception of type &amp;lsquo;System.BadImageFormatException&amp;rsquo;&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Change from Any CPU or x64 mode to x86, then set the output path to &amp;ldquo;..binDebug&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Rebuild the solution, compile and run successfully:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image021.png"
+loading="lazy"
+alt="image021"
+&gt;&lt;/p&gt;
+&lt;p&gt;Original link: &lt;a class="link" href="http://cesiumcn.org/topic/206.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/topic/206.html&lt;/a&gt; | Fast access in China: &lt;a class="link" href="http://cesium.coinidea.com/topic/206.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/topic/206.html&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Bookworm Helper Tool</title><link>https://blog.coinidea.com/en/p/bookworm-helper-tool/</link><pubDate>Thu, 12 Feb 2015 15:54:15 +0000</pubDate><guid>https://blog.coinidea.com/en/p/bookworm-helper-tool/</guid><description>&lt;p&gt;While organizing old files recently, I stumbled upon a small program I wrote around 2011.&lt;/p&gt;
+&lt;p&gt;Have you ever played a game called Bookworm? It&amp;rsquo;s made by PopCap. The game tells the story of a bookworm defeating a demon, and to progress and fight bosses, you need to spell words. If I recall correctly, you&amp;rsquo;re given a 3x3 or 4x4 matrix containing letters a-z or * (representing any letter), and you need to spell the longest word possible &amp;ndash; the longer the word, the more damage dealt to the demon. So I wrote a little program to help my not-so-great vocabulary spell the longest words possible. It requires a word list as a prerequisite; there&amp;rsquo;s a dictionary.txt in the project&amp;rsquo;s doc folder containing about 7000+ words that needs to be loaded first.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Main program interface:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Mainform-300x228.png"
+loading="lazy"
+alt="Mainform"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Loading the dictionary:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/LoadDictionary-300x228.png"
+loading="lazy"
+alt="LoadDictionary"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Entering characters:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Input-300x228.png"
+loading="lazy"
+alt="Input"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Getting the result list:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Result-300x228.png"
+loading="lazy"
+alt="Result"
+&gt;&lt;/p&gt;
+&lt;p&gt;GitHub: &lt;a class="link" href="https://github.com/hujiulin/Bookworm" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/Bookworm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Project notes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Written in C++ around 2011 [the code is a bit messy]. Can be opened with VC 6.0 or Visual Studio.&lt;/li&gt;
+&lt;li&gt;This program finds the longest possible words.&lt;/li&gt;
+&lt;li&gt;Input letters [a-z or *] to get a list of answers. [* represents any letter]&lt;/li&gt;
+&lt;li&gt;This was my first ever small program. I recently found it among old files, so I&amp;rsquo;m sharing it here :).&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Batch Word to HTML -- ConvertWordToHTML [Update: Word Converter Tool]</title><link>https://blog.coinidea.com/en/p/batch-word-to-html--convertwordtohtml-update-word-converter-tool/</link><pubDate>Sun, 11 Jan 2015 10:34:33 +0000</pubDate><guid>https://blog.coinidea.com/en/p/batch-word-to-html--convertwordtohtml-update-word-converter-tool/</guid><description>&lt;p&gt;I recently had a requirement to batch convert Word files to HTML.&lt;/p&gt;
+&lt;p&gt;For a small number of Word files, you can simply use Word&amp;rsquo;s built-in &amp;ldquo;Save As&amp;rdquo; feature. But when dealing with a large number of Word files, it becomes quite complicated.&lt;/p&gt;
+&lt;p&gt;After searching online, I found solutions in PHP, Python, Ruby, and C#. Among them, I found a tool called &amp;ldquo;&lt;a class="link" href="http://jingyan.baidu.com/article/425e69e6ba12c4be15fc160c.html" target="_blank" rel="noopener"
+&gt;Xunjiie Converter&lt;/a&gt;&amp;rdquo;, but it didn&amp;rsquo;t quite fit my needs, so I decided to write my own. Since Word is a Microsoft product, I figured C# might be the best choice for this task.&lt;/p&gt;
+&lt;p&gt;I open-sourced a GUI-based solution on GitHub: &lt;a class="link" href="https://github.com/hujiulin/ConvertWordToHTML" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/ConvertWordToHTML&lt;/a&gt; [Currently single-threaded; will be converted to multi-threaded later].&lt;/p&gt;
+&lt;p&gt;Screenshots of the running application:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Initial program interface:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be201501111826521.jpg"
+loading="lazy"
+alt="QQ截图20150111182652"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;Open&amp;rdquo; to select an input folder containing Word documents:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182756.jpg"
+loading="lazy"
+alt="QQ截图20150111182756"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;SaveAs&amp;rdquo; to select an output folder:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182813.jpg"
+loading="lazy"
+alt="QQ截图20150111182813"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Program finished running:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182832.jpg"
+loading="lazy"
+alt="QQ截图20150111182832"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Input and output results:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182849-300x104.jpg"
+loading="lazy"
+alt="QQ截图20150111182849"
+&gt;
+&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182858-300x180.jpg"
+loading="lazy"
+alt="QQ截图20150111182858"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Program notes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Dependencies: Windows OS, .NET Framework 3.5, Office Word&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Word&amp;rsquo;s &amp;ldquo;Save As HTML&amp;rdquo; offers several format options: single web page (mht), web page (htm), and filtered web page (htm). I chose the filtered HTML option, which converts all formulas to gif or jpg images. A properly filtered htm file won&amp;rsquo;t contain Microsoft&amp;rsquo;s messy formatting information.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;GitHub: &lt;a class="link" href="https://github.com/hujiulin/ConvertWordToHTML" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/ConvertWordToHTML&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Download: &lt;a class="link" href="http://devhu-github.stor.sinaapp.com/ConvertWordToHTML.rar" target="_blank" rel="noopener"
+&gt;http://devhu-github.stor.sinaapp.com/ConvertWordToHTML.rar&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;2015-1-24 Update:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Rename solution and project to WordConverter; Add feature: convert word to PDF; ADD feature switch specified ext;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The Word Converter tool now supports both HTML and PDF formats.&lt;/p&gt;
+&lt;p&gt;Updated GitHub link: &lt;a class="link" href="https://github.com/hujiulin/WordConverter" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/WordConverter&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Download: &lt;a class="link" href="http://devhu-github.stor.sinaapp.com/WordConverter.rar" target="_blank" rel="noopener"
+&gt;http://devhu-github.stor.sinaapp.com/WordConverter.rar&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

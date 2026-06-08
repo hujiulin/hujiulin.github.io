@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vhosts on Coinidea的博客</title><link>https://blog.coinidea.com/tags/vhosts/</link><description>Recent content in Vhosts on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 23 May 2015 05:34:23 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/vhosts/index.xml" rel="self" type="application/rss+xml"/><item><title>[Apache]虚拟主机配置，实现多域名访问本地项目php的空间</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-848.html</link><pubDate>Sat, 23 May 2015 05:34:23 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-848.html</guid><description>&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先修改C盘WINDOWS\system32\drivers\etc目录下的 hosts 文件，用记事本打开，加入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;127.0.0.1 www.a.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;127.0.0.1 www.b.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开xampp\apache\conf\httpd.conf文件，搜索 “Include conf/extra/httpd-vhosts.conf”，确保前面没有 # 注释符，也就是确保引入了 vhosts 虚拟主机配置文件。&lt;/p&gt;
+&lt;p&gt;开启了httpd-vhosts.conf，默认的httpd.conf默认配置失效（确保 httpd-vhosts.conf 文件里也开启了虚拟主机配置，见第3条），访问此IP的域名将全部指向 vhosts.conf 中的第一个虚拟主机。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在虚拟主机设置文件xampp\apache\conf\extra\httpd-vhosts.conf里设置：&lt;br&gt;
+取消 NameVirtualHost *:80 前面的 ##，这样就启用了 vhosts.conf ，默认的httpd.conf默认配置失效。虚拟主机配置将只设置在 httpd-vhosts.conf 里。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;DocumentRoot /xampp/htdocs/a
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ServerName www.a.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;DocumentRoot /xampp/htdocs/b
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ServerName www.b.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置完了第3条之后，你会发现访问 localhost直接指向到设置的 a 那个路径去了，这个问题在第2条有讲。也就是开启了 vhosts 后，默认的 httpd 的配置就会失效了，默认的访问就指向到 vhosts 里的第一条设置去了。这时候你要把 localhost 的目录配置给设置回来。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;DocumentRoot /xampp/htdocs/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ServerName localhost
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;至此，XAMPP 的虚拟主机设置完毕，现在 访问 localhost 还是原来的 XAMPP 的帮助指南，访问 &lt;a class="link" href="https://www.a.com" target="_blank" rel="noopener"
+&gt;www.a.com&lt;/a&gt; 将指向到绑定的 a 目录，访问 &lt;a class="link" href="https://www.b.com" target="_blank" rel="noopener"
+&gt;www.b.com&lt;/a&gt; 将指向到绑定的 b 目录。&lt;/p&gt;</description></item></channel></rss>

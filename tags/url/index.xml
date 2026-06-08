@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>URL on Coinidea的博客</title><link>https://blog.coinidea.com/tags/url/</link><description>Recent content in URL on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 15 Oct 2015 15:24:04 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/url/index.xml" rel="self" type="application/rss+xml"/><item><title>[Web开发]用户输入URL之后发生了什么？</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1063.html</link><pubDate>Thu, 15 Oct 2015 15:24:04 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1063.html</guid><description>&lt;p&gt;当用户打开浏览器输入URL之后&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Client会去查找是否有该URL对应的ip地址，如果没有，会去最近的DNS Server请求域名，依次往根域名访问，一旦查询成功，返回给Client。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;浏览器将请求发送给对应URL的IP地址的Web服务器。&lt;/p&gt;
+&lt;p&gt;该服务器可能一个单点的服务器，也可能是一个轻量级的分发服务器，或者是一个集群。&lt;/p&gt;
+&lt;p&gt;如果是分发服务器或集群，服务器内部会根据时间戳同步通信当前的数据是最新数据，如果不是将进行同步。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;请求中如果涉及相关应用的调用，还有需要讲请求传递给应用服务器会将结果返回给Web服务器。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Web服务器执行相关动态语言编写的程序，与数据库服务器和相关文件进行通信，最后将最终的网页数据传回给浏览器。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基于HTTP、HTTPS等传输协议，将Web服务器的数据传回到浏览器，浏览器对网页数据进行解析。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最终，用户查看到该网页数据。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e7%94%a8%e6%88%b7.png"
+loading="lazy"
+alt="用户"
+&gt;&lt;/p&gt;</description></item></channel></rss>

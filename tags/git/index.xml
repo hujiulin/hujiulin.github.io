@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Coinidea的博客</title><link>https://blog.coinidea.com/tags/git/</link><description>Recent content in Git on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 09 Apr 2016 08:02:47 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>[Git]Git配置和取消代理</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1137.html</link><pubDate>Sat, 09 Apr 2016 08:02:47 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1137.html</guid><description>&lt;p&gt;在配置 Git 使用代理时，可以通过以下命令来设置和取消代理：&lt;/p&gt;
+&lt;h3 id="配置-git-使用代理"&gt;配置 Git 使用代理
+&lt;/h3&gt;&lt;p&gt;要为 Git 配置 HTTP 和 HTTPS 代理，可以使用以下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 配置 HTTP 代理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global http.proxy http://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 配置 HTTPS 代理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global https.proxy https://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="取消-git-代理配置"&gt;取消 Git 代理配置
+&lt;/h3&gt;&lt;p&gt;如果需要取消代理设置，可以使用以下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 取消 HTTP 代理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset http.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 取消 HTTPS 代理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset https.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="解释"&gt;解释
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git config --global http.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;：配置全局 HTTP 代理。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global https.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;：配置全局 HTTPS 代理。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset http.proxy&lt;/code&gt;：取消全局 HTTP 代理配置。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset https.proxy&lt;/code&gt;：取消全局 HTTPS 代理配置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过这些命令，可以方便地在需要时开启或关闭 Git 的代理设置。&lt;/p&gt;</description></item><item><title>Grunt无法下载或者下载缓慢</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1076.html</link><pubDate>Sun, 15 Nov 2015 03:37:01 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1076.html</guid><description>&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/11/082057590664388.png"
+loading="lazy"
+alt="082057590664388"
+&gt;&lt;/p&gt;
+&lt;p&gt;Grunt是一个前端自动化的工具，互联网上关于如何安装和使用它的博客特别多：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.cnblogs.com/wangfupeng1988/p/4561993.html" target="_blank" rel="noopener"
+&gt;http://www.cnblogs.com/wangfupeng1988/p/4561993.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.cnblogs.com/lhb25/archive/2013/01/24/grunt-for-javascript-project-a.html" target="_blank" rel="noopener"
+&gt;http://www.cnblogs.com/lhb25/archive/2013/01/24/grunt-for-javascript-project-a.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;因为Grunt的安装依赖于nodejs，本文主要介绍如果遇到“npm install grunt”等命名下载缓慢或者无法下载时候的解决方案。解决的方式很简单，指定一下下载的路径就好了，在命令后面加上“-registry &amp;ldquo;&lt;a class="link" href="http://registry.npmjs.org" target="_blank" rel="noopener"
+&gt;http://registry.npmjs.org&lt;/a&gt;&amp;rdquo;”，这是将默认的https改成了http。或者国内互联网公司，如淘宝也有一些registry，百度一下加上即可下载。&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;install grunt --save-dev -registry &lt;span class="s2"&gt;&amp;#34;http://registry.npmjs.org&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

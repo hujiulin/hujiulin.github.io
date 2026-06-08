@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>System Software on Coinidea's Blog</title><link>https://blog.coinidea.com/en/categories/system-software/</link><description>Recent content in System Software on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 15 Jun 2019 00:47:43 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/categories/system-software/index.xml" rel="self" type="application/rss+xml"/><item><title>AZKABAN - Open Source Task Scheduling System</title><link>https://blog.coinidea.com/en/p/azkaban-open-source-task-scheduling-system/</link><pubDate>Sat, 15 Jun 2019 00:47:43 +0000</pubDate><guid>https://blog.coinidea.com/en/p/azkaban-open-source-task-scheduling-system/</guid><description>&lt;p&gt;Azkaban is an open-source task scheduling system used for scheduling and running tasks (such as data warehouse scheduling), serving as a replacement for crontab in Linux. Official website: &lt;a class="link" href="https://azkaban.github.io/" target="_blank" rel="noopener"
+&gt;https://azkaban.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Azkaban mainly consists of three components:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;MySQL: Azkaban uses MySQL to store projects and execution information.&lt;/li&gt;
+&lt;li&gt;Azkaban Web Server: Azkaban uses Jetty as the web server, serving as the controller and providing the web interface.&lt;/li&gt;
+&lt;li&gt;Azkaban Executor Server: The Azkaban executor server executes submitted workflows.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This article primarily uses Azkaban 3.43. If you need help generating compiled tar packages from GitHub source code, feel free to leave a comment, and I can share the installation package files that I have already tested.&lt;br&gt;
+The installation package files mainly include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;azkaban-db-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-solo-server-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-exec-server-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-web-server-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-hadoop-security-plugin-3.43.0.tar.gz&lt;br&gt;
+Among these, solo is the standalone version. I set up a version with multiple executor nodes and a single web server node.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Note: This article assumes the Azkaban directory is located at /azkaban.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Database&lt;/strong&gt;&lt;br&gt;
+First, you need to install the MySQL database, then create a database called azkaban. Execute the following in MySQL:&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;source /azkaban/azkaban-db/create-all-sql-0.1.0-SNAPSHOT.sql
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Configuration Files&lt;/strong&gt;&lt;br&gt;
+0. Configure the keystore. The keystore is located at /azkaban/azkaban-web/conf/ (the path must match the one in the configuration file).&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;keytool -keystore keystore -alias jetty -genkey -keyalg RSA
+Enter keystore password: azkaban
+Re-enter new password: azkaban
+What is your first and last name? [Unknown]: Skip
+What is the name of your organizational unit? [Unknown]: Skip
+What is the name of your organization? [Unknown]: Skip
+What is the name of your City or Locality? [Unknown]: Skip
+What is the name of your State or Province? [Unknown]: Skip
+What is the two-letter country code for this unit? [Unknown]: CN
+Is CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=CN correct?
+[no]: Y
+Enter key password for &lt;jetty&gt; (RETURN if same as keystore password):
+&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;/azkaban/azkaban-web/conf/azkaban.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;# Azkaban Personalization Settings
+azkaban.name=Allin
+azkaban.label=My Local Azkaban
+azkaban.color=#FF3601
+azkaban.default.servlet.path=/index
+web.resource.dir=/azkaban/azkaban-web-server/web/
+default.timezone.id=Asia/Shanghai
+# Azkaban UserManager class
+user.manager.class=azkaban.user.XmlUserManager
+user.manager.xml.file=/azkaban/azkaban-web-server/conf/azkaban-users.xml
+# Loader for projects
+executor.global.properties=/azkaban/azkaban-web-server/conf/global.properties
+azkaban.project.dir=/azkaban/azkaban-web-server/projects
+# Velocity dev mode
+velocity.dev.mode=false
+# Azkaban Jetty server properties.
+jetty.use.ssl=false
+jetty.maxThreads=25
+jetty.port=8443
+jetty.keystore=//azkaban/azkaban-web-server/conf/keystore
+jetty.password=yourpassword
+jetty.keypassword=yourpassword
+jetty.truststore=//azkaban/azkaban-web-server/conf/keystore
+jetty.trustpassword=yourpassword
+# Azkaban Executor settings
+executor.port=12321
+# mail settings
+mail.sender=
+mail.host=
+# User facing web server configurations used to construct the user facing server URLs. They are useful when there is a reverse proxy between Azkaban web servers and users.
+# enduser -&gt; myazkabanhost:443 -&gt; proxy -&gt; localhost:8081
+# when this parameters set then these parameters are used to generate email links.
+# if these parameters are not set then jetty.hostname, and jetty.port(if ssl configured jetty.ssl.port) are used.
+# azkaban.webserver.external_hostname=myazkabanhost.com
+# azkaban.webserver.external_ssl_port=443
+# azkaban.webserver.external_port=8081
+job.failure.email=
+job.success.email=
+lockdown.create.projects=false
+cache.directory=cache
+# JMX stats
+jetty.connector.stats=true
+executor.connector.stats=true
+# Azkaban plugin settings
+azkaban.jobtype.plugin.dir=/azkaban/azkaban-web-server/plugins/jobtypes
+database.type=mysql
+mysql.port=3306
+mysql.host=127.0.0.1
+mysql.database=azkaban
+mysql.user=root
+mysql.password=yourmysqlpassword
+mysql.numconnections=100
+&lt;/pre&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;/azkaban/azkaban-exec/conf/azkaban.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;# Azkaban Personalization Settings
+default.timezone.id=Asia/Shanghai
+# Loader for projects
+executor.global.properties=/azkaban/azkaban-exec-server/conf/global.properties
+azkaban.project.dir=/azkaban/azkaban-exec-server/projects
+azkaban.jobtype.plugin.dir=/azkaban/azkaban-exec-server/plugins/jobtypes
+database.type=mysql
+mysql.port=3306
+mysql.host=127.0.0.1
+mysql.database=azkaban
+mysql.user=root
+mysql.password=yourpassword
+mysql.numconnections=100
+# Azkaban Executor settings
+executor.maxThreads=50
+executor.port=12321
+executor.flow.threads=30
+&lt;/pre&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;/azkaban/azkaban-web/conf/log4j.properties /azkaban/azkaban-exec/conf/log4j.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;log4j.rootLogger=INFO,C
+log4j.appender.C=org.apache.log4j.ConsoleAppender
+log4j.appender.C.Target=System.err
+log4j.appender.C.layout=org.apache.log4j.PatternLayout
+log4j.appender.C.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+&lt;/pre&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;For multiple executor nodes, you need to add the following configuration to /azkaban/azkaban-web/conf/azkaban.properties, and insert the IP addresses and port numbers of the corresponding executor nodes into the database.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban.use.multiple.executors=true
+azkaban.executorselector.filters=StaticRemainingFlowSize,MinimumFreeMemory,CpuStatus
+azkaban.executorselector.comparator.NumberOfAssignedFlowComparator=1
+azkaban.executorselector.comparator.Memory=1
+azkaban.executorselector.comparator.LastDispatched=1
+azkaban.executorselector.comparator.CpuUsage=1
+&lt;/pre&gt;
+&lt;p&gt;Insert executor node IP addresses and port numbers:&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;insert into executors(host,port) values("your ip1",12321);
+insert into executors(host,port) values("your ip2",12321);
+&lt;/pre&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;
+&lt;p&gt;Configure username and password at /azkaban/azkaban-web/conf/azkaban-users.xml&lt;br&gt;
+With basic computer knowledge, opening this configuration file is self-explanatory.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create log directories&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;mkdir /azkaban/azkaban-web/logs
+mkdir /azkaban/azkaban-exec/logs
+&lt;/pre&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;Start the services&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban/azkaban-exec/bin/start-exec.sh
+azkaban/azkaban-web/bin/start-web.sh
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Common Pitfalls&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The keystore location must match the file path set in the configuration file.&lt;/li&gt;
+&lt;li&gt;Azkaban 3 and above supports multiple executor nodes.&lt;/li&gt;
+&lt;li&gt;The startup method in step 7 runs in silent mode. During initial testing, it is recommended to use:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban/azkaban-exec/bin/azkaban-web-start.sh
+azkaban/azkaban-exec/bin/azkaban-exec-start.sh
+&lt;/pre&gt;
+&lt;p&gt;This way you can see whether errors occur and what causes them.&lt;br&gt;
+4. Based on error messages, you may not have correctly created the logs directory or the path may be incorrect.&lt;br&gt;
+5. Since the web server checks the exec server, it is recommended to start the exec server first.&lt;br&gt;
+6. If tasks are not executing in a multi-node setup, it may be because the executor nodes have insufficient resources. Check the configuration carefully. The configuration specifies under what memory, CPU, and other resource conditions the server will execute tasks, and how executor nodes are assigned if no specific node is designated. If you do not want to limit resources, modify or comment out the relevant configuration.&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban.use.multiple.executors=true
+azkaban.executorselector.filters=StaticRemainingFlowSize,MinimumFreeMemory,CpuStatus
+azkaban.executorselector.comparator.NumberOfAssignedFlowComparator=1
+azkaban.executorselector.comparator.Memory=1
+azkaban.executorselector.comparator.LastDispatched=1
+azkaban.executorselector.comparator.CpuUsage=1
+&lt;/pre&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;How to specify a node to execute a job:&lt;br&gt;
+Set &amp;ldquo;useExecutor&amp;rdquo; = EXECUTOR_ID in the flow params.&lt;br&gt;
+For details, please refer to:&lt;br&gt;
+&lt;a class="link" href="https://www.jianshu.com/p/ffb7bbc1988f" target="_blank" rel="noopener"
+&gt;https://www.jianshu.com/p/ffb7bbc1988f&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>What to Do If You Get Hit by Ransomware</title><link>https://blog.coinidea.com/en/p/what-to-do-if-you-get-hit-by-ransomware/</link><pubDate>Thu, 22 Nov 2018 07:23:33 +0000</pubDate><guid>https://blog.coinidea.com/en/p/what-to-do-if-you-get-hit-by-ransomware/</guid><description>&lt;p&gt;Recently, a friend of mine got hit by ransomware. After some research, I found a good website: the No More Ransom Alliance.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.nomoreransom.org/zh/decryption-tools.html" target="_blank" rel="noopener"
+&gt;https://www.nomoreransom.org/zh/decryption-tools.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve always believed that technology is neutral. So if you&amp;rsquo;ve been hit by ransomware, you might want to check out the website above &amp;ndash; there might be some solutions available.&lt;/p&gt;</description></item><item><title>A Great Place to Download RPM Packages</title><link>https://blog.coinidea.com/en/p/a-great-place-to-download-rpm-packages/</link><pubDate>Thu, 22 Nov 2018 07:17:03 +0000</pubDate><guid>https://blog.coinidea.com/en/p/a-great-place-to-download-rpm-packages/</guid><description>&lt;p&gt;In offline environments (specifically those where you can&amp;rsquo;t use wget or yum), we often need to compile and install Linux-based operating systems ourselves.&lt;/p&gt;
+&lt;p&gt;At that point, version dependencies become a real headache. Of course, we could use Docker to solve this.&lt;/p&gt;
+&lt;p&gt;But if your offline environment also restricts uploads and downloads, and the internal system versions are unpredictable, it becomes an even bigger pain. So I found a great place to download Linux RPM packages:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://pkgs.org/" target="_blank" rel="noopener"
+&gt;https://pkgs.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It solves the problems of operating system compatibility, system version dependencies, and software dependency management.&lt;/p&gt;</description></item><item><title>Recommending a Great Overseas VPS - Vultr</title><link>https://blog.coinidea.com/en/p/recommending-a-great-overseas-vps-vultr/</link><pubDate>Thu, 15 Nov 2018 07:17:56 +0000</pubDate><guid>https://blog.coinidea.com/en/p/recommending-a-great-overseas-vps-vultr/</guid><description>&lt;p&gt;&lt;a class="link" href="https://www.vultr.com/?ref=7462802" target="_blank" rel="noopener"
+&gt;&lt;img src="https://blog.coinidea.com/wp-content/themes/9IPHP/images/banner_1.png"
+loading="lazy"
+alt="banner"
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="introduction-to-vultr"&gt;Introduction to Vultr
+&lt;/h1&gt;&lt;p&gt;Vultr is a well-known US cloud service provided by Choopa.com. Choopa has been providing global support services for gaming companies, so the company has deployed data centers in 14 countries and regions worldwide, including Tokyo (Japan), Singapore, Los Angeles, Seattle (USA), London (UK), Germany, and more. It offers excellent value for money, with plans starting at just $2.5/month. New users receive $25 upon registration. Click the following link to register &amp;ndash; new users get $25 (you need to pay $10, which means you pay $10 and get $35 in credit): &lt;a class="link" href="https://www.vultr.com/?ref=7462802" target="_blank" rel="noopener"
+&gt;Promotional offer link&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="advantages-of-vultr"&gt;Advantages of Vultr
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;Numerous data centers: 14 data centers in Japan, the US, Europe, and more.&lt;/li&gt;
+&lt;li&gt;Excellent architecture: All using KVM architecture, SSD solid-state drives, starting from 1000GB/month traffic.&lt;/li&gt;
+&lt;li&gt;Powerful images: Besides common Linux distributions, you can also install custom ISO systems and Windows.&lt;/li&gt;
+&lt;li&gt;Powerful backend: Features including system snapshots, one-click deployment scripts, backups, firewalls, and more.&lt;/li&gt;
+&lt;li&gt;Promotions: Occasional new user registration bonuses, sometimes with rewards up to $100.&lt;/li&gt;
+&lt;li&gt;Flexible billing: Uses hourly billing mode, allowing you to add and remove machines at will.&lt;/li&gt;
+&lt;li&gt;Customer service: Fast response times, usually getting answers within 15 minutes (time zone differences may apply).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="pricing-and-configuration"&gt;Pricing and Configuration
+&lt;/h1&gt;&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/wp-content/uploads/2018/11/pricing.png" target="_blank" rel="noopener"
+&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/pricing.png"
+loading="lazy"
+alt="pricing"
+&gt;&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Markdown Anywhere</title><link>https://blog.coinidea.com/en/p/markdown-anywhere/</link><pubDate>Tue, 06 Nov 2018 06:29:16 +0000</pubDate><guid>https://blog.coinidea.com/en/p/markdown-anywhere/</guid><description>&lt;p&gt;I&amp;rsquo;ve been writing articles frequently lately and found that Markdown is a very convenient web typesetting standard. For details, see: &lt;a class="link" href="http://cesiumcn.org/markdown.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/markdown.html&lt;/a&gt; | &lt;a class="link" href="http://cesium.coinidea.com/markdown.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/markdown.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Currently, I&amp;rsquo;ve found that &lt;a class="link" href="https://www.jianshu.com/u/217c80f1e0a9" target="_blank" rel="noopener"
+&gt;Jianshu&lt;/a&gt; and &lt;a class="link" href="https://my.oschina.net/u/1470240" target="_blank" rel="noopener"
+&gt;OSChina&lt;/a&gt; have excellent Markdown support. However, &lt;a class="link" href="http://blog.coinidea.com/" target="_blank" rel="noopener"
+&gt;WordPress&lt;/a&gt; doesn&amp;rsquo;t support it, and surprisingly, &lt;a class="link" href="https://www.zhihu.com/people/coinidea/activities" target="_blank" rel="noopener"
+&gt;Zhihu&lt;/a&gt; doesn&amp;rsquo;t support it either.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;WordPress Markdown&lt;/strong&gt;
+WordPress has plugins that can provide support. Some people online say the &lt;em&gt;WP Editor.MD&lt;/em&gt; plugin is excellent, but after using it on my WordPress version, I found it wasn&amp;rsquo;t compatible &amp;ndash; it crashed directly when activated.&lt;/p&gt;
+&lt;p&gt;At that moment, I had a flash of inspiration and went directly to the official site &lt;a class="link" href="https://wordpress.org/plugins/" target="_blank" rel="noopener"
+&gt;https://wordpress.org/plugins/&lt;/a&gt; to look. I found that &lt;a class="link" href="https://wordpress.org/plugins/wp-markdown/" target="_blank" rel="noopener"
+&gt;wp-markdown&lt;/a&gt; works quite well.&lt;/p&gt;
+&lt;p&gt;After activating it, I noticed nothing changed. It turns out you need to configure it. The specific location is: &lt;strong&gt;Settings -&amp;gt; Writing&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/wp-content/uploads/2018/11/wordpress.png" target="_blank" rel="noopener"
+&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/wordpress.png"
+loading="lazy"
+alt="wordpress"
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Zhihu Markdown&lt;/strong&gt;
+Zhihu obviously can&amp;rsquo;t install plugins like WordPress. The talented developers online are truly amazing. There&amp;rsquo;s a Chrome plugin called Markdown Here. After installing it, when you right-click in a text input box, a &lt;em&gt;Markdown Here&lt;/em&gt; menu appears, which automatically converts rich text content to Markdown formatting &amp;ndash; just copy and paste.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/wp-content/uploads/2018/11/markdown_here_plugin.png" target="_blank" rel="noopener"
+&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/markdown_here_plugin.png"
+loading="lazy"
+alt="markdown_here_plugin"
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/markdown-here.png"
+loading="lazy"
+alt="markdown here"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>[CentOS]Upgrading OpenSSH and vsftpd on CentOS</title><link>https://blog.coinidea.com/en/p/centosupgrading-openssh-and-vsftpd-on-centos/</link><pubDate>Thu, 23 Nov 2017 08:05:04 +0000</pubDate><guid>https://blog.coinidea.com/en/p/centosupgrading-openssh-and-vsftpd-on-centos/</guid><description>&lt;h2 id="upgrading-openssh-to-version-74-or-above"&gt;Upgrading OpenSSH to Version 7.4 or Above
+&lt;/h2&gt;&lt;h3 id="background"&gt;Background
+&lt;/h3&gt;&lt;p&gt;Currently, OpenSSH versions below 7.4 on Linux have some critical vulnerabilities, and OpenSSH needs to be upgraded to version 7.4 or above. On a machine without external network access (no yum), this is quite troublesome. Online resources generally recommend backing up SSH and installing Telnet first, so you can still access the machine via Telnet if the upgrade fails.&lt;/p&gt;
+&lt;h3 id="common-issues-and-solutions"&gt;Common Issues and Solutions
+&lt;/h3&gt;&lt;h4 id="1-cannot-find-zlibh"&gt;1. Cannot find &lt;code&gt;zlib.h&lt;/code&gt;
+&lt;/h4&gt;&lt;p&gt;Reference: &lt;a class="link" href="http://www.linuxidc.com/Linux/2012-10/72036.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2012-10/72036.htm&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="2-zlib-download-link"&gt;2. zlib download link
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.zlib.net/" target="_blank" rel="noopener"
+&gt;http://www.zlib.net/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="3-installing-zlib"&gt;3. Installing zlib
+&lt;/h4&gt;&lt;p&gt;Reference: &lt;a class="link" href="http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml" target="_blank" rel="noopener"
+&gt;http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="4-dependencies-required-for-manually-compiling-openssh"&gt;4. Dependencies required for manually compiling OpenSSH
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zlib&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam-devel&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you get the error &lt;code&gt;configure: error: PAM headers not found&lt;/code&gt;, you can download &lt;code&gt;pam-devel&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm" target="_blank" rel="noopener"
+&gt;http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="5-openssl-download"&gt;5. OpenSSL download
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="ftp://ftp.openssl.org/source/" &gt;ftp://ftp.openssl.org/source/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="6-installing-openssl"&gt;6. Installing OpenSSL
+&lt;/h4&gt;&lt;p&gt;References:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/ikownyou/article/details/53021686" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/ikownyou/article/details/53021686&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.linuxidc.com/Linux/2011-10/45738.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2011-10/45738.htm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="notes"&gt;Notes
+&lt;/h3&gt;&lt;p&gt;If SecureCRT cannot log in after upgrading OpenSSH, it may be because the SecureCRT version is too old to support certain encryption protocols:&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a class="link" href="http://blog.csdn.net/yangg1991/article/details/51755562" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yangg1991/article/details/51755562&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="steps-to-upgrade-openssh"&gt;Steps to Upgrade OpenSSH
+&lt;/h3&gt;&lt;p&gt;Reference: &lt;a class="link" href="http://blog.csdn.net/u011080082/article/details/64503534" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u011080082/article/details/64503534&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="upgrading-vsftpd-from-222-to-234"&gt;Upgrading vsftpd from 2.2.2 to 2.3.4
+&lt;/h2&gt;&lt;p&gt;Download the &lt;code&gt;vsftpd-2.3.4.tar.gz&lt;/code&gt; package. For 64-bit systems, note:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\/lib64\/g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\//lib64\//g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="configuring-vsftpd"&gt;Configuring vsftpd
+&lt;/h3&gt;&lt;p&gt;Using active mode:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vsftpd /etc/vsftpd/vsftpd.conf &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;When starting in &lt;code&gt;standard_alone&lt;/code&gt; mode, you need to add the following two lines to the top of the configuration file:&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a class="link" href="http://wingjang.blog.163.com/blog/static/47913442200811113104509/" target="_blank" rel="noopener"
+&gt;http://wingjang.blog.163.com/blog/static/47913442200811113104509/&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;YES
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen_port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;After installation, only anonymous users are allowed to log in by default, so you need to modify the configuration:&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a class="link" href="http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html" target="_blank" rel="noopener"
+&gt;http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="handling-tcp_wrapper-issues"&gt;Handling TCP_Wrapper Issues
+&lt;/h3&gt;&lt;p&gt;If there are issues, pay attention to removing spaces, or you can remove it entirely:&lt;/p&gt;
+&lt;p&gt;References:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/u010098331/article/details/50699914" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u010098331/article/details/50699914&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/yylklshmyt20090217/article/details/8500608" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yylklshmyt20090217/article/details/8500608&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="vsftpd-download"&gt;vsftpd Download
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/" target="_blank" rel="noopener"
+&gt;http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>[MySQL] Scheduled Backup with MySQL-Front on Windows</title><link>https://blog.coinidea.com/en/p/mysql-scheduled-backup-with-mysql-front-on-windows/</link><pubDate>Thu, 05 May 2016 03:08:32 +0000</pubDate><guid>https://blog.coinidea.com/en/p/mysql-scheduled-backup-with-mysql-front-on-windows/</guid><description>&lt;p&gt;Scheduled backup is an extremely important task in database services.&lt;br&gt;
+For most users who manage databases with a GUI (commonly MySQL-Front, Navicat, or MySQL Workbench), interactive backup methods are simple and easy to learn.&lt;/p&gt;
+&lt;p&gt;Here is a brief guide on how to set up scheduled backups using MySQL-Front (version 5.3):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;After connecting to the database, go to &amp;ldquo;Extras&amp;rdquo; -&amp;gt; &amp;ldquo;Jobs&amp;rdquo; -&amp;gt; &amp;ldquo;New&amp;rdquo; -&amp;gt; &amp;ldquo;Export&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image001-289x300.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Select the test database and click Next.&lt;/li&gt;
+&lt;li&gt;Specify the export path &amp;ldquo;D:\test.sql&amp;rdquo;. Note that the character set should generally be set to UTF-8.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image003-289x300.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Next, specify the export content &amp;ndash; make sure to check the data option.&lt;/li&gt;
+&lt;li&gt;Set the backup time and interval.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image005-289x300.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;After completion, a job named &amp;ldquo;test&amp;rdquo; will appear in the scheduled tasks section.&lt;/li&gt;
+&lt;li&gt;If you want to run it immediately, right-click and select Run.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image007-300x213.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;</description></item><item><title>[Git] Configuring and Removing Git Proxy</title><link>https://blog.coinidea.com/en/p/git-configuring-and-removing-git-proxy/</link><pubDate>Sat, 09 Apr 2016 08:02:47 +0000</pubDate><guid>https://blog.coinidea.com/en/p/git-configuring-and-removing-git-proxy/</guid><description>&lt;p&gt;When configuring Git to use a proxy, you can use the following commands to set and remove the proxy:&lt;/p&gt;
+&lt;h3 id="configuring-git-proxy"&gt;Configuring Git Proxy
+&lt;/h3&gt;&lt;p&gt;To configure HTTP and HTTPS proxies for Git, use the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Configure HTTP proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global http.proxy http://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Configure HTTPS proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global https.proxy https://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="removing-git-proxy-configuration"&gt;Removing Git Proxy Configuration
+&lt;/h3&gt;&lt;p&gt;To remove the proxy settings, use the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Remove HTTP proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset http.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Remove HTTPS proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset https.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="explanation"&gt;Explanation
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git config --global http.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;: Configure the global HTTP proxy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global https.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;: Configure the global HTTPS proxy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset http.proxy&lt;/code&gt;: Remove the global HTTP proxy configuration.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset https.proxy&lt;/code&gt;: Remove the global HTTPS proxy configuration.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With these commands, you can easily enable or disable Git proxy settings as needed.&lt;/p&gt;</description></item><item><title>[Linux] Summary of Linux Commands</title><link>https://blog.coinidea.com/en/p/linux-summary-of-linux-commands/</link><pubDate>Sat, 17 Oct 2015 08:24:07 +0000</pubDate><guid>https://blog.coinidea.com/en/p/linux-summary-of-linux-commands/</guid><description>&lt;h3 id="user-management"&gt;User Management
+&lt;/h3&gt;&lt;p&gt;Recently I have been setting up a CDH cluster of about 10 nodes. The cluster uses 10 CentOS 6.7 servers, so I frequently need to use Linux user management commands.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Change password&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;passwd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Enter the new password and confirm it. For security, the password should include uppercase and lowercase letters, numbers, and special characters. Linux will also remind you of the password rules.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Switch user&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;su hdfs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This switches to the hdfs user.&lt;br&gt;
+Alternatively, without switching users, you can execute a command or access a file with a specific user&amp;rsquo;s permissions:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;su hdfs hadoop fs -mkdir /user/hdfs/test
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This creates a test directory at &lt;code&gt;/user/hdfs/&lt;/code&gt; on the cluster using hdfs user permissions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="file-management"&gt;File Management
+&lt;/h3&gt;&lt;p&gt;Create a directory&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir &lt;span class="o"&gt;[&lt;/span&gt;folder&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Create a file&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;touch/vi &lt;span class="o"&gt;[&lt;/span&gt;filename&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="timezone-selection"&gt;Timezone Selection
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Follow the prompts to select a timezone, then enter the suggested command.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tzselect
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Modify the timezone in the clock file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/sysconfig/clock
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;ZONE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Asia/Shanghai&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete the existing localtime and create a new one.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm /etc/localtime
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="run-commands-at-startup"&gt;Run Commands at Startup
+&lt;/h3&gt;&lt;p&gt;Edit the rc.local file&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/rc.local
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="start-the-ntp-service-to-sync-with-a-time-server-on-the-lan"&gt;Start the NTP Service to Sync with a Time Server on the LAN
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;service ntpd start
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/usr/sbin/ntpdate 192.168.34.115
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;[To be continued&amp;hellip;]&lt;/p&gt;</description></item><item><title>[Linux] Configuring DNS Addresses on Linux</title><link>https://blog.coinidea.com/en/p/linux-configuring-dns-addresses-on-linux/</link><pubDate>Wed, 14 Oct 2015 13:28:18 +0000</pubDate><guid>https://blog.coinidea.com/en/p/linux-configuring-dns-addresses-on-linux/</guid><description>&lt;p&gt;DNS determines whether a server can reach the internet via domain names. There are two ways to configure DNS server IP addresses on Linux.&lt;/p&gt;
+&lt;p&gt;Verification method:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ping www.baidu.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Temporary method&lt;br&gt;
+a) Edit resolv.conf&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi ./etc/resolv.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;b) Enter&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;nameserver 8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Save and you&amp;rsquo;re done.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Permanent method&lt;br&gt;
+a) Edit ifcfg-eth0&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;b) Enter&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;DNS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Save and you&amp;rsquo;re done.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can use&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ifconfig
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;to view the local network interfaces, where you can see the eth0 configuration information.&lt;/p&gt;</description></item><item><title>[Linux] Mounting an NTFS External Hard Drive on CentOS</title><link>https://blog.coinidea.com/en/p/linux-mounting-an-ntfs-external-hard-drive-on-centos/</link><pubDate>Thu, 01 Oct 2015 06:26:08 +0000</pubDate><guid>https://blog.coinidea.com/en/p/linux-mounting-an-ntfs-external-hard-drive-on-centos/</guid><description>&lt;p&gt;The server runs CentOS and needs to mount two 2TB external hard drives.&lt;/p&gt;
+&lt;p&gt;The command is as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mount -t ntfs /dev/sdn1 /test1
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mount： unknown filesystem type &amp;#39;ntfs&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;An error occurred, meaning the system does not recognize &amp;ldquo;NTFS.&amp;rdquo; The solution is as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;span class="lnt"&gt;6
+&lt;/span&gt;&lt;span class="lnt"&gt;7
+&lt;/span&gt;&lt;span class="lnt"&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;wget http://tuxera.com/opensource/ntfs-3g_ntfsprogs-2013.1.13.tgz
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zxvf ntfs-3g_ntfsprogs-2013.1.13.tgz
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cd ntfs-3g_ntfsprogs-2013.1.13
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./configure
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;make install
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir /mnt/window
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mount -t ntfs-3g /dev/sdn1 /mnt/window
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;To unmount:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;umount /dev/sdn1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>[Outlook] Outlook Configuration and General Settings — Outlook 2013</title><link>https://blog.coinidea.com/en/p/outlook-outlook-configuration-and-general-settings-outlook-2013/</link><pubDate>Thu, 01 Oct 2015 03:13:11 +0000</pubDate><guid>https://blog.coinidea.com/en/p/outlook-outlook-configuration-and-general-settings-outlook-2013/</guid><description>&lt;p&gt;Once you enter the workplace, Outlook becomes an essential tool for office workers. This article explains some configuration and general settings for Outlook (Outlook 2013).&lt;/p&gt;
+&lt;h1 id="adding-a-user-account"&gt;Adding a User Account
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;Open Outlook 2013, click &amp;ldquo;File&amp;rdquo; in the upper left corner, and in the dropdown list, click &amp;ldquo;+ Add Account.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/user.jpg"
+loading="lazy"
+alt="user"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Select &amp;ldquo;Email Account&amp;rdquo; and click &amp;ldquo;Next.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e9%80%89%e6%8b%a9%e7%94%b5%e5%ad%90%e9%82%ae%e4%bb%b6%e8%b4%a6%e6%88%b7.jpg"
+loading="lazy"
+alt="Select email account"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Click &amp;ldquo;Manual setup or additional server types,&amp;rdquo; then click &amp;ldquo;Next.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e6%89%8b%e5%8a%a8%e8%ae%be%e7%bd%ae%e6%88%96%e5%85%b6%e4%bb%96%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%b1%bb%e5%9e%8b.jpg"
+loading="lazy"
+alt="Manual setup or additional server types"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Check &amp;ldquo;POP or IMAP,&amp;rdquo; then click &amp;ldquo;Next.&amp;rdquo; This is generally the option to choose.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/popimap.jpg"
+loading="lazy"
+alt="popimap"
+&gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;Enter your username and password, and configure the incoming and outgoing server addresses. Note that these two addresses are typically pop3 or smtp@corresponding-domain, which you need to confirm with your email service provider. The provider usually has documentation for this.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%be%93%e5%85%a5%e7%94%a8%e6%88%b7%e5%90%8d%e5%af%86%e7%a0%81.jpg"
+loading="lazy"
+alt="Enter username and password"
+&gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;Click &amp;ldquo;More Settings&amp;rdquo; in the image above, configure the outgoing server username and password, and click &amp;ldquo;Finish.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e5%85%b6%e4%bb%96%e8%ae%be%e7%bd%ae%e8%be%93%e5%85%a5%e7%94%a8%e6%88%b7%e5%90%8d%e5%af%86%e7%a0%81.jpg"
+loading="lazy"
+alt="More settings - enter username and password"
+&gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;Click Next to start the test. After the test completes, the entire process is successful.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e6%b5%8b%e8%af%95%e5%ae%8c%e6%88%90.jpg"
+loading="lazy"
+alt="Test complete"
+&gt;&lt;/p&gt;
+&lt;h1 id="configuring-email-filter-rules"&gt;Configuring Email Filter Rules
+&lt;/h1&gt;&lt;p&gt;During daily email usage, you may receive a large volume of emails. Efficiently sorting these emails is a very meaningful task.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Outlook 2013, click &amp;ldquo;File&amp;rdquo; in the upper left corner, and in the dropdown list, click &amp;ldquo;Manage Rules &amp;amp; Alerts.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e7%ae%a1%e7%90%86%e8%a7%84%e5%88%99%e5%92%8c%e9%80%9a%e7%9f%a5.jpg"
+loading="lazy"
+alt="Manage Rules &amp; Alerts"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Click &amp;ldquo;New Rule.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%a7%84%e5%88%99%e5%92%8c%e9%80%9a%e7%9f%a5.jpg"
+loading="lazy"
+alt="Rules and Alerts"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;There are many options in the rules. Configure them according to the rule wizard. For example, you can select &amp;ldquo;with specific words in the subject&amp;rdquo; or &amp;ldquo;from a specific sender,&amp;rdquo; and then move the emails to a designated folder or specify a particular action.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%a7%84%e5%88%99%e5%90%91%e5%af%bc.jpg"
+loading="lazy"
+alt="Rule Wizard"
+&gt;&lt;/p&gt;</description></item><item><title>[Software] Creating GIF Images Locally</title><link>https://blog.coinidea.com/en/p/software-creating-gif-images-locally/</link><pubDate>Sun, 20 Sep 2015 08:37:13 +0000</pubDate><guid>https://blog.coinidea.com/en/p/software-creating-gif-images-locally/</guid><description>&lt;p&gt;Because I open-sourced a &lt;a class="link" href="http://www.coinidea.com/Index/content/columnId/41/contentId/55.html" target="_blank" rel="noopener"
+&gt;WIN32 Snake game&lt;/a&gt;, I wanted to create a GIF for demonstration purposes, but figuring out how to actually make one turned out to be tricky.&lt;/p&gt;
+&lt;p&gt;After some research, here are several methods:&lt;/p&gt;
+&lt;h3 id="method-1-using-video-software-like-qq-player"&gt;Method 1: Using video software like QQ Player
+&lt;/h3&gt;&lt;p&gt;The prerequisite is that you have a short video clip to convert. You can use QQ Player&amp;rsquo;s built-in feature to do the conversion.&lt;/p&gt;
+&lt;p&gt;Detailed instructions:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://kf.qq.com/faq/120322fu63YV130422iiEbMB.html" target="_blank" rel="noopener"
+&gt;http://kf.qq.com/faq/120322fu63YV130422iiEbMB.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="method-2-using-professional-software-like-photoshop"&gt;Method 2: Using professional software like Photoshop
+&lt;/h3&gt;&lt;p&gt;Prepare multiple frames of images. See this Baidu tutorial for detailed instructions:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://jingyan.baidu.com/article/7f41ececdb326e593d095c2e.html" target="_blank" rel="noopener"
+&gt;http://jingyan.baidu.com/article/7f41ececdb326e593d095c2e.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="method-3-using-screen-recording-expert"&gt;Method 3: Using Screen Recording Expert
+&lt;/h3&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150919/1442639966167035.gif"
+loading="lazy"
+alt="1442639966167035.gif"
+&gt;&lt;/p&gt;
+&lt;p&gt;The image above was created using Screen Recording Expert. First, I recorded a video (in EXE or LXE format), then selected the &amp;ldquo;Conversion Tools&amp;rdquo; menu, and converted it from there.&lt;/p&gt;
+&lt;p&gt;Here is a download link for a portable version of Screen Recording Expert:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.coinidea.com/Index/content/columnId/43/contentId/59.html" target="_blank" rel="noopener"
+&gt;Screen Recording Expert&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Cleaning Your Computer with CCleaner</title><link>https://blog.coinidea.com/en/p/cleaning-your-computer-with-ccleaner/</link><pubDate>Sun, 21 Jun 2015 07:33:06 +0000</pubDate><guid>https://blog.coinidea.com/en/p/cleaning-your-computer-with-ccleaner/</guid><description>&lt;p&gt;A major life transition is coming - graduation. There&amp;rsquo;s a computer in the lab that&amp;rsquo;s been mine to use, and I wanted to give it a thorough clean before I leave. I heard about a tool called &lt;a class="link" href="http://www.piriform.com/ccleaner" target="_blank" rel="noopener"
+&gt;CCleaner&lt;/a&gt;, tried it out, and it works quite well. It can conveniently clean up Windows | Mac | Android | iPhone devices.&lt;/p&gt;
+&lt;p&gt;On Windows, you can perform:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Windows and application cleanup&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/windows%e6%b8%85%e7%90%86-300x225.jpg"
+loading="lazy"
+alt="windows清理"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Registry cleanup&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/%e6%b3%a8%e5%86%8c%e8%a1%a8%e6%b8%85%e7%90%86-300x225.jpg"
+loading="lazy"
+alt="注册表清理"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Software uninstallation and disk wiping&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/%e5%8d%b8%e8%bd%bd%e8%bd%af%e4%bb%b6%e7%a3%81%e7%9b%98%e6%93%a6%e9%99%a4-300x225.jpg"
+loading="lazy"
+alt="卸载软件磁盘擦除"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Adding Images to README.md on GitHub</title><link>https://blog.coinidea.com/en/p/adding-images-to-readme.md-on-github/</link><pubDate>Thu, 12 Feb 2015 12:42:27 +0000</pubDate><guid>https://blog.coinidea.com/en/p/adding-images-to-readme.md-on-github/</guid><description>&lt;p&gt;I had been using SVN before and only truly started using Git a few months ago. I had briefly used GitHub during KDD2013.&lt;/p&gt;
+&lt;p&gt;Recently, I wanted to polish my programs properly &amp;ndash; comments and descriptions are essential and should be written with care.&lt;/p&gt;
+&lt;p&gt;I encountered a problem: how to add images to a README.md file.&lt;/p&gt;
+&lt;p&gt;Here is the solution I used:&lt;/p&gt;
+&lt;p&gt;Create an image folder within your project folder, place the images you want to display in the README.md, and commit that folder to GitHub. Through the preview, you can obtain the image&amp;rsquo;s URL on GitHub.&lt;/p&gt;
+&lt;p&gt;README.md supports the following image markup: &lt;code&gt;&amp;lt;img data-original=&amp;quot;image-url&amp;quot; src=&amp;quot;http://blog.coinidea.com/wp-content/themes/9IPHP/images/lazy_loading.gif&amp;quot; alt=&amp;quot;image&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/hujiulin/WordConverter" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/WordConverter&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tauri on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/tauri/</link><description>Recent content in Tauri on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 08 Jun 2026 12:00:00 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/tauri/index.xml" rel="self" type="application/rss+xml"/><item><title>EchoWise: I shipped an AI English-speaking app in 2 days with Agentic Engineering</title><link>https://blog.coinidea.com/en/p/echowise-2-days-agentic-engineering/</link><pubDate>Mon, 08 Jun 2026 12:00:00 +0000</pubDate><guid>https://blog.coinidea.com/en/p/echowise-2-days-agentic-engineering/</guid><description>&lt;h2 id="tldr"&gt;TL;DR
+&lt;/h2&gt;&lt;p&gt;In &lt;strong&gt;two days&lt;/strong&gt;, I shipped an open-source, cross-platform desktop AI English-speaking
+tutor: &lt;strong&gt;&lt;a class="link" href="https://github.com/hujiulin/EchoWise" target="_blank" rel="noopener"
+&gt;EchoWise&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Built end-to-end with &lt;strong&gt;Vibe Coding / Agentic Engineering&lt;/strong&gt;.&lt;/p&gt;
+&lt;p align="center"&gt;
+&lt;img src="https://blog.coinidea.com/img/echowise/demo.gif" alt="EchoWise — full walk-through" width="720" /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="why-echowise"&gt;Why EchoWise
+&lt;/h2&gt;&lt;p&gt;Almost every English-learning app on the market teaches you to &lt;strong&gt;study&lt;/strong&gt; English:
+flashcards, drills, scores, leaderboards. But what I actually needed when I was learning
+English wasn&amp;rsquo;t more learning — it was more &lt;strong&gt;using&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Stop studying English. Start using English.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;EchoWise is built on the opposite philosophy:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Communication before perfection&lt;/strong&gt; — Imperfect English that connects beats perfect grammar that stays silent&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Relationship before knowledge&lt;/strong&gt; — Polite stranger on Day 1, easy old friend by Day 30. Your AI companion&amp;rsquo;s tone evolves naturally with the day count&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gentle nudges, never interruptions&lt;/strong&gt; — The AI never lectures mid-reply. Scores sit quietly in the corner of your bubble — one glance when you want them&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Local-first&lt;/strong&gt; — Every conversation, recording, and AI voice playback stays on your machine. Nothing is uploaded&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="what-echowise-actually-does"&gt;What EchoWise actually does
+&lt;/h2&gt;&lt;p&gt;The whole product revolves around one core idea: &lt;strong&gt;a companion that grows with you.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="-a-companion-that-grows"&gt;🗣️ A companion that grows
+&lt;/h3&gt;&lt;p&gt;You give them a name, pick an avatar, choose a voice, write a persona.
+EchoWise tracks the Day count and maps the relationship into 5 tiers:
+&lt;strong&gt;Stranger → Acquaintance → Familiar → Friend → Old friend&lt;/strong&gt;.
+The AI&amp;rsquo;s tone follows naturally — polite stranger on Day 1, the kind of old friend
+who teases you and remembers what you said by Day 30.&lt;/p&gt;
+&lt;h3 id="-voice-first-conversation"&gt;🎙️ Voice-first conversation
+&lt;/h3&gt;&lt;p&gt;Hold the mic to record, release to transcribe; type when you can&amp;rsquo;t talk.
+The AI&amp;rsquo;s reply comes back as a &lt;strong&gt;voice-message-style bubble&lt;/strong&gt; — tap the waveform to play.
+Don&amp;rsquo;t want to listen? Click &amp;ldquo;Show transcript&amp;rdquo; for the text.
+The whole flow feels like a normal messaging app, not a drill exercise.&lt;/p&gt;
+&lt;h3 id="-coaching-that-never-interrupts"&gt;💡 Coaching that never interrupts
+&lt;/h3&gt;&lt;p&gt;The most annoying anti-pattern is an AI that breaks mid-conversation
+to lecture you about &amp;ldquo;you should have used the present perfect here.&amp;rdquo;
+EchoWise refuses to do that.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The AI &lt;strong&gt;never&lt;/strong&gt; mixes grammar lectures into its replies&lt;/li&gt;
+&lt;li&gt;After every sentence you say, a &lt;strong&gt;1–100 score chip&lt;/strong&gt; appears in the corner of your bubble, in 5 color bands:
+&lt;ul&gt;
+&lt;li&gt;🔴 &lt;strong&gt;Try again&lt;/strong&gt; (&amp;lt; 50)&lt;/li&gt;
+&lt;li&gt;🟠 &lt;strong&gt;Getting there&lt;/strong&gt; (50–59)&lt;/li&gt;
+&lt;li&gt;🟡 &lt;strong&gt;Clear&lt;/strong&gt; (60–69)&lt;/li&gt;
+&lt;li&gt;🟢 &lt;strong&gt;Natural&lt;/strong&gt; (70–89)&lt;/li&gt;
+&lt;li&gt;⭐ &lt;strong&gt;Native-like&lt;/strong&gt; (90+)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tap the chip to see &lt;strong&gt;original / better / native-like + a short note&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t tap? Keep talking. It never interrupts you&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="-growth-that-actually-means-something"&gt;📈 Growth that actually means something
+&lt;/h3&gt;&lt;p&gt;Not &amp;ldquo;how many words you reviewed today,&amp;rdquo; but:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Confidence trend&lt;/strong&gt; — rolling average of your last 5 sentences, updates as you talk&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;5-band distribution&lt;/strong&gt; — where do your sentences cluster&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Auto-picked &amp;ldquo;best so far&amp;rdquo;&lt;/strong&gt; and &lt;strong&gt;&amp;ldquo;worth revisiting&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Open the Growth view and see at a glance that you&amp;rsquo;re getting better.
+That positive feedback loop beats streak-counting any day.&lt;/p&gt;
+&lt;h3 id="-full-appearance-customization"&gt;🎨 Full appearance customization
+&lt;/h3&gt;&lt;p&gt;Theme (system / light / dark), 4 fonts, 4 sizes,
+6 preset gradient backgrounds — or upload your own image.
+Each companion can have their own avatar and background, too.&lt;/p&gt;
+&lt;h3 id="-multi-provider"&gt;🔌 Multi-provider
+&lt;/h3&gt;&lt;p&gt;OpenAI / Azure OpenAI in one click.
+Defaults to &lt;code&gt;gpt-5&lt;/code&gt; + &lt;code&gt;gpt-4o-transcribe&lt;/code&gt; + &lt;code&gt;gpt-4o-mini-tts&lt;/code&gt;.
+TTS voice instructions adapt dynamically to the companion&amp;rsquo;s persona —
+a lively companion gets a more energetic voice, a calm one gets a quieter delivery.&lt;/p&gt;
+&lt;h3 id="-fully-local"&gt;💾 Fully local
+&lt;/h3&gt;&lt;p&gt;SQLite database + filesystem.
+Every conversation, every recording you made, every AI voice clip —
+&lt;strong&gt;lives on your machine forever&lt;/strong&gt;, never uploaded to any server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="about-the-two-days"&gt;About the &amp;ldquo;two days&amp;rdquo;
+&lt;/h2&gt;&lt;p&gt;The entire build was a &lt;strong&gt;Vibe Coding / Agentic Engineering&lt;/strong&gt; workflow:
+&lt;strong&gt;I focused on product decisions and architectural judgment, the AI handled implementation and grind work.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;My job:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Decide what features ship, how the UX should flow, how many tiers in the relationship arc&lt;/li&gt;
+&lt;li&gt;Judge whether the architecture holds, whether an abstraction is worth it, where bugs actually live&lt;/li&gt;
+&lt;li&gt;Write the PRD, iterate on UX, review PRs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The AI&amp;rsquo;s job:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Write React components, call Tauri APIs, write unit tests&lt;/li&gt;
+&lt;li&gt;Tune Vite / Cargo / Tailwind config&lt;/li&gt;
+&lt;li&gt;Edit GitHub Actions workflows, fix CI failures&lt;/li&gt;
+&lt;li&gt;Propose improvements, catch my mistakes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After two days, this is what the product looked like:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Metric&lt;/th&gt;
+&lt;th&gt;Number&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Application code (TS + TSX + Rust)&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;~4,571 lines&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Unit test code&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;~3,405 lines&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Unit tests&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;281&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Line coverage&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;94.5%&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Cross-platform CI/CD&lt;/td&gt;
+&lt;td&gt;macOS + Windows, tag-triggered releases&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Auto-update&lt;/td&gt;
+&lt;td&gt;tauri-plugin-updater with signature verification&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="try-echowise"&gt;Try EchoWise
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: &lt;a class="link" href="https://github.com/hujiulin/EchoWise" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/EchoWise&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Download&lt;/strong&gt;: &lt;a class="link" href="https://github.com/hujiulin/EchoWise/releases" target="_blank" rel="noopener"
+&gt;Releases page&lt;/a&gt; has macOS &lt;code&gt;.dmg&lt;/code&gt; and Windows &lt;code&gt;.msi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Setup&lt;/strong&gt;: Built-in OpenAI and Azure OpenAI presets — drop in your own API key and you&amp;rsquo;re talking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;macOS note&lt;/strong&gt;: the first time you open it you&amp;rsquo;ll see &lt;em&gt;&amp;ldquo;Apple could not verify&amp;hellip;&amp;rdquo;&lt;/em&gt;. That&amp;rsquo;s because I haven&amp;rsquo;t paid for an Apple Developer ID ($99/year) for notarization.
+Open System Settings → Privacy &amp;amp; Security → scroll to the bottom → click &lt;strong&gt;Open Anyway&lt;/strong&gt; once, and you&amp;rsquo;re done forever. Full steps are in the README.&lt;/p&gt;
+&lt;p&gt;If you enjoy it, a ⭐ on the EchoWise repo is very welcome — it helps more people find it.
+Feedback, bugs, ideas — open an Issue or PR on GitHub.&lt;/p&gt;</description></item></channel></rss>

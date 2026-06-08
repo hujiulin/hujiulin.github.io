@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Markdown on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/markdown/</link><description>Recent content in Markdown on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 06 Nov 2018 06:29:16 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/markdown/index.xml" rel="self" type="application/rss+xml"/><item><title>Markdown Anywhere</title><link>https://blog.coinidea.com/en/p/markdown-anywhere/</link><pubDate>Tue, 06 Nov 2018 06:29:16 +0000</pubDate><guid>https://blog.coinidea.com/en/p/markdown-anywhere/</guid><description>&lt;p&gt;I&amp;rsquo;ve been writing articles frequently lately and found that Markdown is a very convenient web typesetting standard. For details, see: &lt;a class="link" href="http://cesiumcn.org/markdown.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/markdown.html&lt;/a&gt; | &lt;a class="link" href="http://cesium.coinidea.com/markdown.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/markdown.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Currently, I&amp;rsquo;ve found that &lt;a class="link" href="https://www.jianshu.com/u/217c80f1e0a9" target="_blank" rel="noopener"
+&gt;Jianshu&lt;/a&gt; and &lt;a class="link" href="https://my.oschina.net/u/1470240" target="_blank" rel="noopener"
+&gt;OSChina&lt;/a&gt; have excellent Markdown support. However, &lt;a class="link" href="http://blog.coinidea.com/" target="_blank" rel="noopener"
+&gt;WordPress&lt;/a&gt; doesn&amp;rsquo;t support it, and surprisingly, &lt;a class="link" href="https://www.zhihu.com/people/coinidea/activities" target="_blank" rel="noopener"
+&gt;Zhihu&lt;/a&gt; doesn&amp;rsquo;t support it either.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;WordPress Markdown&lt;/strong&gt;
+WordPress has plugins that can provide support. Some people online say the &lt;em&gt;WP Editor.MD&lt;/em&gt; plugin is excellent, but after using it on my WordPress version, I found it wasn&amp;rsquo;t compatible &amp;ndash; it crashed directly when activated.&lt;/p&gt;
+&lt;p&gt;At that moment, I had a flash of inspiration and went directly to the official site &lt;a class="link" href="https://wordpress.org/plugins/" target="_blank" rel="noopener"
+&gt;https://wordpress.org/plugins/&lt;/a&gt; to look. I found that &lt;a class="link" href="https://wordpress.org/plugins/wp-markdown/" target="_blank" rel="noopener"
+&gt;wp-markdown&lt;/a&gt; works quite well.&lt;/p&gt;
+&lt;p&gt;After activating it, I noticed nothing changed. It turns out you need to configure it. The specific location is: &lt;strong&gt;Settings -&amp;gt; Writing&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/wp-content/uploads/2018/11/wordpress.png" target="_blank" rel="noopener"
+&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/wordpress.png"
+loading="lazy"
+alt="wordpress"
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Zhihu Markdown&lt;/strong&gt;
+Zhihu obviously can&amp;rsquo;t install plugins like WordPress. The talented developers online are truly amazing. There&amp;rsquo;s a Chrome plugin called Markdown Here. After installing it, when you right-click in a text input box, a &lt;em&gt;Markdown Here&lt;/em&gt; menu appears, which automatically converts rich text content to Markdown formatting &amp;ndash; just copy and paste.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/wp-content/uploads/2018/11/markdown_here_plugin.png" target="_blank" rel="noopener"
+&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/markdown_here_plugin.png"
+loading="lazy"
+alt="markdown_here_plugin"
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/markdown-here.png"
+loading="lazy"
+alt="markdown here"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Adding Images to README.md on GitHub</title><link>https://blog.coinidea.com/en/p/adding-images-to-readme.md-on-github/</link><pubDate>Thu, 12 Feb 2015 12:42:27 +0000</pubDate><guid>https://blog.coinidea.com/en/p/adding-images-to-readme.md-on-github/</guid><description>&lt;p&gt;I had been using SVN before and only truly started using Git a few months ago. I had briefly used GitHub during KDD2013.&lt;/p&gt;
+&lt;p&gt;Recently, I wanted to polish my programs properly &amp;ndash; comments and descriptions are essential and should be written with care.&lt;/p&gt;
+&lt;p&gt;I encountered a problem: how to add images to a README.md file.&lt;/p&gt;
+&lt;p&gt;Here is the solution I used:&lt;/p&gt;
+&lt;p&gt;Create an image folder within your project folder, place the images you want to display in the README.md, and commit that folder to GitHub. Through the preview, you can obtain the image&amp;rsquo;s URL on GitHub.&lt;/p&gt;
+&lt;p&gt;README.md supports the following image markup: &lt;code&gt;&amp;lt;img data-original=&amp;quot;image-url&amp;quot; src=&amp;quot;http://blog.coinidea.com/wp-content/themes/9IPHP/images/lazy_loading.gif&amp;quot; alt=&amp;quot;image&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/hujiulin/WordConverter" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/WordConverter&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Outlook on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/outlook/</link><description>Recent content in Outlook on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 01 Oct 2015 03:13:11 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/outlook/index.xml" rel="self" type="application/rss+xml"/><item><title>[Outlook] Outlook Configuration and General Settings — Outlook 2013</title><link>https://blog.coinidea.com/en/p/outlook-outlook-configuration-and-general-settings-outlook-2013/</link><pubDate>Thu, 01 Oct 2015 03:13:11 +0000</pubDate><guid>https://blog.coinidea.com/en/p/outlook-outlook-configuration-and-general-settings-outlook-2013/</guid><description>&lt;p&gt;Once you enter the workplace, Outlook becomes an essential tool for office workers. This article explains some configuration and general settings for Outlook (Outlook 2013).&lt;/p&gt;
+&lt;h1 id="adding-a-user-account"&gt;Adding a User Account
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;Open Outlook 2013, click &amp;ldquo;File&amp;rdquo; in the upper left corner, and in the dropdown list, click &amp;ldquo;+ Add Account.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/user.jpg"
+loading="lazy"
+alt="user"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Select &amp;ldquo;Email Account&amp;rdquo; and click &amp;ldquo;Next.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e9%80%89%e6%8b%a9%e7%94%b5%e5%ad%90%e9%82%ae%e4%bb%b6%e8%b4%a6%e6%88%b7.jpg"
+loading="lazy"
+alt="Select email account"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Click &amp;ldquo;Manual setup or additional server types,&amp;rdquo; then click &amp;ldquo;Next.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e6%89%8b%e5%8a%a8%e8%ae%be%e7%bd%ae%e6%88%96%e5%85%b6%e4%bb%96%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%b1%bb%e5%9e%8b.jpg"
+loading="lazy"
+alt="Manual setup or additional server types"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Check &amp;ldquo;POP or IMAP,&amp;rdquo; then click &amp;ldquo;Next.&amp;rdquo; This is generally the option to choose.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/popimap.jpg"
+loading="lazy"
+alt="popimap"
+&gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;Enter your username and password, and configure the incoming and outgoing server addresses. Note that these two addresses are typically pop3 or smtp@corresponding-domain, which you need to confirm with your email service provider. The provider usually has documentation for this.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%be%93%e5%85%a5%e7%94%a8%e6%88%b7%e5%90%8d%e5%af%86%e7%a0%81.jpg"
+loading="lazy"
+alt="Enter username and password"
+&gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;Click &amp;ldquo;More Settings&amp;rdquo; in the image above, configure the outgoing server username and password, and click &amp;ldquo;Finish.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e5%85%b6%e4%bb%96%e8%ae%be%e7%bd%ae%e8%be%93%e5%85%a5%e7%94%a8%e6%88%b7%e5%90%8d%e5%af%86%e7%a0%81.jpg"
+loading="lazy"
+alt="More settings - enter username and password"
+&gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;Click Next to start the test. After the test completes, the entire process is successful.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e6%b5%8b%e8%af%95%e5%ae%8c%e6%88%90.jpg"
+loading="lazy"
+alt="Test complete"
+&gt;&lt;/p&gt;
+&lt;h1 id="configuring-email-filter-rules"&gt;Configuring Email Filter Rules
+&lt;/h1&gt;&lt;p&gt;During daily email usage, you may receive a large volume of emails. Efficiently sorting these emails is a very meaningful task.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Outlook 2013, click &amp;ldquo;File&amp;rdquo; in the upper left corner, and in the dropdown list, click &amp;ldquo;Manage Rules &amp;amp; Alerts.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e7%ae%a1%e7%90%86%e8%a7%84%e5%88%99%e5%92%8c%e9%80%9a%e7%9f%a5.jpg"
+loading="lazy"
+alt="Manage Rules &amp; Alerts"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Click &amp;ldquo;New Rule.&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%a7%84%e5%88%99%e5%92%8c%e9%80%9a%e7%9f%a5.jpg"
+loading="lazy"
+alt="Rules and Alerts"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;There are many options in the rules. Configure them according to the rule wizard. For example, you can select &amp;ldquo;with specific words in the subject&amp;rdquo; or &amp;ldquo;from a specific sender,&amp;rdquo; and then move the emails to a designated folder or specify a particular action.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%a7%84%e5%88%99%e5%90%91%e5%af%bc.jpg"
+loading="lazy"
+alt="Rule Wizard"
+&gt;&lt;/p&gt;</description></item></channel></rss>

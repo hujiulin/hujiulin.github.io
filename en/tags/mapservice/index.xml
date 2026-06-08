@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MapService on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/mapservice/</link><description>Recent content in MapService on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 23 May 2015 05:32:44 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/mapservice/index.xml" rel="self" type="application/rss+xml"/><item><title>[MapService] How to Embed Maps in Your Own Web Pages</title><link>https://blog.coinidea.com/en/p/mapservice-how-to-embed-maps-in-your-own-web-pages/</link><pubDate>Sat, 23 May 2015 05:32:44 +0000</pubDate><guid>https://blog.coinidea.com/en/p/mapservice-how-to-embed-maps-in-your-own-web-pages/</guid><description>&lt;p&gt;To embed a map in your own web page, the common methods can be summarized as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The Simplest Method &amp;ndash; Using Google Maps&amp;rsquo; &amp;ldquo;Link&amp;rdquo; Feature&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you only need to display a specific area on your page, such as your company&amp;rsquo;s location, without adding any extra content like markers or polylines, this is the easiest way to embed Google Maps.&lt;/p&gt;
+&lt;p&gt;Go to the Google Maps homepage, navigate to the area you want to display, then click &amp;ldquo;Link&amp;rdquo; in the upper left corner of the map. An info box will appear with two input fields &amp;ndash; copy the content from the second input field into your page and you&amp;rsquo;re done.&lt;/p&gt;
+&lt;p&gt;This embed code is essentially an iframe declaration. Although the Maps homepage provides a customization and preview feature, it only allows you to customize the map size. If needed, you can manually modify the iframe declaration for further customization, such as adding custom styles to the iframe.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The Most Lightweight Method &amp;ndash; Using Google Static Maps&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you need to display a specific area and add some markers or polylines, but don&amp;rsquo;t care whether the map on your page is draggable, then static maps are what you need.&lt;/p&gt;
+&lt;p&gt;A static map means what you embed in your page is actually just a GIF image, dynamically fetched from Google via a URL. This differs from the &amp;ldquo;dynamic&amp;rdquo; maps we commonly use, and loading such a map is much faster than loading a full interactive map.&lt;/p&gt;
+&lt;p&gt;To use a static map on your page, simply use an img tag and set its src attribute to the Google Static Maps URL.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a simple static map URL:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://ditu.google.cn/staticmap?center=39.970981,116.314108&amp;amp;zoom=16&amp;amp;size=400×400&amp;amp;key=YOUR_API_KEY
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;In this URL, you can edit parameters like center, zoom, and size to specify the map&amp;rsquo;s center point, zoom level, map dimensions, and more. Of course, you can also add parameters for markers and polylines. Don&amp;rsquo;t worry about memorizing all these parameters &amp;ndash; there&amp;rsquo;s a static map customization wizard that guides you through a few simple steps to get the URL you need. If interested, you can explore the Google Static Maps API documentation.&lt;/p&gt;
+&lt;p&gt;Strictly speaking, Google Static Maps is also a type of Google Maps API, so using static maps requires your Google Maps API key. If you&amp;rsquo;ve already registered a Maps API key, you can simply reuse it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The Most Flexible Method &amp;ndash; Using the Google Maps API&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If neither of the above methods meets your needs, try the Google Maps API. Although the Google Maps API has been divided into JavaScript, Flash, Earth, Static, and other versions, in my view, the JavaScript API is the foundation of the Google Maps API. So unless otherwise specified, &amp;ldquo;Google Maps API&amp;rdquo; here refers to the Google Maps JavaScript API. With this API, you can display your data on the map in any feasible way you like, and you can even make your own map look better than Google Maps itself.&lt;/p&gt;
+&lt;p&gt;To embed a map in your page using this API, the basic steps are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Import the Maps API library using a JavaScript tag;&lt;/li&gt;
+&lt;li&gt;Define an element on the page to hold the map, typically a div tag with specified width and height;&lt;/li&gt;
+&lt;li&gt;In your JavaScript code: &lt;code&gt;new GMap2(document.getElementById(&amp;quot;your map container's id&amp;quot;));&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Use classes provided by the API such as GMarker, GPolyline, etc. to customize the markers, polylines, and other elements on the map.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For a detailed guide on creating Google Maps, see the &amp;ldquo;Creating Maps with JavaScript Guide&amp;rdquo; above. However, to use this API proficiently, you need a certain level of JavaScript knowledge and hands-on ability. Additionally, it&amp;rsquo;s strongly recommended to read the Google Maps JavaScript API Developer Guide first, which can answer many common questions. Of course, you can also find the information you&amp;rsquo;re looking for in this documentation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Beyond the methods described above, there are some less commonly used ways to embed maps in web pages, which won&amp;rsquo;t be covered here.&lt;/p&gt;</description></item></channel></rss>

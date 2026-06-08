@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MapService on Coinidea的博客</title><link>https://blog.coinidea.com/tags/mapservice/</link><description>Recent content in MapService on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 23 May 2015 05:32:44 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/mapservice/index.xml" rel="self" type="application/rss+xml"/><item><title>[MapService]如何在自己的网页中嵌入地图</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-846.html</link><pubDate>Sat, 23 May 2015 05:32:44 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-846.html</guid><description>&lt;p&gt;要在自己的网页中嵌入地图，常用的方法可以归纳为以下几种：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;最简单的方法 ——使用谷歌地图主页的&amp;quot;链接&amp;quot;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果你只需要在自己的页面上显示某个特定范围的地图，比如你的公司所在地，但是不需要在地图上添加任何额外的内容，比如标记、折线等等，那么，使用这个方法来嵌入谷歌地图是最简单的。&lt;/p&gt;
+&lt;p&gt;登录谷歌地图主页，定位你需要显示的范围后，点击地图左上角的“链接”，会出现一个信息框，给出两个输入框，把第二个输入框中的内容拷贝到你的页面上就可以了。&lt;/p&gt;
+&lt;p&gt;其实，这段嵌入代码就是一个iframe的声明，所以，虽然地图主页提供一个自定义地图并预览的功能，但是只能自定义地图的大小，如果需要的话，我们完全可以通过手动修改这个iframe声明来实现更多的自定义，比如，给这段iframe加上自定义的样式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;最精简的方法 ——使用谷歌静态地图&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果你需要显示某个特定范围的地图，而且需要在地图上加上一些标记、折线。但是，你并不在乎你网页上的地图能否拖拽，那么，这个静态地图应该就是你需要的了。&lt;/p&gt;
+&lt;p&gt;所谓静态地图，意思就是你在页面上嵌入的其实只是一个GIF图片，这个GIF图片是你通过URL从谷歌动态获取的，这样的嵌入地图就有别于我们常用的“动态”地图了，而且，加载这样的地图，比加载一个完整的地图要快捷的多。&lt;/p&gt;
+&lt;p&gt;要在你的页面上使用这样的静态地图，只需要使用一个img标签，把这个标签的src属性指定为谷歌静态地图的url就可以了。&lt;/p&gt;
+&lt;p&gt;看一个简单的静态地图URL：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://ditu.google.cn/staticmap?center=39.970981,116.314108&amp;amp;zoom=16&amp;amp;size=400×400&amp;amp;key=YOUR_API_KEY
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在这个URL中，你可以编辑center、zoom、size这些参数来指定地图的中心点、缩放级别、地图大小等等，当然，如果需要在地图上添加标记、折线，你还可以加上对应的参数。不过，不用担心你要记住这么多参数，这里有一个定制静态地图的向导，简单的几步就可以得到你需要的URL了。如果有兴趣，可以去研究一下谷歌静态地图的API文档。&lt;/p&gt;
+&lt;p&gt;严格来说，谷歌静态地图也是谷歌地图API的一种，所以，使用静态地图是需要你的谷歌地图API密钥的，如果你之前定义过地图API的密钥，直接复制过来就可以了，不需要再去注册。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;最自由的方法 ——使用谷歌地图API&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果上面两种方式都不能满足你的需求，那么，就试试谷歌地图API吧。虽然谷歌地图API已经细分为JavaScript、Flash、Earth、Static等多个版本，但是，在我看来，JavaScript API是谷歌地图API的根本，所以在此，除非特别指明，说到谷歌地图API都是指谷歌地图JavaScript API。使用这个API，你可以用你愿意的任何可行的表现形式在地图上展现你的数据，甚至可以把你自己的地图做的比谷歌地图还漂亮。&lt;/p&gt;
+&lt;p&gt;要使用这个API在页面中嵌入地图，简单的步骤就是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用JavaScript标签导入地图API类库；&lt;/li&gt;
+&lt;li&gt;在页面上定义一个装载地图的元素，通常使用一个div标签，指定width和height;&lt;/li&gt;
+&lt;li&gt;在你的JavaScript代码中&lt;code&gt;new GMap2(document.getElementById(&amp;quot;your map container's id&amp;quot;));&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用GMarker、GPolyline等API中提供的类定制你要在地图上添加的标记、折线等等。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;详细的创建谷歌地图过程可以看看上面的“使用JavaScript创建地图详解”。但是，要想自如的使用这个API，你需要具备一定的JavaScript知识和动手能力，此外，强烈建议你先读读谷歌地图JavaScript API的开发指南，能够解决你的一些常见疑问，当然了，你也可以在此文档找找你想了解的知识。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;除了上面说的这几种方法，其实还有一些比较少用的方法也可以在网页中嵌入地图，在此不再赘述。&lt;/p&gt;</description></item></channel></rss>

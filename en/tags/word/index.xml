@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Word on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/word/</link><description>Recent content in Word on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 11 Jan 2015 10:34:33 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/word/index.xml" rel="self" type="application/rss+xml"/><item><title>Batch Word to HTML -- ConvertWordToHTML [Update: Word Converter Tool]</title><link>https://blog.coinidea.com/en/p/batch-word-to-html--convertwordtohtml-update-word-converter-tool/</link><pubDate>Sun, 11 Jan 2015 10:34:33 +0000</pubDate><guid>https://blog.coinidea.com/en/p/batch-word-to-html--convertwordtohtml-update-word-converter-tool/</guid><description>&lt;p&gt;I recently had a requirement to batch convert Word files to HTML.&lt;/p&gt;
+&lt;p&gt;For a small number of Word files, you can simply use Word&amp;rsquo;s built-in &amp;ldquo;Save As&amp;rdquo; feature. But when dealing with a large number of Word files, it becomes quite complicated.&lt;/p&gt;
+&lt;p&gt;After searching online, I found solutions in PHP, Python, Ruby, and C#. Among them, I found a tool called &amp;ldquo;&lt;a class="link" href="http://jingyan.baidu.com/article/425e69e6ba12c4be15fc160c.html" target="_blank" rel="noopener"
+&gt;Xunjiie Converter&lt;/a&gt;&amp;rdquo;, but it didn&amp;rsquo;t quite fit my needs, so I decided to write my own. Since Word is a Microsoft product, I figured C# might be the best choice for this task.&lt;/p&gt;
+&lt;p&gt;I open-sourced a GUI-based solution on GitHub: &lt;a class="link" href="https://github.com/hujiulin/ConvertWordToHTML" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/ConvertWordToHTML&lt;/a&gt; [Currently single-threaded; will be converted to multi-threaded later].&lt;/p&gt;
+&lt;p&gt;Screenshots of the running application:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Initial program interface:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be201501111826521.jpg"
+loading="lazy"
+alt="QQ截图20150111182652"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;Open&amp;rdquo; to select an input folder containing Word documents:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182756.jpg"
+loading="lazy"
+alt="QQ截图20150111182756"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;SaveAs&amp;rdquo; to select an output folder:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182813.jpg"
+loading="lazy"
+alt="QQ截图20150111182813"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Program finished running:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182832.jpg"
+loading="lazy"
+alt="QQ截图20150111182832"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Input and output results:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182849-300x104.jpg"
+loading="lazy"
+alt="QQ截图20150111182849"
+&gt;
+&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/01/QQ%e6%88%aa%e5%9b%be20150111182858-300x180.jpg"
+loading="lazy"
+alt="QQ截图20150111182858"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Program notes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Dependencies: Windows OS, .NET Framework 3.5, Office Word&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Word&amp;rsquo;s &amp;ldquo;Save As HTML&amp;rdquo; offers several format options: single web page (mht), web page (htm), and filtered web page (htm). I chose the filtered HTML option, which converts all formulas to gif or jpg images. A properly filtered htm file won&amp;rsquo;t contain Microsoft&amp;rsquo;s messy formatting information.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;GitHub: &lt;a class="link" href="https://github.com/hujiulin/ConvertWordToHTML" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/ConvertWordToHTML&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Download: &lt;a class="link" href="http://devhu-github.stor.sinaapp.com/ConvertWordToHTML.rar" target="_blank" rel="noopener"
+&gt;http://devhu-github.stor.sinaapp.com/ConvertWordToHTML.rar&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;2015-1-24 Update:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Rename solution and project to WordConverter; Add feature: convert word to PDF; ADD feature switch specified ext;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The Word Converter tool now supports both HTML and PDF formats.&lt;/p&gt;
+&lt;p&gt;Updated GitHub link: &lt;a class="link" href="https://github.com/hujiulin/WordConverter" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/WordConverter&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Download: &lt;a class="link" href="http://devhu-github.stor.sinaapp.com/WordConverter.rar" target="_blank" rel="noopener"
+&gt;http://devhu-github.stor.sinaapp.com/WordConverter.rar&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

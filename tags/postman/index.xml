@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Postman on Coinidea的博客</title><link>https://blog.coinidea.com/tags/postman/</link><description>Recent content in Postman on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 18 Nov 2016 04:59:52 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/postman/index.xml" rel="self" type="application/rss+xml"/><item><title>[WEB开发]Postman插件</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1189.html</link><pubDate>Fri, 18 Nov 2016 04:59:52 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1189.html</guid><description>&lt;h2 id="推荐一个web开发的调试神器"&gt;推荐一个WEB开发的调试神器
+&lt;/h2&gt;&lt;p&gt;针对在网络传输 Cookie、Session、Header、GET、POST 的阅读、修改、添加等，尤其有效。网上有大量的人针对它写的 blog，此处不再赘述。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/11/QQ%e6%88%aa%e5%9b%be20161118111816-1024x547.png"
+loading="lazy"
+alt="QQ截图20161118111816"
+&gt;&lt;/p&gt;
+&lt;p&gt;Postman 具有三种版本（截止2016年11月）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Postman for Chrome&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Postman for Mac&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Postman for Linux (Beta)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其中比较推荐使用 Chrome 插件。不过国内不是很方便下载，此处提供2016年11月 Google Chrome 插件官方下载：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop/related" target="_blank" rel="noopener"
+&gt;https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop/related&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以及一个非常老的版本的下载：Postman-REST-Client_v0.8.4.14&lt;/p&gt;
+&lt;p&gt;链接：&lt;a class="link" href="http://pan.baidu.com/s/1bo4nzQJ" target="_blank" rel="noopener"
+&gt;http://pan.baidu.com/s/1bo4nzQJ&lt;/a&gt; 密码：h0w7&lt;/p&gt;</description></item></channel></rss>

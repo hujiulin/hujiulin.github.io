@@ -1,0 +1,464 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="Cesium中文网：http://cesiumcn.org/\u00a0| 国内快速访问：http://cesium.coinidea.com/\nwebpack是打包JavaScript模块流行且强大的工具。它允许开发人员以直观的方式构造代码和assets，并使用简单的require语句根据需要加载不同类型的文件。构建时，它将跟踪代码依赖关系，并将这些模块打包到浏览器加载的一个或多个包中。\n"><title>[CesiumJS]Cesium中级教程10 – CesiumJS and webpack</title><link rel=canonical href=https://blog.coinidea.com/cesiumjs-1481.html><link rel=stylesheet href=/scss/style.min.86591c898bd806857815fbb8c47e8d3fed97c133b78e83d9bfc27b164dd0aa2b.css><meta property='og:title' content="[CesiumJS]Cesium中级教程10 – CesiumJS and webpack"><meta property='og:description' content="Cesium中文网：http://cesiumcn.org/\u00a0| 国内快速访问：http://cesium.coinidea.com/\nwebpack是打包JavaScript模块流行且强大的工具。它允许开发人员以直观的方式构造代码和assets，并使用简单的require语句根据需要加载不同类型的文件。构建时，它将跟踪代码依赖关系，并将这些模块打包到浏览器加载的一个或多个包中。\n"><meta property='og:url' content='https://blog.coinidea.com/cesiumjs-1481.html'><meta property='og:site_name' content='Coinidea的博客'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='cesiumjs'><meta property='article:tag' content='cesium中文教程'><meta property='article:tag' content='cesium中文文档'><meta property='article:tag' content='GIS'><meta property='article:tag' content='三维GIS'><meta property='article:published_time' content='2019-06-02T15:25:46+00:00'><meta property='article:modified_time' content='2019-06-02T15:25:46+00:00'><meta name=twitter:title content="[CesiumJS]Cesium中级教程10 – CesiumJS and webpack"><meta name=twitter:description content="Cesium中文网：http://cesiumcn.org/\u00a0| 国内快速访问：http://cesium.coinidea.com/\nwebpack是打包JavaScript模块流行且强大的工具。它允许开发人员以直观的方式构造代码和assets，并使用简单的require语句根据需要加载不同类型的文件。构建时，它将跟踪代码依赖关系，并将这些模块打包到浏览器加载的一个或多个包中。\n"><link rel="shortcut icon" href=/favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_6d706b210ec7fde4.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Coinidea的博客</a></h1><h2 class=site-description>Life is random</h2></div></header><ol class=menu-social><li><a href=mailto:admin@coinidea.com target=_blank title=Email rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M3 7l9 6 9-6"/></svg></a></li><li><a href=https://github.com/hujiulin target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/hujiulin/ target=_blank title=LinkedIn rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 00-4 0"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/resume/><!doctype html><svg t="1720263044212" class="icon" viewBox="0 0 1024 1024" p-id="4271" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M809.286 82.487H218.177c-39.747.0-72.363 32.614-72.363 72.363v729.712c0 39.747 32.614 72.363 72.363 72.363h496.329l167.138-172.238V154.849c0-39.747-32.614-72.363-72.363-72.363zM711.446 889.657v-67.874c0-16.103 13.249-29.148 29.148-29.148h62.372l-91.521 97.025zM834.561 739.842h-88.666c-44.844.0-81.532 36.689-81.532 81.532v85.61H221.847c-16.103.0-29.148-13.249-29.148-29.148V164.43c0-16.103 13.249-29.148 29.148-29.148h583.568c16.103.0 29.148 13.249 29.148 29.148v575.414zM266.484 312.818H648.87c13.654.0 24.868-11.211 24.868-25.07.0-13.654-11.414-24.868-25.07-24.868H266.485c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07zM266.691 383.344c-13.654.0-24.868 11.414-24.868 25.07s11.211 24.868 24.868 24.868h326.128c13.654.0 24.868-11.211 25.07-24.868.0-13.859-11.414-25.07-25.07-25.07H266.691zM714.507 503.807H266.489c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07h448.018c13.654.0 24.868-11.211 25.07-25.07.0-13.654-11.414-24.868-25.07-24.868z" fill="#272636" p-id="4272"/></svg>
+<span>简历</span></a></li><li><a href=/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>友情链接</span></a></li><li class=menu-bottom-section><ol class=menu><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language title=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://blog.coinidea.com/cesiumjs-1481.html selected>中文</option><option value=https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-10-cesiumjs-and-webpack/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#prerequisites-先决条件>Prerequisites 先决条件</a></li><li><a href=#create-a-basic-webpack-app-创建基础webpack应用>Create a basic webpack app 创建基础webpack应用</a><ol><li><a href=#initialize-an-app-with-npm-使用npm初始化应用>Initialize an app with npm 使用npm初始化应用</a></li><li><a href=#create-the-app-code-创建应用代码>Create the app code 创建应用代码</a></li><li><a href=#install-and-configure-webpack-安装和配置webpack>Install and configure webpack 安装和配置webpack</a><ol><li><a href=#configuration-配置>Configuration 配置</a></li><li><a href=#loaders-加载>Loaders 加载</a></li><li><a href=#plugins-插件>Plugins 插件</a></li></ol></li><li><a href=#bundle-the-app-捆绑应用>Bundle the app 捆绑应用</a></li><li><a href=#run-the-development-server-运行开发服务器>Run the development server 运行开发服务器</a></li></ol></li><li><a href=#add-cesiumjs-to-a-webpack-app-将cesiumjs加入到webpack应用>Add CesiumJS to a webpack app 将CesiumJS加入到webpack应用</a><ol><li><a href=#install-cesiumjs-安装cesiumjs>Install CesiumJS 安装CesiumJS</a></li><li><a href=#configure-cesiumjs-in-webpack-在webpack中配置cesiumjs>Configure CesiumJS in webpack 在webpack中配置CesiumJS</a></li><li><a href=#manage-cesiumjs-static-files-管理cesiumjs中的静态文件>Manage CesiumJS static files 管理CesiumJS中的静态文件</a></li><li><a href=#require-cesiumjs-modules-in-our-app-在应用中引用cesiumjs模块>Require CesiumJS modules in our app 在应用中引用CesiumJS模块</a><ol><li><a href=#commonjs-style-require>CommonJS style <em>require</em></a></li><li><a href=#es6风格导入>ES6风格导入</a></li><li><a href=#requiring-asset-files-引用asset文件>Requiring asset files 引用asset文件</a></li></ol></li></ol></li><li><a href=#hello-world>Hello World!</a></li><li><a href=#advanced-webpack-configurations-高级webpack配置>Advanced webpack configurations 高级webpack配置</a><ol><li><a href=#code-splitting-代码分割>Code splitting 代码分割</a></li><li><a href=#enable-source-maps-启用源映射>Enable source maps 启用源映射</a></li><li><a href=#remove-pragmas-移除编译指令>Remove pragmas 移除编译指令</a></li><li><a href=#uglify-and-minify-混淆与压缩>Uglify and minify 混淆与压缩</a></li></ol></li><li><a href=#resources-资源>Resources 资源</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/cesiumjs/ style=background-color:#2a9d8f;color:#fff>cesiumjs</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/cesiumjs-1481.html>[CesiumJS]Cesium中级教程10 – CesiumJS and webpack</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2019-06-02T15:25:46Z>Jun 02, 2019</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 11 分钟</time></div></footer><footer class=article-translations><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><div><a href=https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-10-cesiumjs-and-webpack/ class=link>English</a></div></footer></div></header><section class=article-content><p>Cesium中文网：<a href="https://links.jianshu.com/go?to=http%3A%2F%2Fcesiumcn.org%2F" target=_blank rel=noopener><a class=link href=http://cesiumcn.org/ target=_blank rel=noopener>http://cesiumcn.org/</a></a> | 国内快速访问：<a href="https://links.jianshu.com/go?to=http%3A%2F%2Fcesium.coinidea.com%2F" target=_blank rel=noopener><a class=link href=http://cesium.coinidea.com/ target=_blank rel=noopener>http://cesium.coinidea.com/</a></a></p><p>webpack是打包JavaScript模块流行且强大的工具。它允许开发人员以直观的方式构造代码和assets，并使用简单的<em>require</em>语句根据需要加载不同类型的文件。构建时，它将跟踪代码依赖关系，并将这些模块打包到浏览器加载的一个或多个包中。</p><p>在本教程的前半部分，我们从头开始建立了简单的Web应用程序使用webpack，然后覆盖后续步骤集成<a class=link href=https://www.npmjs.com/package/cesium target=_blank rel=noopener>Cesium npm module</a>。如果你喜欢使用cesiumjs开发Web应用,那么webpack是一个好的选择。如果您是刚接触Cesium并且想要寻找学习构建您的第一个样例应用，请查看<a class=link href=https://cesium.com/docs/tutorials/getting-started/ target=_blank rel=noopener>Getting Started Turtorial</a>。</p><p>在第二部分，我们将探索更高级的Webpack配置，以优化使用CesiumJS的应用程序。</p><p>在官方的<a class=link href=https://github.com/AnalyticalGraphicsInc/cesium-webpack-example target=_blank rel=noopener>cesium-webpack-example</a>中可以找到优化CesiumJS webpack应用程序的完整代码和提示。</p><h2 id=prerequisites-先决条件>Prerequisites 先决条件</h2><ul><li>基本了解命令行、JavaScript和Web开发。</li><li>一个IDE或代码编辑器。Cesium团队的开发人员使用Visual Studio Code，但是一个最小的代码编辑器（如Sublime文本）也完全没有问题。</li><li>已安装<strong>Node.js</strong>。我们建议使用最新的LTS版本。</li></ul><h2 id=create-a-basic-webpack-app-创建基础webpack应用>Create a basic webpack app 创建基础webpack应用</h2><p>在本节中，我们将介绍如何使用webpack和开发服务器设置基本的Web应用程序。如果您已经设置了一个应用程序，并且只想添加cesiumjs，请跳过<a class=link href=https://cesium.com/docs/tutorials/cesium-and-webpack/#add-cesiumjs-to-a-webpack-app target=_blank rel=noopener>Add CesiumJS to a webpack app</a>。</p><h3 id=initialize-an-app-with-npm-使用npm初始化应用>Initialize an app with npm 使用npm初始化应用</h3><p>为您的应用创建一个新的<em>cesium-webpack</em>。打开控制台，导航到新目录，然后运行以下命令：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>init</span>
+</span></span></code></pre></td></tr></table></div></div><p>按照提示操作并填充有关应用程序的所有详细信息。按<em>enter</em>键使用默认值。这将创建<strong>package.json</strong>。</p><h3 id=create-the-app-code-创建应用代码>Create the app code 创建应用代码</h3><p>为我们的应用程序代码创建一个<em>src</em>目录。当我们构建应用程序时，webpack将在<em>dist</em>目录中生成<strong>分发文件</strong>。</p><p>创建<em>src/index.html</em>然后为样板HTML页添加代码。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=o>&lt;!</span><span class=nx>DOCTYPE</span> <span class=nx>html</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=o>&lt;</span><span class=nx>html</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=o>&lt;</span><span class=nx>head</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>meta</span> <span class=nx>charset</span><span class=o>=</span><span class=s2>&#34;utf-8&#34;</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>meta</span> <span class=nx>http</span><span class=o>-</span><span class=nx>equiv</span><span class=o>=</span><span class=s2>&#34;X-UA-Compatible&#34;</span> <span class=nx>content</span><span class=o>=</span><span class=s2>&#34;IE=edge&#34;</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>meta</span> <span class=nx>name</span><span class=o>=</span><span class=s2>&#34;viewport&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=nx>content</span><span class=o>=</span><span class=s2>&#34;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no&#34;</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>title</span><span class=o>&gt;</span><span class=nx>Hello</span> <span class=nx>World</span><span class=o>!&lt;</span><span class=err>/title&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=o>&lt;</span><span class=err>/head&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=o>&lt;</span><span class=nx>body</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=nx>p</span><span class=o>&gt;</span><span class=nx>Hello</span> <span class=nx>World</span><span class=o>!&lt;</span><span class=err>/p&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=o>&lt;</span><span class=err>/body&gt;</span>
+</span></span><span class=line><span class=cl><span class=o>&lt;</span><span class=err>/html&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><p>接下来，为应用程序创建一个入口点。这是webpack查找包的所有javascript源代码和依赖项的<strong>entry point</strong>起点。</p><p>创建<em>src/index.js</em>然后添加下列代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Hello World!&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=install-and-configure-webpack-安装和配置webpack>Install and configure webpack 安装和配置webpack</h3><p>开始安装webpack：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>install</span> <span class=o>--</span><span class=nx>save</span><span class=o>-</span><span class=nx>dev</span> <span class=nx>webpack</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=configuration-配置>Configuration 配置</h4><p>创建<em>webpack.config.js</em>以定义webpack配置对象。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>const</span> <span class=nx>path</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;path&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>webpack</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;webpack&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>context</span><span class=o>:</span> <span class=nx>__dirname</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>entry</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>app</span><span class=o>:</span> <span class=s1>&#39;./src/index.js&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>output</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>filename</span><span class=o>:</span> <span class=s1>&#39;[name].js&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>path</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=s1>&#39;dist&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p><em>context</em>指定文件的基本路径。<em>entry</em>用于指定包。在这种情况下，<em>app</em>包的入口点是<em>src/index.js</em>。webpack将把打包后的<em>app.js</em>输出到<em>dist</em>文件夹。</p><h4 id=loaders-加载>Loaders 加载</h4><p>Webpack像模块一样加载所有内容。使用<em>loaders</em>加载CSS和其他资产文件。安装<strong>style-loader</strong>、<strong>css-loader</strong>和<strong>url-loader</strong>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>install</span> <span class=o>--</span><span class=nx>save</span><span class=o>-</span><span class=nx>dev</span> <span class=nx>style</span><span class=o>-</span><span class=nx>loader</span> <span class=nx>css</span><span class=o>-</span><span class=nx>loader</span> <span class=nx>url</span><span class=o>-</span><span class=nx>loader</span>
+</span></span></code></pre></td></tr></table></div></div><p>在<em>webpack.config.js</em>中添加两个<em>module.rules</em>：一个用于css文件，另一个用于其他静态文件。对于每个，<em>test</em>定义要加载的文件类型，<em>use</em>指定加载程序的列表。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>const</span> <span class=nx>path</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;path&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>webpack</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;webpack&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>context</span><span class=o>:</span> <span class=nx>__dirname</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>entry</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>app</span><span class=o>:</span> <span class=s1>&#39;./src/index.js&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>output</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>filename</span><span class=o>:</span> <span class=s1>&#39;[name].js&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>path</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=s1>&#39;dist&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>module</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>rules</span><span class=o>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>test</span><span class=o>:</span> <span class=sr>/\.css$/</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>use</span><span class=o>:</span> <span class=p>[</span> <span class=s1>&#39;style-loader&#39;</span><span class=p>,</span> <span class=s1>&#39;css-loader&#39;</span> <span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>test</span><span class=o>:</span> <span class=sr>/\.(png|gif|jpg|jpeg|svg|xml|json)$/</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>use</span><span class=o>:</span> <span class=p>[</span> <span class=s1>&#39;url-loader&#39;</span> <span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=plugins-插件>Plugins 插件</h4><p>定义<em>index.html</em>并使用一个名为<strong>html-webpack-plugin</strong>的webpack <strong>plugin</strong>将包注入该页面。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>install</span> <span class=o>--</span><span class=nx>save</span><span class=o>-</span><span class=nx>dev</span> <span class=nx>html</span><span class=o>-</span><span class=nx>webpack</span><span class=o>-</span><span class=nx>plugin</span>
+</span></span></code></pre></td></tr></table></div></div><p>在<em>webpack.config.js</em>中引用该插件，然后将它注入到<em>plugins</em>。将<em>src/index.html</em>传入作为我们的<em>template</em>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>const</span> <span class=nx>path</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;path&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>webpack</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;webpack&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>HtmlWebpackPlugin</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;html-webpack-plugin&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>context</span><span class=o>:</span> <span class=nx>__dirname</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>entry</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>app</span><span class=o>:</span> <span class=s1>&#39;./src/index.js&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>output</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>filename</span><span class=o>:</span> <span class=s1>&#39;[name].js&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>path</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=s1>&#39;dist&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>module</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>rules</span><span class=o>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>test</span><span class=o>:</span> <span class=sr>/\.css$/</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>use</span><span class=o>:</span> <span class=p>[</span> <span class=s1>&#39;style-loader&#39;</span><span class=p>,</span> <span class=s1>&#39;css-loader&#39;</span> <span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>test</span><span class=o>:</span> <span class=sr>/\.(png|gif|jpg|jpeg|svg|xml|json)$/</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>use</span><span class=o>:</span> <span class=p>[</span> <span class=s1>&#39;url-loader&#39;</span> <span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>plugins</span><span class=o>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>HtmlWebpackPlugin</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>            <span class=nx>template</span><span class=o>:</span> <span class=s1>&#39;src/index.html&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=p>})</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>配置文件是一个javascript文件，因此我们可以引入其他节点模块并执行操作。</p></blockquote><h3 id=bundle-the-app-捆绑应用>Bundle the app 捆绑应用</h3><p>使用<em>package.json</em>定义可以使用<em>npm</em>调用的脚本。添加<em>build</em>命令。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>  <span class=s2>&#34;scripts&#34;</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;build&#34;</span><span class=o>:</span> <span class=s2>&#34;node_modules/.bin/webpack --config webpack.config.js&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>此脚本调用Webpack并传递进<em>webpack.config.js</em>配置文件。</p><blockquote><p>我们在这些脚本中使用webpack和webpack-dev-server的本地安装。这允许每个项目使用自己的单独版本，这是<a class=link href=https://webpack.js.org/guides/installation/ target=_blank rel=noopener>webpack文档</a>推荐的版本。如果您希望使用全局版本，请使用npm install&ndash;global webpack全局安装它，并使用命令webpack&ndash;config webpack.config.js运行它。</p></blockquote><p>当运行build命令时：
+npm run build</p><p>您应该看到webpack的一些输出，从以下内容开始：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>run</span> <span class=nx>build</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>&gt;</span> <span class=nx>test</span><span class=o>-</span><span class=nx>app</span><span class=err>@</span><span class=mf>1.0</span><span class=p>.</span><span class=mi>0</span> <span class=nx>build</span> <span class=nx>C</span><span class=o>:</span><span class=err>\</span><span class=nx>workspace</span><span class=err>\</span><span class=nx>test</span><span class=o>-</span><span class=nx>app</span>
+</span></span><span class=line><span class=cl><span class=o>&gt;</span> <span class=nx>node_modules</span><span class=o>/</span><span class=p>.</span><span class=nx>bin</span><span class=o>/</span><span class=nx>webpack</span> <span class=o>--</span><span class=nx>config</span> <span class=nx>webpack</span><span class=p>.</span><span class=nx>config</span><span class=p>.</span><span class=nx>js</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>Hash</span><span class=o>:</span> <span class=mi>2</span><span class=nx>b42bff7a022b5d956a9</span>
+</span></span><span class=line><span class=cl><span class=nx>Version</span><span class=o>:</span> <span class=nx>webpack</span> <span class=mf>3.6</span><span class=p>.</span><span class=mi>0</span>
+</span></span><span class=line><span class=cl><span class=nx>Time</span><span class=o>:</span> <span class=mi>2002</span><span class=nx>ms</span>
+</span></span><span class=line><span class=cl>                                        <span class=nx>Asset</span>       <span class=nx>Size</span>  <span class=nx>Chunks</span>                    <span class=nx>Chunk</span> <span class=nx>Names</span>
+</span></span><span class=line><span class=cl>     <span class=nx>Assets</span><span class=o>/</span><span class=nx>Textures</span><span class=o>/</span><span class=nx>NaturalEarthII</span><span class=o>/</span><span class=mi>2</span><span class=o>/</span><span class=mi>0</span><span class=o>/</span><span class=mf>3.</span><span class=nx>jpg</span>    <span class=mf>10.3</span> <span class=nx>kB</span>          <span class=p>[</span><span class=nx>emitted</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>                                       <span class=nx>app</span><span class=p>.</span><span class=nx>js</span>     <span class=mi>162</span> <span class=nx>kB</span>       <span class=mi>0</span>  <span class=p>[</span><span class=nx>emitted</span><span class=p>]</span>         <span class=nx>app</span>
+</span></span></code></pre></td></tr></table></div></div><p><em>app.js</em>包和<em>index.html</em>文件将被输出到<em>dist</em>文件夹中。</p><h3 id=run-the-development-server-运行开发服务器>Run the development server 运行开发服务器</h3><p>使用<strong>webpack-dev-server</strong>服务于开发构建然后可以在行动中看到我们的应用：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>install</span> <span class=o>--</span><span class=nx>save</span><span class=o>-</span><span class=nx>dev</span> <span class=nx>webpack</span><span class=o>-</span><span class=nx>dev</span><span class=o>-</span><span class=nx>server</span>
+</span></span></code></pre></td></tr></table></div></div><p>在package.json中添加一个<em>start</em>脚本以运行开发服务器。通过*&ndash;config<em>标志设置配置文件。执行命令时，使用</em>&ndash;open*标志在浏览器中打开应用程序。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>  <span class=s2>&#34;scripts&#34;</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;build&#34;</span><span class=o>:</span> <span class=s2>&#34;node_modules/.bin/webpack --config webpack.config.js&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;start&#34;</span><span class=o>:</span> <span class=s2>&#34;node_modules/.bin/webpack-dev-server --config webpack.config.js --open&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>告诉开发服务器为<em>dist</em>文件夹提供文件。将其添加到<em>webpack.config.js</em>的底部。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=c1>// development server options
+</span></span></span><span class=line><span class=cl>    <span class=nx>devServer</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>contentBase</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=s2>&#34;dist&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>最终，我们运行app</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>start</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7deb987a4d30895.png loading=lazy></p><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7dc038de0b80391.png loading=lazy></p><p>你应该看到你的内容在<strong>localhost:8080</strong>上呈现，看到“Hello World！“打开浏览器控制台时，显示消息。</p><h2 id=add-cesiumjs-to-a-webpack-app-将cesiumjs加入到webpack应用>Add CesiumJS to a webpack app 将CesiumJS加入到webpack应用</h2><h3 id=install-cesiumjs-安装cesiumjs>Install CesiumJS 安装CesiumJS</h3><p>从npmg上安装<strong>cesium</strong>模块，并将其加入到package.json。</p><h3 id=configure-cesiumjs-in-webpack-在webpack中配置cesiumjs>Configure CesiumJS in webpack 在webpack中配置CesiumJS</h3><p>CesiumJS是一个庞大而复杂的库。除了javascript模块之外，它还包括静态资产，如css、image和json文件。它包括Web worker文件，以便在单独的线程中执行密集计算。与传统的npm模块不同，CesiumJS没有定义入口点，因为库的使用方式多种多样。我们需要配置一些附加选项，以便与webpack一起使用。</p><p>首先，定义CesiumJS的位置。本教程基于源代码，因此webpack可以包含单个模型并跟踪依赖项。或者，也可以使用CesiumJS的内置（简化或未简化）版本。然而，这些模块已经被组合和优化，这给了我们更少的灵活性。</p><p>将下列代码加入到<em>webpack.config.js</em>的顶部：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// The path to the CesiumJS source code
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>cesiumSource</span> <span class=o>=</span> <span class=s1>&#39;node_modules/cesium/Source&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>cesiumWorkers</span> <span class=o>=</span> <span class=s1>&#39;../Build/Cesium/Workers&#39;</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>本教程使用npm模块以便于安装，但您也可以克隆<a class=link href=https://github.com/AnalyticalGraphicsInc/cesium target=_blank rel=noopener>Github仓库</a>或下载解压使用<a class=link href=https://cesiumjs.org/downloads/ target=_blank rel=noopener>release版本</a>。</p></blockquote><p>将以下选项添加到配置对象，以解决webpack如何编译CesiumJS的一些问题。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=nx>output</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>filename</span><span class=o>:</span> <span class=s1>&#39;[name].js&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>path</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=s1>&#39;dist&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// Needed to compile multiline strings in Cesium
+</span></span></span><span class=line><span class=cl>        <span class=nx>sourcePrefix</span><span class=o>:</span> <span class=s1>&#39;&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>amd</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Enable webpack-friendly use of require in Cesium
+</span></span></span><span class=line><span class=cl>        <span class=nx>toUrlUndefined</span><span class=o>:</span> <span class=kc>true</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nx>node</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Resolve node module use of fs
+</span></span></span><span class=line><span class=cl>        <span class=nx>fs</span><span class=o>:</span> <span class=s1>&#39;empty&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li><em>output.sourcePrefix: 在每行之前添加\t制表符，以便覆盖webpack默认值。CesiumJS有一些多行字符串，因此我们需要用空前缀</em>&rsquo;&rsquo;*覆盖此默认值。</li><li><em>amd.toUrlUndefined: true</em> 告诉CesiumJS AMD webpack使用不符合标准<em>toUrl</em>函数的评估require语句的版本。</li><li><em>node.fs: &rsquo;empty&rsquo;</em> 解决<em>fs</em>模块的某些第三方使用问题，该模块的目标是在节点环境中使用，而不是在浏览器中使用。</li></ul><p>添加<em>cesium</em> <strong>alias</strong>，以便我们可以在应用程序代码中引用它。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=nx>resolve</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>alias</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// CesiumJS module name
+</span></span></span><span class=line><span class=cl>            <span class=nx>cesium</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=nx>cesiumSource</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=manage-cesiumjs-static-files-管理cesiumjs中的静态文件>Manage CesiumJS static files 管理CesiumJS中的静态文件</h3><p>最后，确保静态CesiumJS资产、小部件和web worker文件得到正确的服务和加载。</p><p>作为构建过程的一部分，使用<strong>copy-webpack-plugin</strong>将静态文件复制到<em>dist</em>目录。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>install</span> <span class=o>--</span><span class=nx>save</span><span class=o>-</span><span class=nx>dev</span> <span class=nx>copy</span><span class=o>-</span><span class=nx>webpack</span><span class=o>-</span><span class=nx>plugin</span>
+</span></span></code></pre></td></tr></table></div></div><p>在* webpack.config.js*文件中的上部引入：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>const</span> <span class=nx>CopywebpackPlugin</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;copy-webpack-plugin&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>并将其加入到<em>plugins</em>数组中：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=nx>plugins</span><span class=o>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>HtmlWebpackPlugin</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>            <span class=nx>template</span><span class=o>:</span> <span class=s1>&#39;src/index.html&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}),</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Copy Cesium Assets, Widgets, and Workers to a static directory
+</span></span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>CopywebpackPlugin</span><span class=p>([</span> <span class=p>{</span> <span class=nx>from</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>cesiumSource</span><span class=p>,</span> <span class=nx>cesiumWorkers</span><span class=p>),</span> <span class=nx>to</span><span class=o>:</span> <span class=s1>&#39;Workers&#39;</span> <span class=p>}</span> <span class=p>]),</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>CopywebpackPlugin</span><span class=p>([</span> <span class=p>{</span> <span class=nx>from</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>cesiumSource</span><span class=p>,</span> <span class=s1>&#39;Assets&#39;</span><span class=p>),</span> <span class=nx>to</span><span class=o>:</span> <span class=s1>&#39;Assets&#39;</span> <span class=p>}</span> <span class=p>]),</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>CopywebpackPlugin</span><span class=p>([</span> <span class=p>{</span> <span class=nx>from</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>cesiumSource</span><span class=p>,</span> <span class=s1>&#39;Widgets&#39;</span><span class=p>),</span> <span class=nx>to</span><span class=o>:</span> <span class=s1>&#39;Widgets&#39;</span> <span class=p>}</span> <span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=p>],</span>
+</span></span></code></pre></td></tr></table></div></div><p>这将复制<em>Assets</em>和<em>Widgets</em>目录以及<em>built</em>的web worker脚本。</p><blockquote><p>如果您使用的是CesiumJS仓库的fork，那么<em>Build</em>文件夹将不存在。运行<em>npm run release</em>生成输出文件夹。有关详细信息，请参阅<a class=link href=https://github.com/AnalyticalGraphicsInc/cesium/blob/master/Documentation/Contributors/BuildGuide/README.md target=_blank rel=noopener>《Cesium生成指南》</a>。</p></blockquote><p>定义一个环境变量，该变量告诉CesiumJS使用webpack<strong>DefinePlugin</strong>加载静态文件的基本URL。<em>plugins</em>数组现在将如下所示：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=nx>plugins</span><span class=o>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>HtmlWebpackPlugin</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>            <span class=nx>template</span><span class=o>:</span> <span class=s1>&#39;src/index.html&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}),</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Copy Cesium Assets, Widgets, and Workers to a static directory
+</span></span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>CopywebpackPlugin</span><span class=p>([</span> <span class=p>{</span> <span class=nx>from</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>cesiumSource</span><span class=p>,</span> <span class=nx>cesiumWorkers</span><span class=p>),</span> <span class=nx>to</span><span class=o>:</span> <span class=s1>&#39;Workers&#39;</span> <span class=p>}</span> <span class=p>]),</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>CopywebpackPlugin</span><span class=p>([</span> <span class=p>{</span> <span class=nx>from</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>cesiumSource</span><span class=p>,</span> <span class=s1>&#39;Assets&#39;</span><span class=p>),</span> <span class=nx>to</span><span class=o>:</span> <span class=s1>&#39;Assets&#39;</span> <span class=p>}</span> <span class=p>]),</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>CopywebpackPlugin</span><span class=p>([</span> <span class=p>{</span> <span class=nx>from</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>cesiumSource</span><span class=p>,</span> <span class=s1>&#39;Widgets&#39;</span><span class=p>),</span> <span class=nx>to</span><span class=o>:</span> <span class=s1>&#39;Widgets&#39;</span> <span class=p>}</span> <span class=p>]),</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>webpack</span><span class=p>.</span><span class=nx>DefinePlugin</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// Define relative base path in cesium for loading assets
+</span></span></span><span class=line><span class=cl>            <span class=nx>CESIUM_BASE_URL</span><span class=o>:</span> <span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>(</span><span class=s1>&#39;&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>})</span>
+</span></span><span class=line><span class=cl>    <span class=p>],</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=require-cesiumjs-modules-in-our-app-在应用中引用cesiumjs模块>Require CesiumJS modules in our app 在应用中引用CesiumJS模块</h3><p>在我们的应用程序中，有几种方法可以引用CesiumJS模块。您可以使用CommonJS语法或ES6<em>import</em>语句。</p><p>您可以导入整个CesiumJS库，或者只需要引入您需要的特定模块。引入模块将导致webpack只编译包中的那些模块及其依赖项，而不是整个库。</p><h4 id=commonjs-style-require>CommonJS style <em>require</em></h4><p>引入所有的CesiumJS：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>Cesium</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;cesium/Cesium&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>viewer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Viewer</span><span class=p>(</span><span class=s1>&#39;cesiumContainer&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>引入独立模块</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>Color</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;cesium/Core/Color&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>color</span> <span class=o>=</span> <span class=nx>Color</span><span class=p>.</span><span class=nx>fromRandom</span><span class=p>();</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=es6风格导入>ES6风格导入</h4><p>引入所有的CesiumJS：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>Cesium</span> <span class=nx>from</span> <span class=s1>&#39;cesium/Cesium&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>viewer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Viewer</span><span class=p>(</span><span class=s1>&#39;cesiumContainer&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>引入独立模块</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>Color</span> <span class=nx>from</span> <span class=s1>&#39;cesium/core/Color&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>color</span> <span class=o>=</span> <span class=nx>Color</span><span class=p>.</span><span class=nx>fromRandom</span><span class=p>();</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=requiring-asset-files-引用asset文件>Requiring asset files 引用asset文件</h4><p>webpack背后的原理是，每个文件都被视为一个模块。这使得导入资产与包括javascript相同。我们告诉Webpack如何使用加载器加载配置中的每种类型的文件，所以我们只需要调用<em>require</em>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;cesium/Widgets/widgets.css&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=hello-world>Hello World!</h2><p>创建一个新的文件，<em>src/css/main.css</em>，为了样式化我们的应用：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>html</span><span class=p>,</span> <span class=nx>body</span><span class=p>,</span> <span class=err>#</span><span class=nx>cesiumContainer</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>width</span><span class=o>:</span> <span class=mi>100</span><span class=o>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>height</span><span class=o>:</span> <span class=mi>100</span><span class=o>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>margin</span><span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>padding</span><span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>overflow</span><span class=o>:</span> <span class=nx>hidden</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>创建一个div用于<em>index.html</em> body中的CesiumJS Viewer。替换*<p>Hello World!</p>*使用下面的div：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=o>&lt;</span><span class=nx>div</span> <span class=nx>id</span><span class=o>=</span><span class=s2>&#34;cesiumContainer&#34;</span><span class=o>&gt;&lt;</span><span class=err>/div&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><p>删除<em>index.js</em>中的内容并包含<em>Cesium</em>和我们的CSS文件：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>Cesium</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;cesium/Cesium&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;./css/main.css&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;cesium/Widgets/widgets.css&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>为创建<em>Viewer</em>添加一行代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>viewer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Viewer</span><span class=p>(</span><span class=s1>&#39;cesiumContainer&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7dc381acce70140.png loading=lazy></p><p>使用<em>npm start</em>运行应用用于在浏览器中查看Viewer。</p><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7dc5148a5786386.png loading=lazy></p><p>复制并粘贴你最喜欢的<a class=link href=https://cesium.com/docs/tutorials/cesium-and-webpack/ target=_blank rel=noopener>Sandcastle</a>例子。例如，<a class=link href="https://cesium.com/docs/tutorials/cesium-and-webpack/?src=Particle%20System%20Fireworks.html&amp;label=Showcases" target=_blank rel=noopener>粒子系统实例</a>可以得出一个很好的结论。</p><h2 id=advanced-webpack-configurations-高级webpack配置>Advanced webpack configurations 高级webpack配置</h2><p>webpack可以通过更多方式提高性能、减小包大小以及执行其他或复杂的构建步骤。在这里，我们将讨论一些与使用CesiumJS库相关的配置选项。</p><blockquote><p>在<em>webpack.release.config.js</em>的仓库示例中可以找到优化生产Cesium webpack构建的配置。</p></blockquote><h3 id=code-splitting-代码分割>Code splitting 代码分割</h3><p>默认情况下，webpack将CesiumJS打包在与我们的应用程序相同的块中，从而生成一个大文件。我们可以将CesiumJS拆分成自己的包，并使用<strong>CommonChunksPlugin</strong>提高我们的应用程序性能。如果你最终为你的应用程序创建了多个块，它们都可以引用一个常见的<em>cesium</em>块。</p><p>将插件添加到<em>webpack.config.js</em>文件中，并指定分解CesiumJS模块的规则：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=nx>plugins</span><span class=o>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>webpack</span><span class=p>.</span><span class=nx>optimize</span><span class=p>.</span><span class=nx>CommonsChunkPlugin</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>            <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;cesium&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>minChunks</span><span class=o>:</span> <span class=nx>module</span> <span class=p>=&gt;</span> <span class=nx>module</span><span class=p>.</span><span class=nx>context</span> <span class=o>&amp;&amp;</span> <span class=nx>module</span><span class=p>.</span><span class=nx>context</span><span class=p>.</span><span class=nx>indexOf</span><span class=p>(</span><span class=s1>&#39;cesium&#39;</span><span class=p>)</span> <span class=o>!==</span> <span class=o>-</span><span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=p>})</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=enable-source-maps-启用源映射>Enable source maps 启用源映射</h3><p>源映射允许Webpack将错误跟踪回原始内容。它们提供或多或少详细的调试信息，以换取编译速度。我们建议使用*&rsquo;eval&rsquo;*选项。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=nx>devtool</span><span class=o>:</span> <span class=s1>&#39;eval&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><p>在生产产品中，不推荐使用源映射。</p><h3 id=remove-pragmas-移除编译指令>Remove pragmas 移除编译指令</h3><p>CesiumJS源代码中存在开发人员错误和警告，这些错误和警告已从我们的小型发布版本中删除。由于没有内置的Webpack方法来删除这些警告，因此我们将使用<strong>strip-pragma-loader</strong>。</p><p>安装包：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>install</span> <span class=nx>strip</span><span class=o>-</span><span class=nx>pragma</span><span class=o>-</span><span class=nx>loader</span> <span class=o>--</span><span class=nx>save</span><span class=o>-</span><span class=nx>dev</span>
+</span></span></code></pre></td></tr></table></div></div><p>在<em>module.rules</em>中将<em>debug</em>设为<em>false</em>，引入加载器：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=nx>rules</span><span class=o>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Strip cesium pragmas
+</span></span></span><span class=line><span class=cl>        <span class=nx>test</span><span class=o>:</span> <span class=sr>/\.js$/</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>enforce</span><span class=o>:</span> <span class=s1>&#39;pre&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>include</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=nx>cesiumSource</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=nx>use</span><span class=o>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>loader</span><span class=o>:</span> <span class=s1>&#39;strip-pragma-loader&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nx>options</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>pragmas</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                        <span class=nx>debug</span><span class=o>:</span> <span class=kc>false</span>
+</span></span><span class=line><span class=cl>                    <span class=p>}</span>
+</span></span><span class=line><span class=cl>                <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=p>}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>}]</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=uglify-and-minify-混淆与压缩>Uglify and minify 混淆与压缩</h3><p>增删和缩小代码允许在生产中使用较小的文件大小。对于一个发布版本，CesumJS会修改JavaScript文件并缩小CSS文件。</p><p>使用<strong>uglifyjs-webpack-plugin</strong>用于混淆CesiumJS源代码。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>npm</span> <span class=nx>install</span> <span class=nx>uglifyjs</span><span class=o>-</span><span class=nx>webpack</span><span class=o>-</span><span class=nx>plugin</span> <span class=o>--</span><span class=nx>save</span><span class=o>-</span><span class=nx>dev</span>
+</span></span></code></pre></td></tr></table></div></div><p>在配置文件中引入他：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>const</span> <span class=nx>UglifyJsPlugin</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;uglifyjs-webpack-plugin&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>在插件列表中包含他：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=nx>plugins</span><span class=o>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=k>new</span> <span class=nx>webpack</span><span class=p>.</span><span class=nx>optimize</span><span class=p>.</span><span class=nx>UglifyJsPlugin</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span></code></pre></td></tr></table></div></div><p>在<strong>css-loader</strong>上使用<em>minimize</em>选项用于优化CSS。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl>    <span class=nx>module</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>rules</span><span class=o>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>test</span><span class=o>:</span> <span class=sr>/\.css$/</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>use</span><span class=o>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>                <span class=s1>&#39;style-loader&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>loader</span><span class=o>:</span> <span class=s1>&#39;css-loader&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>options</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                        <span class=c1>// minify loaded css
+</span></span></span><span class=line><span class=cl>                        <span class=nx>minimize</span><span class=o>:</span> <span class=kc>true</span>
+</span></span><span class=line><span class=cl>                    <span class=p>}</span>
+</span></span><span class=line><span class=cl>                <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=p>}]</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=resources-资源>Resources 资源</h2><p>官方的<a class=link href=https://github.com/AnalyticalGraphicsInc/cesium-webpack-example target=_blank rel=noopener>cesium-webpack-example</a>仓库包含最小webpack配置、本教程中介绍的Hello World代码以及可选代码配置的说明。</p><p>有关要包含在新应用程序中的CesiumJS功能的教程，请参阅<a class=link href=https://cesium.com/docs/tutorials/cesium-workshop target=_blank rel=noopener>Cesium Workshop教程</a>。</p><p>在[Sandcastle]中探索实例，并查看<a class=link href=https://cesiumjs.org/refdoc/ target=_blank rel=noopener>CesiumJS文档</a></p><p>要了解有关webpack的更多信息，请查看<a class=link href=https://webpack.js.org/concepts/ target=_blank rel=noopener>webpack概念</a>，或<a class=link href=https://webpack.js.org/configuration/ target=_blank rel=noopener>深入阅读文档</a>。</p><p><strong>Cesium中文网交流QQ群：807482793</strong></p><p>Cesium中文网：<a href="https://links.jianshu.com/go?to=http%3A%2F%2Fcesiumcn.org%2F" target=_blank rel=noopener><a class=link href=http://cesiumcn.org/ target=_blank rel=noopener>http://cesiumcn.org/</a></a> | 国内快速访问：<a href="https://links.jianshu.com/go?to=http%3A%2F%2Fcesium.coinidea.com%2F" target=_blank rel=noopener><a class=link href=http://cesium.coinidea.com/ target=_blank rel=noopener>http://cesium.coinidea.com/</a></a></p></section><footer class=article-footer><section class=article-tags><a href=/tags/cesiumjs/>Cesiumjs</a>
+<a href=/tags/cesium%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B/>Cesium中文教程</a>
+<a href=/tags/cesium%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/>Cesium中文文档</a>
+<a href=/tags/gis/>GIS</a>
+<a href=/tags/%E4%B8%89%E7%BB%B4gis/>三维GIS</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/cesiumjs-1848.html><div class=article-details><h2 class=article-title>使用Cesium将CDB转换为3D Tiles</h2></div></a></article><article><a href=/cesiumjs-1845.html><div class=article-details><h2 class=article-title>用Cesium ion和Bentley的iModel.js创建数字孪生</h2></div></a></article><article><a href=/cesiumjs-1840.html><div class=article-details><h2 class=article-title>Cesium与Intel Geospatial合作，为企业提供地理空间解决方案</h2></div></a></article><article><a href=/cesiumjs-1837.html><div class=article-details><h2 class=article-title>可供政府用户使用的喀布尔(Kabul )数据</h2></div></a></article><article><a href=/cesiumjs-1833.html><div class=article-details><h2 class=article-title>Reality Capture新增内置Cesium ion共享3D模型的支持</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2026 Coinidea的博客</section><section class=powerby><a href=http://beian.miit.gov.cn/ target=_blank>京ICP备15014655号</a><br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

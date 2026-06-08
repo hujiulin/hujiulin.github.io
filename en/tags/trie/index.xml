@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Trie on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/trie/</link><description>Recent content in Trie on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 12 Feb 2015 15:54:15 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/trie/index.xml" rel="self" type="application/rss+xml"/><item><title>Bookworm Helper Tool</title><link>https://blog.coinidea.com/en/p/bookworm-helper-tool/</link><pubDate>Thu, 12 Feb 2015 15:54:15 +0000</pubDate><guid>https://blog.coinidea.com/en/p/bookworm-helper-tool/</guid><description>&lt;p&gt;While organizing old files recently, I stumbled upon a small program I wrote around 2011.&lt;/p&gt;
+&lt;p&gt;Have you ever played a game called Bookworm? It&amp;rsquo;s made by PopCap. The game tells the story of a bookworm defeating a demon, and to progress and fight bosses, you need to spell words. If I recall correctly, you&amp;rsquo;re given a 3x3 or 4x4 matrix containing letters a-z or * (representing any letter), and you need to spell the longest word possible &amp;ndash; the longer the word, the more damage dealt to the demon. So I wrote a little program to help my not-so-great vocabulary spell the longest words possible. It requires a word list as a prerequisite; there&amp;rsquo;s a dictionary.txt in the project&amp;rsquo;s doc folder containing about 7000+ words that needs to be loaded first.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Main program interface:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Mainform-300x228.png"
+loading="lazy"
+alt="Mainform"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Loading the dictionary:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/LoadDictionary-300x228.png"
+loading="lazy"
+alt="LoadDictionary"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Entering characters:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Input-300x228.png"
+loading="lazy"
+alt="Input"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Getting the result list:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Result-300x228.png"
+loading="lazy"
+alt="Result"
+&gt;&lt;/p&gt;
+&lt;p&gt;GitHub: &lt;a class="link" href="https://github.com/hujiulin/Bookworm" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/Bookworm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Project notes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Written in C++ around 2011 [the code is a bit messy]. Can be opened with VC 6.0 or Visual Studio.&lt;/li&gt;
+&lt;li&gt;This program finds the longest possible words.&lt;/li&gt;
+&lt;li&gt;Input letters [a-z or *] to get a list of answers. [* represents any letter]&lt;/li&gt;
+&lt;li&gt;This was my first ever small program. I recently found it among old files, so I&amp;rsquo;m sharing it here :).&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

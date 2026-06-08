@@ -1,0 +1,430 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="Cesium Chinese Website: http://cesiumcn.org/ | Fast Access in China: http://cesium.coinidea.com/\nTo learn the basics of particle systems, see the Particle Systems Getting Started tutorial.\nWeather Setup To generate a snow effect, first add a snowflake image for each particle, and then define the particle&rsquo;s movement behavior and other dynamic elements in the updateParticle function.\nThe Images Three images are used in this tutorial. The left one is the rain particle; the middle image is the snow particle; the right image is used for the fire effect.\n"><title>[CesiumJS] Cesium Intermediate Tutorial 9 – Advanced Particle System Effects</title><link rel=canonical href=https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-9-advanced-particle-system-effects/><link rel=stylesheet href=/scss/style.min.86591c898bd806857815fbb8c47e8d3fed97c133b78e83d9bfc27b164dd0aa2b.css><meta property='og:title' content="[CesiumJS] Cesium Intermediate Tutorial 9 – Advanced Particle System Effects"><meta property='og:description' content="Cesium Chinese Website: http://cesiumcn.org/ | Fast Access in China: http://cesium.coinidea.com/\nTo learn the basics of particle systems, see the Particle Systems Getting Started tutorial.\nWeather Setup To generate a snow effect, first add a snowflake image for each particle, and then define the particle&rsquo;s movement behavior and other dynamic elements in the updateParticle function.\nThe Images Three images are used in this tutorial. The left one is the rain particle; the middle image is the snow particle; the right image is used for the fire effect.\n"><meta property='og:url' content='https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-9-advanced-particle-system-effects/'><meta property='og:site_name' content="Coinidea's Blog"><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='cesiumjs'><meta property='article:tag' content='Cesium Tutorial'><meta property='article:tag' content='Cesium Documentation'><meta property='article:tag' content='GIS'><meta property='article:tag' content='3D GIS'><meta property='article:published_time' content='2019-06-02T12:58:56+00:00'><meta property='article:modified_time' content='2019-06-02T12:58:56+00:00'><meta name=twitter:title content="[CesiumJS] Cesium Intermediate Tutorial 9 – Advanced Particle System Effects"><meta name=twitter:description content="Cesium Chinese Website: http://cesiumcn.org/ | Fast Access in China: http://cesium.coinidea.com/\nTo learn the basics of particle systems, see the Particle Systems Getting Started tutorial.\nWeather Setup To generate a snow effect, first add a snowflake image for each particle, and then define the particle&rsquo;s movement behavior and other dynamic elements in the updateParticle function.\nThe Images Three images are used in this tutorial. The left one is the rain particle; the middle image is the snow particle; the right image is used for the fire effect.\n"><link rel="shortcut icon" href=/favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/en/><img src=/img/avatar_hu_6d706b210ec7fde4.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/en>Coinidea's Blog</a></h1><h2 class=site-description>Life is random</h2></div></header><ol class=menu-social><li><a href=mailto:admin@coinidea.com target=_blank title=Email rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M3 7l9 6 9-6"/></svg></a></li><li><a href=https://github.com/hujiulin target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/hujiulin/ target=_blank title=LinkedIn rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 00-4 0"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/en/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/en/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/en/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/en/resume/><!doctype html><svg t="1720263044212" class="icon" viewBox="0 0 1024 1024" p-id="4271" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M809.286 82.487H218.177c-39.747.0-72.363 32.614-72.363 72.363v729.712c0 39.747 32.614 72.363 72.363 72.363h496.329l167.138-172.238V154.849c0-39.747-32.614-72.363-72.363-72.363zM711.446 889.657v-67.874c0-16.103 13.249-29.148 29.148-29.148h62.372l-91.521 97.025zM834.561 739.842h-88.666c-44.844.0-81.532 36.689-81.532 81.532v85.61H221.847c-16.103.0-29.148-13.249-29.148-29.148V164.43c0-16.103 13.249-29.148 29.148-29.148h583.568c16.103.0 29.148 13.249 29.148 29.148v575.414zM266.484 312.818H648.87c13.654.0 24.868-11.211 24.868-25.07.0-13.654-11.414-24.868-25.07-24.868H266.485c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07zM266.691 383.344c-13.654.0-24.868 11.414-24.868 25.07s11.211 24.868 24.868 24.868h326.128c13.654.0 24.868-11.211 25.07-24.868.0-13.859-11.414-25.07-25.07-25.07H266.691zM714.507 503.807H266.489c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07h448.018c13.654.0 24.868-11.211 25.07-25.07.0-13.654-11.414-24.868-25.07-24.868z" fill="#272636" p-id="4272"/></svg>
+<span>Resume</span></a></li><li><a href=/en/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language title=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://blog.coinidea.com/cesiumjs-1479.html>中文</option><option value=https://blog.coinidea.com/en/p/cesiumjs-cesium-intermediate-tutorial-9-advanced-particle-system-effects/ selected>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>Dark Mode</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#weather>Weather</a><ol><li><a href=#setup>Setup</a><ol><li><a href=#the-images>The Images</a></li><li><a href=#the-update-function>The Update Function</a></li><li><a href=#additional-weather-effects>Additional Weather Effects</a></li></ol></li><li><a href=#the-systems>The Systems</a><ol><li><a href=#snow>Snow</a></li><li><a href=#rain>Rain</a></li></ol></li></ol></li><li><a href=#comet-and-rocket-tails>Comet and Rocket Tails</a><ol><li><a href=#using-multiple-particle-systems>Using Multiple Particle Systems</a></li><li><a href=#setup-1>Setup</a></li><li><a href=#create-the-particle-image-from-scratch>Create the Particle Image from Scratch</a></li><li><a href=#the-force-function>The Force Function</a></li><li><a href=#relative-position>Relative Position</a></li></ol></li><li><a href=#resources>Resources</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/en/categories/cesiumjs/ style=background-color:#2a9d8f;color:#fff>CesiumJS</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/en/p/cesiumjs-cesium-intermediate-tutorial-9-advanced-particle-system-effects/>[CesiumJS] Cesium Intermediate Tutorial 9 – Advanced Particle System Effects</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2019-06-02T12:58:56Z>Jun 02, 2019</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>8 minute read</time></div></footer><footer class=article-translations><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><div><a href=https://blog.coinidea.com/cesiumjs-1479.html class=link>中文</a></div></footer></div></header><section class=article-content><p>Cesium Chinese Website: <a href="https://links.jianshu.com/go?to=http%3A%2F%2Fcesiumcn.org%2F" target=_blank rel=noopener><a class=link href=http://cesiumcn.org/ target=_blank rel=noopener>http://cesiumcn.org/</a></a> | Fast Access in China: <a href="https://links.jianshu.com/go?to=http%3A%2F%2Fcesium.coinidea.com%2F" target=_blank rel=noopener><a class=link href=http://cesium.coinidea.com/ target=_blank rel=noopener>http://cesium.coinidea.com/</a></a></p><p>To learn the basics of particle systems, see the <a class=link href=https://cesium.com/docs/tutorials/particle-systems/ target=_blank rel=noopener>Particle Systems Getting Started</a> tutorial.</p><h2 id=weather>Weather</h2><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7d9cfec1e357005.png loading=lazy></p><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7d9e7cd09c14561.png loading=lazy></p><h3 id=setup>Setup</h3><p>To generate a snow effect, first add a snowflake image for each particle, and then define the particle&rsquo;s movement behavior and other dynamic elements in the <em>updateParticle</em> function.</p><h4 id=the-images>The Images</h4><p>Three images are used in this tutorial. The left one is the rain particle; the middle image is the snow particle; the right image is used for the fire effect.</p><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7d9fc2793292257.png loading=lazy></p><h4 id=the-update-function>The Update Function</h4><p>The update function is used to define particle movement, arrangement, and visualization. It modifies the particle&rsquo;s <em>color</em>, <em>imageSize</em>, and <em>particleLife</em>. We can even modify them based on the distance to the camera (as described below), imported models, or the distance to the Earth itself.</p><p>Here is our update function for snow:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// snow
+</span></span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>snowGravityVector</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>snowUpdate</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>particle</span><span class=p>,</span> <span class=nx>dt</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>normalize</span><span class=p>(</span><span class=nx>particle</span><span class=p>.</span><span class=nx>position</span><span class=p>,</span> <span class=nx>snowGravityVector</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>multiplyByScalar</span><span class=p>(</span><span class=nx>snowGravityVector</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                                                            <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>randomBetween</span><span class=p>(</span><span class=o>-</span><span class=mf>30.0</span><span class=p>,</span> <span class=o>-</span><span class=mf>300.0</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>                                                            <span class=nx>snowGravityVector</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>particle</span><span class=p>.</span><span class=nx>velocity</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=nx>particle</span><span class=p>.</span><span class=nx>velocity</span><span class=p>,</span> <span class=nx>snowGravityVector</span><span class=p>,</span> <span class=nx>particle</span><span class=p>.</span><span class=nx>velocity</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>distance</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>distance</span><span class=p>(</span><span class=nx>scene</span><span class=p>.</span><span class=nx>camera</span><span class=p>.</span><span class=nx>position</span><span class=p>,</span> <span class=nx>particle</span><span class=p>.</span><span class=nx>position</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>distance</span> <span class=o>&gt;</span> <span class=p>(</span><span class=nx>snowRadius</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>particle</span><span class=p>.</span><span class=nx>endColor</span><span class=p>.</span><span class=nx>alpha</span> <span class=o>=</span> <span class=mf>0.0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>particle</span><span class=p>.</span><span class=nx>endColor</span><span class=p>.</span><span class=nx>alpha</span> <span class=o>=</span> <span class=nx>snowSystem</span><span class=p>.</span><span class=nx>endColor</span><span class=p>.</span><span class=nx>alpha</span> <span class=o>/</span> <span class=p>(</span><span class=nx>distance</span> <span class=o>/</span> <span class=nx>snowRadius</span> <span class=o>+</span> <span class=mf>0.1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p>The first part of the function makes the particles fall as if affected by gravity. The update function also contains a distance check so that particles fade away when they are far from the camera.</p><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7da0bf216660231.png loading=lazy></p><h4 id=additional-weather-effects>Additional Weather Effects</h4><p>Use fog and atmospheric effects to enhance the visualization and match the type of weather we are trying to replicate.</p><p><em>hueShift</em> changes the color along the color spectrum, <em>saturationShift</em> changes the degree to which the actual color versus black and white is needed for the visual, and <em>brightnessShift</em> changes how vivid the color is.</p><p>Fog density changes the opacity between the ground cover on the Earth and the fog color. The fog&rsquo;s <em>minimumBrightness</em> is used to darken the fog.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// snow
+</span></span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>skyAtmosphere</span><span class=p>.</span><span class=nx>hueShift</span> <span class=o>=</span> <span class=o>-</span><span class=mf>0.8</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>skyAtmosphere</span><span class=p>.</span><span class=nx>saturationShift</span> <span class=o>=</span> <span class=o>-</span><span class=mf>0.7</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>skyAtmosphere</span><span class=p>.</span><span class=nx>brightnessShift</span> <span class=o>=</span> <span class=o>-</span><span class=mf>0.33</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>fog</span><span class=p>.</span><span class=nx>density</span> <span class=o>=</span> <span class=mf>0.001</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>fog</span><span class=p>.</span><span class=nx>minimumBrightness</span> <span class=o>=</span> <span class=mf>0.8</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=the-systems>The Systems</h3><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7da2599e9546165.png loading=lazy></p><h4 id=snow>Snow</h4><p>The snow system uses the <em>snowflake_particle</em> image and uses <em>minimumImageSize</em> and <em>maximumImageSize</em> to randomly create snowflakes within that range.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>snowParticleSize</span> <span class=o>=</span> <span class=nx>scene</span><span class=p>.</span><span class=nx>drawingBufferWidth</span> <span class=o>/</span> <span class=mf>100.0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>snowRadius</span> <span class=o>=</span> <span class=mf>100000.0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>snowSystem</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>ParticleSystem</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>modelMatrix</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Matrix4</span><span class=p>.</span><span class=nx>fromTranslation</span><span class=p>(</span><span class=nx>scene</span><span class=p>.</span><span class=nx>camera</span><span class=p>.</span><span class=nx>position</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>minimumSpeed</span> <span class=o>:</span> <span class=o>-</span><span class=mf>1.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>maximumSpeed</span> <span class=o>:</span> <span class=mf>0.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>lifetime</span> <span class=o>:</span> <span class=mf>15.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>emitter</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>SphereEmitter</span><span class=p>(</span><span class=nx>snowRadius</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>startScale</span> <span class=o>:</span> <span class=mf>0.5</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>endScale</span> <span class=o>:</span> <span class=mf>1.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>image</span> <span class=o>:</span> <span class=s2>&#34;../../SampleData/snowflake_particle.png&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>emissionRate</span> <span class=o>:</span> <span class=mf>7000.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>startColor</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>WHITE</span><span class=p>.</span><span class=nx>withAlpha</span><span class=p>(</span><span class=mf>0.0</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>endColor</span> <span class=o>:</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>WHITE</span><span class=p>.</span><span class=nx>withAlpha</span><span class=p>(</span><span class=mf>1.0</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>minimumImageSize</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cartesian2</span><span class=p>(</span><span class=nx>snowParticleSize</span><span class=p>,</span> <span class=nx>snowParticleSize</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>maximumImageSize</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cartesian2</span><span class=p>(</span><span class=nx>snowParticleSize</span> <span class=o>*</span> <span class=mf>2.0</span><span class=p>,</span> <span class=nx>snowParticleSize</span> <span class=o>*</span> <span class=mf>2.0</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>updateCallback</span> <span class=o>:</span> <span class=nx>snowUpdate</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>primitives</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=nx>snowSystem</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=rain>Rain</h4><p>The rain system uses <em>circular_particle.png</em> for raindrops. <em>imageSize</em> is used to vertically stretch the image, giving the rain a slender appearance.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=nx>rainSystem</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>ParticleSystem</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>modelMatrix</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Matrix4</span><span class=p>.</span><span class=nx>fromTranslation</span><span class=p>(</span><span class=nx>scene</span><span class=p>.</span><span class=nx>camera</span><span class=p>.</span><span class=nx>position</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>speed</span> <span class=o>:</span> <span class=o>-</span><span class=mf>1.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>lifetime</span> <span class=o>:</span> <span class=mf>15.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>emitter</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>SphereEmitter</span><span class=p>(</span><span class=nx>rainRadius</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>startScale</span> <span class=o>:</span> <span class=mf>1.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>endScale</span> <span class=o>:</span> <span class=mf>0.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>image</span> <span class=o>:</span> <span class=s2>&#34;../../SampleData/circular_particle.png&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>emissionRate</span> <span class=o>:</span> <span class=mf>9000.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>startColor</span> <span class=o>:</span><span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>(</span><span class=mf>0.27</span><span class=p>,</span> <span class=mf>0.5</span><span class=p>,</span> <span class=mf>0.70</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>endColor</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>(</span><span class=mf>0.27</span><span class=p>,</span> <span class=mf>0.5</span><span class=p>,</span> <span class=mf>0.70</span><span class=p>,</span> <span class=mf>0.98</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>imageSize</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian2</span><span class=p>(</span><span class=nx>rainParticleSize</span><span class=p>,</span> <span class=nx>rainParticleSize</span> <span class=o>*</span> <span class=mi>2</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=nx>updateCallback</span> <span class=o>:</span> <span class=nx>rainUpdate</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>primitives</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=nx>rainSystem</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>The rain update function is slightly different because rain falls much faster than snow.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// rain
+</span></span></span><span class=line><span class=cl><span class=nx>rainGravityScratch</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>normalize</span><span class=p>(</span><span class=nx>particle</span><span class=p>.</span><span class=nx>position</span><span class=p>,</span> <span class=nx>rainGravityScratch</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>rainGravityScratch</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>multiplyByScalar</span><span class=p>(</span><span class=nx>rainGravityScratch</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                                                        <span class=o>-</span><span class=mf>1050.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                                                        <span class=nx>rainGravityScratch</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>particle</span><span class=p>.</span><span class=nx>position</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=nx>particle</span><span class=p>.</span><span class=nx>position</span><span class=p>,</span> <span class=nx>rainGravityScratch</span><span class=p>,</span> <span class=nx>particle</span><span class=p>.</span><span class=nx>position</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>To make the environment match the atmosphere of the scene, modify the atmosphere and fog to match the rain. The code below creates a dark blue sky covered in haze.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// rain
+</span></span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>skyAtmosphere</span><span class=p>.</span><span class=nx>hueShift</span> <span class=o>=</span> <span class=o>-</span><span class=mf>0.97</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>skyAtmosphere</span><span class=p>.</span><span class=nx>saturationShift</span> <span class=o>=</span> <span class=mf>0.25</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>skyAtmosphere</span><span class=p>.</span><span class=nx>brightnessShift</span> <span class=o>=</span> <span class=o>-</span><span class=mf>0.4</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>fog</span><span class=p>.</span><span class=nx>density</span> <span class=o>=</span> <span class=mf>0.00025</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>scene</span><span class=p>.</span><span class=nx>fog</span><span class=p>.</span><span class=nx>minimumBrightness</span> <span class=o>=</span> <span class=mf>0.01</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><p>For additional help, visit the <a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Particle%20System%20Weather.html&amp;label=Showcases" target=_blank rel=noopener>Sandcastle example for both snow and rain</a>.</p><h2 id=comet-and-rocket-tails>Comet and Rocket Tails</h2><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7da4452eef38032.png loading=lazy></p><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7da5a6ff0a19811.png loading=lazy></p><h3 id=using-multiple-particle-systems>Using Multiple Particle Systems</h3><p>To create comet and rocket tails, we need multiple particle systems. Each position on the particle ring created by this example is a completely independent particle system. This allows us to control the direction of the system&rsquo;s movement more uniformly. A simple way to visualize this effect is to limit <em>cometOptions.numberOfSystems</em> to 2 and have <em>cometOptions.colorOptions</em> include only two colors, as shown in the image below.</p><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7da8d6ab6d14547.png loading=lazy></p><p>To simplify different collections of systems, create arrays to carry the independent systems associated with the comet and those associated with the rocket example.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>rocketSystems</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>cometSystems</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span></code></pre></td></tr></table></div></div><p>Create two different options for the objects: one for the Comet version and another for the Rocket version. This makes the initial number of systems, offset values, etc. different for the two systems, giving them different appearances.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>cometOptions</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>numberOfSystems</span> <span class=o>:</span> <span class=mf>100.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>iterationOffset</span> <span class=o>:</span> <span class=mf>0.003</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>cartographicStep</span> <span class=o>:</span> <span class=mf>0.0000001</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>baseRadius</span> <span class=o>:</span> <span class=mf>0.0005</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>colorOptions</span> <span class=o>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>red</span> <span class=o>:</span> <span class=mf>0.6</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>green</span> <span class=o>:</span> <span class=mf>0.6</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>blue</span> <span class=o>:</span> <span class=mf>0.6</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>alpha</span> <span class=o>:</span> <span class=mf>1.0</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>red</span> <span class=o>:</span> <span class=mf>0.6</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>green</span> <span class=o>:</span> <span class=mf>0.6</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>blue</span> <span class=o>:</span> <span class=mf>0.9</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>alpha</span> <span class=o>:</span> <span class=mf>0.9</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>red</span> <span class=o>:</span> <span class=mf>0.5</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>green</span> <span class=o>:</span> <span class=mf>0.5</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>blue</span> <span class=o>:</span> <span class=mf>0.7</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>alpha</span> <span class=o>:</span> <span class=mf>0.5</span>
+</span></span><span class=line><span class=cl>    <span class=p>}]</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>rocketOptions</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>numberOfSystems</span> <span class=o>:</span> <span class=mf>50.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>iterationOffset</span> <span class=o>:</span>  <span class=mf>0.1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>cartographicStep</span> <span class=o>:</span> <span class=mf>0.000001</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>baseRadius</span> <span class=o>:</span> <span class=mf>0.0005</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>colorOptions</span> <span class=o>:</span> <span class=p>[{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>minimumRed</span> <span class=o>:</span> <span class=mf>1.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>green</span> <span class=o>:</span> <span class=mf>0.5</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>minimumBlue</span> <span class=o>:</span> <span class=mf>0.05</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>alpha</span> <span class=o>:</span> <span class=mf>1.0</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>red</span> <span class=o>:</span> <span class=mf>0.9</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>minimumGreen</span> <span class=o>:</span> <span class=mf>0.6</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>minimumBlue</span> <span class=o>:</span> <span class=mf>0.01</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>alpha</span> <span class=o>:</span> <span class=mf>1.0</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>red</span> <span class=o>:</span> <span class=mf>0.8</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>green</span> <span class=o>:</span> <span class=mf>0.05</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>minimumBlue</span> <span class=o>:</span> <span class=mf>0.09</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>alpha</span> <span class=o>:</span> <span class=mf>1.0</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>minimumRed</span> <span class=o>:</span> <span class=mi>1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>minimumGreen</span> <span class=o>:</span> <span class=mf>0.05</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>blue</span> <span class=o>:</span> <span class=mf>0.09</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>alpha</span> <span class=o>:</span> <span class=mf>1.0</span>
+</span></span><span class=line><span class=cl>    <span class=p>}]</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p><em>colorOptions</em> is an array of colors for random visuals. Each system starts from a specific color rather than having a set color geometry, depending on the system currently being created. In the example below, <em>i</em> represents the current iteration number.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>color</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>fromRandom</span><span class=p>(</span><span class=nx>options</span><span class=p>.</span><span class=nx>colorOptions</span><span class=p>[</span><span class=nx>i</span> <span class=o>%</span> <span class=nx>options</span><span class=p>.</span><span class=nx>colorOptions</span><span class=p>.</span><span class=nx>length</span><span class=p>]);</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=setup-1>Setup</h3><p>Use the function below as initialization for each system:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>function</span> <span class=nx>createParticleSystems</span><span class=p>(</span><span class=nx>options</span><span class=p>,</span> <span class=nx>systemsArray</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>length</span> <span class=o>=</span> <span class=nx>options</span><span class=p>.</span><span class=nx>numberOfSystems</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kd>var</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=nx>length</span><span class=p>;</span> <span class=o>++</span><span class=nx>i</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>scratchAngleForOffset</span> <span class=o>=</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>PI</span> <span class=o>*</span> <span class=mf>2.0</span> <span class=o>*</span> <span class=nx>i</span> <span class=o>/</span> <span class=nx>options</span><span class=p>.</span><span class=nx>numberOfSystems</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>scratchOffset</span><span class=p>.</span><span class=nx>x</span> <span class=o>+=</span> <span class=nx>options</span><span class=p>.</span><span class=nx>baseRadius</span> <span class=o>*</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>cos</span><span class=p>(</span><span class=nx>scratchAngleForOffset</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>scratchOffset</span><span class=p>.</span><span class=nx>y</span> <span class=o>+=</span> <span class=nx>options</span><span class=p>.</span><span class=nx>baseRadius</span> <span class=o>*</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>sin</span><span class=p>(</span><span class=nx>scratchAngleForOffset</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>emitterModelMatrix</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Matrix4</span><span class=p>.</span><span class=nx>fromTranslation</span><span class=p>(</span><span class=nx>scratchOffset</span><span class=p>,</span> <span class=nx>matrix4Scratch</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>color</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Color</span><span class=p>.</span><span class=nx>fromRandom</span><span class=p>(</span><span class=nx>options</span><span class=p>.</span><span class=nx>colorOptions</span><span class=p>[</span><span class=nx>i</span> <span class=o>%</span> <span class=nx>options</span><span class=p>.</span><span class=nx>colorOptions</span><span class=p>.</span><span class=nx>length</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>force</span> <span class=o>=</span> <span class=nx>forceFunction</span><span class=p>(</span><span class=nx>options</span><span class=p>,</span> <span class=nx>i</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>item</span> <span class=o>=</span> <span class=nx>viewer</span><span class=p>.</span><span class=nx>scene</span><span class=p>.</span><span class=nx>primitives</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>ParticleSystem</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>            <span class=nx>image</span> <span class=o>:</span> <span class=nx>getImage</span><span class=p>(),</span>
+</span></span><span class=line><span class=cl>            <span class=nx>startColor</span> <span class=o>:</span> <span class=nx>color</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>endColor</span> <span class=o>:</span> <span class=nx>color</span><span class=p>.</span><span class=nx>withAlpha</span><span class=p>(</span><span class=mf>0.0</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=nx>particleLife</span> <span class=o>:</span> <span class=mf>3.5</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>speed</span> <span class=o>:</span> <span class=mf>0.00005</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>imageSize</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian2</span><span class=p>(</span><span class=mf>15.0</span><span class=p>,</span> <span class=mf>15.0</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=nx>emissionRate</span> <span class=o>:</span> <span class=mf>30.0</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>emitter</span> <span class=o>:</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>CircleEmitter</span><span class=p>(</span><span class=mf>0.1</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=nx>bursts</span> <span class=o>:</span> <span class=p>[</span> <span class=p>],</span>
+</span></span><span class=line><span class=cl>            <span class=nx>lifetime</span> <span class=o>:</span> <span class=mf>0.1</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>forces</span> <span class=o>:</span> <span class=nx>force</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>modelMatrix</span> <span class=o>:</span> <span class=nx>particlesModelMatrix</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=nx>emitterModelMatrix</span> <span class=o>:</span> <span class=nx>emitterModelMatrix</span>
+</span></span><span class=line><span class=cl>        <span class=p>}));</span>
+</span></span><span class=line><span class=cl>        <span class=nx>systemsArray</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nx>item</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>Since both tail versions are similar, the same <em>createParticleSystems</em> function can be used to create either one. Pass in <em>CometOptions</em> or <em>RocketOptions</em> as the options parameter to create different effects.</p><h3 id=create-the-particle-image-from-scratch>Create the Particle Image from Scratch</h3><p>Instead of loading an image from a URL, the <em>getImage</em> function creates the image using an HTML canvas. This makes image creation more flexible.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>particleCanvas</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>getImage</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=nx>Cesium</span><span class=p>.</span><span class=nx>defined</span><span class=p>(</span><span class=nx>particleCanvas</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>particleCanvas</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>createElement</span><span class=p>(</span><span class=s1>&#39;canvas&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>particleCanvas</span><span class=p>.</span><span class=nx>width</span> <span class=o>=</span> <span class=mi>20</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>particleCanvas</span><span class=p>.</span><span class=nx>height</span> <span class=o>=</span> <span class=mi>20</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>context2D</span> <span class=o>=</span> <span class=nx>particleCanvas</span><span class=p>.</span><span class=nx>getContext</span><span class=p>(</span><span class=s1>&#39;2d&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>context2D</span><span class=p>.</span><span class=nx>beginPath</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nx>context2D</span><span class=p>.</span><span class=nx>arc</span><span class=p>(</span><span class=mi>8</span><span class=p>,</span> <span class=mi>8</span><span class=p>,</span> <span class=mi>8</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>TWO_PI</span><span class=p>,</span> <span class=kc>true</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>context2D</span><span class=p>.</span><span class=nx>closePath</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nx>context2D</span><span class=p>.</span><span class=nx>fillStyle</span> <span class=o>=</span> <span class=s1>&#39;rgb(255, 255, 255)&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>context2D</span><span class=p>.</span><span class=nx>fill</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>particleCanvas</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=the-force-function>The Force Function</h3><p>Below is our <em>updateCallback</em> function:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kd>var</span> <span class=nx>scratchCartesian3</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>scratchCartographic</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartographic</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>forceFunction</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>options</span><span class=p>,</span> <span class=nx>iteration</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>iterationOffset</span> <span class=o>=</span> <span class=nx>iteration</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>func</span> <span class=o>=</span> <span class=kd>function</span><span class=p>(</span><span class=nx>particle</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>scratchCartesian3</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>normalize</span><span class=p>(</span><span class=nx>particle</span><span class=p>.</span><span class=nx>position</span><span class=p>,</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>        <span class=nx>scratchCartesian3</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>multiplyByScalar</span><span class=p>(</span><span class=nx>scratchCartesian3</span><span class=p>,</span> <span class=o>-</span><span class=mf>1.0</span><span class=p>,</span> <span class=nx>scratchCartesian3</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nx>particle</span><span class=p>.</span><span class=nx>position</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=nx>particle</span><span class=p>.</span><span class=nx>position</span><span class=p>,</span> <span class=nx>scratchCartesian3</span><span class=p>,</span> <span class=nx>particle</span><span class=p>.</span><span class=nx>position</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nx>scratchCartographic</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartographic</span><span class=p>.</span><span class=nx>fromCartesian</span><span class=p>(</span><span class=nx>particle</span><span class=p>.</span><span class=nx>position</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                                                                <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Ellipsoid</span><span class=p>.</span><span class=nx>WGS84</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                                                                <span class=nx>scratchCartographic</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>angle</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nb>Math</span><span class=p>.</span><span class=nx>PI</span> <span class=o>*</span> <span class=mf>2.0</span> <span class=o>*</span> <span class=nx>iterationOffset</span> <span class=o>/</span> <span class=nx>options</span><span class=p>.</span><span class=nx>numberOfSystems</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>iterationOffset</span> <span class=o>+=</span> <span class=nx>options</span><span class=p>.</span><span class=nx>iterationOffset</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>scratchCartographic</span><span class=p>.</span><span class=nx>longitude</span> <span class=o>+=</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>cos</span><span class=p>(</span><span class=nx>angle</span><span class=p>)</span> <span class=o>*</span> <span class=nx>options</span><span class=p>.</span><span class=nx>cartographicStep</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>scratchCartographic</span><span class=p>.</span><span class=nx>latitude</span> <span class=o>+=</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>sin</span><span class=p>(</span><span class=nx>angle</span><span class=p>)</span> <span class=o>*</span> <span class=nx>options</span><span class=p>.</span><span class=nx>cartographicStep</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nx>particle</span><span class=p>.</span><span class=nx>position</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartographic</span><span class=p>.</span><span class=nx>toCartesian</span><span class=p>(</span><span class=nx>scratchCartographic</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>};</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>func</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p>Note that <em>forceFunction</em> returns a function. The returned <em>func</em> is the actual <em>updateCallback</em> function. For each iteration, the update function creates a different rotation offset based on the <em>angle</em> and <em>iterationOffset</em>. A smaller iteration offset only slightly adjusts the angle, allowing the radius to steadily increase as the system continues, as shown in the comet example. A larger iteration offset changes the angle more quickly; this creates a tighter, more erratic cylindrical output, as shown in the rocket example.</p><p>This tutorial uses sine and cosine functions for circular effects. For other effects, try making shapes such as a <a class=link href=https://en.wikipedia.org/wiki/Lissajous_curve target=_blank rel=noopener>Lissajous curve</a>, <a class=link href=https://en.wikipedia.org/wiki/Gibbs_phenomenon target=_blank rel=noopener>Gibbs phenomenon</a>, or <a class=link href=https://en.wikipedia.org/wiki/Square_wave target=_blank rel=noopener>square wave</a>.</p><h3 id=relative-position>Relative Position</h3><p><img src=http://cesium.coinidea.com/uploads/2019/06/05/5cf7dab813ba867612.png loading=lazy></p><p>Use <em>modelMatrix</em> to position the particle system at the appropriate location behind the plane. Because these systems are vertical, we need a slight offset using the <em>particleOffset</em> value. As shown in the <em>createParticleSystems</em> function, the <em>emitterModelMatrix</em> offset for each system is calculated based on the iteration.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// positioning the plane
+</span></span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>planePosition</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>.</span><span class=nx>fromDegrees</span><span class=p>(</span><span class=o>-</span><span class=mf>75.59777</span><span class=p>,</span> <span class=mf>40.03883</span><span class=p>,</span> <span class=mf>800.0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>particlesOffset</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Cartesian3</span><span class=p>(</span><span class=o>-</span><span class=mf>8.950115473940969</span><span class=p>,</span> <span class=mf>34.852766731753945</span><span class=p>,</span> <span class=o>-</span><span class=mf>30.235411095432937</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// creating the particles model matrix
+</span></span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>transl</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Matrix4</span><span class=p>.</span><span class=nx>fromTranslation</span><span class=p>(</span><span class=nx>particlesOffset</span><span class=p>,</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Matrix4</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>translPosition</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Matrix4</span><span class=p>.</span><span class=nx>fromTranslation</span><span class=p>(</span><span class=nx>planePosition</span><span class=p>,</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Matrix4</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>particlesModelMatrix</span> <span class=o>=</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Matrix4</span><span class=p>.</span><span class=nx>multiplyTransformation</span><span class=p>(</span><span class=nx>translPosition</span><span class=p>,</span> <span class=nx>transl</span><span class=p>,</span> <span class=k>new</span> <span class=nx>Cesium</span><span class=p>.</span><span class=nx>Matrix4</span><span class=p>());</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=resources>Resources</h2><p>For additional help, visit the <a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Particle%20System%20Tails.html&amp;label=Showcases" target=_blank rel=noopener>Sandcastle example for both tails examples</a>.
+More example code:</p><ul><li><a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Particle%20System.html&amp;label=Showcases" target=_blank rel=noopener>Particle System Demo</a></li><li><a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Particle%20System%20Fireworks.html&amp;label=Showcases" target=_blank rel=noopener>Particle System Fireworks Demo</a></li><li><a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Particle%20System%20Weather.html&amp;label=Showcases" target=_blank rel=noopener>Particle System Weather Demo</a></li><li><a class=link href="https://cesiumjs.org/Cesium/Build/Apps/Sandcastle/index.html?src=Particle%20System%20Tails.html&amp;label=Showcases" target=_blank rel=noopener>Particle System Tails Demo</a></li></ul><p><strong>Cesium Chinese Website QQ Group: 807482793</strong></p><p>Cesium Chinese Website: <a href="https://links.jianshu.com/go?to=http%3A%2F%2Fcesiumcn.org%2F" target=_blank rel=noopener><a class=link href=http://cesiumcn.org/ target=_blank rel=noopener>http://cesiumcn.org/</a></a> | Fast Access in China: <a href="https://links.jianshu.com/go?to=http%3A%2F%2Fcesium.coinidea.com%2F" target=_blank rel=noopener><a class=link href=http://cesium.coinidea.com/ target=_blank rel=noopener>http://cesium.coinidea.com/</a></a></p></section><footer class=article-footer><section class=article-tags><a href=/en/tags/cesiumjs/>Cesiumjs</a>
+<a href=/en/tags/cesium-tutorial/>Cesium Tutorial</a>
+<a href=/en/tags/cesium-documentation/>Cesium Documentation</a>
+<a href=/en/tags/gis/>GIS</a>
+<a href=/en/tags/3d-gis/>3D GIS</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/en/p/converting-cdb-to-3d-tiles-with-cesium/><div class=article-details><h2 class=article-title>Converting CDB to 3D Tiles with Cesium</h2></div></a></article><article><a href=/en/p/creating-digital-twins-with-cesium-ion-and-bentleys-imodel.js/><div class=article-details><h2 class=article-title>Creating Digital Twins with Cesium ion and Bentley's iModel.js</h2></div></a></article><article><a href=/en/p/cesium-partners-with-intel-geospatial-to-provide-enterprise-geospatial-solutions/><div class=article-details><h2 class=article-title>Cesium Partners with Intel Geospatial to Provide Enterprise Geospatial Solutions</h2></div></a></article><article><a href=/en/p/kabul-data-available-for-government-users/><div class=article-details><h2 class=article-title>Kabul Data Available for Government Users</h2></div></a></article><article><a href=/en/p/reality-capture-adds-built-in-support-for-sharing-3d-models-via-cesium-ion/><div class=article-details><h2 class=article-title>Reality Capture Adds Built-in Support for Sharing 3D Models via Cesium ion</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2026 Coinidea's Blog</section><section class=powerby><a href=http://beian.miit.gov.cn/ target=_blank>京ICP备15014655号</a><br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

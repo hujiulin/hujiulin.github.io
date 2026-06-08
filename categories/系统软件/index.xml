@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>系统软件 on Coinidea的博客</title><link>https://blog.coinidea.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/</link><description>Recent content in 系统软件 on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 15 Jun 2019 00:47:43 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/index.xml" rel="self" type="application/rss+xml"/><item><title>AZKBAN——开源任务调度系统</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1505.html</link><pubDate>Sat, 15 Jun 2019 00:47:43 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1505.html</guid><description>&lt;p&gt;azkaban是一个开源的任务调度系统，用于负责任务的调度运行（如数据仓库调度），用以替代linux中的crontab。官网:https://azkaban.github.io/&lt;/p&gt;
+&lt;p&gt;azkaban主要有三部分构成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;MySQL：Azkaban使用MySQL来存储项目和执行。&lt;/li&gt;
+&lt;li&gt;Azkaban Web Server：Azkaban使用Jetty作为Web服务器，用作控制器以及提供Web界面&lt;/li&gt;
+&lt;li&gt;Azkaban Executor Server：Azkaban执行服务器执行提交工作流。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;本文主要使用的是azkaban3.43，如果您从github源代码生成编译tar包时候可以留言，我可以给您分享我已经测试通过的安装包文件。&lt;br&gt;
+安装包文件主要有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;azkaban-db-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-solo-server-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-exec-server-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-web-server-3.43.0.tar.gz&lt;/li&gt;
+&lt;li&gt;azkaban-hadoop-security-plugin-3.43.0.tar.gz&lt;br&gt;
+其中solo是单机版本，我搭建的是多执行节点，单web server节点的版本。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意：本文默认azkaban的目录位于/azkaban&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据库&lt;/strong&gt;&lt;br&gt;
+首先需要安装MySQL数据库，然后创建一个叫azkaban的数据库。mysql中执行&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;source /azkaban/azkaban-db/create-all-sql-0.1.0-SNAPSHOT.sql
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;配置文件&lt;/strong&gt;&lt;br&gt;
+0. 配置keystore，keystore的位置位于/azkaban/azkaban-web/conf/（需要与配置文件中路径对应）&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;keytool -keystore keystore -alias jetty -genkey -keyalg RSA
+输入密钥库口令: azkaban
+再次输入新口令: azkaban
+您的名字与姓氏是什么? [Unknown]: 略过
+您的组织单位名称是什么? [Unknown]: 略过
+您的组织名称是什么? [Unknown]: 略过
+您所在的城市或区域名称是什么? [Unknown]: 略过
+您所在的省/市/自治区名称是什么? [Unknown]: 略过
+该单位的双字母国家/地区代码是什么? [Unknown]: CN
+CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=CN是否正确?
+[否]: Y
+输入 &amp;lt;jetty&amp;gt; 的密钥口令 (如果和密钥库口令相同, 按回车):
+&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;/azkaban/azkaban-web/conf/azkaban.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;# Azkaban Personalization Settings
+azkaban.name=Allin
+azkaban.label=My Local Azkaban
+azkaban.color=#FF3601
+azkaban.default.servlet.path=/index
+web.resource.dir=/azkaban/azkaban-web-server/web/
+default.timezone.id=Asia/Shanghai
+# Azkaban UserManager class
+user.manager.class=azkaban.user.XmlUserManager
+user.manager.xml.file=/azkaban/azkaban-web-server/conf/azkaban-users.xml
+# Loader for projects
+executor.global.properties=/azkaban/azkaban-web-server/conf/global.properties
+azkaban.project.dir=/azkaban/azkaban-web-server/projects
+# Velocity dev mode
+velocity.dev.mode=false
+# Azkaban Jetty server properties.
+jetty.use.ssl=false
+jetty.maxThreads=25
+jetty.port=8443
+jetty.keystore=//azkaban/azkaban-web-server/conf/keystore
+jetty.password=yourpassword
+jetty.keypassword=yourpassword
+jetty.truststore=//azkaban/azkaban-web-server/conf/keystore
+jetty.trustpassword=yourpassword
+# Azkaban Executor settings
+executor.port=12321
+# mail settings
+mail.sender=
+mail.host=
+# User facing web server configurations used to construct the user facing server URLs. They are useful when there is a reverse proxy between Azkaban web servers and users.
+# enduser -&amp;gt; myazkabanhost:443 -&amp;gt; proxy -&amp;gt; localhost:8081
+# when this parameters set then these parameters are used to generate email links.
+# if these parameters are not set then jetty.hostname, and jetty.port(if ssl configured jetty.ssl.port) are used.
+# azkaban.webserver.external_hostname=myazkabanhost.com
+# azkaban.webserver.external_ssl_port=443
+# azkaban.webserver.external_port=8081
+job.failure.email=
+job.success.email=
+lockdown.create.projects=false
+cache.directory=cache
+# JMX stats
+jetty.connector.stats=true
+executor.connector.stats=true
+# Azkaban plugin settings
+azkaban.jobtype.plugin.dir=/azkaban/azkaban-web-server/plugins/jobtypes
+database.type=mysql
+mysql.port=3306
+mysql.host=127.0.0.1
+mysql.database=azkaban
+mysql.user=root
+mysql.password=yourmysqlpassword
+mysql.numconnections=100
+&lt;/pre&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;/azkaban/azkaban-exec/conf/azkaban.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;# Azkaban Personalization Settings
+default.timezone.id=Asia/Shanghai
+# Loader for projects
+executor.global.properties=/azkaban/azkaban-exec-server/conf/global.properties
+azkaban.project.dir=/azkaban/azkaban-exec-server/projects
+azkaban.jobtype.plugin.dir=/azkaban/azkaban-exec-server/plugins/jobtypes
+database.type=mysql
+mysql.port=3306
+mysql.host=127.0.0.1
+mysql.database=azkaban
+mysql.user=root
+mysql.password=yourpassword
+mysql.numconnections=100
+# Azkaban Executor settings
+executor.maxThreads=50
+executor.port=12321
+executor.flow.threads=30
+&lt;/pre&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;/azkaban/azkaban-web/conf/log4j.properties /azkaban/azkaban-exec/conf/log4j.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;log4j.rootLogger=INFO,C
+log4j.appender.C=org.apache.log4j.ConsoleAppender
+log4j.appender.C.Target=System.err
+log4j.appender.C.layout=org.apache.log4j.PatternLayout
+log4j.appender.C.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+&lt;/pre&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;如果是多执行节点，需要在/azkaban/azkaban-web/conf/azkaban.properties中追加以下配置，并且在数据库中插入对应执行节点的ip和端口号&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban.use.multiple.executors=true
+azkaban.executorselector.filters=StaticRemainingFlowSize,MinimumFreeMemory,CpuStatus
+azkaban.executorselector.comparator.NumberOfAssignedFlowComparator=1
+azkaban.executorselector.comparator.Memory=1
+azkaban.executorselector.comparator.LastDispatched=1
+azkaban.executorselector.comparator.CpuUsage=1
+&lt;/pre&gt;
+&lt;p&gt;插入执行节点ip和端口号：&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;insert into executors(host,port) values("your ip1",12321);
+insert into executors(host,port) values("your ip2",12321);
+&lt;/pre&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;
+&lt;p&gt;配置用户名密码/azkaban/azkaban-web/conf/azkaban-users.xml&lt;br&gt;
+只要有一些计算机基础，打开这个配置文件，一目了然。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建日志文件夹&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;mkdir /azkaban/azkaban-web/logs
+mkdir /azkaban/azkaban-exec/logs
+&lt;/pre&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;启动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban/azkaban-exec/bin/start-exec.sh
+azkaban/azkaban-web/bin/start-web.sh
+&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;遇到的坑&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;keystore的位置需要与配置文件中keystore设置的文件路径对应。&lt;/li&gt;
+&lt;li&gt;azkaban3以上才支持多执行节点。&lt;/li&gt;
+&lt;li&gt;7中启动方式是静默方式，开始测试的时候建议使用：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban/azkaban-exec/bin/azkaban-web-start.sh
+azkaban/azkaban-exec/bin/azkaban-exec-start.sh
+&lt;/pre&gt;
+&lt;p&gt;这样能看到是否报错，什么原因报错。&lt;br&gt;
+4. 根据报错说明，有可能没有正确创建logs文件夹或者路径不对。&lt;br&gt;
+5. 因为web server会去检查exec server，所以建议先启动exec server。&lt;br&gt;
+6. 如果多节点任务不执行，有可能是执行节点的资源不够。注意查看配置，该配置指定服务器在什么内存、CPU等资源条件下才执行任务，以及如果不指定节点，如果分配执行节点。如果不限制资源，请修改或者注释相关配置。&lt;/p&gt;
+&lt;pre class="brush: bash; title: ; notranslate" title=""&gt;azkaban.use.multiple.executors=true
+azkaban.executorselector.filters=StaticRemainingFlowSize,MinimumFreeMemory,CpuStatus
+azkaban.executorselector.comparator.NumberOfAssignedFlowComparator=1
+azkaban.executorselector.comparator.Memory=1
+azkaban.executorselector.comparator.LastDispatched=1
+azkaban.executorselector.comparator.CpuUsage=1
+&lt;/pre&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;如何指定节点执行job：&lt;br&gt;
+在 flow params中设置”useExecutor” = EXECUTOR_ID即可&lt;br&gt;
+详情请查看：&lt;br&gt;
+&lt;a class="link" href="https://www.jianshu.com/p/ffb7bbc1988f" target="_blank" rel="noopener"
+&gt;https://www.jianshu.com/p/ffb7bbc1988f&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>中了勒索病毒该怎么办</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1380.html</link><pubDate>Thu, 22 Nov 2018 07:23:33 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1380.html</guid><description>&lt;p&gt;最近身边有朋友中了勒索病毒，经过一番查询发现一个比较好的网站：反勒索病毒联盟。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.nomoreransom.org/zh/decryption-tools.html" target="_blank" rel="noopener"
+&gt;https://www.nomoreransom.org/zh/decryption-tools.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我个人一向认为技术是中立的，所以如果您中了勒索病毒，不妨去上面的网站上看看，有可能有一些解决办法。&lt;/p&gt;</description></item><item><title>分享一个下载RPM包的好地方</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1377.html</link><pubDate>Thu, 22 Nov 2018 07:17:03 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1377.html</guid><description>&lt;p&gt;在离线环境中（特指那些不能 wget、yum 的环境中），我们常常需要涉及到自己编译、安装 Linux 系列的操作系统。&lt;/p&gt;
+&lt;p&gt;这个时候版本的依赖是一件非常让人头痛的事，当然我们可以用 Docker 进行解决。&lt;/p&gt;
+&lt;p&gt;如果您的离线环境对您的上传下载也进行了限制，而且环境内部的版本不可控，那该是意见多么头痛的事啊。所以我找到了一个下载 Linux 系列 RPM 包的好地方：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://pkgs.org/" target="_blank" rel="noopener"
+&gt;https://pkgs.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;解决了操作系统、系统版本、软件依赖等问题。&lt;/p&gt;</description></item><item><title>推荐一个好的国外VPS——Vultr</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1365.html</link><pubDate>Thu, 15 Nov 2018 07:17:56 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1365.html</guid><description>&lt;p&gt;&lt;a class="link" href="https://www.vultr.com/?ref=7462802" target="_blank" rel="noopener"
+&gt;&lt;img src="https://blog.coinidea.com/wp-content/themes/9IPHP/images/banner_1.png"
+loading="lazy"
+alt="banner"
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="vultr介绍"&gt;Vultr介绍
+&lt;/h1&gt;&lt;p&gt;Vultr是美国知名云服务提供商Choopa.com的VPS服务，Choopa一直为游戏公司提供全球支撑服务，因此该公司在全球14个国家及地区部署数据中心，包括日本东京、新加坡、美国洛杉矶、西雅图、英国伦敦、德国等地区。性价比极高，当前最低仅需$2.5/月。新用户注册即送$25。 点击以下链接，进行注册，新用户赠送25美金(需要支付10美金，相当于充10美金，得35美金)： &lt;a class="link" href="https://www.vultr.com/?ref=7462802" target="_blank" rel="noopener"
+&gt;优惠活动活动链接&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="vultr优势"&gt;Vultr优势
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;机房众多：拥有日本、美国、欧洲等14个机房。&lt;/li&gt;
+&lt;li&gt;架构优秀：全部采用KVM架构、SSD固态硬盘、1000GB/月流量起步。&lt;/li&gt;
+&lt;li&gt;镜像强大：常见的Linux之外还可以自定义安装ISO系统，还可以安装Windows系统。&lt;/li&gt;
+&lt;li&gt;后台强大：拥有系统快照、一键装机部署脚本、备份、防火墙等强大功能。&lt;/li&gt;
+&lt;li&gt;促销活动：不定期有新用户注册奖励，有时赠送金额高达$100。&lt;/li&gt;
+&lt;li&gt;计费灵活：采用小时计费模式，可以任意的添加和删除机器。&lt;/li&gt;
+&lt;li&gt;客服速度：客服速度响应快，一般15分钟就可以得到解答（可能涉及到时差问题）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="配置价格"&gt;配置价格
+&lt;/h1&gt;&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/wp-content/uploads/2018/11/pricing.png" target="_blank" rel="noopener"
+&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/pricing.png"
+loading="lazy"
+alt="pricing"
+&gt;&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Markdown anywhere</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1341.html</link><pubDate>Tue, 06 Nov 2018 06:29:16 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1341.html</guid><description>&lt;p&gt;最近经常写文章，发现Markdown是一个非常方便的网页排版规范，详见：&lt;a class="link" href="http://cesiumcn.org/markdown.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/markdown.html&lt;/a&gt; | &lt;a class="link" href="http://cesium.coinidea.com/markdown.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/markdown.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;目前发现&lt;a class="link" href="https://www.jianshu.com/u/217c80f1e0a9" target="_blank" rel="noopener"
+&gt;简书&lt;/a&gt;、&lt;a class="link" href="https://my.oschina.net/u/1470240" target="_blank" rel="noopener"
+&gt;oschina&lt;/a&gt;都非常好的支持了markdown。但是&lt;a class="link" href="http://blog.coinidea.com/" target="_blank" rel="noopener"
+&gt;WordPress&lt;/a&gt;不支持，比较意外的是&lt;a class="link" href="https://www.zhihu.com/people/coinidea/activities" target="_blank" rel="noopener"
+&gt;知乎&lt;/a&gt;竟然不支持？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;wordpress markdown&lt;/strong&gt;
+wordpress有插件可以支持的。网上有人说_WP Editor.MD_插件非常好，我在自己的wordpress版本上使用之后，发现并不兼容，在启用的时候直接挂掉了。&lt;/p&gt;
+&lt;p&gt;这个时候灵光一闪，直接去官网&lt;a class="link" href="https://wordpress.org/plugins/" target="_blank" rel="noopener"
+&gt;https://wordpress.org/plugins/&lt;/a&gt;看看。发现&lt;a class="link" href="https://wordpress.org/plugins/wp-markdown/" target="_blank" rel="noopener"
+&gt;wp-markdown&lt;/a&gt;的还比较好用。&lt;/p&gt;
+&lt;p&gt;启用之后，发现没有变化，原来是因为需要配置一下，具体位置是在：&lt;strong&gt;设置-&amp;gt;撰写&lt;/strong&gt; 中。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/wp-content/uploads/2018/11/wordpress.png" target="_blank" rel="noopener"
+&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/wordpress.png"
+loading="lazy"
+alt="wordpress"
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;知乎markdown&lt;/strong&gt;
+知乎肯定不能像wordpress那样装插件了。网上的大神真是太多了。chrome有一款插件叫markdown here。安装之后，当在文本输入框中右击鼠标时，它会在出现_markdown here_的菜单，然后将富文本内容自动转换为markdown排版，拷贝即可。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/wp-content/uploads/2018/11/markdown_here_plugin.png" target="_blank" rel="noopener"
+&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/markdown_here_plugin.png"
+loading="lazy"
+alt="markdown_here_plugin"
+&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2018/11/markdown-here.png"
+loading="lazy"
+alt="markdown here"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>[CentOS]Centos升级OpenSSH及vsftpd</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1265.html</link><pubDate>Thu, 23 Nov 2017 08:05:04 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1265.html</guid><description>&lt;h2 id="升级-openssh-到-74-版本以上"&gt;升级 OpenSSH 到 7.4 版本以上
+&lt;/h2&gt;&lt;h3 id="背景"&gt;背景
+&lt;/h3&gt;&lt;p&gt;目前来讲，Linux 下 OpenSSH 7.4 版本以下的，都有一些高危漏洞，需要将 OpenSSH 升级到 7.4 版本以上。在一台不能上外网的机器上（yum），是比较麻烦的事儿。网上大家都先建议备份好 ssh 和安装 telnet 防止，升级失败可以 telnet 进去。&lt;/p&gt;
+&lt;h3 id="常见问题及解决方案"&gt;常见问题及解决方案
+&lt;/h3&gt;&lt;h4 id="1-找不到-zlibh"&gt;1. 找不到 &lt;code&gt;zlib.h&lt;/code&gt;
+&lt;/h4&gt;&lt;p&gt;参考链接：&lt;a class="link" href="http://www.linuxidc.com/Linux/2012-10/72036.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2012-10/72036.htm&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="2-zlib-下载地址"&gt;2. zlib 下载地址
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.zlib.net/" target="_blank" rel="noopener"
+&gt;http://www.zlib.net/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="3-zlib-安装"&gt;3. zlib 安装
+&lt;/h4&gt;&lt;p&gt;参考链接：&lt;a class="link" href="http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml" target="_blank" rel="noopener"
+&gt;http://www.360doc.com/content/13/0124/17/1200324_262179628.shtml&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="4-手动编译生成安装-openssh-需要的依赖"&gt;4. 手动编译生成安装 OpenSSH 需要的依赖
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zlib&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pam-devel&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果报错 &lt;code&gt;configure: error: PAM headers not found&lt;/code&gt;，可以下载 &lt;code&gt;pam-devel&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm" target="_blank" rel="noopener"
+&gt;http://rpm.pbone.net/index.php3?stat=26&amp;amp;dist=74&amp;amp;size=208492&amp;amp;name=pam-devel-1.1.1-17.el6.x86_64.rpm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="5-openssl-下载"&gt;5. OpenSSL 下载
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="ftp://ftp.openssl.org/source/" &gt;ftp://ftp.openssl.org/source/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="6-安装-openssl"&gt;6. 安装 OpenSSL
+&lt;/h4&gt;&lt;p&gt;参考链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/ikownyou/article/details/53021686" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/ikownyou/article/details/53021686&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://www.linuxidc.com/Linux/2011-10/45738.htm" target="_blank" rel="noopener"
+&gt;http://www.linuxidc.com/Linux/2011-10/45738.htm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="注意事项"&gt;注意事项
+&lt;/h3&gt;&lt;p&gt;如果 OpenSSH 升级后 SecureCRT 不能登录，可能是因为 SecureCRT 版本太低不支持一些加密协议：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;a class="link" href="http://blog.csdn.net/yangg1991/article/details/51755562" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yangg1991/article/details/51755562&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="升级-openssh-的步骤"&gt;升级 OpenSSH 的步骤
+&lt;/h3&gt;&lt;p&gt;参考链接：&lt;a class="link" href="http://blog.csdn.net/u011080082/article/details/64503534" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u011080082/article/details/64503534&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="升级-vsftpd-从-222-到-234"&gt;升级 vsftpd 从 2.2.2 到 2.3.4
+&lt;/h2&gt;&lt;p&gt;下载 &lt;code&gt;vsftpd-2.3.4.tar.gz&lt;/code&gt; 包，64 位注意：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\/lib64\/g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sed -i &lt;span class="s1"&gt;&amp;#39;s/lib\//lib64\//g&amp;#39;&lt;/span&gt; vsf_findlibs.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="配置-vsftpd"&gt;配置 vsftpd
+&lt;/h3&gt;&lt;p&gt;使用主动模式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vsftpd /etc/vsftpd/vsftpd.conf &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;standard_alone&lt;/code&gt; 启动下，需要将下列两行代码，加入配置文件头部：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;a class="link" href="http://wingjang.blog.163.com/blog/static/47913442200811113104509/" target="_blank" rel="noopener"
+&gt;http://wingjang.blog.163.com/blog/static/47913442200811113104509/&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;YES
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;listen_port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装之后默认只允许匿名用户登录，所以需要修改一下：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;a class="link" href="http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html" target="_blank" rel="noopener"
+&gt;http://blog.sina.com.cn/s/blog_7e16680c01018ox1.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="处理-tcp_wrapper-问题"&gt;处理 TCP_Wrapper 问题
+&lt;/h3&gt;&lt;p&gt;如果有问题，注意删除空格，也可以去掉：&lt;/p&gt;
+&lt;p&gt;参考链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/u010098331/article/details/50699914" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/u010098331/article/details/50699914&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="http://blog.csdn.net/yylklshmyt20090217/article/details/8500608" target="_blank" rel="noopener"
+&gt;http://blog.csdn.net/yylklshmyt20090217/article/details/8500608&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="vsftpd-下载"&gt;vsftpd 下载
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/" target="_blank" rel="noopener"
+&gt;http://pkgs.fedoraproject.org/repo/pkgs/vsftpd/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>[MySQL]MySQL-Front(Windows)定期备份</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1155.html</link><pubDate>Thu, 05 May 2016 03:08:32 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1155.html</guid><description>&lt;p&gt;数据库的服务中，定期备份是一项极其重要的工作。&lt;br&gt;
+对于大多数用GUI（大部分用户使用MySQL-Front、Navicat或者MySQL-WorkBench）简单管理数据库的用户来说，基于交互的备份方式简单易学。&lt;/p&gt;
+&lt;p&gt;下面简单介绍如何使用MySQL-Front(版本5.3)定期备份数据库：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;连接上数据库之后，“其他”-&amp;gt;“Jobs”-&amp;gt;“新建”-&amp;gt;“输出”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image001-289x300.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;选择test数据库，点击下一步。&lt;/li&gt;
+&lt;li&gt;指定输出地址“D:\test.sql”，注意字符集一般选择UTF-8&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image003-289x300.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;下一步，指定输出的内容，一定要勾选数据。&lt;/li&gt;
+&lt;li&gt;指定备份的时间，以及时间间隔。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image005-289x300.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;完成之后在定时任务的栏目中会有一个名为test的job&lt;/li&gt;
+&lt;li&gt;如果想立即执行，右击点击运行即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/05/image007-300x213.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;</description></item><item><title>[Git]Git配置和取消代理</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1137.html</link><pubDate>Sat, 09 Apr 2016 08:02:47 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1137.html</guid><description>&lt;p&gt;在配置 Git 使用代理时，可以通过以下命令来设置和取消代理：&lt;/p&gt;
+&lt;h3 id="配置-git-使用代理"&gt;配置 Git 使用代理
+&lt;/h3&gt;&lt;p&gt;要为 Git 配置 HTTP 和 HTTPS 代理，可以使用以下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 配置 HTTP 代理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global http.proxy http://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 配置 HTTPS 代理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global https.proxy https://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="取消-git-代理配置"&gt;取消 Git 代理配置
+&lt;/h3&gt;&lt;p&gt;如果需要取消代理设置，可以使用以下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 取消 HTTP 代理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset http.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 取消 HTTPS 代理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset https.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="解释"&gt;解释
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git config --global http.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;：配置全局 HTTP 代理。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global https.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;：配置全局 HTTPS 代理。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset http.proxy&lt;/code&gt;：取消全局 HTTP 代理配置。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset https.proxy&lt;/code&gt;：取消全局 HTTPS 代理配置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过这些命令，可以方便地在需要时开启或关闭 Git 的代理设置。&lt;/p&gt;</description></item><item><title>[Linux]linux相关命令总结</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1066.html</link><pubDate>Sat, 17 Oct 2015 08:24:07 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1066.html</guid><description>&lt;h3 id="用户管理"&gt;用户管理
+&lt;/h3&gt;&lt;p&gt;近期一直在搭建10台左右的CDH集群，集群使用的10台CentOS6.7的服务器，所以需要常常用到Linux的一些用户管理的命令。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;修改密码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;passwd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;输入新的密码和确认密码即可，不过密码中最好包含：大小写字母，数字和字符确保安全性，Linux也会提醒密码规则。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;切换用户&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;su hdfs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;即可切换到hdfs用户。&lt;br&gt;
+或者不切换用户，以某个用户的权限来执行或者访问某个文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;su hdfs hadoop fs -mkdir /user/hdfs/test
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;以hdfs用户的权限使用hadoop在集群上的 &lt;code&gt;/user/hdfs/&lt;/code&gt; 建立test目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="文件管理"&gt;文件管理
+&lt;/h3&gt;&lt;p&gt;创建文件夹&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir &lt;span class="o"&gt;[&lt;/span&gt;folder&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;创建文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;touch/vi &lt;span class="o"&gt;[&lt;/span&gt;filename&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="时区选择"&gt;时区选择
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;根据提示选择时区，然后输入提示命令。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tzselect
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改clock文件中的时区。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/sysconfig/clock
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;ZONE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Asia/Shanghai&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除原有的localtime，新建localtime&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm /etc/localtime
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="开机执行命令"&gt;开机执行命令
+&lt;/h3&gt;&lt;p&gt;编辑rc.local文件即可&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/rc.local
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="启动时钟服务同步局域网下具有时钟服务的服务器的时钟"&gt;启动时钟服务，同步局域网下具有时钟服务的服务器的时钟
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;service ntpd start
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/usr/sbin/ntpdate 192.168.34.115
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;[To be continued…]&lt;/p&gt;</description></item><item><title>[Linux]Linux配置DNS地址</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1062.html</link><pubDate>Wed, 14 Oct 2015 13:28:18 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1062.html</guid><description>&lt;p&gt;DNS关系到服务器能否通过域名的方式联系到互联网。Linux下有两种方式配置DNS服务器的IP地址。&lt;/p&gt;
+&lt;p&gt;验证方式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ping www.baidu.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;临时性的方式&lt;br&gt;
+a) 编辑resolv.conf&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi ./etc/resolv.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;b) 输入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;nameserver 8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;保存即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;永久的配置方式&lt;br&gt;
+a) 编辑ifcfg-eth0&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;b) 输入&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;DNS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;保存即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以通过&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ifconfig
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;查看本地的网卡，其中就能看到eth0的配置信息。&lt;/p&gt;</description></item><item><title>[Linux]CentOS挂载NTFS移动硬盘</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1059.html</link><pubDate>Thu, 01 Oct 2015 06:26:08 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1059.html</guid><description>&lt;p&gt;服务器是CentOS的操作系统，需要挂载两个2T的移动硬盘。&lt;/p&gt;
+&lt;p&gt;命令如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mount -t ntfs /dev/sdn1 /test1
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mount： unknown filesystem type ‘ntfs’
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;出错了，错误的意思是说，不认识“NTFS”，解决方式如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;span class="lnt"&gt;6
+&lt;/span&gt;&lt;span class="lnt"&gt;7
+&lt;/span&gt;&lt;span class="lnt"&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;wget http://tuxera.com/opensource/ntfs-3g_ntfsprogs-2013.1.13.tgz
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar zxvf ntfs-3g_ntfsprogs-2013.1.13.tgz
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cd ntfs-3g_ntfsprogs-2013.1.13
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;./configure
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;make install
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir /mnt/window
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mount -t ntfs-3g /dev/sdn1 /mnt/window
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;取消挂载：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;umount /dev/sdn1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>[outlook]outlook配置及常规设置——outlook2013</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1045.html</link><pubDate>Thu, 01 Oct 2015 03:13:11 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1045.html</guid><description>&lt;p&gt;当步入职场之后，outlook几乎成为上班族的必备利器，本文将对outlook（outlook2013）的一些配置和常规设置进行说明。&lt;/p&gt;
+&lt;h1 id="添加一个用户"&gt;添加一个用户
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;打开outlook2013，点击左上方“文件”，弹出列表，点击“+添加用户”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/user.jpg"
+loading="lazy"
+alt="user"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;选择“电子邮件账户”，点击“下一步”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e9%80%89%e6%8b%a9%e7%94%b5%e5%ad%90%e9%82%ae%e4%bb%b6%e8%b4%a6%e6%88%b7.jpg"
+loading="lazy"
+alt="选择电子邮件账户"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;点击“手动设置或其他服务器类型”，然后点击“下一步”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e6%89%8b%e5%8a%a8%e8%ae%be%e7%bd%ae%e6%88%96%e5%85%b6%e4%bb%96%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%b1%bb%e5%9e%8b.jpg"
+loading="lazy"
+alt="手动设置或其他服务器类型"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;勾选“POP或IMAP”，然后点击“下一步”，一般是选择该项。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/popimap.jpg"
+loading="lazy"
+alt="popimap"
+&gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;输入用户名密码，并配置接收和发送的服务器地址。注意，这两个地址，一般是pop3或smtp@对应的域名，需要向邮件服务商确认，邮件服务商一般会有描述。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%be%93%e5%85%a5%e7%94%a8%e6%88%b7%e5%90%8d%e5%af%86%e7%a0%81.jpg"
+loading="lazy"
+alt="输入用户名密码"
+&gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;点击上图“其他设置”，配置发送服务器的用户名和密码，并点击“完成”。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e5%85%b6%e4%bb%96%e8%ae%be%e7%bd%ae%e8%be%93%e5%85%a5%e7%94%a8%e6%88%b7%e5%90%8d%e5%af%86%e7%a0%81.jpg"
+loading="lazy"
+alt="其他设置输入用户名密码"
+&gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;点击下一步，开始测试，之后测试完成，整个过程即成功。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e6%b5%8b%e8%af%95%e5%ae%8c%e6%88%90.jpg"
+loading="lazy"
+alt="测试完成"
+&gt;&lt;/p&gt;
+&lt;h1 id="配置邮件过滤规则"&gt;配置邮件过滤规则
+&lt;/h1&gt;&lt;p&gt;在邮件的使用过程中，每天可能会产生大量的邮件，这个时候高效地分拣这些邮件是一件非常有意义的工作。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开outlook2013，点击左上方“文件”，弹出列表，点击“管理规则和通知”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e7%ae%a1%e7%90%86%e8%a7%84%e5%88%99%e5%92%8c%e9%80%9a%e7%9f%a5.jpg"
+loading="lazy"
+alt="管理规则和通知"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;点击“新建规则”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%a7%84%e5%88%99%e5%92%8c%e9%80%9a%e7%9f%a5.jpg"
+loading="lazy"
+alt="规则和通知"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;规则中有许多选项，根据规则向导来配置即可。比如，可以选择“标题中含有特定词语的”，“来自特定发件人的”规则，然后可以移动到指定的文件夹，或者指定特定的操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%a7%84%e5%88%99%e5%90%91%e5%af%bc.jpg"
+loading="lazy"
+alt="规则向导"
+&gt;&lt;/p&gt;</description></item><item><title>[应用软件]GIF图本地制作</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1024.html</link><pubDate>Sun, 20 Sep 2015 08:37:13 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1024.html</guid><description>&lt;p&gt;因为开源了一个&lt;a class="link" href="http://www.coinidea.com/Index/content/columnId/41/contentId/55.html" target="_blank" rel="noopener"
+&gt;WIN32的贪吃蛇程序&lt;/a&gt;，想要制作成GIF图以便于演示，但是具体如何制作却犯了难。&lt;/p&gt;
+&lt;p&gt;经过查询有以下几种方法：&lt;/p&gt;
+&lt;h3 id="第一种利用qq影音等视频软件"&gt;第一种，利用QQ影音等视频软件
+&lt;/h3&gt;&lt;p&gt;前提是需要转录的是一段小视频，用QQ影音的功能即可转录。&lt;/p&gt;
+&lt;p&gt;具体方法：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://kf.qq.com/faq/120322fu63YV130422iiEbMB.html" target="_blank" rel="noopener"
+&gt;http://kf.qq.com/faq/120322fu63YV130422iiEbMB.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="第二种使用photoshop等专业的软件"&gt;第二种，使用Photoshop等专业的软件
+&lt;/h3&gt;&lt;p&gt;准备多帧图像，具体方法查看百度经验：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://jingyan.baidu.com/article/7f41ececdb326e593d095c2e.html" target="_blank" rel="noopener"
+&gt;http://jingyan.baidu.com/article/7f41ececdb326e593d095c2e.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="第三种使用屏幕录像专家"&gt;第三种，使用屏幕录像专家
+&lt;/h3&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150919/1442639966167035.gif"
+loading="lazy"
+alt="1442639966167035.gif"
+&gt;&lt;/p&gt;
+&lt;p&gt;上图是我使用屏幕录像专家先录制视频（EXE或者LXE格式），然后选中“转换工具菜单”，然后再转换即可。&lt;/p&gt;
+&lt;p&gt;分享一个屏幕录像专家的绿色版本的下载地址：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.coinidea.com/Index/content/columnId/43/contentId/59.html" target="_blank" rel="noopener"
+&gt;屏幕录像专家&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>CCleaner清理电脑</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-876.html</link><pubDate>Sun, 21 Jun 2015 07:33:06 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-876.html</guid><description>&lt;p&gt;即将迎来人生的一个重大转折，毕业。实验室有一台属于自己的电脑，在自己走的时候希望能对这台电脑有一个比较彻底的clean。听说有一个工具叫&lt;a class="link" href="http://www.piriform.com/ccleaner" target="_blank" rel="noopener"
+&gt;CCleaner&lt;/a&gt;，尝试了一下，效果还不错。可以对Windows | Mac | Andriod | iPhone 进行比较方便的清理工作。&lt;/p&gt;
+&lt;p&gt;Windows下可以进行：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Windows及应用程序清理&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/windows%e6%b8%85%e7%90%86-300x225.jpg"
+loading="lazy"
+alt="windows清理"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注册表清理&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/%e6%b3%a8%e5%86%8c%e8%a1%a8%e6%b8%85%e7%90%86-300x225.jpg"
+loading="lazy"
+alt="注册表清理"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;软件卸载及磁盘擦除&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/%e5%8d%b8%e8%bd%bd%e8%bd%af%e4%bb%b6%e7%a3%81%e7%9b%98%e6%93%a6%e9%99%a4-300x225.jpg"
+loading="lazy"
+alt="卸载软件磁盘擦除"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>GitHub中Read.md添加图片</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-643.html</link><pubDate>Thu, 12 Feb 2015 12:42:27 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-643.html</guid><description>&lt;p&gt;因为之前一直用SVN，几个月之前才刚真正意义上接触Git，GitHub之前在参加KDD2013的时候使用过一段时间。&lt;/p&gt;
+&lt;p&gt;最近想好好地打磨自己的程序，注释和描述是必不可少，而且应该用心写的。&lt;/p&gt;
+&lt;p&gt;遇到一个问题，就是如何在Read.md文件中加入图片。&lt;/p&gt;
+&lt;p&gt;我使用的解决方案如下：&lt;/p&gt;
+&lt;p&gt;在Folder中创建一个Image Folder，然后放入相应需要显示在Read.md的图片，将该Folder提交到GitHub上。通过预览可以得到该图片在GitHub上面的url。&lt;/p&gt;
+&lt;p&gt;Read.md支持图片的标记语言：&lt;code&gt;&amp;lt;img data-original=&amp;quot;image-url&amp;quot; src=&amp;quot;http://blog.coinidea.com/wp-content/themes/9IPHP/images/lazy_loading.gif&amp;quot; alt=&amp;quot;image&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;解决实例：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/hujiulin/WordConverter" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/WordConverter&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

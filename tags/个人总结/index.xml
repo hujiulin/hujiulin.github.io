@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>个人总结 on Coinidea的博客</title><link>https://blog.coinidea.com/tags/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</link><description>Recent content in 个人总结 on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 04 Jan 2018 07:25:24 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml"/><item><title>[年终总结]我的2017</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1272.html</link><pubDate>Thu, 04 Jan 2018 07:25:24 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1272.html</guid><description>&lt;p&gt;晃晃悠悠，终于度过了2017年。其实，对于总结这种东西，我内心是有阴影的。&lt;/p&gt;
+&lt;h2 id="一技术"&gt;一、技术：
+&lt;/h2&gt;&lt;h3 id="1-前端技术栈"&gt;1. 前端技术栈：
+&lt;/h3&gt;&lt;p&gt;1.1 撸了一次VUE，基本入门了;&lt;br&gt;
+1.2 接触了一下Fis3;&lt;/p&gt;
+&lt;h3 id="2-php相关"&gt;2. PHP相关：
+&lt;/h3&gt;&lt;p&gt;2.1 了解了Yii2.0，实现了一些简单的项目;&lt;br&gt;
+2.2 将ThinkPHP3.升级到了ThinkPHP5;&lt;/p&gt;
+&lt;h3 id="3-算法相关"&gt;3. 算法相关：
+&lt;/h3&gt;&lt;p&gt;3.1 年中的时候，撸了几十道leetcode，后来也没坚持下来。当年2015应该是撸完了的，现在出了不少新题。STL、Vector这些之也重新捡起来了。&lt;br&gt;
+3.2 今年最自豪的事，撸了一下OpenCV，实现了一个图像分类的算法BOW，也用了一下基于OpenCV的决策树、SVM等。&lt;/p&gt;
+&lt;h3 id="4-系统相关"&gt;4. 系统相关：
+&lt;/h3&gt;&lt;p&gt;4.1 2015年的时候CDH就走过一次了。今年最有成就感的事儿是把ElasticSearch撸起来了。数据量大概是1.5亿条。包括分词、mapping、索引、聚合。这样走一次还是很有成就感的。&lt;/p&gt;
+&lt;h2 id="二旅行"&gt;二、旅行：
+&lt;/h2&gt;&lt;p&gt;说来惭愧。算上出差，也就去了上海、南京、青岛。这三个城市吧。不过终于去了上海的迪斯尼还不错，就是人太多了。&lt;br&gt;
+&lt;a href="http://blog.coinidea.com/wp-content/uploads/2018/01/devhu2017年脚印地图.png" class="magnific" rel="magnific" &gt;&lt;img class="alignnone size-medium wp-image-1273" title="devhu2017年脚印地图" data-original="/wp-content/uploads/2018/01/devhu2017%E5%B9%B4%E8%84%9A%E5%8D%B0%E5%9C%B0%E5%9B%BE.png" src="http://blog.coinidea.com/wp-content/uploads/2018/01/devhu2017年脚印地图.png" alt="" width="600" height="382" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="三coinidea"&gt;三、Coinidea:
+&lt;/h2&gt;&lt;p&gt;搞起来了吗，我觉得没有。搞得不算好。大大小小的网站、WebAPP、API也写了小几十个了。但是非常迷茫，不知道接下来的路怎么走，最近也在做一些尝试，希望能有一些新的门向我打开。&lt;/p&gt;
+&lt;h2 id="谈一谈对明年的期望吧"&gt;谈一谈对明年的期望吧。
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Android, 之前学了，但是一直没有进行下去。&lt;/li&gt;
+&lt;li&gt;开发并发布一款微信小程序。&lt;/li&gt;
+&lt;li&gt;研究学习PostgreSQL&lt;/li&gt;
+&lt;li&gt;进一步学习研究一些相关数据挖掘、深度学习算法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上，没有祝愿了，目标定低一点，对谁都有好处:)&lt;/p&gt;</description></item><item><title>[年终总结]我的2016——写在毕业一周年</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1171.html</link><pubDate>Fri, 01 Jul 2016 16:32:42 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1171.html</guid><description>&lt;h2 id="写在毕业零周年"&gt;写在毕业零周年
+&lt;/h2&gt;&lt;p&gt;一年前，我正式毕业踏入社会。——&lt;a href="http://blog.coinidea.com/%E6%80%BB%E7%BB%93%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-881.html" target="_blank"&gt;写在毕业零周年&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;感谢去年的自己送给我的一句话：“心态永远不死，那生活依然奔跑在路上。”&lt;/p&gt;
+&lt;p&gt;如果今年要送给明年的自己一句话，那就是：“坚持，坚强，坚韧。”&lt;/p&gt;
+&lt;p&gt;这一年，我拿到了一些自己想要的东西，但是也付出了很多代价。当我在追寻这些东西的时候，猛然发现，家人的健康才是最重要的。&lt;/p&gt;
+&lt;p&gt;对啊，当阳光洒下来的时候，还有什么事是比活着更幸福的呢？&lt;/p&gt;
+&lt;p&gt;——DevHu记录于2016.07.02，还是租的房子&lt;/p&gt;
+&lt;p&gt;20180104：由于一些不方便解释的原因，暂拿此文作为我的2016年终总结吧。&lt;/p&gt;</description></item><item><title>[年终总结]我的2015</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1114.html</link><pubDate>Fri, 01 Jan 2016 13:56:14 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1114.html</guid><description>&lt;p&gt;转眼2015年过去了，今天是2016年的第一天。今天做得最有成就感的一件事就是把大学积攒这么多年的衣服，捐了一大包去学校。我是一个很奇怪的人，一些旧东西时常不会扔掉，这样导致搬家的时候非常的麻烦。之前听说过一种观点叫归纳——断、舍、离。于是尝试扔掉自己的旧的垃圾和废物，使自己的生活重新得到整理。&lt;/p&gt;
+&lt;p&gt;去年到现在，差不多工作半年了，也进入社会半年了。我以为我准备得足够充分了，其实还是吃瘪了。就跟预估工程量一样，有一个定律讲的是无论你怎么估算工程量，你都会少估算1/3的工作时间，即使考虑掉了这条定律。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/%E6%80%BB%E7%BB%93%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-617.html" target="_blank" rel="noopener"
+&gt;2014年的年终总结&lt;/a&gt;中我提到：&lt;/p&gt;
+&lt;p&gt;我希望我的2015年能做下列清单中的Items：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;旅行&lt;/p&gt;
+&lt;p&gt;1.1 去哈尔滨 [Get √]&lt;br&gt;
+1.2 去西藏&lt;br&gt;
+1.3 去云南 [Get √]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;坚持在自己的个人博客上完成技术的学习和分享，写出高质量的博客 [Get√，应该能坚持下来，不过质量慢慢提高吧]。&lt;/p&gt;
+&lt;p&gt;比较庆幸的事，博客的UV访问量已经从每天的1、2个人到现在的破十了，其中有一两篇的访问量蛮高的，有一篇目前能在百度搜索关键词“Yii Redis”的第一页找到，心里十分高兴。虽然目前是第一页最后一条。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;坚持写出更高质量的代码，并在GitHub上有所贡献，希望自己的某个项目能够获得100个Star。&lt;/p&gt;
+&lt;p&gt;这个失败了，目前GitHub的累计Star最多也就20多，希望自己多多努力。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开源一款基于ThinkPHP的门户系统 [Get√，不过未开源]。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;思考自己的未来，专注的研究某项技术。&lt;/p&gt;
+&lt;p&gt;路漫漫其修远兮，吾将上下而求索。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;看一些像样的书籍：&lt;/p&gt;
+&lt;p&gt;6.1 吴军的《文明之光》&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 购买了，但是没有读多少。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.2 [加] 马尔科姆•格拉德威尔 的《逆转》&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 未完成
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.3 看完《格鲁夫给经理人的第一课》&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 未完成
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.4 看完《Effective C++》&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 未完成
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.5 《怪诞行为学》 [Get√]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;好好学学英语，争取出国自助游。&lt;/p&gt;
+&lt;p&gt;未完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从头做一次leetcode中的所有题目。&lt;/p&gt;
+&lt;p&gt;部分完成，使用PHP做了部分题目&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;除此之外，最令我欣喜的事儿是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;读了一些书：《从0到1》，《Don&amp;rsquo;t make me think》，《Android第一行代码》&lt;/li&gt;
+&lt;li&gt;CoinIdea进行了一个比较漂亮的改版 [自己独立设计，使用AI制图]，感觉越来越好了。&lt;/li&gt;
+&lt;li&gt;自己的耐心、脾气、秉性虽然有不足，但是还是有一定进步。&lt;/li&gt;
+&lt;li&gt;Android在入门的道路上了。&lt;/li&gt;
+&lt;li&gt;PHP和MySQL有一定新的认识。&lt;/li&gt;
+&lt;li&gt;我竟然打了那么多字：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/01/A4EJSOU3TQA6_IZJ-300x226.png"
+loading="lazy"
+alt="字数统计"
+&gt;&lt;/p&gt;
+&lt;p&gt;OK，接下来展望一下2016年，这务必是关键的一年。我的生命中仿佛每隔4-5年会出现一些大事，Just Face It.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;希望练习好英语，考过托业。&lt;/li&gt;
+&lt;li&gt;iOS的入门，Android的深度学习以及应用；PHP、MySQL的进阶，使用Yii开发一套OA。&lt;/li&gt;
+&lt;li&gt;我自己身边的人的英语考试顺风顺水。&lt;/li&gt;
+&lt;li&gt;父母身体健康。&lt;/li&gt;
+&lt;li&gt;阅读《文明之光》。&lt;/li&gt;
+&lt;li&gt;阅读完《PHP MySQL和WEB开发》 以及 《深入理解PHP高级技巧：面向对象与核心技术》。&lt;/li&gt;
+&lt;li&gt;希望能捡回自己的C#，WorldWind。&lt;/li&gt;
+&lt;li&gt;在数据可视化上有一定的突破。&lt;/li&gt;
+&lt;li&gt;希望自己空余时间打理的CoinIdea越来越好。&lt;/li&gt;
+&lt;li&gt;去年未完成的愿望，希望今年能实现。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;不贪心，就这些，第四条是祝愿。&lt;/p&gt;</description></item><item><title>写在第一次面试</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-891.html</link><pubDate>Tue, 21 Jul 2015 16:08:32 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-891.html</guid><description>&lt;p&gt;在经历过好多次被别人面试的经历之后，自己也终于可以开始面试别人了。虽然还是一只小菜鸟，但是依然还是想记录一下这次经历。&lt;/p&gt;
+&lt;p&gt;总体来说，开始一直没说话，后来看到面试者简历里面有TP框架和Yii框架之后，还是忍不住问了几句关于这些框架如何做xss和csrf防止的问题。&lt;/p&gt;
+&lt;p&gt;当聊到如何判断array中是否存在两个数之后满足目标数的时候，也问了几个问题。&lt;/p&gt;
+&lt;p&gt;总体来说，对自己的第一次面试还是比较满意的。但是，谈吐之前，可能攻击性比较强，希望自己引以为戒，多多改正:)。&lt;/p&gt;</description></item><item><title>写在毕业零周年</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-881.html</link><pubDate>Fri, 03 Jul 2015 16:55:39 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-881.html</guid><description>&lt;p&gt;因为最近一直在忙毕业、搬家、入职的事儿，根本没有办法停下来好好写一些东西。感觉自己已经成为一个十足的家庭妇男了，买电器、买菜、做饭、带外卖、做家务一应俱全。&lt;/p&gt;
+&lt;p&gt;最近自己写了一句话在朋友圈——今天门一关，以后就是两个世界了。&lt;/p&gt;
+&lt;p&gt;毕业零周年，也是我学生生涯23周年（我妈妈说我两岁半开始上幼儿园）的结束，工作的零周年的开始。求职的这一年多来，杠过枪，打过炮，经历了风风雨雨，不过渐渐的也习惯了。&lt;/p&gt;
+&lt;p&gt;成长是什么：&lt;/p&gt;
+&lt;p&gt;成长就是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当你进入超市的时候，你会发现一瓶最便宜的油也要30~40+；一个碗也要10元钱。精打细算过日子。&lt;/li&gt;
+&lt;li&gt;早上起来先煮个蛋来吃。&lt;/li&gt;
+&lt;li&gt;骑自行车，不要背书包，容易让背汗死，还是放篮子里面吧。&lt;/li&gt;
+&lt;li&gt;能分清电动自行车分为可拆卸的锂电池，与不可拆卸的铅酸蓄电池，锂电池的车不好看。&lt;/li&gt;
+&lt;li&gt;自习观察北京博大精深的交通，发现有自行车道，而且并线，分流十分合理，沿着自行车道骑，即便是立交桥也能顺畅的到达终点。这大抵就是和做人一样吧。&lt;/li&gt;
+&lt;li&gt;洗澡的喷头，可以泡在稀释的84消毒液中，杀菌效果好。&lt;/li&gt;
+&lt;li&gt;嗯，我就是穷。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;未来的路该怎么走，我也不知道，最近想学学Android的开发，看看大神的《一行代码》。不过无论什么样的路，自己选的，跪着也要走完。&lt;/p&gt;
+&lt;p&gt;最后，送自己一句话吧，心态永远不死，那生活才会依然奔跑在路上。&lt;/p&gt;
+&lt;p&gt;——DevHu记录2015.07.04 于租的房子。&lt;/p&gt;</description></item><item><title>[年终总结]我的2014</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-617.html</link><pubDate>Sun, 11 Jan 2015 05:49:26 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-617.html</guid><description>&lt;p&gt;2014年，对于我来说，感觉过得很慢，又过得很快。这一年一只脚已经进入了社会，就等另一只脚的迈入。我将对自己的2014年进行一个“大事”盘点。 整理归档好过去，拥抱一个新的未来。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;看了一些书籍。&lt;/p&gt;
+&lt;p&gt;1.1 吴晓波的《大败局》全集&lt;/p&gt;
+&lt;p&gt;1.2 南派三叔的《盗墓笔记》&lt;/p&gt;
+&lt;p&gt;1.3 过了一次《编程之美》&lt;/p&gt;
+&lt;p&gt;1.4 过了一次《程序员面试宝典》[为了找工作]&lt;/p&gt;
+&lt;p&gt;1.5 看了部分《Effective C++》&lt;/p&gt;
+&lt;p&gt;1.6 Accept 所有 &lt;a class="link" href="https://oj.leetcode.com/problemset/algorithms/" target="_blank" rel="noopener"
+&gt;Leetcode题目&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;4月17日，怀着激动的心情进入微软亚洲研究生创新工程组实习。&lt;/p&gt;
+&lt;p&gt;这是我人生难得的一次机会，误打误撞进去了顶级的技术及研究公司（研究院），在里面写了半年的代码，这种内外的成长，对我造成了强大的冲击，在之前我觉得自己还是比较能写代码的，后来接触最多的两个词是：规范，为什么。&lt;/p&gt;
+&lt;p&gt;回头想想，MSRA的经历将影响我一生，在这里我衷心的感谢我的 Mentor: Genduan 以及 Chaowa 对我的帮助。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作为一名 Dev，与2014年5月，找到了自己的女友，是一件如此高兴的事，终于可以面向对象编程了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;找工作阶段&lt;/p&gt;
+&lt;p&gt;这段时间辗转难眠，那段时间让我想起了 PennyJob 的运营者梁斌的一篇博文：&lt;a class="link" href="http://blog.sina.com.cn/s/blog_593af2a701017185.html" target="_blank" rel="noopener"
+&gt;百司不录&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;虽然断断续续，有一些 OFFER，但是压力之大，可能也是如人饮水吧。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;10月8日，猿题库实习。&lt;/p&gt;
+&lt;p&gt;这是一家创业公司，一群很有理想，很厉害的人，在一起。想做一些很酷的很颠覆的事。我的 Mentor 是一位 IOS 界的大牛 —— DevTang。这家公司带给我的是一种耳目一新的感觉，一个初入江湖的人，在一家创业公司里面，能看到的，接触到的，听到的，学到的那么多技术之外但是又与技术息息相关的知识，受用终生。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;旅行&lt;/p&gt;
+&lt;p&gt;&lt;span style="text-align: center;"&gt;去了十渡。｜去了北戴河。｜ 去了天津。｜去了青岛。｜ 去了香港。&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;
+&lt;a href="https://blog.coinidea.com/wp-content/uploads/2015/01/DevHu2014年足迹地图1.png" class="magnific" rel="magnific"&gt;&lt;img class="aligncenter wp-image-619" title="DevHu2014年足迹地图" data-original="/wp-content/uploads/2015/01/DevHu2014年足迹地图1.png" src="http://blog.coinidea.com/wp-content/themes/9IPHP/images/lazy_loading.gif" alt="" width="589" height="360" srcset="http://blog.coinidea.com/wp-content/uploads/2015/01/DevHu2014年足迹地图1.png 982w, http://blog.coinidea.com/wp-content/uploads/2015/01/DevHu2014年足迹地图1-300x183.png 300w" sizes="(max-width: 589px) 100vw, 589px" /&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接下来？我离职时，我师兄问我，接下来打算干嘛？是啊，接下来打算干嘛？我也回答不了，但是我希望我的2015年能做下列清单中的 Items：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;旅行&lt;/p&gt;
+&lt;p&gt;1.1 去哈尔滨 &lt;strong&gt;[Get √]&lt;/strong&gt; | 1.2 去西藏 | 1.3. 去云南 &lt;strong&gt;[Get √]&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;坚持在自己的个人博客上完成技术的学习和分享，写出高质量的博客 &lt;strong&gt;[Get√，应该能坚持下来，不过质量慢慢提高吧]&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;坚持写出更高质量的代码，并在 GitHub 上有所贡献，希望自己的某个项目能够获得100个 Star。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开源一款基于 ThinkPHP 的门户系统 &lt;strong&gt;[Get√，不过未开源]&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;思考自己的未来，专注的研究某项技术。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;看一些像样的书籍：&lt;/p&gt;
+&lt;p&gt;6.1 吴军的《文明之光》&lt;/p&gt;
+&lt;p&gt;6.2 &lt;a class="link" href="http://book.douban.com/search/%20%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A7%86%E2%80%A2%E6%A0%BC%E6%8B%89%E5%BE%B7%E5%A8%81%E5%B0%94" target="_blank" rel="noopener"
+&gt;[加] 马尔科姆•格拉德威尔&lt;/a&gt; 的《逆转》&lt;/p&gt;
+&lt;p&gt;6.3 看完《格鲁夫给经理人的第一课》&lt;/p&gt;
+&lt;p&gt;6.4 看完《Effective C++》&lt;/p&gt;
+&lt;p&gt;6.5 《怪诞行为学》 &lt;strong&gt;[Get√]&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;好好学学英语，争取出国自助游。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从头做一次 leetcode 中的所有题目。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

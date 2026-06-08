@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编译 on Coinidea的博客</title><link>https://blog.coinidea.com/tags/%E7%BC%96%E8%AF%91/</link><description>Recent content in 编译 on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 23 Aug 2015 03:01:39 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/%E7%BC%96%E8%AF%91/index.xml" rel="self" type="application/rss+xml"/><item><title>[WorldWind]1.初识WorldWind——WorldWind编译生成，解决乱码等问题</title><link>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-964.html</link><pubDate>Sun, 23 Aug 2015 03:01:39 +0000</pubDate><guid>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-964.html</guid><description>&lt;p&gt;本文中World Wind的GitHub源码下载地址：&lt;a class="link" href="https://github.com/hujiulin/WorldWind" target="_blank" rel="noopener"
+&gt;&lt;strong&gt;https://github.com/hujiulin/WorldWind&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;美国国家航空航天局（National Aeronautics and Space Administration， NASA）主导的World Wind是全球开发人员共同参与研发的一个开源地理信息系统项目。由NASA Research开发，NASA Learning Technologies来发展，将地球的卫星、电子、地形地图以及其他地理数据通过一个三维的数字化的地球进行展示，旨在面向各行业的数据集成，支持WMS、WFS、WTMS等服务，是一款非常优秀的三维客户端框架绘制引擎。它使用了XML对数据进行描述和设置，具有良好的通用性和扩展性。World Wind目前有基于.NET和Java开发的两种版本。World Wind除了三维地球的基础功能之外，还具有很强的可扩展性，具有多种功能性插件，支持谷歌、微软等发布的地图（卫星、电子、地形）数据。&lt;/p&gt;
+&lt;p&gt;本文主要解决了World Wind编译、运行、中文乱码等问题。&lt;/p&gt;
+&lt;h3 id="源码的下载环境的配置源码的编译-使用国际网络以防网络不能访问"&gt;源码的下载，环境的配置，源码的编译 [使用国际网络，以防网络不能访问]
+&lt;/h3&gt;&lt;h4 id="源码的下载"&gt;源码的下载
+&lt;/h4&gt;&lt;p&gt;WorldWind分为.Net和java两种版本，Nasa的官方网站是：&lt;a class="link" href="http://worldwind.arc.nasa.gov/java/" target="_blank" rel="noopener"
+&gt;http://worldwind.arc.nasa.gov/java/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;提供java版本的源码下载。&lt;/p&gt;
+&lt;p&gt;.Net版本的源码下载：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://worldwind31.arc.nasa.gov/svn/trunk/WorldWind/" target="_blank" rel="noopener"
+&gt;http://worldwind31.arc.nasa.gov/svn/trunk/WorldWind/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这里提供的是svn，建议用svn进行download&lt;/p&gt;
+&lt;p&gt;备注：上述SVN是通过&lt;a class="link" href="http://www.worldwindcentral.com/wiki/Source_code" target="_blank" rel="noopener"
+&gt;http://www.worldwindcentral.com/wiki/Source_code&lt;/a&gt; 维基百科找到的。&lt;/p&gt;
+&lt;h4 id="环境的配置"&gt;环境的配置
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;需要提前装好&lt;strong&gt;DirectX9&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="源码的编译"&gt;源码的编译
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;乱码&lt;/strong&gt;：会发现很多字符串相关的语法错误。文件编码引起&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在VS的解决方案管理器里右键文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选“打开方式”，&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选“带编码功能的CSharp编辑器”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选“西欧(windows)-代码页 1252”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开文件，无乱码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文件菜单文件的保存编码改成UTF8，再保存源码文件&lt;/p&gt;
+&lt;p&gt;备注：受影响的文件有6个左右&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;LoaderLock问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;菜单（调试-&amp;gt;异常）——&amp;gt;异常窗口——&amp;gt;ManagerDebuggingAssistants——&amp;gt;去掉LoaderLock选项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;注册表权限问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打开HtmlEditor项目的属性，取消“生成（Build ）”选项卡的为COM互操作注册（‘Register for COM interop’）前的勾选&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开始运行程序，发现一切正常，但是从初始化界面到程序本身需要等待较长的时间，这是因为中国连不上worldwind的服务器造成的原因，worldwind自己也提供离线模式，亦可以修改xml中wms服务器的url。此处暂时采用的办法是注释掉以下两行代码：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Worldwind-&amp;gt;PluginSDK-&amp;gt;ConfigurationLoader.cs中：262行&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image001.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;321行&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image003.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行程序，加载Initializing的画面错位：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;通过调试发现在worldwind.cs中的public MainApplication()中[563行]&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image005.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用splash窗体。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Splash窗体：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Splash构造函数&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image007.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以看到picturebox的代码注释，而且窗体上并无picturebox的控件。&lt;/p&gt;
+&lt;p&gt;使用的是&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image0091.png"
+loading="lazy"
+alt="image0091"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image011.png"
+loading="lazy"
+alt="image011"
+&gt;&lt;/p&gt;
+&lt;p&gt;将图片调整成如图所示的样子，启动程序正常。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;决定将源码备份到百度网盘和自己的svn服务器上。[百度的服务器上没上传成功]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;刚才迁移了worldwind的源码，出现一个问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;重新生成，清理项目都没有用。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image013.png"
+loading="lazy"
+alt="image013"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;删除该文件：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image015.png"
+loading="lazy"
+alt="image015"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除之后，需重新配置：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image017.png"
+loading="lazy"
+alt="image017"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;问题解决。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;备注：第一次运行程序时，稍微需要等下。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果缺少引用：AVIFile.dll FlickrNel.dll等引用，请将Release模式切换为Debug，即可完全编译运行通过。[当然具体原因是需要将对应dll拷贝到Release目录下。]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在解决乱码问题的时候，部分人遇到一个情况：主界面显示度数的地方会形成“掳”这样的乱码，这是因为乱码问题并没得到完全解决，请在“高级选项保存”时选择：带签名的UTF-8保存即可解决该问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="乱码的文件有"&gt;乱码的文件有：
+&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Project&lt;/th&gt;
+&lt;th&gt;File&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;WorldWind&lt;/td&gt;
+&lt;td&gt;Compass3D.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WorldWind&lt;/td&gt;
+&lt;td&gt;GPSTrackerPlugin.WorldWind.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WorldWindow&lt;/td&gt;
+&lt;td&gt;WorldWindow.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PluginSDK&lt;/td&gt;
+&lt;td&gt;ConfigurationLoader.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PluginSDK&lt;/td&gt;
+&lt;td&gt;Angle.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;乱码问题全部解决：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image019.png"
+loading="lazy"
+alt="image019"
+&gt;&lt;/p&gt;
+&lt;p&gt;今天将svn上的代码，迁移到x64的机器上编译，程序不能运行，调试模式下看到错误：&lt;/p&gt;
+&lt;p&gt;“未处理的“System.BadImageFormatException”类型的异常”&lt;/p&gt;
+&lt;p&gt;解决方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Any CPU或者x64模式-&amp;gt;改成x86，然后将output path改成与“..binDebug”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;重新生成解决方案，编译运行即可成功：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image021.png"
+loading="lazy"
+alt="image021"
+&gt;&lt;/p&gt;
+&lt;p&gt;原文链接：&lt;a class="link" href="http://cesiumcn.org/topic/206.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/topic/206.html&lt;/a&gt; | 国内快速访问：&lt;a class="link" href="http://cesium.coinidea.com/topic/206.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/topic/206.html&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

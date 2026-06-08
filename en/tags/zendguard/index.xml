@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ZendGuard on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/zendguard/</link><description>Recent content in ZendGuard on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 29 Dec 2015 07:28:22 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/zendguard/index.xml" rel="self" type="application/rss+xml"/><item><title>[PHP] Encrypting PHP with ZendGuard</title><link>https://blog.coinidea.com/en/p/php-encrypting-php-with-zendguard/</link><pubDate>Tue, 29 Dec 2015 07:28:22 +0000</pubDate><guid>https://blog.coinidea.com/en/p/php-encrypting-php-with-zendguard/</guid><description>&lt;h2 id="downloading-zendguard"&gt;Downloading ZendGuard
+&lt;/h2&gt;&lt;p&gt;Official download link: &lt;a class="link" href="http://www.zend.com/en/products/guard/downloads#Windows" target="_blank" rel="noopener"
+&gt;http://www.zend.com/en/products/guard/downloads#Windows&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Registration is required before downloading. I downloaded Zend Guard 6.0. Simply double-click to run the installer.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/12/image0012.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;p&gt;The latest version is 7.0. If you want to download an earlier version, click &amp;ldquo;&amp;gt;Download here&amp;rdquo; and a list of older versions will appear below the current page.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/12/image0032.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;h2 id="downloading-php"&gt;Downloading PHP
+&lt;/h2&gt;&lt;p&gt;Official download links: &lt;a class="link" href="http://php.net/downloads.php" target="_blank" rel="noopener"
+&gt;http://php.net/downloads.php&lt;/a&gt; | &lt;a class="link" href="http://php.net/releases/" target="_blank" rel="noopener"
+&gt;http://php.net/releases/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;My current version: &lt;a class="link" href="http://windows.php.net/download/#php-5.4" target="_blank" rel="noopener"
+&gt;http://windows.php.net/download/#php-5.4&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;PHP typically releases two types of builds for each version: Thread Safe and Non Thread Safe.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Important note:&lt;/strong&gt; &lt;strong&gt;ZendGuard&lt;/strong&gt; only supports Non Thread Safe builds. So please download the Non Thread Safe version of &lt;strong&gt;PHP&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="configuring-php--zendloaderdll"&gt;Configuring PHP &amp;ndash; ZendLoader.dll
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Download ZendLoader.dll&lt;/p&gt;
+&lt;p&gt;Official download link: &lt;a class="link" href="http://www.zend.com/en/products/loader/downloads#Windows" target="_blank" rel="noopener"
+&gt;http://www.zend.com/en/products/loader/downloads#Windows&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Registration is required before downloading. Similar to ZendGuard, make sure to select the ZendLoader version that matches your PHP version.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/12/image0052.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;p&gt;Copy ZendLoader.dll to the PHP &lt;code&gt;[PHP root directory]\ext\&lt;/code&gt; folder.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rename &lt;code&gt;php.ini-development&lt;/code&gt; or &lt;code&gt;php.ini-production&lt;/code&gt; to &lt;code&gt;php.ini&lt;/code&gt;,&lt;br&gt;
+and add the following content to &lt;code&gt;php.ini&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;zend_extension&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;./ext/ZendLoader.dll&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;; Enables loading encoded scripts. The default value is On&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;zend_loader.enable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;; Disable license checks (for performance reasons)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;zend_loader.disable_licensing&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;; The Obfuscation level supported by Zend Guard Loader. The levels are detailed in the official Zend Guard Documentation. 0 - no obfuscation is enabled&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;zend_loader.obfuscation_level_support&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;; Path to where licensed Zend products should look for the product license. For more information on how to create a license file, see the Zend Guard User Guide&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;zend_loader.license_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="creating-php-code"&gt;Creating PHP Code
+&lt;/h2&gt;&lt;p&gt;Create an &lt;code&gt;input&lt;/code&gt; folder, and inside it create &lt;code&gt;test.php&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;date_default_timezone_set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Asia/shanghai&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Thanks ZendGuard!&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Now datetime is &amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;date&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Y-m-d h:i:s&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The above code outputs:&lt;/p&gt;
+&lt;p&gt;Thanks ZendGuard&lt;/p&gt;
+&lt;p&gt;Now datetime is [current time].&lt;/p&gt;
+&lt;h2 id="installing-zendguard-and-creating-a-project"&gt;Installing ZendGuard and Creating a Project
+&lt;/h2&gt;&lt;p&gt;ZendGuard has a straightforward installer. After installation, launch it and you&amp;rsquo;ll see:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/12/image0072.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a new Zend Guard Project.&lt;/li&gt;
+&lt;li&gt;Set the output directory to the &lt;code&gt;output&lt;/code&gt; folder.&lt;br&gt;
+&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/12/image0091.png"
+loading="lazy"
+alt="image009"
+&gt;&lt;/li&gt;
+&lt;li&gt;Add the &lt;code&gt;input&lt;/code&gt; folder as the input directory.&lt;/li&gt;
+&lt;li&gt;Select the PHP version.&lt;br&gt;
+&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/12/image0111.png"
+loading="lazy"
+alt="image011"
+&gt;&lt;/li&gt;
+&lt;li&gt;Click &lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/12/image015.png"
+loading="lazy"
+alt="image015"
+&gt;&lt;/li&gt;
+&lt;li&gt;A new &lt;code&gt;test.php&lt;/code&gt; is generated in the &lt;code&gt;output&lt;/code&gt; folder. Opening it reveals garbled content (the encrypted code).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="running-source-code-and-encrypted-code"&gt;Running Source Code and Encrypted Code
+&lt;/h2&gt;&lt;p&gt;Running the source code:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/12/image017.png"
+loading="lazy"
+alt="image017"
+&gt;&lt;/p&gt;
+&lt;p&gt;Running the encrypted code:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/12/image019.png"
+loading="lazy"
+alt="image019"
+&gt;&lt;/p&gt;
+&lt;p&gt;With this, you can now use ZendGuard to encrypt PHP code.&lt;/p&gt;</description></item></channel></rss>

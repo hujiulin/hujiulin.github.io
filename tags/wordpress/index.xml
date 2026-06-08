@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>WordPress on Coinidea的博客</title><link>https://blog.coinidea.com/tags/wordpress/</link><description>Recent content in WordPress on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 11 Feb 2015 09:12:06 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml"/><item><title>SAE下WordPress域名设置</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-640.html</link><pubDate>Wed, 11 Feb 2015 09:12:06 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-640.html</guid><description>&lt;p&gt;我在SAE下配置了WordPress，并将改应用绑定了域名：&lt;a class="link" href="http://blog.coinidea.com" target="_blank" rel="noopener"
+&gt;blog.coinidea.com&lt;/a&gt;。该链接确实能跳转到博客页面，但是页面内的所有链接均是：app-name.sinaapp.com。这说明该链接均不对WordPress的内部文章，页面起作用。&lt;/p&gt;
+&lt;h2 id="解决方案"&gt;解决方案：
+&lt;/h2&gt;&lt;h3 id="方案一后台设置"&gt;方案一：后台设置
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;进入后台仪表盘。&lt;/li&gt;
+&lt;li&gt;点击“设置”选项。&lt;/li&gt;
+&lt;li&gt;修改：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/02/QQ%e6%88%aa%e5%9b%be20150211170850-300x45.png"
+loading="lazy"
+alt="QQ截图20150211170850"
+&gt;&lt;/p&gt;
+&lt;h3 id="方案二数据库修改数据项-比较暴力"&gt;方案二：数据库修改数据项 [比较暴力]
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;找到wp-options表。&lt;/li&gt;
+&lt;li&gt;修改第1项和第37项数据即可。&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

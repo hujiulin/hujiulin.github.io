@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>个人随笔 on Coinidea的博客</title><link>https://blog.coinidea.com/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/</link><description>Recent content in 个人随笔 on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 04 Jan 2018 07:25:24 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml"/><item><title>[年终总结]我的2017</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1272.html</link><pubDate>Thu, 04 Jan 2018 07:25:24 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1272.html</guid><description>&lt;p&gt;晃晃悠悠，终于度过了2017年。其实，对于总结这种东西，我内心是有阴影的。&lt;/p&gt;
+&lt;h2 id="一技术"&gt;一、技术：
+&lt;/h2&gt;&lt;h3 id="1-前端技术栈"&gt;1. 前端技术栈：
+&lt;/h3&gt;&lt;p&gt;1.1 撸了一次VUE，基本入门了;&lt;br&gt;
+1.2 接触了一下Fis3;&lt;/p&gt;
+&lt;h3 id="2-php相关"&gt;2. PHP相关：
+&lt;/h3&gt;&lt;p&gt;2.1 了解了Yii2.0，实现了一些简单的项目;&lt;br&gt;
+2.2 将ThinkPHP3.升级到了ThinkPHP5;&lt;/p&gt;
+&lt;h3 id="3-算法相关"&gt;3. 算法相关：
+&lt;/h3&gt;&lt;p&gt;3.1 年中的时候，撸了几十道leetcode，后来也没坚持下来。当年2015应该是撸完了的，现在出了不少新题。STL、Vector这些之也重新捡起来了。&lt;br&gt;
+3.2 今年最自豪的事，撸了一下OpenCV，实现了一个图像分类的算法BOW，也用了一下基于OpenCV的决策树、SVM等。&lt;/p&gt;
+&lt;h3 id="4-系统相关"&gt;4. 系统相关：
+&lt;/h3&gt;&lt;p&gt;4.1 2015年的时候CDH就走过一次了。今年最有成就感的事儿是把ElasticSearch撸起来了。数据量大概是1.5亿条。包括分词、mapping、索引、聚合。这样走一次还是很有成就感的。&lt;/p&gt;
+&lt;h2 id="二旅行"&gt;二、旅行：
+&lt;/h2&gt;&lt;p&gt;说来惭愧。算上出差，也就去了上海、南京、青岛。这三个城市吧。不过终于去了上海的迪斯尼还不错，就是人太多了。&lt;br&gt;
+&lt;a href="http://blog.coinidea.com/wp-content/uploads/2018/01/devhu2017年脚印地图.png" class="magnific" rel="magnific" &gt;&lt;img class="alignnone size-medium wp-image-1273" title="devhu2017年脚印地图" data-original="/wp-content/uploads/2018/01/devhu2017%E5%B9%B4%E8%84%9A%E5%8D%B0%E5%9C%B0%E5%9B%BE.png" src="http://blog.coinidea.com/wp-content/uploads/2018/01/devhu2017年脚印地图.png" alt="" width="600" height="382" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="三coinidea"&gt;三、Coinidea:
+&lt;/h2&gt;&lt;p&gt;搞起来了吗，我觉得没有。搞得不算好。大大小小的网站、WebAPP、API也写了小几十个了。但是非常迷茫，不知道接下来的路怎么走，最近也在做一些尝试，希望能有一些新的门向我打开。&lt;/p&gt;
+&lt;h2 id="谈一谈对明年的期望吧"&gt;谈一谈对明年的期望吧。
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Android, 之前学了，但是一直没有进行下去。&lt;/li&gt;
+&lt;li&gt;开发并发布一款微信小程序。&lt;/li&gt;
+&lt;li&gt;研究学习PostgreSQL&lt;/li&gt;
+&lt;li&gt;进一步学习研究一些相关数据挖掘、深度学习算法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上，没有祝愿了，目标定低一点，对谁都有好处:)&lt;/p&gt;</description></item><item><title>[年终总结]我的2016——写在毕业一周年</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1171.html</link><pubDate>Fri, 01 Jul 2016 16:32:42 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1171.html</guid><description>&lt;h2 id="写在毕业零周年"&gt;写在毕业零周年
+&lt;/h2&gt;&lt;p&gt;一年前，我正式毕业踏入社会。——&lt;a href="http://blog.coinidea.com/%E6%80%BB%E7%BB%93%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-881.html" target="_blank"&gt;写在毕业零周年&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;感谢去年的自己送给我的一句话：“心态永远不死，那生活依然奔跑在路上。”&lt;/p&gt;
+&lt;p&gt;如果今年要送给明年的自己一句话，那就是：“坚持，坚强，坚韧。”&lt;/p&gt;
+&lt;p&gt;这一年，我拿到了一些自己想要的东西，但是也付出了很多代价。当我在追寻这些东西的时候，猛然发现，家人的健康才是最重要的。&lt;/p&gt;
+&lt;p&gt;对啊，当阳光洒下来的时候，还有什么事是比活着更幸福的呢？&lt;/p&gt;
+&lt;p&gt;——DevHu记录于2016.07.02，还是租的房子&lt;/p&gt;
+&lt;p&gt;20180104：由于一些不方便解释的原因，暂拿此文作为我的2016年终总结吧。&lt;/p&gt;</description></item><item><title>[年终总结]我的2015</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1114.html</link><pubDate>Fri, 01 Jan 2016 13:56:14 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1114.html</guid><description>&lt;p&gt;转眼2015年过去了，今天是2016年的第一天。今天做得最有成就感的一件事就是把大学积攒这么多年的衣服，捐了一大包去学校。我是一个很奇怪的人，一些旧东西时常不会扔掉，这样导致搬家的时候非常的麻烦。之前听说过一种观点叫归纳——断、舍、离。于是尝试扔掉自己的旧的垃圾和废物，使自己的生活重新得到整理。&lt;/p&gt;
+&lt;p&gt;去年到现在，差不多工作半年了，也进入社会半年了。我以为我准备得足够充分了，其实还是吃瘪了。就跟预估工程量一样，有一个定律讲的是无论你怎么估算工程量，你都会少估算1/3的工作时间，即使考虑掉了这条定律。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://blog.coinidea.com/%E6%80%BB%E7%BB%93%E5%8F%8A%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-617.html" target="_blank" rel="noopener"
+&gt;2014年的年终总结&lt;/a&gt;中我提到：&lt;/p&gt;
+&lt;p&gt;我希望我的2015年能做下列清单中的Items：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;旅行&lt;/p&gt;
+&lt;p&gt;1.1 去哈尔滨 [Get √]&lt;br&gt;
+1.2 去西藏&lt;br&gt;
+1.3 去云南 [Get √]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;坚持在自己的个人博客上完成技术的学习和分享，写出高质量的博客 [Get√，应该能坚持下来，不过质量慢慢提高吧]。&lt;/p&gt;
+&lt;p&gt;比较庆幸的事，博客的UV访问量已经从每天的1、2个人到现在的破十了，其中有一两篇的访问量蛮高的，有一篇目前能在百度搜索关键词“Yii Redis”的第一页找到，心里十分高兴。虽然目前是第一页最后一条。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;坚持写出更高质量的代码，并在GitHub上有所贡献，希望自己的某个项目能够获得100个Star。&lt;/p&gt;
+&lt;p&gt;这个失败了，目前GitHub的累计Star最多也就20多，希望自己多多努力。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开源一款基于ThinkPHP的门户系统 [Get√，不过未开源]。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;思考自己的未来，专注的研究某项技术。&lt;/p&gt;
+&lt;p&gt;路漫漫其修远兮，吾将上下而求索。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;看一些像样的书籍：&lt;/p&gt;
+&lt;p&gt;6.1 吴军的《文明之光》&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 购买了，但是没有读多少。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.2 [加] 马尔科姆•格拉德威尔 的《逆转》&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 未完成
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.3 看完《格鲁夫给经理人的第一课》&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 未完成
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.4 看完《Effective C++》&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; 未完成
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.5 《怪诞行为学》 [Get√]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;好好学学英语，争取出国自助游。&lt;/p&gt;
+&lt;p&gt;未完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从头做一次leetcode中的所有题目。&lt;/p&gt;
+&lt;p&gt;部分完成，使用PHP做了部分题目&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;除此之外，最令我欣喜的事儿是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;读了一些书：《从0到1》，《Don&amp;rsquo;t make me think》，《Android第一行代码》&lt;/li&gt;
+&lt;li&gt;CoinIdea进行了一个比较漂亮的改版 [自己独立设计，使用AI制图]，感觉越来越好了。&lt;/li&gt;
+&lt;li&gt;自己的耐心、脾气、秉性虽然有不足，但是还是有一定进步。&lt;/li&gt;
+&lt;li&gt;Android在入门的道路上了。&lt;/li&gt;
+&lt;li&gt;PHP和MySQL有一定新的认识。&lt;/li&gt;
+&lt;li&gt;我竟然打了那么多字：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/01/A4EJSOU3TQA6_IZJ-300x226.png"
+loading="lazy"
+alt="字数统计"
+&gt;&lt;/p&gt;
+&lt;p&gt;OK，接下来展望一下2016年，这务必是关键的一年。我的生命中仿佛每隔4-5年会出现一些大事，Just Face It.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;希望练习好英语，考过托业。&lt;/li&gt;
+&lt;li&gt;iOS的入门，Android的深度学习以及应用；PHP、MySQL的进阶，使用Yii开发一套OA。&lt;/li&gt;
+&lt;li&gt;我自己身边的人的英语考试顺风顺水。&lt;/li&gt;
+&lt;li&gt;父母身体健康。&lt;/li&gt;
+&lt;li&gt;阅读《文明之光》。&lt;/li&gt;
+&lt;li&gt;阅读完《PHP MySQL和WEB开发》 以及 《深入理解PHP高级技巧：面向对象与核心技术》。&lt;/li&gt;
+&lt;li&gt;希望能捡回自己的C#，WorldWind。&lt;/li&gt;
+&lt;li&gt;在数据可视化上有一定的突破。&lt;/li&gt;
+&lt;li&gt;希望自己空余时间打理的CoinIdea越来越好。&lt;/li&gt;
+&lt;li&gt;去年未完成的愿望，希望今年能实现。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;不贪心，就这些，第四条是祝愿。&lt;/p&gt;</description></item><item><title>[读书笔记]Don’t make me think</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1074.html</link><pubDate>Mon, 09 Nov 2015 04:48:46 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1074.html</guid><description>&lt;p&gt;有人说这本书已经很陈旧了，最近还是坚持读完了一次。&lt;/p&gt;
+&lt;p&gt;梳理一次，如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/11/Dont-make-me-think-1024x314.png"
+loading="lazy"
+alt="Don’t make me think"
+&gt;&lt;/p&gt;
+&lt;p&gt;因为我自己也长期从事网站建设的工作，其实读下来有非常多的tips是值得注意的。大道理或许都懂，但是真正实施的时候，却容易忽略。&lt;/p&gt;
+&lt;p&gt;读完本书，感觉把自己的网站优化了一次，或许，我就记住了一个词“可用性”，相信几年之后，能有更深的体会吧。&lt;/p&gt;</description></item><item><title>[读书笔记]从0到1：Zero To One</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1023.html</link><pubDate>Sun, 20 Sep 2015 08:22:12 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-1023.html</guid><description>&lt;p&gt;最近匆匆忙忙把《从0到1》这本书读完了。读完一本书，总想写一点什么，但是真的敲着键盘的时候，仿佛又不知如何落笔。以前写总结或者读书笔记，我会把原书拿出来，觉得有滋味的话，敲上去，但是这种方式我感觉咀嚼起来是没有味道的。&lt;/p&gt;
+&lt;p&gt;这本书在豆瓣上的评分是8.0，蛮薄薄的一本书的。因为我的人生阅历有限，我也不敢妄自给这本书评分，不过我感觉这本书读一次肯定是不够的。&lt;/p&gt;
+&lt;p&gt;乍一回味这本书有点像鸡汤，有一点像反鸡汤；这本书讲的都是大道理，但是大道理未必大家在实践的时候未必能想起来。&lt;/p&gt;
+&lt;p&gt;这本书给我留下的最重要的感觉，有几个词。&lt;/p&gt;
+&lt;h3 id="第一个质变"&gt;第一个：质变
+&lt;/h3&gt;&lt;p&gt;通俗来讲，量变引起质变，但本书从创新的角度出发，认为迈出那一步，才是更加伟大的，就像第一个吃螃蟹的人；之后的都是复制，意义不那么大的堆砌。&lt;/p&gt;
+&lt;h3 id="第二个垄断"&gt;第二个：垄断
+&lt;/h3&gt;&lt;p&gt;无论做人做事，开公司，最重要的是要有一门独特的手艺，记得我导师曾经说过，一招鲜，吃遍天。大意如此。做技术的，当然技术才是王道。近几年（2015）大众创业，给投资人背书，讲故事，我有一个非常好的点子云云。但是真正能活下来的，无论是企业，还是在企业中的员工，都是有一技之长的人。不能说完全不能被替代，我始终相信没有什么不能被替代。但是一方面创造了很好的价值，一方面替换“你”的成本很高，就没人愿意去替代你，这个时候就容易形成垄断，当然专利的意义也在于此吧。比如微信，现在的聊天软件如来往、陌陌等，甚至一大堆创业公司以此为噱头的，基于校园的、婚恋的、创业的、家庭的等等等等，他们的技术实力不够强么？资源不够多么？想法不够新么？但是为什么微信始终不可替代，至少目前不可替代，这就是一种“垄断”。&lt;/p&gt;
+&lt;h3 id="第三个秘密"&gt;第三个：秘密
+&lt;/h3&gt;&lt;p&gt;哈哈，当一个人、一家公司能够参透某种能够引起质变的、造成垄断的秘密的时候，这家公司也就成功了。此处很玄乎，但是是很有道理的，具体该如何实施？我阅历尚浅，希望下次读的时候，能有深刻的体会。&lt;/p&gt;
+&lt;p&gt;以上，是我阅读这本书的感受。&lt;/p&gt;</description></item><item><title>[读书笔记]哥德尔、埃舍尔、巴赫：集异璧之大成</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-894.html</link><pubDate>Sat, 25 Jul 2015 07:04:11 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-894.html</guid><description>&lt;p&gt;2012年11月28日星期三 &lt;strong&gt;购书前奏曲和序言&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;今年11月11日，我的室友星星欠我30元钱，我让他送我光棍节礼物，不用还我钱了。他问我要啥，那段时间看乔布斯传看得很high，于是觉得北大学子一定知道很多好书，让他送我本书，推荐下，他说GEB不错。我当时愣了下，这应该是数理逻辑要看的一本书。我想了想让他给我买了浪潮之巅。但是还是去搜索了GEB这本书。当当网上的评价是，“这是一本空前的奇书，也是一本杰出的科学普及名著，它以精心设计的巧妙笔法深入浅出地介绍了数理逻辑、可计算理论、人工智能等学科领域中的许多艰深理论，轻松、幽默、流畅的文字隐藏着大量的潜台词，它们前后照应、互相联系，交织成一个复杂、无形的网络，读者看不见它，但可以嗅出它的气味，并觉察到这是作者有意喷洒的。”&lt;/p&gt;
+&lt;p&gt;11月22日，从“当当网”够得这本书。&lt;/p&gt;
+&lt;p&gt;11月28日，开始读这本书。[美]侯世达 著。作者是华裔？怀着这种怀疑开始阅读。从乔布斯传开始，读每本书开始从序言开始。GEB序言38页。&lt;/p&gt;
+&lt;p&gt;从序言中了解到，此书的中文版成书得益于北大的吴允曾和马希文教授。我发现侯世达，并非华裔，而是道格拉斯·理查·郝夫斯台特 Douglas R. Hofstadter。此人很厉害，不仅在数学和计算机的造诣上，我个人认为在他促成多国语言的GEB的过程中，他绝对是一个语言学家。侯世达是他给自己取的中文名字，他还给本书的中文版作了序。&lt;/p&gt;
+&lt;p&gt;对于本书的中文版，绝对不是简单的英译中，我个人认为基于作者的语言造诣，加上北大和商务印书馆的支持，本书绝对算一部中文的巨作，做到了严复所谓的三个基本标准：信，达，雅。关于科学的文章我也很赞赏他们的关于科学性论文移译的观点。&lt;/p&gt;
+&lt;p&gt;比如：“a man, a plan, a canal : Panama”难道要翻译为“一位工程师设计了巴拿马运河”？但是作为计算机的学生，我惊奇的发现，这句英文是回文！所以为何不可对应中文的“叶落天落叶”。&lt;/p&gt;
+&lt;p&gt;关于GEB：Gödel, Escher, Bach: an Eternal Golden Braid&lt;/p&gt;
+&lt;p&gt;中文对应：&lt;/p&gt;
+&lt;p&gt;哥德尔、埃舍尔、巴赫：集异璧之大成&lt;/p&gt;
+&lt;p&gt;可以看到作者的英文前缀 和 英文对应。中文名和中文拼音对应。&lt;/p&gt;
+&lt;p&gt;对了，还有一个很艺术的地方：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image001.jpg"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;p&gt;这两个小方块的三维投影正好是GEB和EGB（本书的后半部分）。&lt;/p&gt;
+&lt;p&gt;北大的翻译工作组更加用心：中文的集异璧和英文的GEB全部在里面了。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image002.jpg"
+loading="lazy"
+alt="image002"
+&gt;&lt;/p&gt;
+&lt;p&gt;2012年12月06日星期四 &lt;strong&gt;导言 一首音乐——逻辑的奉献&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;最近太忙了，之前把《乔布斯传》和《浪潮之巅》看完了，想集中精力看GEB，结果一方面太忙，另一方面我发现除了计算机有点基础之外，我别的领域特别是音乐确实是个笨蛋。比起前两本书，GEB的不同之处在于你还需要动脑子去理解，这里面充满了逻辑的论证，稍不留神就出现的悖论，信手拈来的计算机中的回文、离散数学中的同构、物理学中的静止与运动。&lt;/p&gt;
+&lt;p&gt;今天终于把需要看完了。序言或者导言围绕着巴赫的音乐的奉献展开的，取得名字也很有意思叫逻辑的奉献，然后再分别谈了谈巴赫、艾舍尔和哥德尔这三位集大成者。&lt;/p&gt;
+&lt;p&gt;卡农和赋格：&lt;/p&gt;
+&lt;p&gt;作为一个音乐白痴，之前只听说过卡农，赋格连听都没听说过。不过大概尝试去理解他们的意思，你会发现巴赫确实是一个天才，从对仗美的角度，虽然我没有听过他的曲子。看他的曲子的结构也能想到，哇，那一定很美。&lt;/p&gt;
+&lt;p&gt;卡农的基本点是一个单一的主题与它自己相伴而奏。由加入的各个不同声部分别长处主题的“副本”。最简单的方式是轮唱。更复杂的卡农是由简入繁，不仅在时间上而且在因搞上相互交错，第一声部可能在C调上唱出主题，同第一声部相交错第二声部可能在比C调高五度的G调上唱出同一主题。第三部可能在比G调高五度的D调上唱出，这又有点等差数列的味道。看这个结构我就觉得很好听。卡能还有一种更复杂的阶段叫主题转位，意思是产生这样一个旋律，每当原来的主题跳上时，它就跳下，两者所越过的半音阶数相同。接下来是最玄妙的地方了——逆行。主题按照一定的时间从后往前奏出，即螃蟹卡农。无论哪一种副本都保留了原主题的信息，从任何一个副本可以恢复主题，这种保存信息的转换即同构。&lt;/p&gt;
+&lt;p&gt;正好周四的时候，老师问我什么是图同构，我说可以“印”过去！那什么是子图同构呢？&lt;/p&gt;
+&lt;p&gt;赋格有点类似于卡农，但没那么严格。&lt;/p&gt;
+&lt;p&gt;为了过渡到伟大的画家艾舍尔，我还必须提一下无穷升高的卡农。该卡农以C调开头，但是当即将结束时调子已经是D小调了，高了五度，而这个小变化让听者难以察觉。在所谓的“结尾”处，巴赫又把它巧妙地转回了开头，以此循环，无穷无尽。&lt;/p&gt;
+&lt;p&gt;“觅之，自有所获”。&lt;/p&gt;
+&lt;p&gt;如果说巴赫演奏出了这个无穷升高的怪圈，那么艾舍尔就画出了他！下图是瀑布，六个分立阶段即展示出了怪圈。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image003.jpg"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;p&gt;而上升与下降这幅画用了四个阶段就展示了怪圈，虽然比较松散。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/image004.jpg"
+loading="lazy"
+alt="image004"
+&gt;&lt;/p&gt;
+&lt;p&gt;2012年12月07日星期四 &lt;strong&gt;导言 一首音乐——逻辑的奉献&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下面来讲讲最伟大的数学家哥德尔。巴赫和艾舍尔的怪圈中存在着有穷和无穷的冲突，有一种强烈的悖论感，这里面是不是数学出了问题？&lt;/p&gt;
+&lt;p&gt;有一个悖论叫艾皮曼尼蒂斯悖论：艾皮曼尼蒂斯是一个克里特岛人，他说“所有克里特岛人都说谎”。&lt;/p&gt;
+&lt;p&gt;这句话可以理解为：“本句话是假的”。&lt;/p&gt;
+&lt;p&gt;你假设它为真，它却自己得出了自己是假。假设它为假，它却得出了自己是真。&lt;/p&gt;
+&lt;p&gt;哥德尔在1931年发表了哥德尔定理，简而言之，就是无论涉及什么样的公理系统可证性总比公理性要弱。&lt;/p&gt;
+&lt;p&gt;一切或许都可以认为是来自“自指”的怪圈。或者是一个环，比如下面这个例子，有这么两句话：&lt;/p&gt;
+&lt;p&gt;下面这个句子是假的。&lt;/p&gt;
+&lt;p&gt;上面这个句子是真的。&lt;/p&gt;
+&lt;p&gt;罗素和怀海特致力于消除这样的怪圈，《数学原理》就是一套比较奇怪的自下而上的看似能消除怪圈的公理系统。&lt;/p&gt;
+&lt;p&gt;希尔伯特方案：&lt;/p&gt;
+&lt;p&gt;希尔伯特希望有人能证明《数学原理》既是一致性的又是完全的。即自身无矛盾但是又能证明出里面所有的定理。这里面多少有点循环论证的味道，有点像强迫一个人，拉着自己的鞋带把自己举起来。&lt;/p&gt;
+&lt;p&gt;但是很遗憾，哥德尔证明了“没有一个公理系统可以产生所有的数论真理，除非它是一个不一致的系统”。&lt;/p&gt;
+&lt;p&gt;下面来谈谈什么是智能。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;对于情境有很灵活的反应。&lt;/li&gt;
+&lt;li&gt;充分利用机遇。&lt;/li&gt;
+&lt;li&gt;弄懂含糊不清或彼此矛盾的信息。&lt;/li&gt;
+&lt;li&gt;认识到一个情境中什么是重要的因素，什么是次要的。&lt;/li&gt;
+&lt;li&gt;在存在差异的清净之间能发现它们的相似处。&lt;/li&gt;
+&lt;li&gt;从那些由相似之处联系在一起的事物中找出差别。&lt;/li&gt;
+&lt;li&gt;用旧的概念综合处新的概念，把它们用新的方法组合起来。&lt;/li&gt;
+&lt;li&gt;提出全新的观念。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2012年12月08日星期五 &lt;strong&gt;三部创意曲 WU谜题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下面来谈谈历史上最著名的芝诺悖论，运动无有。&lt;/p&gt;
+&lt;p&gt;跑得飞快的阿基里斯要追一只乌龟。前提是他让乌龟10米远。每次阿基里斯跑了距离的二分之一时，乌龟会向前移动一段距离。所以阿基里斯一直在缩小距离，但是永远也追不上乌龟。&lt;/p&gt;
+&lt;p&gt;这个悖论更一般的理解是：一个人从A走到B点，他每次走剩下距离的十分之一，所以他永远也走不到B点。&lt;/p&gt;
+&lt;p&gt;这个悖论的关键问题是时间。假设距离长为10米，而速度为10米每秒。实际上之所以走不到是因为每次用的时间是0.1，0.01，0.001……秒。合起来只有0.11111111111……秒，根本不到1秒，当然走不到。&lt;/p&gt;
+&lt;p&gt;后来再去查了查芝诺悖论，除了阿基里斯追乌龟之外，还有一个例子是飞矢不动，此处不详细描述，但是我觉得物理学上有句话叫静止时相对的，运动时绝对的，可以解释这个悖论。&lt;/p&gt;
+&lt;p&gt;本书的一个特点是每到一个新的章节作者都会借用阿基里斯和乌龟来聊聊天作为抛砖引玉。&lt;/p&gt;
+&lt;p&gt;第一章讲的内容是WU谜题，由于有离散数学和数理逻辑的基础理解起来不是很复杂。但是里面的确有很多巧妙和让人回味的地方。&lt;/p&gt;
+&lt;p&gt;一个初始串WJ，要构造或者推导出一个目标串WU。&lt;/p&gt;
+&lt;p&gt;一些规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果一个归你所有的符号串结尾时J，则可以在其后面再加上一个U。&lt;/li&gt;
+&lt;li&gt;如果你有Wx，那么Wxx也是你的。&lt;/li&gt;
+&lt;li&gt;如果JJJ出现在你的储备中的一个符号串里，那么你可以用U代替JJJ而得到一个新的串。&lt;/li&gt;
+&lt;li&gt;如果UU出现在你的串中，你可以去掉它。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;要构造WU人和机器是区别的，机器不会累但是也不会思考，所以他会一直按照你的规则找下去，而人不一样，会通过一些&lt;strong&gt;洞察力&lt;/strong&gt;去寻找这个串，或者抱怨找不到。&lt;/p&gt;
+&lt;p&gt;或者更直观的讲，人有一种能力可以跳出来！跳出系统，去看别的，机器可不行。&lt;/p&gt;
+&lt;p&gt;判定过程：我们定义判定过程，就是在有限的时间内，指出一个串到底是不是一个定理。一般地讲，我们可以推出一个串是不是一个定理，但是它可能需要花上无穷的时间。&lt;/p&gt;
+&lt;p&gt;假设有一个怪物，它就是有足够的时间，如果他来解这个WU谜题，他可能会：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;对于公理WJ应用每一条可以应用的规则，这产生出两个新的定理：WJU，WJJJ。&lt;/li&gt;
+&lt;li&gt;对于1产生的定理应用所有可以应用的规则，产生出新的定理：WJJU，WJUJU和WJJJJ。&lt;/li&gt;
+&lt;li&gt;对于2中的定理同样应用规则，并产生出新的定理。&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;乌龟说给阿基里斯的话。&lt;/p&gt;
+&lt;p&gt;这次的对话看似荒谬，但是却给我一种启迪或者叫震撼！什么叫做证明！推理！推论！我也见识到了假言命题的威力。&lt;/p&gt;
+&lt;p&gt;下面来看一个论证的小片段：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;同等于一物的彼此亦相等&lt;/li&gt;
+&lt;li&gt;这个三角形的两条边同等于一物&lt;/li&gt;
+&lt;li&gt;这个三角形的两条边彼此相等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;欧几里德&lt;/strong&gt;的读者都会认为Z是合乎逻辑的推论，所以任何人只要认为A和B为真，则必定Z为真。&lt;/p&gt;
+&lt;p&gt;但是提出以下两种疑问：&lt;/p&gt;
+&lt;p&gt;1.有人不认为A、B为真。同意“如果A、B为真，则Z为真”&lt;/p&gt;
+&lt;p&gt;2.有人同意A、B为真。不认为“如果A、B为真，则Z为真”&lt;/p&gt;
+&lt;p&gt;1的情况我们可以理解，暂时不考虑。&lt;/p&gt;
+&lt;p&gt;下面讨论2的情况，请问如何试图让持2观点的人同意ABZ的这个论证呢。&lt;/p&gt;
+&lt;p&gt;下面尝试这种证法：&lt;/p&gt;
+&lt;p&gt;不妨把假言命题：“如果A、B为真，则Z为真”定义为命题C&lt;/p&gt;
+&lt;p&gt;以下证明是否可行呢？&lt;/p&gt;
+&lt;p&gt;ABCZ&lt;/p&gt;
+&lt;p&gt;OK! 那么出现质疑假言命题“若ABC为真则Z为真”的人呢？&lt;/p&gt;
+&lt;p&gt;难道要再次定义假言命题D? 循环往复？这儿是否让人想到巴赫的无穷升调呢！&lt;/p&gt;
+&lt;p&gt;多么有趣的一个抛砖引玉的例子~&lt;/p&gt;
+&lt;p&gt;先定义一个简单的系统：pq系统：&lt;/p&gt;
+&lt;p&gt;**三种符号：**p q –&lt;/p&gt;
+&lt;p&gt;**公理的定义：**只要x仅由一串短杠组成，那么x-qxp-就是一条公理&lt;/p&gt;
+&lt;p&gt;**规则：**假设x、y、z都代表只包含短杠的特定的符号产，并假设xqypz是一条已知的公理的话，那么x-qypz-是一条定理。&lt;/p&gt;
+&lt;p&gt;那么给定一个串如何判定他是否是一条定理？&lt;/p&gt;
+&lt;p&gt;1.自底向上该方法类似于前面的WU谜题此处不再说明。&lt;/p&gt;
+&lt;p&gt;2.自顶向下：按照规则不停地寻找它的前驱串，并确认该串是否是一条公理。（当然我们有显然的方法判定一个串是否是一个公理，不然侯世达说：一切都没有希望了。）&lt;/p&gt;
+&lt;p&gt;经过仔细研究pg系统，可以发现一个经过&lt;strong&gt;洞察力&lt;/strong&gt;可以发现的规律，就是若为定理那么一定是xqypz，且|x|=|y|+|z|&lt;/p&gt;
+&lt;p&gt;实际上，这是之前笔记中提到的一种东西叫&lt;strong&gt;同构&lt;/strong&gt;：两个复杂的结构可以相互映射，并且每一个结构的每一部分在另一个结构中都有一个相应的部分。我们将一些列单纯的符号，赋予了现实生活的意义：加法。&lt;/p&gt;
+&lt;p&gt;可以看到这是我们的一厢情愿，当然你可以说q对应马，p对应幸福，-对应苹果。但是得出来的定理都是奇奇怪怪的目前现实生活毫无意义的关于马幸福和苹果的解释。当然我们的系统是实现定义好的，不能因为可以对应为加法，我们就异想天开地觉得x-q-x-p-x-是一个定理，因为6=2+2+2。这在现实生活中正确，但是在我们的pq系统是显然说不通的。&lt;/p&gt;
+&lt;p&gt;当然这种同构也不是唯一的，比如你可以把q对应为减法，p对应为等号这也说得通。以上一些简单但是在我看来比较妙趣横生的例子让我们感到了形式系统与现实的差别。&lt;/p&gt;
+&lt;p&gt;最后来讲讲给我最震撼的一个小例子：&lt;/p&gt;
+&lt;p&gt;12乘以12等于多少？144？对！如果我们对它怀疑可以去数一下12乘以12的矩阵格子有多少个。&lt;/p&gt;
+&lt;p&gt;那么123456789乘以987654321呢？我们不能去数数了吧。谁有能说这个值就是现在这个值呢？怎么证明呢？&lt;/p&gt;
+&lt;p&gt;下面介绍一个叫&lt;strong&gt;欧几里德定理&lt;/strong&gt;的定理：针对有无穷多个素数这个命题，没有一个计数过程能够证明它的真假。不管我们数出了多少的素数，我们都无法确定素数的个数是有穷的还是无穷的。&lt;/p&gt;
+&lt;p&gt;欧几里德给出了一个神一样的证明，至少我觉得在当时甚是当时之后的相当长一段时间，大家都这样想。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;挑出一个数N&lt;/strong&gt;，可求得N!，得到一个新的数N!+1，这个数不能被2,3,4,5,6,7,8,9……N的任何数整除。&lt;/p&gt;
+&lt;p&gt;这种情况下只有两种结果N!+1要么是一个素数，要么它的素因数比N大，任何一种情况下，我们都找到了一个比N更大的素数。&lt;/p&gt;
+&lt;p&gt;所以当我们想绕过无穷这个概念来证明问题的时候可以使用类似于“所有”这种本身有穷的但是体现了无穷概念的词。&lt;/p&gt;
+&lt;p&gt;先来看看一幅艾舍尔的镶嵌&lt;/p&gt;</description></item><item><title>写在第一次面试</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-891.html</link><pubDate>Tue, 21 Jul 2015 16:08:32 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-891.html</guid><description>&lt;p&gt;在经历过好多次被别人面试的经历之后，自己也终于可以开始面试别人了。虽然还是一只小菜鸟，但是依然还是想记录一下这次经历。&lt;/p&gt;
+&lt;p&gt;总体来说，开始一直没说话，后来看到面试者简历里面有TP框架和Yii框架之后，还是忍不住问了几句关于这些框架如何做xss和csrf防止的问题。&lt;/p&gt;
+&lt;p&gt;当聊到如何判断array中是否存在两个数之后满足目标数的时候，也问了几个问题。&lt;/p&gt;
+&lt;p&gt;总体来说，对自己的第一次面试还是比较满意的。但是，谈吐之前，可能攻击性比较强，希望自己引以为戒，多多改正:)。&lt;/p&gt;</description></item><item><title>写在毕业零周年</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-881.html</link><pubDate>Fri, 03 Jul 2015 16:55:39 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-881.html</guid><description>&lt;p&gt;因为最近一直在忙毕业、搬家、入职的事儿，根本没有办法停下来好好写一些东西。感觉自己已经成为一个十足的家庭妇男了，买电器、买菜、做饭、带外卖、做家务一应俱全。&lt;/p&gt;
+&lt;p&gt;最近自己写了一句话在朋友圈——今天门一关，以后就是两个世界了。&lt;/p&gt;
+&lt;p&gt;毕业零周年，也是我学生生涯23周年（我妈妈说我两岁半开始上幼儿园）的结束，工作的零周年的开始。求职的这一年多来，杠过枪，打过炮，经历了风风雨雨，不过渐渐的也习惯了。&lt;/p&gt;
+&lt;p&gt;成长是什么：&lt;/p&gt;
+&lt;p&gt;成长就是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当你进入超市的时候，你会发现一瓶最便宜的油也要30~40+；一个碗也要10元钱。精打细算过日子。&lt;/li&gt;
+&lt;li&gt;早上起来先煮个蛋来吃。&lt;/li&gt;
+&lt;li&gt;骑自行车，不要背书包，容易让背汗死，还是放篮子里面吧。&lt;/li&gt;
+&lt;li&gt;能分清电动自行车分为可拆卸的锂电池，与不可拆卸的铅酸蓄电池，锂电池的车不好看。&lt;/li&gt;
+&lt;li&gt;自习观察北京博大精深的交通，发现有自行车道，而且并线，分流十分合理，沿着自行车道骑，即便是立交桥也能顺畅的到达终点。这大抵就是和做人一样吧。&lt;/li&gt;
+&lt;li&gt;洗澡的喷头，可以泡在稀释的84消毒液中，杀菌效果好。&lt;/li&gt;
+&lt;li&gt;嗯，我就是穷。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;未来的路该怎么走，我也不知道，最近想学学Android的开发，看看大神的《一行代码》。不过无论什么样的路，自己选的，跪着也要走完。&lt;/p&gt;
+&lt;p&gt;最后，送自己一句话吧，心态永远不死，那生活才会依然奔跑在路上。&lt;/p&gt;
+&lt;p&gt;——DevHu记录2015.07.04 于租的房子。&lt;/p&gt;</description></item><item><title>游记攻略-云南</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-865.html</link><pubDate>Sat, 20 Jun 2015 10:41:51 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-865.html</guid><description>&lt;p&gt;这次的旅行是我们的毕业旅行。经过磕磕绊绊的争吵与筹谋[因为我比较担心MERS；从研二开始不大喜欢坐飞机，目测航程也上万公里]，最后终于敲定去云南。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;交通工具&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们选择的路线是北京-昆明-大理-昆明-北京。因为我本人基本只坐国航的飞机，但是国航的飞机没有直达大理荒草机场的，所以中途倒了一下。很麻烦。我的建议是：尽量直接来回飞。&lt;/p&gt;
+&lt;p&gt;当然如果要从昆明去的话，有两种选择一种是大巴，一种是火车。我们来回选择的都是大巴。票价136元左右，5h左右[大理兴盛客运站-昆明西部客运站]很不幸的是，去的路上堵了两个小时。但是火车的时间是7-8h。一般有人建议火车去睡一晚上到。到了大理之后可以坐公交车，很便宜一般是1.5或者2元左右，下关去古城。如果太晚可以让客栈的人来接。&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;住宿&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;有钱的可以选择住双廊，不过我们查了一下不是很方便。我的建议是住古城，古城挺便宜的，一般80-130元一个晚上。我们住的是梦心谷客栈。挺不错的，有只狗，萌萌的。开始挺害怕的。后来发现特别温厚。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2488-300x225.jpg"
+loading="lazy"
+alt="IMG_2488"
+&gt;&lt;/p&gt;
+&lt;p&gt;最后一个晚上住的是1969海上客栈。挺贵的，没有电视，而且水很小。但是环境确实吊炸天。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2535-300x225.jpg"
+loading="lazy"
+alt="IMG_2535"
+&gt;&lt;br&gt;
+&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2544-300x225.jpg"
+loading="lazy"
+alt="IMG_2544"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;游玩&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;古城可以闲逛，挺悠闲的。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2494-300x225.jpg"
+loading="lazy"
+alt="IMG_2494"
+&gt;&lt;/p&gt;
+&lt;p&gt;可以在环海西路骑自行车。&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/06/IMG_2552-300x225.jpg"
+loading="lazy"
+alt="IMG_2552"
+&gt;&lt;/p&gt;
+&lt;p&gt;最后，感慨一下，毕业快乐。路还很长，慢慢走。。&lt;/p&gt;</description></item><item><title>游记攻略-香港</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-642.html</link><pubDate>Wed, 11 Feb 2015 09:28:52 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-642.html</guid><description>&lt;p&gt;本着2014年最后一个愿望去的，不过绝对物超所值，意犹未尽。&lt;/p&gt;
+&lt;h1 id="1-交通工具"&gt;1. 交通工具
+&lt;/h1&gt;&lt;p&gt;博主从北京出发，所以方案是：北京飞深圳，然后深圳做地铁过关，去香港。&lt;/p&gt;
+&lt;p&gt;当时时间是2015年1月2日-1月5日，机票竟然出奇的便宜，北京深圳往返只要了1340左右。我推荐中国国际航空，我一般只坐这家。&lt;/p&gt;
+&lt;h2 id="11-住宿"&gt;1.1 住宿
+&lt;/h2&gt;&lt;p&gt;不过便宜的机票一般是晚上飞，所以到深圳住了一个晚上，依然是如家，比较便宜130左右一晚。从宝安机场附近的如家到深圳罗湖口岸还有很长一段距离，需要公交车倒地铁。之后一路比较顺利，建议不要团签，个人签比较自由一些。第一次必须柜台注册一下，之后可以走自助通道，十分便捷。&lt;/p&gt;
+&lt;p&gt;之后在香港，本来想住在佐敦附近，不过房价确实高，因为是元旦，稍微好点的3星的，都要1000+，所以选择北角附近的宜必思，比香港附近的宜必思便宜了400+。&lt;/p&gt;
+&lt;p&gt;之后最后一晚，去了佐敦的恒丰。&lt;/p&gt;
+&lt;p&gt;总得来说北角的宜必思还可以，在地铁附近，十分方便。不过香港的房间都比较小，而且隔音不是很好。&lt;/p&gt;
+&lt;h2 id="12-游玩"&gt;1.2 游玩
+&lt;/h2&gt;&lt;p&gt;如果想买一些苹果产品的话，当然是香港站附近的大商场，有一个苹果旗舰店，3层楼，买得人超多。&lt;/p&gt;
+&lt;p&gt;香港购物切忌，很多服务员，会不停的引导你买东西，说买上1000送多少，之后说你再加200又送多少。&lt;/p&gt;
+&lt;h3 id="31-迪斯尼"&gt;3.1 迪斯尼
+&lt;/h3&gt;&lt;p&gt;我们之前在淘宝买的票，店主很nice票也可以用。迪斯尼很好玩，很赞，可惜我们只玩了一天，我建议玩两天，而且建议住一天在迪斯尼，千万别为了省钱，迪斯尼确实不错，有地铁直达十分方便。&lt;/p&gt;
+&lt;h3 id="32-太平山和蜡像馆"&gt;3.2 太平山和蜡像馆
+&lt;/h3&gt;&lt;p&gt;缆车我觉得还是可以做一做的，比较便宜，建议买套票，可以节约很多钱，蜡像馆比较小，但是作为第一次去，还是比较建议去一次的。&lt;/p&gt;
+&lt;h3 id="33-兰桂坊"&gt;3.3 兰桂坊
+&lt;/h3&gt;&lt;p&gt;是一条酒吧街，比较热闹，但是我不怎喝酒，所以我去哪儿给媳妇买了哈根达斯。哈哈。&lt;/p&gt;
+&lt;h3 id="34-香港大学"&gt;3.4 香港大学
+&lt;/h3&gt;&lt;p&gt;之前差一点来这儿读书了，感觉学校还是很赞的，不过思想比较多。赞食堂，好吃且便宜。&lt;/p&gt;
+&lt;h1 id="4-注意事项"&gt;4. 注意事项
+&lt;/h1&gt;&lt;h2 id="41-确认身份证通行证是否带好请提前办好通行证"&gt;4.1 确认身份证，通行证是否带好，请提前办好通行证。
+&lt;/h2&gt;&lt;h2 id="42-可以提前换一些港币有备无患基本都可以刷银联的卡"&gt;4.2 可以提前换一些港币，有备无患，基本都可以刷银联的卡。
+&lt;/h2&gt;&lt;h2 id="43-记住在插头转换器不然的话手机不能充电咯依然可以在淘宝买转换器比较便宜"&gt;4.3 记住在插头转换器，不然的话，手机不能充电咯，依然可以在淘宝买转换器，比较便宜。
+&lt;/h2&gt;&lt;p&gt;最后附图一张：&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/02/IMG_1952.jpg"
+loading="lazy"
+alt="IMG_1952"
+&gt;&lt;/p&gt;
+&lt;p&gt;最后附上一句话：&lt;/p&gt;
+&lt;p&gt;我这么辛苦，只是为了过上电视里面的生活。加油:)&lt;/p&gt;</description></item><item><title>游记攻略-哈尔滨</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-629.html</link><pubDate>Wed, 28 Jan 2015 03:17:57 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-629.html</guid><description>&lt;p&gt;本着完成新年第一个愿望的憧憬去的。&lt;/p&gt;
+&lt;h2 id="交通"&gt;交通：
+&lt;/h2&gt;&lt;p&gt;从北京到哈尔滨来回都是动车，比较方便，时间大概8小时10分钟。但是请选好出行时间。其实有种方式我比较推荐：选择当天晚上的卧铺出发，第二天到。这样还可以剩一天住宿费用。&lt;/p&gt;
+&lt;p&gt;出站是哈尔滨西火车站，离市区比较远，不过可以从哈尔滨西的火车站出租车站上车。原以为火车站的出租车比较靠谱，不过感觉还是有一点点小坑。之前打电话给哈尔滨的服务员，火车站到住地打车要多少钱，服务员说：25左右，如果晚上的话30吧。&lt;/p&gt;
+&lt;p&gt;我当时上车之后，打开百度地图，然后发现百度地图也说是26左右，坦然，忽然发现，司机师傅开向了一条绕远的路，师傅特别热情的说，这条路红绿灯少，不堵车。可是当时的时间是晚上11点了。我默然，到目的地是，38元。当我指出师傅的问题的时候，师傅还特别淡定的解释了一堆，我认为不是理由的理由[我不在乎你这1~2元钱，车堵在路上也是需要付费的。]。我默然，欧克，付钱下车。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;旅行建议：订次日达的硬卧；上出租车之后长两个心眼，说清楚路线，市区西直大街，但是这条路红绿灯确实多；&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="居住"&gt;居住：
+&lt;/h2&gt;&lt;p&gt;订的是一间如家酒店，我个人还是比较喜欢住如家的。性价比比较高。这一次的话，问题以下几点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;金卡送早餐，但是卷上面写的是5日内使用，结果最后一天，我带着攒了几天的卷，发现一张也用不了，交涉未果，服务员没有给我任何合理的解释，就是不能用，你爱咋咋地。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果能网上订，请网上付钱，我遇到了一个比较尴尬的问题，我的房费应该是184,166,166,166。结果服务员每天都给我刷184，后来我发现了这个问题，及时处理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;请带点现金在身上，入住的时候一定要交押金，不然死活不让你入住，刷银行卡也不行，当时可是快晚上12点了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;旅行建议：后来我给总部投诉，运营经理给我道了歉，我也比较满意，毕竟我不是想闹事，只是心里委屈。所以我还是比较推荐如家的，不过建议如下：网上提前预定及付费；带部分现金以备不时之需；注意刷卡费用；确认相关优惠事宜&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="美食"&gt;美食：
+&lt;/h2&gt;&lt;p&gt;在哈尔滨吃饭，有两个比较不大好的用户体验：1. 不免费用餐巾纸，需要自己掏钱购买；2. 你需要和别人拼桌。&lt;/p&gt;
+&lt;p&gt;我吃了春饼：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2197-300x224.jpg"
+loading="lazy"
+alt="IMG_2197"
+&gt;&lt;/p&gt;
+&lt;p&gt;春饼需要和别人拼桌，而且自己购买餐巾纸。不过感觉味道还可以，推荐毛毛春饼和老昌春饼。&lt;/p&gt;
+&lt;p&gt;喝了大可乐：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2173-224x300.jpg"
+loading="lazy"
+alt="IMG_2173"
+&gt;&lt;/p&gt;
+&lt;p&gt;姜汁儿可乐，中央大街到处都是，不过容易洒出来，注意好好拿着，我见过2~3个人洒了。&lt;/p&gt;
+&lt;p&gt;吃了年糕火锅：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2195-300x224.jpg"
+loading="lazy"
+alt="IMG_2195"
+&gt;&lt;/p&gt;
+&lt;p&gt;店在哈一百，这一锅59元，还送两个饮料和泡菜，服务员态度好，有wifi，我非常推荐这家店。名字叫粥Story。&lt;/p&gt;
+&lt;p&gt;吃了甜点：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2200-300x224.jpg"
+loading="lazy"
+alt="IMG_2200"
+&gt;&lt;/p&gt;
+&lt;p&gt;这家甜点非常出名，叫打包幸福，在中央大街上，不过有点小贵。味道还可以，适合文艺青年。不过当天晚上拉肚子不知道是否和这儿的酸奶有关。我个人还是比较推荐这家店铺。&lt;/p&gt;
+&lt;p&gt;吃了泰国菜：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/01/IMG_2201-300x224.jpg"
+loading="lazy"
+alt="IMG_2201"
+&gt;&lt;/p&gt;
+&lt;p&gt;泰国菜，味道吃不惯，在中央大街的侧面的某条巷子里面，整体还可以，如果你不是特别喜欢泰国菜，慎入。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;旅行建议：自己带点餐巾纸，尽量团购，和饭店错开。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;大众点评搜索即可：毛毛春饼 | 老昌春饼 | 打包幸福 | 印象泰东南亚主题餐厅&lt;/p&gt;
+&lt;h2 id="景点"&gt;景点：
+&lt;/h2&gt;&lt;p&gt;冰雪大世界：自己坐公交车去就可以咯，不要听信旅游导购的，带好您的学生证。&lt;/p&gt;
+&lt;p&gt;索菲亚大教堂：不要进去，可以在外面看看鸽子就好。&lt;/p&gt;</description></item><item><title>[年终总结]我的2014</title><link>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-617.html</link><pubDate>Sun, 11 Jan 2015 05:49:26 +0000</pubDate><guid>https://blog.coinidea.com/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94-617.html</guid><description>&lt;p&gt;2014年，对于我来说，感觉过得很慢，又过得很快。这一年一只脚已经进入了社会，就等另一只脚的迈入。我将对自己的2014年进行一个“大事”盘点。 整理归档好过去，拥抱一个新的未来。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;看了一些书籍。&lt;/p&gt;
+&lt;p&gt;1.1 吴晓波的《大败局》全集&lt;/p&gt;
+&lt;p&gt;1.2 南派三叔的《盗墓笔记》&lt;/p&gt;
+&lt;p&gt;1.3 过了一次《编程之美》&lt;/p&gt;
+&lt;p&gt;1.4 过了一次《程序员面试宝典》[为了找工作]&lt;/p&gt;
+&lt;p&gt;1.5 看了部分《Effective C++》&lt;/p&gt;
+&lt;p&gt;1.6 Accept 所有 &lt;a class="link" href="https://oj.leetcode.com/problemset/algorithms/" target="_blank" rel="noopener"
+&gt;Leetcode题目&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;4月17日，怀着激动的心情进入微软亚洲研究生创新工程组实习。&lt;/p&gt;
+&lt;p&gt;这是我人生难得的一次机会，误打误撞进去了顶级的技术及研究公司（研究院），在里面写了半年的代码，这种内外的成长，对我造成了强大的冲击，在之前我觉得自己还是比较能写代码的，后来接触最多的两个词是：规范，为什么。&lt;/p&gt;
+&lt;p&gt;回头想想，MSRA的经历将影响我一生，在这里我衷心的感谢我的 Mentor: Genduan 以及 Chaowa 对我的帮助。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作为一名 Dev，与2014年5月，找到了自己的女友，是一件如此高兴的事，终于可以面向对象编程了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;找工作阶段&lt;/p&gt;
+&lt;p&gt;这段时间辗转难眠，那段时间让我想起了 PennyJob 的运营者梁斌的一篇博文：&lt;a class="link" href="http://blog.sina.com.cn/s/blog_593af2a701017185.html" target="_blank" rel="noopener"
+&gt;百司不录&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;虽然断断续续，有一些 OFFER，但是压力之大，可能也是如人饮水吧。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;10月8日，猿题库实习。&lt;/p&gt;
+&lt;p&gt;这是一家创业公司，一群很有理想，很厉害的人，在一起。想做一些很酷的很颠覆的事。我的 Mentor 是一位 IOS 界的大牛 —— DevTang。这家公司带给我的是一种耳目一新的感觉，一个初入江湖的人，在一家创业公司里面，能看到的，接触到的，听到的，学到的那么多技术之外但是又与技术息息相关的知识，受用终生。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;旅行&lt;/p&gt;
+&lt;p&gt;&lt;span style="text-align: center;"&gt;去了十渡。｜去了北戴河。｜ 去了天津。｜去了青岛。｜ 去了香港。&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;
+&lt;a href="https://blog.coinidea.com/wp-content/uploads/2015/01/DevHu2014年足迹地图1.png" class="magnific" rel="magnific"&gt;&lt;img class="aligncenter wp-image-619" title="DevHu2014年足迹地图" data-original="/wp-content/uploads/2015/01/DevHu2014年足迹地图1.png" src="http://blog.coinidea.com/wp-content/themes/9IPHP/images/lazy_loading.gif" alt="" width="589" height="360" srcset="http://blog.coinidea.com/wp-content/uploads/2015/01/DevHu2014年足迹地图1.png 982w, http://blog.coinidea.com/wp-content/uploads/2015/01/DevHu2014年足迹地图1-300x183.png 300w" sizes="(max-width: 589px) 100vw, 589px" /&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接下来？我离职时，我师兄问我，接下来打算干嘛？是啊，接下来打算干嘛？我也回答不了，但是我希望我的2015年能做下列清单中的 Items：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;旅行&lt;/p&gt;
+&lt;p&gt;1.1 去哈尔滨 &lt;strong&gt;[Get √]&lt;/strong&gt; | 1.2 去西藏 | 1.3. 去云南 &lt;strong&gt;[Get √]&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;坚持在自己的个人博客上完成技术的学习和分享，写出高质量的博客 &lt;strong&gt;[Get√，应该能坚持下来，不过质量慢慢提高吧]&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;坚持写出更高质量的代码，并在 GitHub 上有所贡献，希望自己的某个项目能够获得100个 Star。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开源一款基于 ThinkPHP 的门户系统 &lt;strong&gt;[Get√，不过未开源]&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;思考自己的未来，专注的研究某项技术。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;看一些像样的书籍：&lt;/p&gt;
+&lt;p&gt;6.1 吴军的《文明之光》&lt;/p&gt;
+&lt;p&gt;6.2 &lt;a class="link" href="http://book.douban.com/search/%20%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A7%86%E2%80%A2%E6%A0%BC%E6%8B%89%E5%BE%B7%E5%A8%81%E5%B0%94" target="_blank" rel="noopener"
+&gt;[加] 马尔科姆•格拉德威尔&lt;/a&gt; 的《逆转》&lt;/p&gt;
+&lt;p&gt;6.3 看完《格鲁夫给经理人的第一课》&lt;/p&gt;
+&lt;p&gt;6.4 看完《Effective C++》&lt;/p&gt;
+&lt;p&gt;6.5 《怪诞行为学》 &lt;strong&gt;[Get√]&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;好好学学英语，争取出国自助游。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从头做一次 leetcode 中的所有题目。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

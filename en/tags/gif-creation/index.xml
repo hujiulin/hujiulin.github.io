@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GIF Creation on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/gif-creation/</link><description>Recent content in GIF Creation on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 20 Sep 2015 08:37:13 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/gif-creation/index.xml" rel="self" type="application/rss+xml"/><item><title>[Software] Creating GIF Images Locally</title><link>https://blog.coinidea.com/en/p/software-creating-gif-images-locally/</link><pubDate>Sun, 20 Sep 2015 08:37:13 +0000</pubDate><guid>https://blog.coinidea.com/en/p/software-creating-gif-images-locally/</guid><description>&lt;p&gt;Because I open-sourced a &lt;a class="link" href="http://www.coinidea.com/Index/content/columnId/41/contentId/55.html" target="_blank" rel="noopener"
+&gt;WIN32 Snake game&lt;/a&gt;, I wanted to create a GIF for demonstration purposes, but figuring out how to actually make one turned out to be tricky.&lt;/p&gt;
+&lt;p&gt;After some research, here are several methods:&lt;/p&gt;
+&lt;h3 id="method-1-using-video-software-like-qq-player"&gt;Method 1: Using video software like QQ Player
+&lt;/h3&gt;&lt;p&gt;The prerequisite is that you have a short video clip to convert. You can use QQ Player&amp;rsquo;s built-in feature to do the conversion.&lt;/p&gt;
+&lt;p&gt;Detailed instructions:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://kf.qq.com/faq/120322fu63YV130422iiEbMB.html" target="_blank" rel="noopener"
+&gt;http://kf.qq.com/faq/120322fu63YV130422iiEbMB.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="method-2-using-professional-software-like-photoshop"&gt;Method 2: Using professional software like Photoshop
+&lt;/h3&gt;&lt;p&gt;Prepare multiple frames of images. See this Baidu tutorial for detailed instructions:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://jingyan.baidu.com/article/7f41ececdb326e593d095c2e.html" target="_blank" rel="noopener"
+&gt;http://jingyan.baidu.com/article/7f41ececdb326e593d095c2e.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="method-3-using-screen-recording-expert"&gt;Method 3: Using Screen Recording Expert
+&lt;/h3&gt;&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150919/1442639966167035.gif"
+loading="lazy"
+alt="1442639966167035.gif"
+&gt;&lt;/p&gt;
+&lt;p&gt;The image above was created using Screen Recording Expert. First, I recorded a video (in EXE or LXE format), then selected the &amp;ldquo;Conversion Tools&amp;rdquo; menu, and converted it from there.&lt;/p&gt;
+&lt;p&gt;Here is a download link for a portable version of Screen Recording Expert:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.coinidea.com/Index/content/columnId/43/contentId/59.html" target="_blank" rel="noopener"
+&gt;Screen Recording Expert&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>

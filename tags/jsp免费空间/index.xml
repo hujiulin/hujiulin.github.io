@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JSP免费空间 on Coinidea的博客</title><link>https://blog.coinidea.com/tags/jsp%E5%85%8D%E8%B4%B9%E7%A9%BA%E9%97%B4/</link><description>Recent content in JSP免费空间 on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 23 May 2015 05:29:00 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/jsp%E5%85%8D%E8%B4%B9%E7%A9%BA%E9%97%B4/index.xml" rel="self" type="application/rss+xml"/><item><title>[JSP]JSP免费空间</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-844.html</link><pubDate>Sat, 23 May 2015 05:29:00 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-844.html</guid><description>&lt;p&gt;当JSP网站写完需要发布时，对没有钱的个人或者学生来说，是一个头痛的问题。&lt;br&gt;
+我也遇到了这个问题。我在网上查询了一下，发现了两篇比较好的博文：&lt;br&gt;
+推荐一个免费的JSP空间：&lt;a class="link" href="http://fireinwind.iteye.com/blog/705611" target="_blank" rel="noopener"
+&gt;http://fireinwind.iteye.com/blog/705611&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这篇博文让我认识到有两种免费的JSP空间。一个是jhost，一个是EATJ。&lt;br&gt;
+谈谈我使用这两个免费空间的感觉，免费的东西毕竟都有缺陷。比如jhost我在教育网访问卡得要死，上传东西太慢了，囧。EATJ的缺陷是每天的每六个小时会关闭你的服务器，只有你自己去开（关闭的时间点是4:00、10:00、14:00、18:00、24:00）。&lt;/p&gt;
+&lt;p&gt;所以我建议前期没钱的时候可以使用EATJ，速度还行，效果不过，唯一的不足是开关服务器。测试的话问题非常适合。&lt;/p&gt;
+&lt;p&gt;来谈谈jhost，他在用户体验这块做得比较好，做成了操作系统桌面的方式，便于管理，不过卡。&lt;/p&gt;
+&lt;p&gt;具体如何使用这两种空间请见博文：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://boyue163.blog.163.com/blog/static/96652908201102813622380/" target="_blank" rel="noopener"
+&gt;jsp php爱好者的福音 eatj 和jhost&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;备注：jhost申请比较麻烦，需要验证码，这个网上搜索 jhost邀请码即可。&lt;/p&gt;
+&lt;p&gt;请在激活帐号以后，登录空间后台，在【控制面板】中激活您的【网站空间服务】。&lt;/p&gt;
+&lt;p&gt;本站规定：普通用户需每3天至少登录续期一次（在【控制面板】的【会员服务管理】中点击【空间续期】按扭），以确保您仍在使用本站的服务。&lt;br&gt;
+另外，本站会定期对超过规定时间内没有续期的用户暂停空间的TOMCAT服务，下次续期会重新启动。如超过一个月没有续期，您的帐户将被注销。&lt;/p&gt;
+&lt;p&gt;您可以通过本站积分延长更多的空间使用期或兑换其它服务，积分可通过推荐用户或现金购买，详见本站帮助。&lt;/p&gt;</description></item></channel></rss>

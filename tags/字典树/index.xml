@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>字典树 on Coinidea的博客</title><link>https://blog.coinidea.com/tags/%E5%AD%97%E5%85%B8%E6%A0%91/</link><description>Recent content in 字典树 on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 12 Feb 2015 15:54:15 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/%E5%AD%97%E5%85%B8%E6%A0%91/index.xml" rel="self" type="application/rss+xml"/><item><title>Bookworm辅助提示工具</title><link>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-644.html</link><pubDate>Thu, 12 Feb 2015 15:54:15 +0000</pubDate><guid>https://blog.coinidea.com/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91-644.html</guid><description>&lt;p&gt;最近整理就资料的时候，偶然间发现自己在2011年左右写的一个小程序。&lt;/p&gt;
+&lt;p&gt;不知道大家有没有玩过一个游戏叫Bookworm，是PopCap公司出品的。游戏讲述的是一只书虫打败恶魔的故事，不过通关打怪，需要拼写单词。我记得是给一个3_3还是4_4的矩阵，里面有a-z或者*（代表任意字母），请拼出最长的单词，单词越长对恶魔的伤害越高。于是，我写了个一小程序，来让我学渣的我能拼出尽可能长的单词。前提条件需要一个单词表，工程的doc文件夹中有一个dictionary.txt，大约有7000多单词，需要提前导入。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;程序主界面：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Mainform-300x228.png"
+loading="lazy"
+alt="Mainform"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;加载词典：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/LoadDictionary-300x228.png"
+loading="lazy"
+alt="LoadDictionary"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;输入字符串：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Input-300x228.png"
+loading="lazy"
+alt="Input"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;得到结果列表：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/02/Result-300x228.png"
+loading="lazy"
+alt="Result"
+&gt;&lt;/p&gt;
+&lt;p&gt;GitHub地址：&lt;a class="link" href="https://github.com/hujiulin/Bookworm" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/Bookworm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;项目说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用C++编写于2011年[编码比较乱]，能够用VC 6.0或者Visual Studio打开。&lt;/li&gt;
+&lt;li&gt;使用这个程序可以得到最长的单词。&lt;/li&gt;
+&lt;li&gt;输出字母[a-z 或者 *]， 能够得到答案列表。[\*代表任意字母]&lt;/li&gt;
+&lt;li&gt;是第一个人生小程序，最近在一堆旧资料中找到，所以上传分享:)。&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

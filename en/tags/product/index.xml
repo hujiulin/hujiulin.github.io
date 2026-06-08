@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Product on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/product/</link><description>Recent content in Product on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 03 Jul 2015 17:06:30 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/product/index.xml" rel="self" type="application/rss+xml"/><item><title>CoinJS - An Open Source Web Component Library</title><link>https://blog.coinidea.com/en/p/coinjs-an-open-source-web-component-library/</link><pubDate>Fri, 03 Jul 2015 17:06:30 +0000</pubDate><guid>https://blog.coinidea.com/en/p/coinjs-an-open-source-web-component-library/</guid><description>&lt;p&gt;I&amp;rsquo;ve been building my own open-source web component library recently, keeping it as simple as possible for my own learning, while also sharing some insights with other beginners. GitHub download link: &lt;a class="link" href="https://github.com/hujiulin/coinjs" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/coinjs&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="--progressbar"&gt;- ProgressBar
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/QQ%e6%88%aa%e5%9b%be20150704010845.jpg"
+loading="lazy"
+alt="QQ截图20150704010845"
+&gt;&lt;/p&gt;
+&lt;h2 id="--floatbox-popup-dialog"&gt;- FloatBox (Popup Dialog)
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/floatBox1-300x146.jpg"
+loading="lazy"
+alt="floatBox1"
+&gt;
+&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/floatBox2-300x145.jpg"
+loading="lazy"
+alt="floatBox2"
+&gt;&lt;/p&gt;
+&lt;h2 id="--imagewall-image-banner"&gt;- ImageWall (Image Banner)
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/imageWall1-300x146.jpg"
+loading="lazy"
+alt="imageWall1"
+&gt;&lt;/p&gt;
+&lt;h2 id="--nav-pure-css-navigation-bar"&gt;- Nav (Pure CSS Navigation Bar)
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/nav_v-300x184.jpg"
+loading="lazy"
+alt="nav_v"
+&gt;
+&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/nav_h-300x100.jpg"
+loading="lazy"
+alt="nav_h"
+&gt;&lt;/p&gt;
+&lt;h2 id="--scrollimage-scrolling-images"&gt;- ScrollImage (Scrolling Images)
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/07/scrollImg1-300x157.jpg"
+loading="lazy"
+alt="scrollImg1"
+&gt;&lt;/p&gt;</description></item><item><title>CoinVote -- A Voting System</title><link>https://blog.coinidea.com/en/p/coinvote--a-voting-system/</link><pubDate>Thu, 19 Feb 2015 06:05:31 +0000</pubDate><guid>https://blog.coinidea.com/en/p/coinvote--a-voting-system/</guid><description>&lt;p&gt;CoinVote is a flexible voting system. CoinVote was independently developed by me in 2015 and features the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Voting homepage&lt;/li&gt;
+&lt;li&gt;View votes&lt;/li&gt;
+&lt;li&gt;Vote listings&lt;/li&gt;
+&lt;li&gt;Candidate listings&lt;/li&gt;
+&lt;li&gt;Edit candidates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class="link" href="http://vote.coinidea.com/" target="_blank" rel="noopener"
+&gt;Demo&lt;/a&gt; | &lt;a class="link" href="http://www.coinidea.com/Index/queryColumn/columnId/30/parentId/2.html" target="_blank" rel="noopener"
+&gt;Details&lt;/a&gt;&lt;/p&gt;</description></item><item><title>CoinCMS -- A Portal System</title><link>https://blog.coinidea.com/en/p/coincms--a-portal-system/</link><pubDate>Thu, 19 Feb 2015 05:54:17 +0000</pubDate><guid>https://blog.coinidea.com/en/p/coincms--a-portal-system/</guid><description>&lt;p&gt;CoinCMS is a clean and simple portal system. CoinCMS was independently developed by me in 2015 and features the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Portal homepage&lt;/li&gt;
+&lt;li&gt;Category listings&lt;/li&gt;
+&lt;li&gt;Article publishing&lt;/li&gt;
+&lt;li&gt;Admin panel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.coinidea.com/" target="_blank" rel="noopener"
+&gt;Demo&lt;/a&gt; | &lt;a class="link" href="http://www.coinidea.com/Index/queryColumn/columnId/28/parentId/2.html" target="_blank" rel="noopener"
+&gt;Details&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

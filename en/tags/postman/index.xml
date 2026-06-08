@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Postman on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/postman/</link><description>Recent content in Postman on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 18 Nov 2016 04:59:52 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/postman/index.xml" rel="self" type="application/rss+xml"/><item><title>[Web Development] Postman Plugin</title><link>https://blog.coinidea.com/en/p/web-development-postman-plugin/</link><pubDate>Fri, 18 Nov 2016 04:59:52 +0000</pubDate><guid>https://blog.coinidea.com/en/p/web-development-postman-plugin/</guid><description>&lt;h2 id="recommending-a-web-development-debugging-tool"&gt;Recommending a Web Development Debugging Tool
+&lt;/h2&gt;&lt;p&gt;It is especially useful for reading, modifying, and adding Cookie, Session, Header, GET, and POST data during network transmission. There are many blog posts about it online, so I won&amp;rsquo;t go into detail here.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2016/11/QQ%e6%88%aa%e5%9b%be20161118111816-1024x547.png"
+loading="lazy"
+alt="QQ截图20161118111816"
+&gt;&lt;/p&gt;
+&lt;p&gt;Postman has three versions (as of November 2016):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Postman for Chrome&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Postman for Mac&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Postman for Linux (Beta)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The Chrome plugin is recommended. However, it&amp;rsquo;s not easy to download in China. Here is the official Google Chrome plugin download link as of November 2016:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop/related" target="_blank" rel="noopener"
+&gt;https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop/related&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And a very old version download: Postman-REST-Client_v0.8.4.14&lt;/p&gt;
+&lt;p&gt;Link: &lt;a class="link" href="http://pan.baidu.com/s/1bo4nzQJ" target="_blank" rel="noopener"
+&gt;http://pan.baidu.com/s/1bo4nzQJ&lt;/a&gt; Password: h0w7&lt;/p&gt;</description></item></channel></rss>

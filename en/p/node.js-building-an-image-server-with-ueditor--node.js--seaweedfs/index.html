@@ -1,0 +1,482 @@
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="1. UEditor + Node.js Image Upload UEditor is a feature-rich open-source rich text editor by Baidu.\nDownload link: http://ueditor.baidu.com/website/download.html\nIt currently provides versions for PHP, ASP, .Net, and JSP. UEditor is primarily built with frontend HTML, CSS, and JS. The reason it is further divided by server-side language is, in my understanding, mainly for the image upload functionality which involves server interaction.\nAmong the many versions, there is no Node.js version. Below I will explain how to convert the PHP version of UEditor into a Node.js version.\nAfter examining all requests in the PHP version, I found that the action parameter values include config (configuration file), uploadimage (image upload), listimage (online management), and catchimage (image capture). So we just need to rewrite these 4 request handlers to meet our needs.\n"><title>[Node.js] Building an Image Server with UEditor + Node.js + SeaweedFS</title><link rel=canonical href=https://blog.coinidea.com/en/p/node.js-building-an-image-server-with-ueditor--node.js--seaweedfs/><link rel=stylesheet href=/scss/style.min.86591c898bd806857815fbb8c47e8d3fed97c133b78e83d9bfc27b164dd0aa2b.css><meta property='og:title' content="[Node.js] Building an Image Server with UEditor + Node.js + SeaweedFS"><meta property='og:description' content="1. UEditor + Node.js Image Upload UEditor is a feature-rich open-source rich text editor by Baidu.\nDownload link: http://ueditor.baidu.com/website/download.html\nIt currently provides versions for PHP, ASP, .Net, and JSP. UEditor is primarily built with frontend HTML, CSS, and JS. The reason it is further divided by server-side language is, in my understanding, mainly for the image upload functionality which involves server interaction.\nAmong the many versions, there is no Node.js version. Below I will explain how to convert the PHP version of UEditor into a Node.js version.\nAfter examining all requests in the PHP version, I found that the action parameter values include config (configuration file), uploadimage (image upload), listimage (online management), and catchimage (image capture). So we just need to rewrite these 4 request handlers to meet our needs.\n"><meta property='og:url' content='https://blog.coinidea.com/en/p/node.js-building-an-image-server-with-ueditor--node.js--seaweedfs/'><meta property='og:site_name' content="Coinidea's Blog"><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='nodejs'><meta property='article:tag' content='seaweedfs'><meta property='article:tag' content='UEditor'><meta property='article:tag' content='Image Server'><meta property='article:published_time' content='2016-05-18T03:16:01+00:00'><meta property='article:modified_time' content='2016-05-18T03:16:01+00:00'><meta name=twitter:title content="[Node.js] Building an Image Server with UEditor + Node.js + SeaweedFS"><meta name=twitter:description content="1. UEditor + Node.js Image Upload UEditor is a feature-rich open-source rich text editor by Baidu.\nDownload link: http://ueditor.baidu.com/website/download.html\nIt currently provides versions for PHP, ASP, .Net, and JSP. UEditor is primarily built with frontend HTML, CSS, and JS. The reason it is further divided by server-side language is, in my understanding, mainly for the image upload functionality which involves server interaction.\nAmong the many versions, there is no Node.js version. Below I will explain how to convert the PHP version of UEditor into a Node.js version.\nAfter examining all requests in the PHP version, I found that the action parameter values include config (configuration file), uploadimage (image upload), listimage (online management), and catchimage (image capture). So we just need to rewrite these 4 request handlers to meet our needs.\n"><link rel="shortcut icon" href=/favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/en/><img src=/img/avatar_hu_6d706b210ec7fde4.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/en>Coinidea's Blog</a></h1><h2 class=site-description>Life is random</h2></div></header><ol class=menu-social><li><a href=mailto:admin@coinidea.com target=_blank title=Email rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M3 7l9 6 9-6"/></svg></a></li><li><a href=https://github.com/hujiulin target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/hujiulin/ target=_blank title=LinkedIn rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 00-4 0"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/en/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/en/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/en/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/en/resume/><!doctype html><svg t="1720263044212" class="icon" viewBox="0 0 1024 1024" p-id="4271" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M809.286 82.487H218.177c-39.747.0-72.363 32.614-72.363 72.363v729.712c0 39.747 32.614 72.363 72.363 72.363h496.329l167.138-172.238V154.849c0-39.747-32.614-72.363-72.363-72.363zM711.446 889.657v-67.874c0-16.103 13.249-29.148 29.148-29.148h62.372l-91.521 97.025zM834.561 739.842h-88.666c-44.844.0-81.532 36.689-81.532 81.532v85.61H221.847c-16.103.0-29.148-13.249-29.148-29.148V164.43c0-16.103 13.249-29.148 29.148-29.148h583.568c16.103.0 29.148 13.249 29.148 29.148v575.414zM266.484 312.818H648.87c13.654.0 24.868-11.211 24.868-25.07.0-13.654-11.414-24.868-25.07-24.868H266.485c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07zM266.691 383.344c-13.654.0-24.868 11.414-24.868 25.07s11.211 24.868 24.868 24.868h326.128c13.654.0 24.868-11.211 25.07-24.868.0-13.859-11.414-25.07-25.07-25.07H266.691zM714.507 503.807H266.489c-13.654.0-24.868 11.211-24.868 24.868.0 13.859 11.211 25.07 24.868 25.07h448.018c13.654.0 24.868-11.211 25.07-25.07.0-13.654-11.414-24.868-25.07-24.868z" fill="#272636" p-id="4272"/></svg>
+<span>Resume</span></a></li><li><a href=/en/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language title=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1161.html>中文</option><option value=https://blog.coinidea.com/en/p/node.js-building-an-image-server-with-ueditor--node.js--seaweedfs/ selected>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>Dark Mode</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><ol><li><a href=#1-ueditor--nodejs-image-upload>1. UEditor + Node.js Image Upload</a><ol><li><a href=#11-modify-the-serverurl-property-in-ueditors-ueditorconfigjs>1.1 Modify the <code>serverUrl</code> property in UEditor’s <code>ueditor.config.js</code>:</a></li><li><a href=#12-rename-ueditorphpconfigjson-to-configjs-and-move-it-to-the-ueditor-directory>1.2 Rename <code>ueditor/php/config.json</code> to <code>config.js</code> and move it to the <code>ueditor</code> directory.</a></li><li><a href=#13-next-write-the-four-corresponding-actions-on-the-nodejs-side-the-image-upload-uses-the-connect-busboy-middleware-code-as-follows>1.3 Next, write the four corresponding actions on the Node.js side. The image upload uses the <code>connect-busboy</code> middleware. Code as follows:</a></li></ol></li><li><a href=#2-golang-installation-and-configuration>2. GoLang Installation and Configuration</a></li><li><a href=#3-compiling-and-running-seaweedfs>3. Compiling and Running seaweedfs</a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/en/categories/web-development/ style=background-color:#d62728;color:#fff>Web Development</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/en/p/node.js-building-an-image-server-with-ueditor--node.js--seaweedfs/>[Node.js] Building an Image Server with UEditor + Node.js + SeaweedFS</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2016-05-18T03:16:01Z>May 18, 2016</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>7 minute read</time></div></footer><footer class=article-translations><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg><div><a href=https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1161.html class=link>中文</a></div></footer></div></header><section class=article-content><h3 id=1-ueditor--nodejs-image-upload>1. UEditor + Node.js Image Upload</h3><p>UEditor is a feature-rich open-source rich text editor by Baidu.<br>Download link: <a class=link href=http://ueditor.baidu.com/website/download.html target=_blank rel=noopener>http://ueditor.baidu.com/website/download.html</a><br>It currently provides versions for PHP, ASP, .Net, and JSP. UEditor is primarily built with frontend HTML, CSS, and JS. The reason it is further divided by server-side language is, in my understanding, mainly for the image upload functionality which involves server interaction.<br>Among the many versions, there is no Node.js version. Below I will explain how to convert the PHP version of UEditor into a Node.js version.<br>After examining all requests in the PHP version, I found that the <code>action</code> parameter values include <code>config</code> (configuration file), <code>uploadimage</code> (image upload), <code>listimage</code> (online management), and <code>catchimage</code> (image capture). So we just need to rewrite these 4 request handlers to meet our needs.</p><h4 id=11-modify-the-serverurl-property-in-ueditors-ueditorconfigjs>1.1 Modify the <code>serverUrl</code> property in UEditor&rsquo;s <code>ueditor.config.js</code>:</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>serverUrl: <span class=s1>&#39;/ue/uploads&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=12-rename-ueditorphpconfigjson-to-configjs-and-move-it-to-the-ueditor-directory>1.2 Rename <code>ueditor/php/config.json</code> to <code>config.js</code> and move it to the <code>ueditor</code> directory.</h4><h4 id=13-next-write-the-four-corresponding-actions-on-the-nodejs-side-the-image-upload-uses-the-connect-busboy-middleware-code-as-follows>1.3 Next, write the four corresponding actions on the Node.js side. The image upload uses the <code>connect-busboy</code> middleware. Code as follows:</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// Image upload
+</span></span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>path</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;path&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>uploadsPath</span> <span class=o>=</span> <span class=nx>path</span><span class=p>.</span><span class=nx>resolve</span><span class=p>(</span><span class=s1>&#39;public/uploads&#39;</span><span class=p>)</span> <span class=o>+</span> <span class=s1>&#39;/&#39;</span><span class=p>;</span> <span class=c1>// Path to store images
+</span></span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>busboy</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;connect-busboy&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>app</span><span class=p>.</span><span class=nx>use</span><span class=p>(</span><span class=nx>busboy</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>limits</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>fileSize</span><span class=o>:</span> <span class=mi>10</span> <span class=o>*</span> <span class=mi>1024</span> <span class=o>*</span> <span class=mi>1024</span> <span class=c1>// 10MB
+</span></span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}));</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>action</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Upload image
+</span></span></span><span class=line><span class=cl>    <span class=nx>uploadimage</span><span class=o>:</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>fstream</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nx>req</span><span class=p>.</span><span class=nx>pipe</span><span class=p>(</span><span class=nx>req</span><span class=p>.</span><span class=nx>busboy</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>req</span><span class=p>.</span><span class=nx>busboy</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;file&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>fieldname</span><span class=p>,</span> <span class=nx>file</span><span class=p>,</span> <span class=nx>filename</span><span class=p>,</span> <span class=nx>encoding</span><span class=p>,</span> <span class=nx>mimetype</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=kd>var</span> <span class=nx>filesize</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=kd>var</span> <span class=nx>ext</span> <span class=o>=</span> <span class=nx>path</span><span class=p>.</span><span class=nx>extname</span><span class=p>(</span><span class=nx>filename</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=kd>var</span> <span class=nx>newFilename</span> <span class=o>=</span> <span class=p>(</span><span class=k>new</span> <span class=nb>Date</span><span class=p>()</span> <span class=o>-</span> <span class=mi>0</span><span class=p>)</span> <span class=o>+</span> <span class=nx>ext</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=nx>fstream</span> <span class=o>=</span> <span class=nx>fs</span><span class=p>.</span><span class=nx>createWriteStream</span><span class=p>(</span><span class=nx>uploadsPath</span> <span class=o>+</span> <span class=nx>newFilename</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=nx>file</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;data&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>data</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>filesize</span> <span class=o>=</span> <span class=nx>data</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=nx>fstream</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;close&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;originalName&#34;</span><span class=o>:</span> <span class=nx>filename</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;name&#34;</span><span class=o>:</span> <span class=nx>newFilename</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;url&#34;</span><span class=o>:</span> <span class=s1>&#39;/uploads/&#39;</span> <span class=o>+</span> <span class=nx>newFilename</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;type&#34;</span><span class=o>:</span> <span class=nx>ext</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;size&#34;</span><span class=o>:</span> <span class=nx>filesize</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;state&#34;</span><span class=o>:</span> <span class=s2>&#34;SUCCESS&#34;</span>
+</span></span><span class=line><span class=cl>                <span class=p>}));</span>
+</span></span><span class=line><span class=cl>                <span class=nx>res</span><span class=p>.</span><span class=nx>send</span><span class=p>(</span><span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;originalName&#34;</span><span class=o>:</span> <span class=nx>filename</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;name&#34;</span><span class=o>:</span> <span class=nx>newFilename</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;url&#34;</span><span class=o>:</span> <span class=s1>&#39;/uploads/&#39;</span> <span class=o>+</span> <span class=nx>newFilename</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;type&#34;</span><span class=o>:</span> <span class=nx>ext</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;size&#34;</span><span class=o>:</span> <span class=nx>filesize</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;state&#34;</span><span class=o>:</span> <span class=s2>&#34;SUCCESS&#34;</span>
+</span></span><span class=line><span class=cl>                <span class=p>}));</span>
+</span></span><span class=line><span class=cl>            <span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=nx>file</span><span class=p>.</span><span class=nx>pipe</span><span class=p>(</span><span class=nx>fstream</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Get configuration file
+</span></span></span><span class=line><span class=cl>    <span class=nx>config</span><span class=o>:</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nx>res</span><span class=p>.</span><span class=nx>redirect</span><span class=p>(</span><span class=s1>&#39;/js/UEditor/config.js&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Online management
+</span></span></span><span class=line><span class=cl>    <span class=nx>listimage</span><span class=o>:</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>fs</span><span class=p>.</span><span class=nx>readdir</span><span class=p>(</span><span class=nx>uploadsPath</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>err</span><span class=p>,</span> <span class=nx>files</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=kd>var</span> <span class=nx>total</span> <span class=o>=</span> <span class=mi>0</span><span class=p>,</span> <span class=nx>list</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>            <span class=nx>files</span><span class=p>.</span><span class=nx>sort</span><span class=p>().</span><span class=nx>splice</span><span class=p>(</span><span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>start</span><span class=p>,</span> <span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>size</span><span class=p>).</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=sr>/^.+\..+$/</span><span class=p>.</span><span class=nx>test</span><span class=p>(</span><span class=nx>a</span><span class=p>)</span> <span class=o>&amp;&amp;</span>
+</span></span><span class=line><span class=cl>                <span class=nx>list</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>url</span><span class=o>:</span> <span class=s1>&#39;/uploads/&#39;</span> <span class=o>+</span> <span class=nx>a</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>mtime</span><span class=o>:</span> <span class=k>new</span> <span class=nb>Date</span><span class=p>(</span><span class=nx>fs</span><span class=p>.</span><span class=nx>statSync</span><span class=p>(</span><span class=nx>uploadsPath</span> <span class=o>+</span> <span class=nx>a</span><span class=p>).</span><span class=nx>mtime</span><span class=p>).</span><span class=nx>getTime</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>                <span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=nx>total</span> <span class=o>=</span> <span class=nx>list</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>({</span><span class=nx>state</span><span class=o>:</span> <span class=nx>total</span> <span class=o>===</span> <span class=mi>0</span> <span class=o>?</span> <span class=s1>&#39;no match file&#39;</span> <span class=o>:</span> <span class=s1>&#39;SUCCESS&#39;</span><span class=p>,</span> <span class=nx>list</span><span class=o>:</span> <span class=nx>list</span><span class=p>,</span> <span class=nx>total</span><span class=o>:</span> <span class=nx>total</span><span class=p>,</span> <span class=nx>start</span><span class=o>:</span> <span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>start</span><span class=p>});</span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Catch image (save image to server when pasting)
+</span></span></span><span class=line><span class=cl>    <span class=nx>catchimage</span><span class=o>:</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>list</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>        <span class=nx>req</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>source</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>src</span><span class=p>,</span> <span class=nx>index</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>http</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>src</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>_res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=kd>var</span> <span class=nx>imagedata</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=nx>_res</span><span class=p>.</span><span class=nx>setEncoding</span><span class=p>(</span><span class=s1>&#39;binary&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=nx>_res</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;data&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>chunk</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>imagedata</span> <span class=o>+=</span> <span class=nx>chunk</span>
+</span></span><span class=line><span class=cl>                <span class=p>});</span>
+</span></span><span class=line><span class=cl>                <span class=nx>_res</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;end&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>pathname</span> <span class=o>=</span> <span class=nx>url</span><span class=p>.</span><span class=nx>parse</span><span class=p>(</span><span class=nx>src</span><span class=p>).</span><span class=nx>pathname</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>original</span> <span class=o>=</span> <span class=nx>pathname</span><span class=p>.</span><span class=nx>match</span><span class=p>(</span><span class=sr>/[^/]+\.\w+$/g</span><span class=p>)[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>suffix</span> <span class=o>=</span> <span class=nx>original</span><span class=p>.</span><span class=nx>match</span><span class=p>(</span><span class=sr>/[^\.]+$/</span><span class=p>)[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>filename</span> <span class=o>=</span> <span class=nb>Date</span><span class=p>.</span><span class=nx>now</span><span class=p>()</span> <span class=o>+</span> <span class=s1>&#39;.&#39;</span> <span class=o>+</span> <span class=nx>suffix</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>filepath</span> <span class=o>=</span> <span class=nx>uploadsPath</span> <span class=o>+</span> <span class=s1>&#39;catchimages/&#39;</span> <span class=o>+</span> <span class=nx>filename</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>fs</span><span class=p>.</span><span class=nx>writeFile</span><span class=p>(</span><span class=nx>filepath</span><span class=p>,</span> <span class=nx>imagedata</span><span class=p>,</span> <span class=s1>&#39;binary&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>err</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                        <span class=nx>list</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>original</span><span class=o>:</span> <span class=nx>original</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>source</span><span class=o>:</span> <span class=nx>src</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>state</span><span class=o>:</span> <span class=nx>err</span> <span class=o>?</span> <span class=s2>&#34;ERROR&#34;</span> <span class=o>:</span> <span class=s2>&#34;SUCCESS&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>title</span><span class=o>:</span> <span class=nx>filename</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>url</span><span class=o>:</span> <span class=s1>&#39;/uploads/catchimages/&#39;</span> <span class=o>+</span> <span class=nx>filename</span>
+</span></span><span class=line><span class=cl>                        <span class=p>});</span>
+</span></span><span class=line><span class=cl>                    <span class=p>})</span>
+</span></span><span class=line><span class=cl>                <span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=p>})</span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>f</span> <span class=o>=</span> <span class=nx>setInterval</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=nx>req</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>source</span><span class=p>.</span><span class=nx>length</span> <span class=o>===</span> <span class=nx>list</span><span class=p>.</span><span class=nx>length</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>clearInterval</span><span class=p>(</span><span class=nx>f</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>({</span><span class=nx>state</span><span class=o>:</span> <span class=s2>&#34;SUCCESS&#34;</span><span class=p>,</span> <span class=nx>list</span><span class=o>:</span> <span class=nx>list</span><span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span> <span class=mi>50</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=nx>app</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=s1>&#39;/ue/uploads&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>action</span><span class=p>[</span><span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>action</span><span class=p>](</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>app</span><span class=p>.</span><span class=nx>post</span><span class=p>(</span><span class=s1>&#39;/ue/uploads&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>action</span><span class=p>[</span><span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>action</span><span class=p>](</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><p>The above mainly references this blog: <a class=link href=http://www.xiaoboy.com/detail/1341545081.html target=_blank rel=noopener>http://www.xiaoboy.com/detail/1341545081.html</a></p><h3 id=2-golang-installation-and-configuration>2. GoLang Installation and Configuration</h3><p>In section 1, UEditor uploads images to the <code>/public/uploads/</code> folder on the Node.js server. If you need an image server with high storage, portability, and scalability, you need to set up a dedicated server. This article uses the open-source distributed image (file) server <code>seaweedfs</code>.<br>GitHub link: <a class=link href=https://github.com/chrislusf/seaweedfs target=_blank rel=noopener>https://github.com/chrislusf/seaweedfs</a><br>This server is written in GoLang, so you need to install and configure GoLang. Download link for China: <a class=link href=http://www.golangtc.com/download target=_blank rel=noopener>http://www.golangtc.com/download</a> &ndash; choose the appropriate package for your operating system. This article demonstrates installation on Windows 7 x64. After a straightforward installation, you need to configure the following environment variables:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>GOROOT</span><span class=o>=</span>D:<span class=se>\G</span>o16
+</span></span><span class=line><span class=cl><span class=nv>GOPATH</span><span class=o>=</span>D:<span class=se>\I</span>mageServer<span class=se>\s</span>eaweedfs
+</span></span><span class=line><span class=cl><span class=nv>PATH</span><span class=o>=</span>D:<span class=se>\G</span>o16<span class=se>\b</span>in
+</span></span></code></pre></td></tr></table></div></div><p>The <code>GOPATH</code> environment variable is very important &ndash; your own code must be placed in the directory configured by this variable for the Go compiler to find and compile it.</p><h3 id=3-compiling-and-running-seaweedfs>3. Compiling and Running seaweedfs</h3><p>Clone the <code>seaweedfs</code> code from GitHub, then follow the <code>makefile</code> instructions or run the <code>makefile</code> directly. In the <code>seaweedfs</code> directory, run the following commands in the console:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>go clean -i -v ./go/weed/
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>rm -f weed <span class=c1>#for linux</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>go get -v -d ./go/weed
+</span></span><span class=line><span class=cl>go build -v -o weed ./go/weed
+</span></span></code></pre></td></tr></table></div></div><p>Some dependencies may fail to download during <code>go get</code> and need to be downloaded manually and placed in the <code>\seaweedfs\src</code> directory.<br>Here is a recommended Go package download site: <a class=link href="https://gopm.io/download?pkgname=golang.org/x/net" target=_blank rel=noopener>https://gopm.io/download?pkgname=golang.org/x/net</a><br>After building, a <code>weed</code> binary will be generated in the <code>seaweedfs</code> directory. You can also rename it to <code>weed.exe</code>. Now you can start <code>weed</code>. Using the local machine as an example:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>weed master
+</span></span></code></pre></td></tr></table></div></div><p><img src=http://blog.coinidea.com/wp-content/uploads/2016/05/image0011-300x195.png loading=lazy alt=image001></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>weed volume --dir<span class=o>=</span><span class=s2>&#34;./tmp/data1&#34;</span> --max<span class=o>=</span><span class=m>5</span> --mserver<span class=o>=</span><span class=s2>&#34;localhost:9333&#34;</span> --port<span class=o>=</span><span class=m>8080</span> <span class=p>&amp;</span>
+</span></span></code></pre></td></tr></table></div></div><p><img src=http://blog.coinidea.com/wp-content/uploads/2016/05/image0031-300x195.png loading=lazy alt=image003></p><p>Following the GitHub instructions, uploading and downloading images works without issues. At this point, the basic image server setup is complete.</p><p>Modify the Node.js image upload code as follows:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span><span class=lnt>113
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// Image upload
+</span></span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>path</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;path&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>multipart</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;connect-multiparty&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>multipartMiddleware</span> <span class=o>=</span> <span class=nx>multipart</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>curlPostAssign</span><span class=p>(</span><span class=nx>res</span><span class=p>,</span> <span class=nx>filepath</span><span class=p>,</span> <span class=nx>filename</span><span class=p>,</span> <span class=nx>filesize</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>request</span><span class=p>.</span><span class=nx>post</span><span class=p>(</span><span class=nx>config</span><span class=p>.</span><span class=nx>url_image</span> <span class=o>+</span> <span class=s1>&#39;dir/assign&#39;</span><span class=p>,{},</span>
+</span></span><span class=line><span class=cl>        <span class=kd>function</span> <span class=p>(</span><span class=nx>error</span><span class=p>,</span> <span class=nx>response</span><span class=p>,</span> <span class=nx>body</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=nx>error</span> <span class=o>&amp;&amp;</span> <span class=nx>response</span><span class=p>.</span><span class=nx>statusCode</span> <span class=o>==</span> <span class=mi>200</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>assign</span> <span class=o>=</span> <span class=nb>eval</span><span class=p>(</span><span class=s1>&#39;(&#39;</span> <span class=o>+</span> <span class=nx>body</span> <span class=o>+</span> <span class=s1>&#39;)&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=kd>var</span> <span class=nx>result</span> <span class=o>=</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl>                <span class=nx>result</span><span class=p>.</span><span class=nx>res</span> <span class=o>=</span> <span class=nx>res</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=nx>result</span><span class=p>.</span><span class=nx>json</span> <span class=o>=</span> <span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;originalName&#34;</span><span class=o>:</span> <span class=nx>filename</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;name&#34;</span><span class=o>:</span> <span class=nx>assign</span><span class=p>.</span><span class=nx>fid</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;url&#34;</span><span class=o>:</span> <span class=s1>&#39;/res?fid=&#39;</span> <span class=o>+</span> <span class=nx>assign</span><span class=p>.</span><span class=nx>fid</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;type&#34;</span><span class=o>:</span> <span class=nx>ext</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;size&#34;</span><span class=o>:</span> <span class=nx>filesize</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=s2>&#34;state&#34;</span><span class=o>:</span> <span class=s2>&#34;SUCCESS&#34;</span>
+</span></span><span class=line><span class=cl>                <span class=p>});</span>
+</span></span><span class=line><span class=cl>                <span class=nx>curlPostWrite</span><span class=p>(</span><span class=nx>assign</span><span class=p>.</span><span class=nx>fid</span><span class=p>,</span> <span class=nx>filepath</span><span class=p>,</span> <span class=nx>assign</span><span class=p>.</span><span class=nx>publicUrl</span><span class=p>,</span> <span class=nx>result</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=kd>var</span> <span class=nx>ext</span> <span class=o>=</span> <span class=nx>path</span><span class=p>.</span><span class=nx>extname</span><span class=p>(</span><span class=nx>filename</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;Image server assign error...&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>curlPostWrite</span><span class=p>(</span><span class=nx>fid</span><span class=p>,</span> <span class=nx>tmp_file</span><span class=p>,</span> <span class=nx>publicUrl</span><span class=p>,</span> <span class=nx>result</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>files</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span><span class=nx>urlKey</span><span class=o>:</span> <span class=s2>&#34;file1&#34;</span><span class=p>,</span> <span class=nx>urlValue</span><span class=o>:</span> <span class=nx>tmp_file</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>options</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>host</span><span class=o>:</span> <span class=nx>publicUrl</span><span class=p>.</span><span class=nx>split</span><span class=p>(</span><span class=s2>&#34;:&#34;</span><span class=p>)[</span><span class=mi>0</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>        <span class=nx>port</span><span class=o>:</span> <span class=nx>publicUrl</span><span class=p>.</span><span class=nx>split</span><span class=p>(</span><span class=s2>&#34;:&#34;</span><span class=p>)[</span><span class=mi>1</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>        <span class=nx>method</span><span class=o>:</span> <span class=s2>&#34;POST&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nx>path</span><span class=o>:</span> <span class=s2>&#34;/&#34;</span> <span class=o>+</span> <span class=nx>fid</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>req</span> <span class=o>=</span> <span class=nx>http</span><span class=p>.</span><span class=nx>request</span><span class=p>(</span><span class=nx>options</span><span class=p>,</span> <span class=kd>function</span><span class=p>(</span><span class=nx>res</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>res</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s2>&#34;data&#34;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(</span><span class=nx>chunk</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=p>})</span>
+</span></span><span class=line><span class=cl>    <span class=p>})</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>req</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;error&#39;</span><span class=p>,</span> <span class=kd>function</span><span class=p>(</span><span class=nx>e</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;problem with request:&#39;</span> <span class=o>+</span> <span class=nx>e</span><span class=p>.</span><span class=nx>message</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>e</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>})</span>
+</span></span><span class=line><span class=cl>    <span class=nx>postfile</span><span class=p>.</span><span class=nx>postFile</span><span class=p>(</span><span class=nx>files</span><span class=p>,</span> <span class=nx>req</span><span class=p>,</span> <span class=nx>result</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>action</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Upload image
+</span></span></span><span class=line><span class=cl>    <span class=nx>uploadimage</span><span class=o>:</span> <span class=kd>function</span><span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>       <span class=nx>curlPostAssign</span><span class=p>(</span><span class=nx>res</span><span class=p>,</span> <span class=nx>req</span><span class=p>.</span><span class=nx>files</span><span class=p>.</span><span class=nx>upfile</span><span class=p>.</span><span class=nx>path</span><span class=p>,</span> <span class=nx>req</span><span class=p>.</span><span class=nx>files</span><span class=p>.</span><span class=nx>upfile</span><span class=p>.</span><span class=nx>originalFilename</span><span class=p>,</span> <span class=nx>req</span><span class=p>.</span><span class=nx>files</span><span class=p>.</span><span class=nx>upfile</span><span class=p>.</span><span class=nx>size</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Get configuration file
+</span></span></span><span class=line><span class=cl>    <span class=nx>config</span><span class=o>:</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nx>res</span><span class=p>.</span><span class=nx>redirect</span><span class=p>(</span><span class=s1>&#39;/js/UEditor/config.js&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Online management
+</span></span></span><span class=line><span class=cl>    <span class=nx>listimage</span><span class=o>:</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>fs</span><span class=p>.</span><span class=nx>readdir</span><span class=p>(</span><span class=nx>uploadsPath</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>err</span><span class=p>,</span> <span class=nx>files</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=kd>var</span> <span class=nx>total</span> <span class=o>=</span> <span class=mi>0</span><span class=p>,</span> <span class=nx>list</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>            <span class=nx>files</span><span class=p>.</span><span class=nx>sort</span><span class=p>().</span><span class=nx>splice</span><span class=p>(</span><span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>start</span><span class=p>,</span> <span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>size</span><span class=p>).</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=sr>/^.+\..+$/</span><span class=p>.</span><span class=nx>test</span><span class=p>(</span><span class=nx>a</span><span class=p>)</span> <span class=o>&amp;&amp;</span>
+</span></span><span class=line><span class=cl>                <span class=nx>list</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>url</span><span class=o>:</span> <span class=s1>&#39;/uploads/&#39;</span> <span class=o>+</span> <span class=nx>a</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>mtime</span><span class=o>:</span> <span class=k>new</span> <span class=nb>Date</span><span class=p>(</span><span class=nx>fs</span><span class=p>.</span><span class=nx>statSync</span><span class=p>(</span><span class=nx>uploadsPath</span> <span class=o>+</span> <span class=nx>a</span><span class=p>).</span><span class=nx>mtime</span><span class=p>).</span><span class=nx>getTime</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>                <span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=nx>total</span> <span class=o>=</span> <span class=nx>list</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>({</span><span class=nx>state</span><span class=o>:</span> <span class=nx>total</span> <span class=o>===</span> <span class=mi>0</span> <span class=o>?</span> <span class=s1>&#39;no match file&#39;</span> <span class=o>:</span> <span class=s1>&#39;SUCCESS&#39;</span><span class=p>,</span> <span class=nx>list</span><span class=o>:</span> <span class=nx>list</span><span class=p>,</span> <span class=nx>total</span><span class=o>:</span> <span class=nx>total</span><span class=p>,</span> <span class=nx>start</span><span class=o>:</span> <span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>start</span><span class=p>});</span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Catch image (save image to server when pasting)
+</span></span></span><span class=line><span class=cl>    <span class=nx>catchimage</span><span class=o>:</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>list</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>        <span class=nx>req</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>source</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>src</span><span class=p>,</span> <span class=nx>index</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>http</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>src</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>_res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=kd>var</span> <span class=nx>imagedata</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=nx>_res</span><span class=p>.</span><span class=nx>setEncoding</span><span class=p>(</span><span class=s1>&#39;binary&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=nx>_res</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;data&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>chunk</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>imagedata</span> <span class=o>+=</span> <span class=nx>chunk</span>
+</span></span><span class=line><span class=cl>                <span class=p>});</span>
+</span></span><span class=line><span class=cl>                <span class=nx>_res</span><span class=p>.</span><span class=nx>on</span><span class=p>(</span><span class=s1>&#39;end&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>pathname</span> <span class=o>=</span> <span class=nx>url</span><span class=p>.</span><span class=nx>parse</span><span class=p>(</span><span class=nx>src</span><span class=p>).</span><span class=nx>pathname</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>original</span> <span class=o>=</span> <span class=nx>pathname</span><span class=p>.</span><span class=nx>match</span><span class=p>(</span><span class=sr>/[^/]+\.\w+$/g</span><span class=p>)[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>suffix</span> <span class=o>=</span> <span class=nx>original</span><span class=p>.</span><span class=nx>match</span><span class=p>(</span><span class=sr>/[^\.]+$/</span><span class=p>)[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>filename</span> <span class=o>=</span> <span class=nb>Date</span><span class=p>.</span><span class=nx>now</span><span class=p>()</span> <span class=o>+</span> <span class=s1>&#39;.&#39;</span> <span class=o>+</span> <span class=nx>suffix</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=kd>var</span> <span class=nx>filepath</span> <span class=o>=</span> <span class=nx>uploadsPath</span> <span class=o>+</span> <span class=s1>&#39;catchimages/&#39;</span> <span class=o>+</span> <span class=nx>filename</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=nx>fs</span><span class=p>.</span><span class=nx>writeFile</span><span class=p>(</span><span class=nx>filepath</span><span class=p>,</span> <span class=nx>imagedata</span><span class=p>,</span> <span class=s1>&#39;binary&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>err</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                        <span class=nx>list</span><span class=p>.</span><span class=nx>push</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>original</span><span class=o>:</span> <span class=nx>original</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>source</span><span class=o>:</span> <span class=nx>src</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>state</span><span class=o>:</span> <span class=nx>err</span> <span class=o>?</span> <span class=s2>&#34;ERROR&#34;</span> <span class=o>:</span> <span class=s2>&#34;SUCCESS&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>title</span><span class=o>:</span> <span class=nx>filename</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>url</span><span class=o>:</span> <span class=s1>&#39;/uploads/catchimages/&#39;</span> <span class=o>+</span> <span class=nx>filename</span>
+</span></span><span class=line><span class=cl>                        <span class=p>});</span>
+</span></span><span class=line><span class=cl>                    <span class=p>})</span>
+</span></span><span class=line><span class=cl>                <span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=p>})</span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>f</span> <span class=o>=</span> <span class=nx>setInterval</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=nx>req</span><span class=p>.</span><span class=nx>body</span><span class=p>.</span><span class=nx>source</span><span class=p>.</span><span class=nx>length</span> <span class=o>===</span> <span class=nx>list</span><span class=p>.</span><span class=nx>length</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>clearInterval</span><span class=p>(</span><span class=nx>f</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>({</span><span class=nx>state</span><span class=o>:</span> <span class=s2>&#34;SUCCESS&#34;</span><span class=p>,</span> <span class=nx>list</span><span class=o>:</span> <span class=nx>list</span><span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>},</span> <span class=mi>50</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=nx>app</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=s1>&#39;/ue/uploads&#39;</span><span class=p>,</span> <span class=nx>multipartMiddleware</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>action</span><span class=p>[</span><span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>action</span><span class=p>](</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>app</span><span class=p>.</span><span class=nx>post</span><span class=p>(</span><span class=s1>&#39;/ue/uploads&#39;</span><span class=p>,</span> <span class=nx>multipartMiddleware</span><span class=p>,</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>action</span><span class=p>[</span><span class=nx>req</span><span class=p>.</span><span class=nx>query</span><span class=p>.</span><span class=nx>action</span><span class=p>](</span><span class=nx>req</span><span class=p>,</span> <span class=nx>res</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><p>Running result:<br><img src=http://blog.coinidea.com/wp-content/uploads/2016/05/image0051-300x215.png loading=lazy alt=image005><br><img src=http://blog.coinidea.com/wp-content/uploads/2016/05/image0071-300x207.png loading=lazy alt=image007></p></section><footer class=article-footer><section class=article-tags><a href=/en/tags/nodejs/>Nodejs</a>
+<a href=/en/tags/seaweedfs/>Seaweedfs</a>
+<a href=/en/tags/ueditor/>UEditor</a>
+<a href=/en/tags/image-server/>Image Server</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/en/p/node.js-exception-handling-in-node.js-express/><div class=article-details><h2 class=article-title>[Node.js] Exception Handling in Node.js Express</h2></div></a></article><article><a href=/en/p/javascript-dynamic-loading-and-hiding-of-ueditor/><div class=article-details><h2 class=article-title>[Javascript] Dynamic Loading and Hiding of UEditor</h2></div></a></article><article><a href=/en/p/lnmp-nginx-access_log-daily-rotation/><div class=article-details><h2 class=article-title>[LNMP] Nginx access_log Daily Rotation</h2></div></a></article><article><a href=/en/p/lnmpmemory-optimization/><div class=article-details><h2 class=article-title>[LNMP]Memory Optimization</h2></div></a></article><article><a href=/en/p/web-developmenthtml5-geolocation-inaccuracy-issues/><div class=article-details><h2 class=article-title>[Web Development]HTML5 Geolocation Inaccuracy Issues</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2026 Coinidea's Blog</section><section class=powerby><a href=http://beian.miit.gov.cn/ target=_blank>京ICP备15014655号</a><br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

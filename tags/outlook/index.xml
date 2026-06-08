@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Outlook on Coinidea的博客</title><link>https://blog.coinidea.com/tags/outlook/</link><description>Recent content in Outlook on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 01 Oct 2015 03:13:11 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/outlook/index.xml" rel="self" type="application/rss+xml"/><item><title>[outlook]outlook配置及常规设置——outlook2013</title><link>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1045.html</link><pubDate>Thu, 01 Oct 2015 03:13:11 +0000</pubDate><guid>https://blog.coinidea.com/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6-1045.html</guid><description>&lt;p&gt;当步入职场之后，outlook几乎成为上班族的必备利器，本文将对outlook（outlook2013）的一些配置和常规设置进行说明。&lt;/p&gt;
+&lt;h1 id="添加一个用户"&gt;添加一个用户
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;打开outlook2013，点击左上方“文件”，弹出列表，点击“+添加用户”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/user.jpg"
+loading="lazy"
+alt="user"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;选择“电子邮件账户”，点击“下一步”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e9%80%89%e6%8b%a9%e7%94%b5%e5%ad%90%e9%82%ae%e4%bb%b6%e8%b4%a6%e6%88%b7.jpg"
+loading="lazy"
+alt="选择电子邮件账户"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;点击“手动设置或其他服务器类型”，然后点击“下一步”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e6%89%8b%e5%8a%a8%e8%ae%be%e7%bd%ae%e6%88%96%e5%85%b6%e4%bb%96%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%b1%bb%e5%9e%8b.jpg"
+loading="lazy"
+alt="手动设置或其他服务器类型"
+&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;勾选“POP或IMAP”，然后点击“下一步”，一般是选择该项。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/popimap.jpg"
+loading="lazy"
+alt="popimap"
+&gt;&lt;/p&gt;
+&lt;ol start="5"&gt;
+&lt;li&gt;输入用户名密码，并配置接收和发送的服务器地址。注意，这两个地址，一般是pop3或smtp@对应的域名，需要向邮件服务商确认，邮件服务商一般会有描述。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%be%93%e5%85%a5%e7%94%a8%e6%88%b7%e5%90%8d%e5%af%86%e7%a0%81.jpg"
+loading="lazy"
+alt="输入用户名密码"
+&gt;&lt;/p&gt;
+&lt;ol start="6"&gt;
+&lt;li&gt;点击上图“其他设置”，配置发送服务器的用户名和密码，并点击“完成”。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e5%85%b6%e4%bb%96%e8%ae%be%e7%bd%ae%e8%be%93%e5%85%a5%e7%94%a8%e6%88%b7%e5%90%8d%e5%af%86%e7%a0%81.jpg"
+loading="lazy"
+alt="其他设置输入用户名密码"
+&gt;&lt;/p&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;点击下一步，开始测试，之后测试完成，整个过程即成功。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e6%b5%8b%e8%af%95%e5%ae%8c%e6%88%90.jpg"
+loading="lazy"
+alt="测试完成"
+&gt;&lt;/p&gt;
+&lt;h1 id="配置邮件过滤规则"&gt;配置邮件过滤规则
+&lt;/h1&gt;&lt;p&gt;在邮件的使用过程中，每天可能会产生大量的邮件，这个时候高效地分拣这些邮件是一件非常有意义的工作。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开outlook2013，点击左上方“文件”，弹出列表，点击“管理规则和通知”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e7%ae%a1%e7%90%86%e8%a7%84%e5%88%99%e5%92%8c%e9%80%9a%e7%9f%a5.jpg"
+loading="lazy"
+alt="管理规则和通知"
+&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;点击“新建规则”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%a7%84%e5%88%99%e5%92%8c%e9%80%9a%e7%9f%a5.jpg"
+loading="lazy"
+alt="规则和通知"
+&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;规则中有许多选项，根据规则向导来配置即可。比如，可以选择“标题中含有特定词语的”，“来自特定发件人的”规则，然后可以移动到指定的文件夹，或者指定特定的操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e8%a7%84%e5%88%99%e5%90%91%e5%af%bc.jpg"
+loading="lazy"
+alt="规则向导"
+&gt;&lt;/p&gt;</description></item></channel></rss>

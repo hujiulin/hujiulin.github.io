@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Compilation on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/compilation/</link><description>Recent content in Compilation on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 23 Aug 2015 03:01:39 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/compilation/index.xml" rel="self" type="application/rss+xml"/><item><title>[WorldWind]1. Getting Started with WorldWind -- Compiling WorldWind and Fixing Encoding Issues</title><link>https://blog.coinidea.com/en/p/worldwind1.-getting-started-with-worldwind--compiling-worldwind-and-fixing-encoding-issues/</link><pubDate>Sun, 23 Aug 2015 03:01:39 +0000</pubDate><guid>https://blog.coinidea.com/en/p/worldwind1.-getting-started-with-worldwind--compiling-worldwind-and-fixing-encoding-issues/</guid><description>&lt;p&gt;The World Wind GitHub source code used in this article can be downloaded at: &lt;a class="link" href="https://github.com/hujiulin/WorldWind" target="_blank" rel="noopener"
+&gt;&lt;strong&gt;https://github.com/hujiulin/WorldWind&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;World Wind, led by the National Aeronautics and Space Administration (NASA), is an open-source geographic information system project developed collaboratively by developers worldwide. Developed by NASA Research and promoted by NASA Learning Technologies, it displays satellite imagery, electronic maps, terrain maps, and other geographic data on a 3D digital globe. It is designed for data integration across industries, supports WMS, WFS, WMTS, and other services, and is an excellent 3D client framework rendering engine. It uses XML for data description and configuration, offering good versatility and extensibility. World Wind currently has two versions: one based on .NET and one based on Java. Beyond its basic 3D globe functionality, World Wind is highly extensible with various plugins, supporting map data (satellite, electronic, terrain) published by Google, Microsoft, and others.&lt;/p&gt;
+&lt;p&gt;This article primarily addresses issues related to compiling, running, and fixing Chinese character encoding problems in World Wind.&lt;/p&gt;
+&lt;h3 id="downloading-the-source-code-configuring-the-environment-and-compiling-use-an-international-network-connection-in-case-the-servers-are-inaccessible"&gt;Downloading the Source Code, Configuring the Environment, and Compiling [Use an international network connection in case the servers are inaccessible]
+&lt;/h3&gt;&lt;h4 id="downloading-the-source-code"&gt;Downloading the Source Code
+&lt;/h4&gt;&lt;p&gt;WorldWind has both .Net and Java versions. NASA&amp;rsquo;s official website is: &lt;a class="link" href="http://worldwind.arc.nasa.gov/java/" target="_blank" rel="noopener"
+&gt;http://worldwind.arc.nasa.gov/java/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It provides Java version source code downloads.&lt;/p&gt;
+&lt;p&gt;.Net version source code download:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://worldwind31.arc.nasa.gov/svn/trunk/WorldWind/" target="_blank" rel="noopener"
+&gt;http://worldwind31.arc.nasa.gov/svn/trunk/WorldWind/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This provides an SVN repository. It is recommended to use SVN for downloading.&lt;/p&gt;
+&lt;p&gt;Note: The above SVN was found through the wiki at &lt;a class="link" href="http://www.worldwindcentral.com/wiki/Source_code" target="_blank" rel="noopener"
+&gt;http://www.worldwindcentral.com/wiki/Source_code&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id="environment-configuration"&gt;Environment Configuration
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;DirectX9&lt;/strong&gt; must be installed beforehand.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="compiling-the-source-code"&gt;Compiling the Source Code
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Encoding issues&lt;/strong&gt;: You will encounter many syntax errors related to strings, caused by file encoding problems.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Right-click the file in VS Solution Explorer&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &amp;ldquo;Open With&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Choose &amp;ldquo;CSharp Editor with Encoding&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &amp;ldquo;Western European (Windows) - Code Page 1252&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open the file &amp;ndash; no more garbled characters&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change the file save encoding to UTF-8 via the File menu, then save the source file&lt;/p&gt;
+&lt;p&gt;Note: About 6 files are affected.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;LoaderLock issue&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Menu (Debug -&amp;gt; Exceptions) -&amp;gt; Exceptions window -&amp;gt; ManagedDebuggingAssistants -&amp;gt; Uncheck the LoaderLock option&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Registry permission issue&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open the HtmlEditor project properties, and uncheck &amp;ldquo;Register for COM interop&amp;rdquo; in the &amp;ldquo;Build&amp;rdquo; tab&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start running the program. Everything works fine, but transitioning from the initialization screen to the main program takes a long time. This is because the WorldWind server is not accessible from China. WorldWind provides an offline mode, and you can also modify the WMS server URL in the XML. The temporary solution used here is to comment out the following two lines of code:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In Worldwind -&amp;gt; PluginSDK -&amp;gt; ConfigurationLoader.cs, line 262:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image001.png"
+loading="lazy"
+alt="image001"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Line 321:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image003.png"
+loading="lazy"
+alt="image003"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When running the program, the Initializing splash screen is misaligned:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Debugging reveals the issue is in worldwind.cs, in &lt;code&gt;public MainApplication()&lt;/code&gt; [line 563]:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image005.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Using the splash form.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Splash form:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Splash constructor:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image007.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You can see the PictureBox code is commented out, and there is no PictureBox control on the form.&lt;/p&gt;
+&lt;p&gt;It uses: &lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image0091.png"
+loading="lazy"
+alt="image0091"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image011.png"
+loading="lazy"
+alt="image011"
+&gt;&lt;/p&gt;
+&lt;p&gt;Adjust the image as shown above, and the program starts normally.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Decided to back up the source code to Baidu Cloud and my own SVN server. [The upload to Baidu&amp;rsquo;s server did not succeed.]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After migrating the WorldWind source code, an issue occurred:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Rebuilding and cleaning the project did not help.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image013.png"
+loading="lazy"
+alt="image013"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Delete this file:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image015.png"
+loading="lazy"
+alt="image015"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After deletion, reconfigure:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image017.png"
+loading="lazy"
+alt="image017"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Issue resolved.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Note: The first time you run the program, you may need to wait a moment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If references such as AVIFile.dll or FlickrNel.dll are missing, switch from Release mode to Debug mode to compile and run successfully. [The actual reason is that the corresponding DLLs need to be copied to the Release directory.]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When fixing encoding issues, some people encounter a situation where the degree symbol in the main interface displays as garbled characters. This is because the encoding issue has not been fully resolved. Please save with &amp;ldquo;UTF-8 with BOM&amp;rdquo; in the &amp;ldquo;Advanced Save Options&amp;rdquo; to fix this.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="files-with-encoding-issues"&gt;Files with Encoding Issues:
+&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Project&lt;/th&gt;
+&lt;th&gt;File&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;WorldWind&lt;/td&gt;
+&lt;td&gt;Compass3D.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WorldWind&lt;/td&gt;
+&lt;td&gt;GPSTrackerPlugin.WorldWind.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;WorldWindow&lt;/td&gt;
+&lt;td&gt;WorldWindow.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PluginSDK&lt;/td&gt;
+&lt;td&gt;ConfigurationLoader.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PluginSDK&lt;/td&gt;
+&lt;td&gt;Angle.cs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;All encoding issues resolved:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image019.png"
+loading="lazy"
+alt="image019"
+&gt;&lt;/p&gt;
+&lt;p&gt;Today I compiled the code from SVN on an x64 machine, and the program would not run. The debugger showed the error:&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Unhandled exception of type &amp;lsquo;System.BadImageFormatException&amp;rsquo;&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Change from Any CPU or x64 mode to x86, then set the output path to &amp;ldquo;..binDebug&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Rebuild the solution, compile and run successfully:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/08/image021.png"
+loading="lazy"
+alt="image021"
+&gt;&lt;/p&gt;
+&lt;p&gt;Original link: &lt;a class="link" href="http://cesiumcn.org/topic/206.html" target="_blank" rel="noopener"
+&gt;http://cesiumcn.org/topic/206.html&lt;/a&gt; | Fast access in China: &lt;a class="link" href="http://cesium.coinidea.com/topic/206.html" target="_blank" rel="noopener"
+&gt;http://cesium.coinidea.com/topic/206.html&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>WordGame on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/wordgame/</link><description>Recent content in WordGame on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 03 Sep 2015 15:18:16 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/wordgame/index.xml" rel="self" type="application/rss+xml"/><item><title>MFC Implementation of the WordGame Typing Game</title><link>https://blog.coinidea.com/en/p/mfc-implementation-of-the-wordgame-typing-game/</link><pubDate>Thu, 03 Sep 2015 15:18:16 +0000</pubDate><guid>https://blog.coinidea.com/en/p/mfc-implementation-of-the-wordgame-typing-game/</guid><description>&lt;p&gt;GitHub download link: &lt;a class="link" href="https://github.com/hujiulin/TypingGame" target="_blank" rel="noopener"
+&gt;https://github.com/hujiulin/TypingGame&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Double-click &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164094620328.png"
+loading="lazy"
+alt="image001"
+&gt; to run the program. The main interface will appear:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164104550196.png"
+loading="lazy"
+alt="1441164104550196"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click the &amp;ldquo;User&amp;rdquo; menu to perform &lt;strong&gt;Login&lt;/strong&gt; and &lt;strong&gt;Register&lt;/strong&gt; operations. If you have not registered, you can register first and then log in. Here we use &lt;strong&gt;UserName&lt;/strong&gt; as an example.&lt;/p&gt;
+&lt;p&gt;Click &lt;strong&gt;Login&lt;/strong&gt; to open the login window:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164148657136.png"
+loading="lazy"
+alt="image005"
+&gt;&lt;/p&gt;
+&lt;p&gt;Click &lt;strong&gt;Register&lt;/strong&gt; to open the registration window (or click the &lt;strong&gt;Register&lt;/strong&gt; button directly):&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164153855855.png"
+loading="lazy"
+alt="image007"
+&gt;&lt;/p&gt;
+&lt;p&gt;Enter Username: UserName; Nickname: UserName; Password: UserName; as shown below:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164162259080.png"
+loading="lazy"
+alt="image009"
+&gt;&lt;/p&gt;
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to complete registration.&lt;/p&gt;
+&lt;p&gt;Log in with the UserName account, and you will see the following information in the upper-right corner of the main interface:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164171230127.png"
+loading="lazy"
+alt="image011"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure game settings: &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164182712906.png"
+loading="lazy"
+alt="image013"
+&gt;. In the game options, you can set &amp;ldquo;Game Difficulty&amp;rdquo;, &amp;ldquo;Image Category&amp;rdquo;, and &amp;ldquo;Background Music&amp;rdquo;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Game Difficulty:&lt;/p&gt;
+&lt;p&gt;Click the &lt;strong&gt;Game Difficulty&lt;/strong&gt; button to open the following dialog:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164193864492.png"
+loading="lazy"
+alt="image015"
+&gt;&lt;/p&gt;
+&lt;p&gt;You can use the dropdown lists to configure &amp;ldquo;Vocabulary Size&amp;rdquo;, &amp;ldquo;Spelling Difficulty&amp;rdquo;, &amp;ldquo;Word Frequency&amp;rdquo;, and &amp;ldquo;Movement Speed&amp;rdquo;. Vocabulary size options are 50, 100, and 150. Spelling difficulty currently uses random CET-4 words. Word frequency can be single or double. Movement speed can be fast, medium, or slow. Click &lt;strong&gt;Set&lt;/strong&gt; to apply.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Image Category:&lt;/p&gt;
+&lt;p&gt;Click the &lt;strong&gt;Image Category&lt;/strong&gt; button to open the following dialog:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164205372618.png"
+loading="lazy"
+alt="image017"
+&gt;&lt;/p&gt;
+&lt;p&gt;Currently available images include balloons and fish. Select a radio button to choose.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Background Music:&lt;/p&gt;
+&lt;p&gt;Click the &lt;strong&gt;Background Music&lt;/strong&gt; button to open the following dialog:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164230117070.png"
+loading="lazy"
+alt="image019"
+&gt;&lt;/p&gt;
+&lt;p&gt;Select the desired music in the group box and click &amp;ldquo;Select Music&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;The configured game options will be displayed at: &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164244373483.png"
+loading="lazy"
+alt="image021"
+&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click &lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164255924062.png"
+loading="lazy"
+alt="image023"
+&gt; to open the following window:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164282923212.png"
+loading="lazy"
+alt="image025"
+&gt;&lt;/p&gt;
+&lt;p&gt;This shows the top five highest-scoring users in the system.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164327545002.png"
+loading="lazy"
+alt="image027"
+&gt;, the &lt;strong&gt;Help&lt;/strong&gt; menu has two sections: Game Rules and About.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Game Rules:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164311366091.png"
+loading="lazy"
+alt="image029"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;About:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164353406206.png"
+loading="lazy"
+alt="image031"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164362486180.png"
+loading="lazy"
+alt="image033"
+&gt; This area shows the current game state: &lt;strong&gt;Started&lt;/strong&gt; or &lt;strong&gt;Stopped&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164370196881.png"
+loading="lazy"
+alt="image035"
+&gt; Click these two buttons to start or exit the game.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Below is a screenshot taken during gameplay:&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://coinidea-upload.stor.sinaapp.com/ueditor/php/upload/image/20150902/1441164377433708.png"
+loading="lazy"
+alt="1441164377433708"
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

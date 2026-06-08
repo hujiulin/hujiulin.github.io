@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SAE on Coinidea的博客</title><link>https://blog.coinidea.com/tags/sae/</link><description>Recent content in SAE on Coinidea的博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 09 Apr 2016 07:50:12 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/tags/sae/index.xml" rel="self" type="application/rss+xml"/><item><title>[SAE]SAE MySQL跨应用授权</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1135.html</link><pubDate>Sat, 09 Apr 2016 07:50:12 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-1135.html</guid><description>&lt;p&gt;在 SAE（新浪云计算）收费越来越贵的今天，节约成本变得越来越重要。2016 年三月开始，共享型 MySQL 也开始收费，这时多个应用共享一个 MySQL 是节约的一种重要方式。&lt;/p&gt;
+&lt;h3 id="实现多个应用共享一个-mysql-的步骤"&gt;实现多个应用共享一个 MySQL 的步骤
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;假设有多个应用（APP1, APP2, APP3）&lt;/strong&gt;：其中共享型 MySQL 仅 APP1 保留，APP2 和 APP3 使用 APP1 的 MySQL。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;导出 APP2 和 APP3 的 MySQL 作为备份&lt;/strong&gt;，然后删除 APP2 和 APP3 的 MySQL，这样 APP2 和 3 的 MySQL 相当于没有初始化即不会再被扣费。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;向 APP1 中的 MySQL 导入 APP2 和 3 的数据库文件（*.sql）&lt;/strong&gt;，导入之前注意表名别冲突。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择 APP1 的 MySQL，点击跨应用授权可选择本帐号应用或其他帐号应用&lt;/strong&gt;，此处授权到 APP2、APP3 应用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编写脚本，显示本应用 APP1 的 MySQL 信息，供授权应用 APP2 和 APP3 使用&lt;/strong&gt;（此处会泄露数据库的相关信息，请谨慎操作并及时删除）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;相关代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;span class="lnt"&gt;6
+&lt;/span&gt;&lt;span class="lnt"&gt;7
+&lt;/span&gt;&lt;span class="lnt"&gt;8
+&lt;/span&gt;&lt;span class="lnt"&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;header&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Content-type:text/html;charset=utf-8&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;用户名 :&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_USER&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;密码 :&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_PASS&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;主库域名:&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_HOST_M&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;从库域名:&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_HOST_S&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;端口 :&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_PORT&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;数据库名:&amp;#34;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;SAE_MYSQL_DB&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&amp;lt;br&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start="6"&gt;
+&lt;li&gt;&lt;strong&gt;调用脚本&lt;/strong&gt;：可以在页面打印出 APP1 应用 MySQL 信息，在你的其他应用（比如 APP2 和 APP3）中使用刚刚打印出的 MySQL 信息来连接数据库。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="注意事项"&gt;注意事项
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;安全性&lt;/strong&gt;：由于脚本会暴露数据库的用户名、密码等敏感信息，请确保在使用完后及时删除该脚本，避免信息泄露。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;表名冲突&lt;/strong&gt;：在导入 APP2 和 APP3 的数据库文件到 APP1 的 MySQL 时，确保表名不冲突。如果有冲突，可以考虑在导入前修改表名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;授权管理&lt;/strong&gt;：在 SAE 管理平台上进行跨应用授权时，确保只授权必要的应用，避免不必要的权限暴露。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过这些步骤，可以有效地节约 SAE MySQL 的使用成本，同时确保多个应用能够正常访问共享的数据库。&lt;/p&gt;</description></item><item><title>SAE下WordPress域名设置</title><link>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-640.html</link><pubDate>Wed, 11 Feb 2015 09:12:06 +0000</pubDate><guid>https://blog.coinidea.com/web%E5%BC%80%E5%8F%91-640.html</guid><description>&lt;p&gt;我在SAE下配置了WordPress，并将改应用绑定了域名：&lt;a class="link" href="http://blog.coinidea.com" target="_blank" rel="noopener"
+&gt;blog.coinidea.com&lt;/a&gt;。该链接确实能跳转到博客页面，但是页面内的所有链接均是：app-name.sinaapp.com。这说明该链接均不对WordPress的内部文章，页面起作用。&lt;/p&gt;
+&lt;h2 id="解决方案"&gt;解决方案：
+&lt;/h2&gt;&lt;h3 id="方案一后台设置"&gt;方案一：后台设置
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;进入后台仪表盘。&lt;/li&gt;
+&lt;li&gt;点击“设置”选项。&lt;/li&gt;
+&lt;li&gt;修改：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/02/QQ%e6%88%aa%e5%9b%be20150211170850-300x45.png"
+loading="lazy"
+alt="QQ截图20150211170850"
+&gt;&lt;/p&gt;
+&lt;h3 id="方案二数据库修改数据项-比较暴力"&gt;方案二：数据库修改数据项 [比较暴力]
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;找到wp-options表。&lt;/li&gt;
+&lt;li&gt;修改第1项和第37项数据即可。&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

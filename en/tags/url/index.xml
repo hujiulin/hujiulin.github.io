@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>URL on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/url/</link><description>Recent content in URL on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 Oct 2015 15:24:04 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/url/index.xml" rel="self" type="application/rss+xml"/><item><title>[Web Development] What Happens After a User Enters a URL?</title><link>https://blog.coinidea.com/en/p/web-development-what-happens-after-a-user-enters-a-url/</link><pubDate>Thu, 15 Oct 2015 15:24:04 +0000</pubDate><guid>https://blog.coinidea.com/en/p/web-development-what-happens-after-a-user-enters-a-url/</guid><description>&lt;p&gt;When a user opens a browser and enters a URL:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The client checks whether there is an IP address cached for that URL. If not, it sends a request to the nearest DNS server for domain name resolution, querying up to the root DNS server if necessary. Once the query succeeds, the result is returned to the client.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The browser sends the request to the web server at the IP address corresponding to the URL.&lt;/p&gt;
+&lt;p&gt;This server may be a single standalone server, a lightweight load balancer, or a cluster.&lt;/p&gt;
+&lt;p&gt;If it is a load balancer or cluster, the servers internally synchronize based on timestamps to ensure the data is up to date; if not, synchronization is performed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the request involves application-level calls, the request is forwarded to the application server, which returns the result to the web server.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The web server executes programs written in the relevant dynamic languages, communicates with database servers and related files, and finally sends the resulting web page data back to the browser.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Based on transport protocols such as HTTP and HTTPS, the web server&amp;rsquo;s data is transmitted back to the browser, which then parses and renders the web page.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Finally, the user sees the web page.&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://blog.coinidea.com/wp-content/uploads/2015/10/%e7%94%a8%e6%88%b7.png"
+loading="lazy"
+alt="User"
+&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Coinidea's Blog</title><link>https://blog.coinidea.com/en/tags/git/</link><description>Recent content in Git on Coinidea's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 09 Apr 2016 08:02:47 +0000</lastBuildDate><atom:link href="https://blog.coinidea.com/en/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>[Git] Configuring and Removing Git Proxy</title><link>https://blog.coinidea.com/en/p/git-configuring-and-removing-git-proxy/</link><pubDate>Sat, 09 Apr 2016 08:02:47 +0000</pubDate><guid>https://blog.coinidea.com/en/p/git-configuring-and-removing-git-proxy/</guid><description>&lt;p&gt;When configuring Git to use a proxy, you can use the following commands to set and remove the proxy:&lt;/p&gt;
+&lt;h3 id="configuring-git-proxy"&gt;Configuring Git Proxy
+&lt;/h3&gt;&lt;p&gt;To configure HTTP and HTTPS proxies for Git, use the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Configure HTTP proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global http.proxy http://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Configure HTTPS proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global https.proxy https://127.0.0.1:1080
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="removing-git-proxy-configuration"&gt;Removing Git Proxy Configuration
+&lt;/h3&gt;&lt;p&gt;To remove the proxy settings, use the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Remove HTTP proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset http.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Remove HTTPS proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config --global --unset https.proxy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="explanation"&gt;Explanation
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git config --global http.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;: Configure the global HTTP proxy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global https.proxy &amp;lt;proxy-url&amp;gt;&lt;/code&gt;: Configure the global HTTPS proxy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset http.proxy&lt;/code&gt;: Remove the global HTTP proxy configuration.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global --unset https.proxy&lt;/code&gt;: Remove the global HTTPS proxy configuration.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With these commands, you can easily enable or disable Git proxy settings as needed.&lt;/p&gt;</description></item><item><title>Slow or Failed Grunt Downloads</title><link>https://blog.coinidea.com/en/p/slow-or-failed-grunt-downloads/</link><pubDate>Sun, 15 Nov 2015 03:37:01 +0000</pubDate><guid>https://blog.coinidea.com/en/p/slow-or-failed-grunt-downloads/</guid><description>&lt;p&gt;&lt;img src="https://blog.coinidea.com/wp-content/uploads/2015/11/082057590664388.png"
+loading="lazy"
+alt="082057590664388"
+&gt;&lt;/p&gt;
+&lt;p&gt;Grunt is a front-end automation tool, and there are plenty of blog posts on the internet about how to install and use it:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.cnblogs.com/wangfupeng1988/p/4561993.html" target="_blank" rel="noopener"
+&gt;http://www.cnblogs.com/wangfupeng1988/p/4561993.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.cnblogs.com/lhb25/archive/2013/01/24/grunt-for-javascript-project-a.html" target="_blank" rel="noopener"
+&gt;http://www.cnblogs.com/lhb25/archive/2013/01/24/grunt-for-javascript-project-a.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Since Grunt installation depends on Node.js, this article mainly covers solutions for when &amp;ldquo;npm install grunt&amp;rdquo; downloads slowly or fails entirely. The fix is simple: specify the download registry by appending &lt;code&gt;-registry &amp;quot;http://registry.npmjs.org&amp;quot;&lt;/code&gt; to the command, which changes the default from HTTPS to HTTP. Alternatively, Chinese internet companies like Taobao also provide registries that you can search for and use.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;install grunt --save-dev -registry &lt;span class="s2"&gt;&amp;#34;http://registry.npmjs.org&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>
